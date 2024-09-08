@@ -1,0 +1,192 @@
+/* keyframes ---------------------------------------------- */
+
+@keyframes flip {
+  0% {
+    background-color: salmon;
+    transform: perspective(1500px) rotateY(0deg);
+  }
+  49% {
+    background-color: salmon;
+  }
+  50% {
+    transform: perspective(2000px) rotateY(-90deg);
+    width: 95vw;
+    height: 90vh;
+  }
+  51% {
+    background-color: firebrick;
+  }
+  99.99% {
+    transform: perspective(1500px) rotateY(-180deg);
+  }
+  100% {
+    background-color: firebrick;
+    transform: perspective(1500px) rotateY(0deg);
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+@keyframes flip-rev {
+  0% {
+    background-color: firebrick;
+    transform: perspective(1500px) rotateY(0deg);
+    width: 100vw;
+    height: 100vh;
+  }
+  10% {
+    width: 95vw;
+    height: 90vh;
+  }
+  49% {
+    background-color: firebrick;
+  }
+  50% {
+    transform: perspective(2000px) rotateY(90deg);
+    width: 95vw;
+    height: 90vh;
+  }
+  51% {
+    background-color: salmon;
+  }
+  99.99% {
+    transform: perspective(1500px) rotateY(180deg);
+  }
+  100% {
+    background-color: salmon;
+    transform: perspective(1500px) rotateY(0deg);
+  }
+}
+
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes reappear {
+  from {
+    opacity: 0;
+    display: none;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* landing page---------------------------------------------- */
+
+/* root */
+:root {
+  --navheight: 15vh;
+  --pfelemwidth: 95vw;
+  --pfelemheight: 90vh;
+}
+
+#page-flipper, #pftbiS, #dynamic-nav, [id*="other"], [id*="iR"], [id*="iR"] > div, #studio, #currvitae {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#dynamic-nav {
+  display: none;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: var(--navheight);
+  z-index: 10;
+  background-color: darkcyan;
+  border-radius: 1em;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+#dynamic-nav > div {
+  width: 20vw;
+  height: var(--navheight);
+  cursor: pointer;
+}
+
+#page-flipper {
+  justify-content: space-evenly;
+  position: relative;
+  width: var(--pfelemwidth);
+  height: var(--pfelemheight);
+  background-color: salmon;
+  border-radius: 1em;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+[id*="iR"] {
+  flex-direction: row;
+}
+
+#idiomsiR {
+  width: var(--pfelemwidth);
+  height: 10vh;
+  justify-content: center;
+}
+
+#idiomsiR > div {
+  width: 5vw;
+  height: 4vh;
+  background-color: palevioletred;
+  border-radius: 0.2em;
+  margin: 0 1em;
+  padding: 0 1em;
+  border-radius: 0.4em;
+}
+
+#btnsiR {
+  width: var(--pfelemwidth);
+  height: 80vh;
+  justify-content: space-around;
+}
+
+#btnsiR > div {
+  width: 30vw;
+  height: 23vh;
+  border-radius: 1em;
+}
+
+#currvitae {
+  background-color: steelblue;
+}
+
+#studio {
+  background-color: sandybrown;
+}
+
+#studio, #currvitae, #idiomsiR > div {
+  cursor: pointer;
+}
+
+.fliptoRS {
+  animation: flip 1s ease-out forwards;
+}
+
+.fliptoIS {
+  animation: flip-rev 1s ease-out forwards;
+}
+
+.disappear {
+  animation: disappear 1s ease-out forwards;
+}
+
+.reappear {
+  animation: reappear 1s linear forwards;
+}
+
+/* landing page---------------------------------------------- */
+
+

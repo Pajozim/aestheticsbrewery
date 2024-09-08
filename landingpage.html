@@ -5,155 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PaJoZi's Aesthetics Brewery</title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
-    <style>
-      /* root styles -------------------------------------------- */
-
-      :root {
-        font-size: 1rem;
-        font-family: "Comfortaa", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-      }
-
-      /* keyframes ---------------------------------------------- */
-
-      @keyframes flip {
-        0% {
-          background-color: salmon;
-          transform: perspective(1500px) rotateY(0deg);
-        }
-        49% {
-          background-color: salmon;
-        }
-        50% {
-          transform: perspective(2000px) rotateY(90deg);
-          padding: calc(100% - 80%);
-        }
-        51% {
-          background-color: firebrick;
-        }
-        99.99% {
-          transform: perspective(1500px) rotateY(180deg);
-        }
-        100% {
-          background-color: firebrick;
-          transform: perspective(1500px) rotateY(0deg);
-        }
-      }
-
-      @keyframes disappear {
-        0% {opacity: 1;}
-        30% {opacity: 0;}
-        60% {opacity: 0;}
-        100% {opacity: 1;}
-      }
-
-      /* ---------------------------------------------- */
-
-      body {
-        margin: 0;
-        padding: 0;
-        background-color: #222;
-        box-sizing: border-box;
-        overflow: hidden;
-        width: 100vw;
-        height: 100vh;
-
-      }
-
-      #page-flipper, [class*="pf-"], body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      #page-flipper {
-        position: relative;
-        width: 80vw;
-        height: 70vh;
-        background-color: salmon;
-        border-radius: 1em;
-      }
-
-      .flip-f {
-        animation: flip 1s ease-out forwards;
-      }
-
-      .flip-r {
-        animation: flip 1s ease-out reverse;
-      }
-
-      .pf-t-bor {
-        width: 20vw;
-        height: 17vh;
-        border: 0.2em solid whitesmoke;
-        padding: .5%;
-        transition: border-color 2s ease-in-out;
-      }
-
-      .pf-t-bor.r {
-        border: 0.2em solid #222;
-      }
-
-      .pf-tri {
-        width: 100%;
-        height: 100%;
-        background-color: cadetblue;
-        cursor: pointer;
-      }
-
-      .pf-tri.r {
-        background-color:indigo;
-      }
-
-      .disappear {
-        animation: disappear 1.5s linear forwards;
-      }
-
-    </style>
+    <link rel="stylesheet" href="core-styles.css">
+    <link rel="stylesheet" href="lp-styles.css">
+    <link rel="stylesheet" href="dc-styles.css">
 </head>
 <body>
-  <div id="page-flipper">
-    <div class="pf-t-bor">
-      <div class="pf-tri">Flip Me!</div>
+  <section id="dynamic-nav">
+    <div id="pftbiS">Flip Me Back</div>
+    <div id="other1">Something Else</div>
+    <div id="other2">Other Functions</div>
+    <div id="other3">Maybe</div>
+  </section>
+  <section id="page-flipper">
+    <div id="layer1">
+      <div id="idiomsiR"><div>English</div><div>Deutsch</div><div>Espa&ntilde;ol</div></div>
+      <div id="btnsiR"><div id="currvitae"><span>Curriculum</span></div><div id="studio"><span>Studio</span></div></div>
     </div>
-  </div>
-
-  <script>
-    const pageflipper = document.getElementById('page-flipper');
-    const pftborder = document.querySelector('.pf-t-bor');
-
-    pageflipper.addEventListener('click', () => {
-      if (pageflipper.classList.contains('flip-r') || !pageflipper.classList.length) {
-        // to the intial state
-        pageflipper.classList.remove('flip-r');
-        void pageflipper.offsetWidth; // This forces a reflow
-        pageflipper.classList.add('flip-f');
-
-        pftborder.classList.remove('r');
-        pftborder.classList.add('disappear');
-        setTimeout(() => {
-          pftborder.classList.remove('disappear');
-        }, 2000);
-      } else {
-        // to the reversed state
-        pageflipper.classList.remove('flip-f');
-        void pageflipper.offsetWidth;
-        pageflipper.classList.add('flip-r');
-
-        pftborder.classList.add('r');
-        pftborder.classList.add('disappear');
-        setTimeout(() => {
-          pftborder.classList.remove('disappear');
-        }, 2000);
-      }
-    });
-
-</script>
-<script src="my-app/src/App.js"></script>
-  </script>
+  </section>
+  <script src="page-flipper.js"></script>
+  <script src="dynamic-composer.js"></script>
 </body>
 </html>

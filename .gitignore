@@ -1,3 +1,7 @@
-# Ignore Materials/
-
-# Ignore Product Images/
+# Ignore /Materials/ folder and its contents
+/Materials/
+/Product Images/
+MediaInput.html
+dynamicShop.html
+product-sheet.json
+/Studio/

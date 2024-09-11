@@ -1,62 +1,6 @@
-// Retrieve products ==============================================================================================================
-
-  const products = JSON.parse(localStorage.getItem('products')) || [];
-
-/*  document.addEventListener('DOMContentLoaded', function() {
-
-    const products = JSON.parse(localStorage.getItem('products')) || [];
-
-    if (products.length === 0) {
-      uploadProducts();
-    } else {
-      
-      displayProducts(); 
-    }
-  });
-*/
-// Upload products ================================================================================================================
-
-    function uploadProducts() {
-    const fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = '.json';
-    fileInput.id = 'input-box';
-    document.body.appendChild(fileInput);
-
-    fileInput.addEventListener('change', function() {
-      const file = fileInput.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(event) {
-          const productsJSON = JSON.parse(event.target.result);
-          localStorage.setItem('products', JSON.stringify(productsJSON));
-          displayProducts(); // Update the DOM after storing products
-
-          if (fileInput.id === 'input-box') {
-            fileInput.remove();
-          }
-        };
-        reader.readAsText(file);
-      }
-    });
-
-    //fileInput.click();
-    }
-
 // Display products ===============================================================================================================
 
-  // const rowfactor = ["100vh", "50vh", "33.33vh", "25vh", "20vh", "16.66vh", "14.28vh", "12.5vh"];
-
-  function displayProducts() {
-    const products = JSON.parse(localStorage.getItem('products')) || [];
-
-    // Create grid container
-    if (!document.getElementById('grid-container')) {
-      const createPList = document.createElement('div');
-      createPList.id = 'grid-container';
-      document.body.appendChild(createPList);
-    }
-    
+  function displayProducts() {    
     const productList = document.getElementById('grid-container');
     productList.innerHTML = ''; // Clear existing content
 
@@ -87,7 +31,7 @@
     // create a filler
     // 8 products, the row width is incorrect
     if (!Number.isInteger(rootedNo) && products.length !== roundedUpNo * roundedDownNo) {
-      let colSubtrahend, colDivisor;
+      let colSubtrahend, colDivisor, fillergridCol;
 
       if (products.length > roundedUpNo ** 2 || products.length > (roundedUpNo * roundedDownNo)) {
         colSubtrahend = roundedUpNo ** 2;
@@ -102,12 +46,15 @@
 
       let ColProduct = colQuotient * colDifference;
 
+      fillergridCol = (colDifference === 1) ? '' : 'span ' + colDifference;
+
       const filler = document.createElement('div');
       filler.classList = 'candy';
       filler.id = 'Filler';
       filler.style.width = ColProduct + 'vw';
+      filler.style.gridColumn = fillergridCol;
       filler.style.height = rowfactor;
-      filler.innerHTML = `<img src="Materials/man_wbl.png" alt="man working before his laptop" style="object-fit: contain">`;
+      filler.innerHTML = `<img id="brooder" src="Materials/brooder.webp" onmouseover="this.src='Materials/fut-proj.webp';" onmouseout="this.src='Materials/brooder.webp';" alt="man working before his laptop" style="object-fit: contain">`;
       productList.appendChild(filler);
     }
     }

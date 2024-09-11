@@ -82,42 +82,18 @@
 
 /* root */
 :root {
-  --navheight: 15vh;
   --pfelemwidth: 95vw;
   --pfelemheight: 90vh;
 }
 
-#page-flipper, #pftbiS, #dynamic-nav, [id*="other"], [id*="iR"], [id*="iR"] > div, #studio, #currvitae {
+.page-flipper, #pftbiS, #dynamic-nav, [id*="other"], [id*="iR"], [id*="iR"] > div, #studio, #currvitae {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#dynamic-nav {
-  display: none;
-  flex-direction: row;
-  justify-content: space-evenly;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vw;
-  height: var(--navheight);
-  z-index: 10;
-  background-color: darkcyan;
-  border-radius: 1em;
-  opacity: 1;
-  transition: opacity 1s ease;
-}
-
-#dynamic-nav > div {
-  width: 20vw;
-  height: var(--navheight);
-  cursor: pointer;
-}
-
-#page-flipper {
+.page-flipper {
   justify-content: space-evenly;
   position: relative;
   width: var(--pfelemwidth);

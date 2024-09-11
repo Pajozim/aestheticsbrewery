@@ -1,0 +1,119 @@
+/* animations ------------------------------------------------------------------------------- */
+
+@keyframes gc-appear {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes gc-disappear {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+/* srudio composer ------------------------------------------------------------------------- */
+/* grid container ++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+[id*="container"] {
+width: 100%;
+height: 100vh;
+}
+
+#grid-container {
+display: none;
+overflow: hidden;
+background-color: #333;
+}
+
+#grid-container.appear {
+  display: grid;
+  animation: gc-appear 1s ease-in forwards;
+}
+
+#grid-container.disappear {
+  display: none;
+  animation: gc-disappear 2s ease-in 1s forwards;
+}
+
+#grid-container.flexed {
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: darkcyan;
+}
+
+/* dyn-nav bar ++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/* flex structure is defined before in startpage-styles.css */
+
+#dynamic-nav {
+  cursor: pointer;
+  display: none;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10vw;
+  height: 8vh;
+  z-index: 10;
+  background-color: darkcyan;
+  border-radius: 1em;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+/* candy boxes ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+.candy {
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+box-sizing: border-box;
+transition: all 0.2s ease-in-out;
+}
+
+.candy:hover {
+scale: 1.05;
+border-radius: 1em;
+cursor: pointer;
+}
+
+.candy.expanded {
+margin: 2.5%;
+width: 95vw;
+height: 95vh;
+border-radius: 1em;
+scale: none;
+}
+
+.candy.hidden {
+display: none;
+}
+
+/* filler box */
+
+#Filler {
+background-color: darkviolet;
+}
+
+#Filler:hover {
+scale: 1;
+border-radius: 0;
+}
+
+#input-box {
+display: flex;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+align-items: center;
+justify-content: center;
+width: fit-content;
+height: auto;
+background-color: lightsalmon;
+padding: 2em 3em;
+}
+
+/* end of this file */

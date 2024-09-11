@@ -1,12 +1,3 @@
-// page flip definitions =================================================================================================
-
-const dynnav = document.getElementById('dynamic-nav');
-const pagefliptri = document.getElementById('studio');
-const pagefliptr2 = document.getElementById('pftbiS');
-const pageflipper = document.getElementById('page-flipper');
-const pflayer1 = document.getElementById('layer1');
-
-
 // flip to Studio ==========================================================================================================
 
 pagefliptri.addEventListener('click', () => {
@@ -18,6 +9,12 @@ pagefliptri.addEventListener('click', () => {
   // disappear layer1
   pflayer1.classList.remove('reappear');
   pflayer1.classList.add('disappear');
+
+  // dynamic composer
+  pfgridC.classList.remove('disappear');
+  setTimeout(() => {pfgridC.classList.add('appear')}, 1000);
+
+  (products.length === 0) ? uploadProducts() : displayProducts();
 
   // dynamic nav
   dynnav.style.display = 'flex';
@@ -40,13 +37,7 @@ pagefliptri.addEventListener('click', () => {
       }, 4500);
     }
   });
-
-  // dynamic composer
-  document.addEventListener('DOMContentLoaded', function() {
-    const products = JSON.parse(localStorage.getItem('products')) || [];
-    if (products.length === 0) {uploadProducts();} else {displayProducts();}
-  });
-});
+})
 
 // back to Initial State / Start Page ==============================================================================
 
@@ -69,4 +60,7 @@ pagefliptr2.addEventListener('click', () => {
   setTimeout(() => {
     dynnav.style.display = 'none';
   }, 800);
+
+  pfgridC.classList.remove('appear');
+  pfgridC.classList.add('disappear');
 })

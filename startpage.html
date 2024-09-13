@@ -5,27 +5,627 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PaJoZi's Aesthetics Brewery</title>
-    <link rel="stylesheet" href="core-styles.css">
-    <link rel="stylesheet" href="startpage-styles.css">
-    <link rel="stylesheet" href="studio-styles.css">
-    <link rel="stylesheet" href="cv-styles.css">
+    <style aria-label="core-styles">
+      /* root styles -------------------------------------------- */
+
+      :root {
+        font-size: 1rem;
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        --pfelemwidth: 95vw;
+        --pfelemheight: 90vh;
+      }
+
+      /* core styles -------------------------------------------- */
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #222;
+        box-sizing: border-box;
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* repetitive styles ---------------------------------------- */
+
+      .page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, #currvitae {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* dynamic navigation bar ------------------------------------ */
+
+      #dynamic-nav {
+        cursor: pointer;
+        visibility: hidden;
+        flex-direction: row;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10vw;
+        height: 8vh;
+        z-index: 10;
+        background-color: darkcyan;
+        border-radius: 1em;
+      }
+
+      #dynamic-nav.nkey1 {
+        display: flex;
+        visibility: visible;
+        opacity: 1;
+      }
+
+      #dynamic-nav.nkey2 {
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      @keyframes dn-intro {
+        0% {opacity: 0; visibility: hidden;}
+        33%, 80% {opacity: 1; visibility: visible;}
+        100% {opacity: 0; visibility: hidden;}
+      }
+
+      #dynamic-nav.dn-intro {
+        animation: dn-intro 3s linear 1s forwards;
+      }
+    </style>
+    <style aria-label="startpage-styles">
+      /* keyframes ---------------------------------------------- */
+
+      @keyframes flip {
+        0% {
+          background-color: salmon;
+          transform: perspective(1500px) rotateY(0deg);
+        }
+        49% {
+          background-color: salmon;
+        }
+        50% {
+          transform: perspective(2000px) rotateY(-90deg);
+          width: 95vw;
+          height: 90vh;
+        }
+        51% {
+          background-color: firebrick;
+        }
+        99.99% {
+          transform: perspective(1500px) rotateY(-180deg);
+        }
+        100% {
+          background-color: firebrick;
+          transform: perspective(1500px) rotateY(0deg);
+          width: 100vw;
+          height: 100vh;
+        }
+      }
+
+      @keyframes flip-rev {
+        0% {
+          background-color: firebrick;
+          transform: perspective(1500px) rotateY(0deg);
+          width: 100vw;
+          height: 100vh;
+        }
+        10% {
+          width: 95vw;
+          height: 90vh;
+        }
+        49% {
+          background-color: firebrick;
+        }
+        50% {
+          transform: perspective(2000px) rotateY(90deg);
+          width: 95vw;
+          height: 90vh;
+        }
+        51% {
+          background-color: salmon;
+        }
+        99.99% {
+          transform: perspective(1500px) rotateY(180deg);
+        }
+        100% {
+          background-color: salmon;
+          transform: perspective(1500px) rotateY(0deg);
+        }
+      }
+
+      /* landing page---------------------------------------------- */
+
+      .page-flipper {
+        justify-content: space-evenly;
+        position: relative;
+        width: var(--pfelemwidth);
+        height: var(--pfelemheight);
+        background-color: salmon;
+        border-radius: 1em;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      }
+
+      [id*="iR"] {
+        flex-direction: row;
+        width: var(--pfelemwidth);
+      }
+
+      #idiomsiR {
+        height: 10vh;
+        justify-content: center;
+      }
+
+      #idiomsiR > div {
+        width: 5vw;
+        height: 4vh;
+        background-color: palevioletred;
+        margin: 0 1em;
+        padding: 0 1em;
+        border-radius: 0.4em;
+      }
+
+      #btnsiR {
+        height: 70vh;
+        justify-content: space-around;
+      }
+
+      #btnsiR > div {
+        width: 30vw;
+        height: 23vh;
+        border-radius: 1em;
+      }
+
+      #contactiR {
+        height: 10vh;
+        justify-content: center;
+      }
+
+      #contactiR > div {
+        width: 5vw;
+        height: 4vh;
+        background-color: olivedrab;
+        margin: 0 1em;
+        padding: 0 1em;
+        border-radius: 0.4em;
+      }
+
+      #currvitae {
+        background-color: steelblue;
+      }
+
+      #studio {
+        background-color: sandybrown;
+      }
+
+      #studio, #currvitae, #idiomsiR > div {
+        cursor: pointer;
+      }
+
+      .fliptoSS {
+        animation: flip 1s ease-out forwards;
+      }
+
+      .fliptoIS {
+        animation: flip-rev 1s ease-out forwards;
+      }
+
+      @keyframes l1-appear {from {opacity: 0;} to {opacity: 1;;}}
+
+      #layer1.disappear {
+        display: none;
+        animation: l1-appear 1s ease-out reverse;
+      }
+
+      #layer1.appear {
+        animation: l1-appear 1s linear forwards;
+      }
+
+      /* landing page---------------------------------------------- */
+    </style>
+    <style aria-label="studio-styles">
+      /* studio composer ------------------------------------------------------------------------- */
+
+      [id*="container"] {
+      width: 100%;
+      height: 100vh;
+      }
+
+      #studio-container {
+      display: none;
+      overflow: hidden;
+      background-color: #333;
+      }
+
+      @keyframes s-appear {from {opacity: 0;} to {opacity: 1;}}
+
+      #studio-container.appear {
+        display: grid;
+        animation: s-appear 1s ease-in forwards;
+      }
+
+      #studio-container.disappear {
+        display: none;
+        animation: s-appear 2s ease-in 1s reverse;
+      }
+
+      #studio-container.flexed {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: darkcyan;
+      }
+
+      /* candy boxes ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+      .candy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-sizing: border-box;
+      transition: all 0.2s ease-in-out;
+      }
+
+      .candy:hover {
+      scale: 1.05;
+      border-radius: 1em;
+      cursor: pointer;
+      }
+
+      .candy.expanded {
+      margin: 2.5%;
+      width: 95vw;
+      height: 95vh;
+      border-radius: 1em;
+      scale: none;
+      }
+
+      .candy.hidden {
+      display: none;
+      }
+
+      /* filler box */
+
+      #Filler {
+      background-color: darkviolet;
+      }
+
+      #Filler:hover {
+      cursor: default;
+      scale: 1;
+      border-radius: 0;
+      }
+
+      #input-box {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      height: auto;
+      background-color: lightsalmon;
+      padding: 2em 3em;
+      }
+
+      /* categories colors ------------------------------------------------------------------------- */
+
+      .webdesign {
+      background-color: midnightblue;
+      }
+
+      .printdesign {
+      background-color: teal;
+      }
+
+      .artcrafts {
+      background-color: tomato;
+      }
+
+      .digitaldesign {
+      background-color: goldenrod;
+      }
+
+      /* end of this file */
+    </style>
+    <style aria-label="cv-styles">
+      #cv-container {
+        display: none;
+      }
+    </style>
 </head>
 <body>
   <section id="dynamic-nav">
     <div id="pftbiS">Back to Start</div>
   </section>
   <section class="page-flipper">
-    <div id="grid-container"></div>
+    <div id="studio-container"></div>
     <div id="cv-container"></div>
     <div id="layer1">
       <div id="idiomsiR"><div>English</div><div>Deutsch</div><div>Espa&ntilde;ol</div></div>
       <div id="btnsiR"><div id="currvitae"><span>Curriculum</span></div><div id="studio"><span>Studio</span></div></div>
+      <div id="contactiR"><div id="contact">Contact</div></div>
     </div>
   </section>
-  <script src="globalscope.js"></script>
-  <script src="studio-composer.js"></script>
-  <script src="cv-composer.js"></script>
-  <script src="toStudio.js"></script>
-  <script src="toCV.js"></script>
+  <script aria-label="globalScope">
+
+    /* propositions/to dos: 
+    + pop up div with small instruction about n-key for nav-bar 
+    + categories (webdesign, printdesign, artcrafts etc.) higlighted at the beginning and when pressing a key => change media input structure ALSO if candy expanded background color depending on which category
+    + 3D effect in swiping left and right, moreso on CV
+    
+    */
+
+    // start/landing page definitions ==========================================================================================
+
+    const pagefliptri = document.getElementById('studio');
+    const pageflipper = document.querySelector('.page-flipper');
+    const pflayer1 = document.getElementById('layer1');
+
+    // studio page definitions =================================================================================================
+
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const studioC = document.getElementById('studio-container');
+    const dynnav = document.getElementById('dynamic-nav');
+    const pagefliptr2 = document.getElementById('pftbiS');
+    const candies = document.querySelectorAll('.candy');
+
+    // cv page definitions =====================================================================================================
+
+    const cvcontainer = document.getElementById('cv-container');
+
+    // dynamic navigation bar ==================================================================================================
+
+    window.addEventListener('keydown', function(event) {
+      const isRS = pageflipper.classList.contains('fliptoSS');
+
+      // class juggling
+      const isNkey1 = dynnav.classList.contains('nkey1');
+      const isNkey2 = dynnav.classList.contains('nkey2');
+      const dnIntro = dynnav.classList.contains('dn-intro');
+
+      if (event.key === 'n' && event.type === 'keydown' && isRS && (isNkey2 || dnIntro || dynnav.classList.length === 0)) {
+        dynnav.classList.remove('dn-intro', 'nkey2');
+        dynnav.classList.add('nkey1');
+      } else if (event.key === 'n' && event.type === 'keydown' && isRS && (isNkey1 || dnIntro || dynnav.classList.length === 0)) {
+        dynnav.classList.remove('dn-intro', 'nkey1');
+        dynnav.classList.add('nkey2');
+      }
+      else {
+        dynnav.classList.remove('nkey1', 'nkey2');
+      }
+    });
+
+    // swiping to left or right =================================================================================================
+
+    function classjuggler(p) {
+      p.classList.remove('hidden');
+      p.classList.add('expanded');      
+    }
+
+    window.addEventListener('wheel', function(event) {
+        //left swipe
+        if (event.deltaY > 0 && event.target.classList.contains('expanded')) {
+          const prodIndOld = document.getElementById(`${event.target.id}`);
+          prodIndOld.classList.remove('expanded');
+          prodIndOld.classList.add('hidden');
+          const prodIndNewId = Number(event.target.id.slice(1)) + 1;
+          if (prodIndNewId > products.length) {
+            const prodIndNew = document.getElementById(`c1`);
+            classjuggler(prodIndNew);
+          } else {
+            const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+            classjuggler(prodIndNew)
+          }
+        }
+        //right swipe
+        else if (event.deltaY < 0 && event.target.classList.contains('expanded')) {      
+          const prodIndOld = document.getElementById(`${event.target.id}`);
+          prodIndOld.classList.remove('expanded');
+          prodIndOld.classList.add('hidden');
+          const prodIndNewId = Number(event.target.id.slice(1)) - 1;
+          if (prodIndNewId <= 0) {
+            const prodIndNew = document.getElementById(`c${products.length}`);
+            classjuggler(prodIndNew)
+          } else {
+            const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+            classjuggler(prodIndNew)
+          }
+        }
+    });
+
+    window.addEventListener('keydown', function(event) {
+      // Left swipe 
+      if (event.key === 'ArrowLeft' && event.type === 'keydown') {
+        // Find the currently expanded element
+        const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
+        if (prodIndOld) {
+          prodIndOld.classList.remove('expanded');
+          prodIndOld.classList.add('hidden');
+          const prodIndNewId = Number(prodIndOld.id.slice(1)) + 1; // Get the new product ID
+          if (prodIndNewId > products.length) {
+            // Wrap around to the first product if the new ID exceeds the total number of products
+            const prodIndNew = document.getElementById('c1');
+            classjuggler(prodIndNew);
+          } else {
+            // Move to the next product element
+            const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+            classjuggler(prodIndNew);
+          }
+        }
+      }
+      //right swipe
+      else if (event.key === 'ArrowRight' && event.type === 'keydown') {
+        const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
+        if (prodIndOld) {
+          prodIndOld.classList.remove('expanded');
+          prodIndOld.classList.add('hidden');
+          const prodIndNewId = Number(prodIndOld.id.slice(1)) - 1;
+          if (prodIndNewId <= 0) {
+            const prodIndNew = document.getElementById(`c${products.length}`);
+            classjuggler(prodIndNew)
+          } else {
+            const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+            classjuggler(prodIndNew)
+          }
+        }
+      }
+    });
+
+
+  </script>
+  <script aria-label="studio-composer">
+    // Display products =========================================================================================================
+  
+    function displayProducts() {
+      
+      const productList = document.getElementById('studio-container');
+      productList.innerHTML = ''; // Clear existing content
+  
+      let rootedNo = Math.sqrt(products.length);
+      let roundedUpNo = Math.ceil(rootedNo); // next rounded up integer
+      let roundedDownNo = Math.floor(rootedNo); // next rounded down integer
+  
+      // calclation of the row height
+      const rowDivisor = products.length <= roundedUpNo * roundedDownNo ? roundedDownNo : roundedUpNo;
+  
+      let rowfactor = (100 / rowDivisor) + 'vh';
+  
+      // grid composition
+      let initialGrid = `repeat(${roundedUpNo}, 1fr)`;
+      productList.style.gridTemplateColumns = initialGrid;
+      productList.style.gridAutoRows = rowfactor;
+  
+      // Add each product to the grid
+      products.forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.classList = 'candy';
+        productElement.id = `c${product.identifier}`;
+        productElement.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        // it works, just easier to work with colors: productElement.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
+        productList.appendChild(productElement);
+        });
+     
+      // create a filler
+      // 8 products, the row width is incorrect
+      if (!Number.isInteger(rootedNo) && products.length !== roundedUpNo * roundedDownNo) {
+        let colSubtrahend, colDivisor, fillergridCol;
+  
+        if (products.length > roundedUpNo ** 2 || products.length > (roundedUpNo * roundedDownNo)) {
+          colSubtrahend = roundedUpNo ** 2;
+          colDivisor = roundedUpNo;
+        } else {
+          colSubtrahend = roundedUpNo * roundedDownNo;
+          colDivisor = roundedDownNo;
+        }
+  
+        let colDifference = colSubtrahend - products.length;
+        let colQuotient = 100 / colDivisor;
+  
+        let ColProduct = colQuotient * colDifference;
+  
+        fillergridCol = (colDifference === 1) ? '' : 'span ' + colDifference;
+  
+        const filler = document.createElement('div');
+        filler.classList = 'candy';
+        filler.id = 'Filler';
+        filler.style.width = ColProduct + 'vw';
+        filler.style.gridColumn = fillergridCol;
+        filler.style.height = rowfactor;
+        filler.innerHTML = `<img id="brooder" src="Materials/brooder.webp" onmouseover="this.src='Materials/fut-proj.webp';" onmouseout="this.src='Materials/brooder.webp';" alt="man working before his laptop" style="object-fit: contain">`;
+        productList.appendChild(filler);
+      }
+      }
+  
+    // .candy expand and collapse =====================================================================================================
+
+    window.addEventListener('click', function(event) {
+      if (event.target.classList.contains('candy')) {
+        event.target.classList.toggle('expanded');
+        document.getElementById('studio-container').classList.toggle('flexed');
+        document.querySelectorAll('.candy').forEach(c => {
+          if (c !== event.target) {
+            c.classList.toggle('hidden');
+          }
+        });
+      }
+      else if (event.target.classList.contains('expanded')) {
+        event.target.classList.remove('expanded');
+        document.getElementById('studio-container').classList.remove('flexed');
+        document.querySelectorAll('.candy').forEach(c => {
+          c.classList.remove('hidden');
+        });
+      }
+    });
+
+  </script>  
+  <script aria-label="toStudio">
+    // flip to Studio ==========================================================================================================
+
+pagefliptri.addEventListener('click', () => {
+  // flip pageflipper
+  pageflipper.classList.remove('fliptoIS');
+  void pageflipper.offsetWidth; // This forces a reflow
+  pageflipper.classList.add('fliptoSS');
+
+  // disappear layer1
+  pflayer1.classList.remove('appear');
+  pflayer1.classList.add('disappear');
+
+  // dynamic composer
+  studioC.classList.remove('disappear');
+  setTimeout(() => {studioC.classList.add('appear')}, 1000);
+
+  displayProducts();
+
+  // appearance and disappearance of dynav bar
+  dynnav.classList.add('dn-intro');
+  setTimeout(() => {
+    dynnav.classList.remove('dn-intro');
+  }, 4000);
+});
+
+// back to Initial State / Start Page ==============================================================================
+
+pagefliptr2.addEventListener('click', () => {
+  // to the intial state
+  pageflipper.classList.remove('fliptoSS');
+  void pageflipper.offsetWidth;
+  pageflipper.classList.add('fliptoIS');
+
+  // appear layer1
+  setTimeout(() => {
+    pflayer1.classList.remove('disappear');
+    pflayer1.classList.add('appear');
+  }, 1000);
+
+  // disappearance of dynamic navigation bar
+  dynnav.classList.remove('nkey2', 'nkey1');
+
+  // disappearance of studio
+  studioC.classList.remove('appear', 'flexed');
+  studioC.classList.add('disappear');
+  studioC.innerHTML = '';
+});
+  </script>
 </body>
 </html>

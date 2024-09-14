@@ -90,66 +90,6 @@
       }
     </style>
     <style aria-label="startpage-styles">
-      /* keyframes ---------------------------------------------- */
-
-      @keyframes flip {
-        0% {
-          background-color: salmon;
-          transform: perspective(1500px) rotateY(0deg);
-        }
-        49% {
-          background-color: salmon;
-        }
-        50% {
-          transform: perspective(2000px) rotateY(-90deg);
-          width: 95vw;
-          height: 90vh;
-        }
-        51% {
-          background-color: firebrick;
-        }
-        99.99% {
-          transform: perspective(1500px) rotateY(-180deg);
-        }
-        100% {
-          background-color: firebrick;
-          transform: perspective(1500px) rotateY(0deg);
-          width: 100vw;
-          height: 100vh;
-        }
-      }
-
-      @keyframes flip-rev {
-        0% {
-          background-color: firebrick;
-          transform: perspective(1500px) rotateY(0deg);
-          width: 100vw;
-          height: 100vh;
-        }
-        10% {
-          width: 95vw;
-          height: 90vh;
-        }
-        49% {
-          background-color: firebrick;
-        }
-        50% {
-          transform: perspective(2000px) rotateY(90deg);
-          width: 95vw;
-          height: 90vh;
-        }
-        51% {
-          background-color: salmon;
-        }
-        99.99% {
-          transform: perspective(1500px) rotateY(180deg);
-        }
-        100% {
-          background-color: salmon;
-          transform: perspective(1500px) rotateY(0deg);
-        }
-      }
-
       /* landing page---------------------------------------------- */
 
       .page-flipper {
@@ -200,41 +140,87 @@
       #contactiR > div {
         width: 5vw;
         height: 4vh;
-        background-color: olivedrab;
+        background-color: indianred;
         margin: 0 1em;
         padding: 0 1em;
         border-radius: 0.4em;
       }
 
+      @keyframes l1-appear {from {opacity: 0;} to {opacity: 1;;}}
+
+      #stpg-container.disappear {
+        display: none;
+        animation: l1-appear 1s ease-out reverse;
+      }
+
+      #stpg-container.appear {
+        animation: l1-appear 1s linear forwards;
+      }
+
+      #studio, #currvitae, #idiomsiR > div, #contact {
+        cursor: pointer;
+      }
+
+      /* curriculum page ---------------------------------------------- */
+
+      @keyframes c-flip {
+        0% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}
+        49% {background-color: salmon;}
+        50% {transform: perspective(2000px) rotateY(90deg); width: 95vw; height: 90vh;}
+        51% {background-color: steelblue;}
+        99.99% {transform: perspective(1500px) rotateY(180deg);}
+        100% {background-color: steelblue; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
+
+      @keyframes c-flip-rev {
+        0% {background-color: steelblue; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
+        10% {width: 95vw; height: 90vh;}
+        49% {background-color: steelblue;}
+        50% {transform: perspective(2000px) rotateY(-90deg); width: 95vw; height: 90vh;}
+        51% {background-color: salmon;}
+        99.99% {transform: perspective(1500px) rotateY(-180deg);}
+        100% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}}
+
       #currvitae {
         background-color: steelblue;
       }
+
+      .ftoCS {
+        animation: c-flip 1s ease-out forwards;
+      }
+
+      .ftoISfCS {
+        animation: c-flip-rev 1s ease-out forwards;
+      }
+
+      /* studio page ---------------------------------------------- */
+
+      @keyframes s-flip {
+        0% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}
+        49% {background-color: salmon;}
+        50% {transform: perspective(2000px) rotateY(-90deg); width: 95vw; height: 90vh;}
+        51% {background-color: sandybrown;}
+        99.99% {transform: perspective(1500px) rotateY(-180deg);}
+        100% {background-color: sandybrown; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
+
+      @keyframes s-flip-rev {
+      0% {background-color: sandybrown; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
+      10% {width: 95vw; height: 90vh;}
+      49% {background-color: sandybrown;}
+      50% {transform: perspective(2000px) rotateY(90deg); width: 95vw; height: 90vh;}
+      51% {background-color: salmon;}
+      99.99% {transform: perspective(1500px) rotateY(180deg);}
+      100% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}}
 
       #studio {
         background-color: sandybrown;
       }
 
-      #studio, #currvitae, #idiomsiR > div {
-        cursor: pointer;
+      .ftoSS {
+        animation: s-flip 1s ease-out forwards;
       }
 
-      .fliptoSS {
-        animation: flip 1s ease-out forwards;
-      }
-
-      .fliptoIS {
-        animation: flip-rev 1s ease-out forwards;
-      }
-
-      @keyframes l1-appear {from {opacity: 0;} to {opacity: 1;;}}
-
-      #layer1.disappear {
-        display: none;
-        animation: l1-appear 1s ease-out reverse;
-      }
-
-      #layer1.appear {
-        animation: l1-appear 1s linear forwards;
+      .ftoISfSS {
+        animation: s-flip-rev 1s ease-out forwards;
       }
 
       /* landing page---------------------------------------------- */
@@ -360,7 +346,7 @@
   <section class="page-flipper">
     <div id="studio-container"></div>
     <div id="cv-container"></div>
-    <div id="layer1">
+    <div id="stpg-container">
       <div id="idiomsiR"><div>English</div><div>Deutsch</div><div>Espa&ntilde;ol</div></div>
       <div id="btnsiR"><div id="currvitae"><span>Curriculum</span></div><div id="studio"><span>Studio</span></div></div>
       <div id="contactiR"><div id="contact">Contact</div></div>
@@ -377,9 +363,10 @@
 
     // start/landing page definitions ==========================================================================================
 
-    const pagefliptri = document.getElementById('studio');
+    const pfTriStudio = document.getElementById('studio');
+    const pfTriCV = document.getElementById('currvitae');
     const pageflipper = document.querySelector('.page-flipper');
-    const pflayer1 = document.getElementById('layer1');
+    const spcontainer = document.getElementById('stpg-container');
 
     // studio page definitions =================================================================================================
 
@@ -396,17 +383,18 @@
     // dynamic navigation bar ==================================================================================================
 
     window.addEventListener('keydown', function(event) {
-      const isRS = pageflipper.classList.contains('fliptoSS');
+      const isSS = pageflipper.classList.contains('ftoSS');
+      const isCS = pageflipper.classList.contains('ftoCS');
 
       // class juggling
       const isNkey1 = dynnav.classList.contains('nkey1');
       const isNkey2 = dynnav.classList.contains('nkey2');
       const dnIntro = dynnav.classList.contains('dn-intro');
 
-      if (event.key === 'n' && event.type === 'keydown' && isRS && (isNkey2 || dnIntro || dynnav.classList.length === 0)) {
+      if (event.key === 'n' && event.type === 'keydown' && (isSS || isCS) && (isNkey2 || dnIntro || dynnav.classList.length === 0)) {
         dynnav.classList.remove('dn-intro', 'nkey2');
         dynnav.classList.add('nkey1');
-      } else if (event.key === 'n' && event.type === 'keydown' && isRS && (isNkey1 || dnIntro || dynnav.classList.length === 0)) {
+      } else if (event.key === 'n' && event.type === 'keydown' && (isSS || isCS) && (isNkey1 || dnIntro || dynnav.classList.length === 0)) {
         dynnav.classList.remove('dn-intro', 'nkey1');
         dynnav.classList.add('nkey2');
       }
@@ -415,7 +403,7 @@
       }
     });
 
-    // swiping to left or right =================================================================================================
+    // swiping to left or right in Studio =======================================================================================
 
     function classjuggler(p) {
       p.classList.remove('hidden');
@@ -577,45 +565,69 @@
       }
     });
 
+  </script>
+  <script aria-label="cv-composer">
+  // Display steps =========================================================================================================
+
+  function displaySteps() {
+    const cvinput = document.createElement('input');
+    cvinput.type = 'file';
+    cvinput.accept = '.json';
+    cvinput.id = 'cv-input';
+    cvinput.style.display = 'none';
+    cvinput.addEventListener('change', function() {
+      const reader = new FileReader();
+      reader.onload = function() {
+        const json = JSON.parse(reader.result);
+        const cvContainer = document.getElementById('cv-container');
+        cvContainer.innerHTML = '';
+        cvContainer.appendChild(json);
+      };
+      reader.readAsText(cvinput.files[0]);
+    });
+  }
+    
   </script>  
   <script aria-label="toStudio">
-    // flip to Studio ==========================================================================================================
+  // flip to Studio ==========================================================================================================
 
-pagefliptri.addEventListener('click', () => {
-  // flip pageflipper
-  pageflipper.classList.remove('fliptoIS');
-  void pageflipper.offsetWidth; // This forces a reflow
-  pageflipper.classList.add('fliptoSS');
+  pfTriStudio.addEventListener('click', () => {
+    // flip pageflipper
+    pageflipper.classList.remove('ftoISfSS');
+    void pageflipper.offsetWidth; // This forces a reflow
+    pageflipper.classList.add('ftoSS');
 
-  // disappear layer1
-  pflayer1.classList.remove('appear');
-  pflayer1.classList.add('disappear');
+    // disappear stpg-container
+    spcontainer.classList.remove('appear');
+    spcontainer.classList.add('disappear');
 
-  // dynamic composer
-  studioC.classList.remove('disappear');
-  setTimeout(() => {studioC.classList.add('appear')}, 1000);
+    // dynamic composer
+    studioC.classList.remove('disappear');
+    setTimeout(() => {studioC.classList.add('appear')}, 1000);
 
-  displayProducts();
+    displayProducts();
 
-  // appearance and disappearance of dynav bar
-  dynnav.classList.add('dn-intro');
-  setTimeout(() => {
-    dynnav.classList.remove('dn-intro');
-  }, 4000);
-});
+    // appearance and disappearance of dynav bar
+    dynnav.classList.add('dn-intro');
+    setTimeout(() => {
+      dynnav.classList.remove('dn-intro');
+    }, 4000);
+  });
 
 // back to Initial State / Start Page ==============================================================================
 
 pagefliptr2.addEventListener('click', () => {
   // to the intial state
-  pageflipper.classList.remove('fliptoSS');
-  void pageflipper.offsetWidth;
-  pageflipper.classList.add('fliptoIS');
+  if (pageflipper.classList.contains('ftoSS')) {
+    pageflipper.classList.remove('ftoSS');
+    void pageflipper.offsetWidth;
+    pageflipper.classList.add('ftoISfSS'); 
+  }
 
-  // appear layer1
+  // appear stpg-container
   setTimeout(() => {
-    pflayer1.classList.remove('disappear');
-    pflayer1.classList.add('appear');
+    spcontainer.classList.remove('disappear');
+    spcontainer.classList.add('appear');
   }, 1000);
 
   // disappearance of dynamic navigation bar
@@ -627,5 +639,52 @@ pagefliptr2.addEventListener('click', () => {
   studioC.innerHTML = '';
 });
   </script>
+  <script aria-label="toCV">
+  // flip to Curriculum ====================================================================================================
+
+  pfTriCV.addEventListener('click', () => {
+    // flip pageflipper
+    pageflipper.classList.remove('ftoISfSS');
+    void pageflipper.offsetWidth; // This forces a reflow
+    pageflipper.classList.add('ftoCS');
+
+    // disappear stpg-container
+    spcontainer.classList.remove('appear');
+    spcontainer.classList.add('disappear');
+
+    // dynamic cv composer
+    displaySteps();
+
+    // appearance and disappearance of dynav bar
+    dynnav.classList.add('dn-intro');
+    setTimeout(() => {
+      dynnav.classList.remove('dn-intro');
+    }, 4000);
+  });
+
+// back to Initial State / Start Page ==============================================================================
+
+pagefliptr2.addEventListener('click', () => {
+  // to the intial state
+  if (pageflipper.classList.contains('ftoCS')) {
+    pageflipper.classList.remove('ftoCS');
+    void pageflipper.offsetWidth;
+    pageflipper.classList.add('ftoISfCS');
+  }
+
+  // appear stpg-container
+  setTimeout(() => {
+    spcontainer.classList.remove('disappear');
+    spcontainer.classList.add('appear');
+  }, 1000);
+
+  // disappearance of dynamic navigation bar
+  dynnav.classList.remove('nkey2', 'nkey1');
+
+  // disappearance of studio
+
+});
+  </script>
+  
 </body>
 </html>

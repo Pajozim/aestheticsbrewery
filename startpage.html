@@ -140,7 +140,7 @@
       #contactiR > div {
         width: 5vw;
         height: 4vh;
-        background-color: indianred;
+        background-color: tan;
         margin: 0 1em;
         padding: 0 1em;
         border-radius: 0.4em;
@@ -157,8 +157,58 @@
         animation: l1-appear 1s linear forwards;
       }
 
-      #studio, #currvitae, #idiomsiR > div, #contact {
+      #studio, #currvitae, #contact, #idiomsiR > div {
         cursor: pointer;
+      }
+
+    /* changing language ---------------------------------------- */
+
+      @keyframes blinkCursor {
+        0%, 50% {
+          border-color: rgb(32, 32, 32);
+        }
+        50%, 100% {
+          border-color: transparent;
+        }
+      }
+
+      .typewriter {
+        border-left: 1px solid black;
+        display: inline-block;
+        padding-left: 5px;
+        animation: blinkCursor 0.7s infinite;
+      }
+
+
+    /* studio page ---------------------------------------------- */
+
+          @keyframes s-flip {
+      0% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}
+      49% {background-color: salmon;}
+      50% {transform: perspective(2000px) rotateY(-90deg); width: 95vw; height: 90vh;}
+      51% {background-color: sandybrown;}
+      99.99% {transform: perspective(1500px) rotateY(-180deg);}
+      100% {background-color: sandybrown; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
+
+      @keyframes s-flip-rev {
+      0% {background-color: sandybrown; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
+      10% {width: 95vw; height: 90vh;}
+      49% {background-color: sandybrown;}
+      50% {transform: perspective(2000px) rotateY(90deg); width: 95vw; height: 90vh;}
+      51% {background-color: salmon;}
+      99.99% {transform: perspective(1500px) rotateY(180deg);}
+      100% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}}
+
+      #studio {
+        background-color: sandybrown;
+      }
+
+      .ftoSS {
+        animation: s-flip 1s ease-out forwards;
+      }
+
+      .ftoISfSS {
+        animation: s-flip-rev 1s ease-out forwards;
       }
 
       /* curriculum page ---------------------------------------------- */
@@ -192,38 +242,36 @@
         animation: c-flip-rev 1s ease-out forwards;
       }
 
-      /* studio page ---------------------------------------------- */
+      /* contact page---------------------------------------------- */
 
-      @keyframes s-flip {
-        0% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}
+      @keyframes co-flip {
+        0% {background-color: salmon; transform: perspective(1500px) rotateX(0deg);}
         49% {background-color: salmon;}
-        50% {transform: perspective(2000px) rotateY(-90deg); width: 95vw; height: 90vh;}
-        51% {background-color: sandybrown;}
-        99.99% {transform: perspective(1500px) rotateY(-180deg);}
-        100% {background-color: sandybrown; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
+        50% {transform: perspective(2000px) rotateX(90deg); width: 95vw; height: 90vh;}
+        51% {background-color: tan;}
+        99.99% {transform: perspective(1500px) rotateX(180deg);}
+        100% {background-color: tan; transform: perspective(1500px) rotateX(0deg); width: 100vw; height: 100vh;}}
 
-      @keyframes s-flip-rev {
-      0% {background-color: sandybrown; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
-      10% {width: 95vw; height: 90vh;}
-      49% {background-color: sandybrown;}
-      50% {transform: perspective(2000px) rotateY(90deg); width: 95vw; height: 90vh;}
-      51% {background-color: salmon;}
-      99.99% {transform: perspective(1500px) rotateY(180deg);}
-      100% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}}
+      @keyframes co-flip-rev {
+        0% {background-color: tan; transform: perspective(1500px) rotateX(0deg); width: 100vw; height: 100vh;}
+        10% {width: 95vw; height: 90vh;}
+        49% {background-color: tan;}
+        50% {transform: perspective(2000px) rotateX(-90deg); width: 95vw; height: 90vh;}
+        51% {background-color: salmon;}
+        99.99% {transform: perspective(1500px) rotateX(-180deg);}
+        100% {background-color: salmon; transform: perspective(1500px) rotateX(0deg);}}
 
-      #studio {
-        background-color: sandybrown;
+      #contact {
+        background-color: tan;
       }
 
-      .ftoSS {
-        animation: s-flip 1s ease-out forwards;
+      .ftoCo {
+        animation: co-flip 1s ease-out forwards;
       }
 
-      .ftoISfSS {
-        animation: s-flip-rev 1s ease-out forwards;
-      }
-
-      /* landing page---------------------------------------------- */
+      .ftoISfCo {
+        animation: co-flip-rev 1s ease-out forwards;
+      }   
     </style>
     <style aria-label="studio-styles">
       /* studio composer ------------------------------------------------------------------------- */
@@ -346,345 +394,455 @@
   <section class="page-flipper">
     <div id="studio-container"></div>
     <div id="cv-container"></div>
+    <div id="contact-container"></div>
     <div id="stpg-container">
-      <div id="idiomsiR"><div>English</div><div>Deutsch</div><div>Espa&ntilde;ol</div></div>
+      <div id="idiomsiR"><div id="IdiomaEng">English</div><div id="IdiomaDeu">Deutsch</div><div id="IdiomaEsp">Espa&ntilde;ol</div></div>
       <div id="btnsiR"><div id="currvitae"><span>Curriculum</span></div><div id="studio"><span>Studio</span></div></div>
-      <div id="contactiR"><div id="contact">Contact</div></div>
+      <div id="contactiR"><div id="contact"><span>Contact</span></div></div>
     </div>
   </section>
-  <script aria-label="globalScope">
+<script aria-label="globalScope">
 
-    /* propositions/to dos: 
-    + pop up div with small instruction about n-key for nav-bar 
-    + categories (webdesign, printdesign, artcrafts etc.) higlighted at the beginning and when pressing a key => change media input structure ALSO if candy expanded background color depending on which category
-    + 3D effect in swiping left and right, moreso on CV
+/* propositions/to dos: 
++ pop up div with small instruction about n-key for nav-bar 
++ categories (webdesign, printdesign, artcrafts etc.) higlighted at the beginning and when pressing a key => change media input structure ALSO if candy expanded background color depending on which category
++ 3D effect in swiping left and right, moreso on CV
+
+*/
+
+// start/landing page definitions ==========================================================================================
+
+const pfTriStudio  = document.getElementById('studio');
+const pfTriCV      = document.getElementById('currvitae');
+const pfTriContact = document.getElementById('contact');
+const pageflipper  = document.querySelector('.page-flipper');
+const spcontainer  = document.getElementById('stpg-container');
+const dynnav       = document.getElementById('dynamic-nav');
+const pagefliptr  = document.getElementById('pftbiS');
+
+// studio page definitions =================================================================================================
+
+const products     = JSON.parse(localStorage.getItem('products')) || [];
+const studioC      = document.getElementById('studio-container');
+const candies      = document.querySelectorAll('.candy');
+
+// cv page definitions =====================================================================================================
+
+const cvcontainer  = document.getElementById('cv-container');
+
+// contact page definitions ================================================================================================
+
+const contactcontainer = document.getElementById('contact-container');
+
+// dynamic navigation bar ==================================================================================================
+
+window.addEventListener('keydown', function(event) {
+  const isSS = pageflipper.classList.contains('ftoSS');
+  const isCS = pageflipper.classList.contains('ftoCS');
+  const isCo = pageflipper.classList.contains('ftoCo');
+
+  // class juggling
+  const isNkey1 = dynnav.classList.contains('nkey1');
+  const isNkey2 = dynnav.classList.contains('nkey2');
+  const dnIntro = dynnav.classList.contains('dn-intro');
+
+  if (event.key === 'n' && event.type === 'keydown' && (isSS || isCS || isCo) && (isNkey2 || dnIntro || dynnav.classList.length === 0)) {
+    dynnav.classList.remove('dn-intro', 'nkey2');
+    dynnav.classList.add('nkey1');
+  } else if (event.key === 'n' && event.type === 'keydown' && (isSS || isCS || isCo) && (isNkey1 || dnIntro || dynnav.classList.length === 0)) {
+    dynnav.classList.remove('dn-intro', 'nkey1');
+    dynnav.classList.add('nkey2');
+  }
+  else {
+    dynnav.classList.remove('nkey1', 'nkey2');
+  }
+});
+
+// swiping to left or right in Studio =======================================================================================
+
+function classjuggler(p) {
+  p.classList.remove('hidden');
+  p.classList.add('expanded');      
+}
+
+window.addEventListener('wheel', function(event) {
+    //left swipe
+    if (event.deltaY > 0 && event.target.classList.contains('expanded')) {
+      const prodIndOld = document.getElementById(`${event.target.id}`);
+      prodIndOld.classList.remove('expanded');
+      prodIndOld.classList.add('hidden');
+      const prodIndNewId = Number(event.target.id.slice(1)) + 1;
+      if (prodIndNewId > products.length) {
+        const prodIndNew = document.getElementById(`c1`);
+        classjuggler(prodIndNew);
+      } else {
+        const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+        classjuggler(prodIndNew)
+      }
+    }
+    //right swipe
+    else if (event.deltaY < 0 && event.target.classList.contains('expanded')) {      
+      const prodIndOld = document.getElementById(`${event.target.id}`);
+      prodIndOld.classList.remove('expanded');
+      prodIndOld.classList.add('hidden');
+      const prodIndNewId = Number(event.target.id.slice(1)) - 1;
+      if (prodIndNewId <= 0) {
+        const prodIndNew = document.getElementById(`c${products.length}`);
+        classjuggler(prodIndNew)
+      } else {
+        const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+        classjuggler(prodIndNew)
+      }
+    }
+});
+
+window.addEventListener('keydown', function(event) {
+  // Left swipe 
+  if (event.key === 'ArrowLeft' && event.type === 'keydown') {
+    // Find the currently expanded element
+    const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
+    if (prodIndOld) {
+      prodIndOld.classList.remove('expanded');
+      prodIndOld.classList.add('hidden');
+      const prodIndNewId = Number(prodIndOld.id.slice(1)) + 1; // Get the new product ID
+      if (prodIndNewId > products.length) {
+        // Wrap around to the first product if the new ID exceeds the total number of products
+        const prodIndNew = document.getElementById('c1');
+        classjuggler(prodIndNew);
+      } else {
+        // Move to the next product element
+        const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+        classjuggler(prodIndNew);
+      }
+    }
+  }
+  //right swipe
+  else if (event.key === 'ArrowRight' && event.type === 'keydown') {
+    const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
+    if (prodIndOld) {
+      prodIndOld.classList.remove('expanded');
+      prodIndOld.classList.add('hidden');
+      const prodIndNewId = Number(prodIndOld.id.slice(1)) - 1;
+      if (prodIndNewId <= 0) {
+        const prodIndNew = document.getElementById(`c${products.length}`);
+        classjuggler(prodIndNew)
+      } else {
+        const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+        classjuggler(prodIndNew)
+      }
+    }
+  }
+});
+
+
+</script>
+<script aria-label="studio-composer">
+  // Display products =========================================================================================================
+
+  function displayProducts() {
     
-    */
+    const productList = document.getElementById('studio-container');
+    productList.innerHTML = ''; // Clear existing content
 
-    // start/landing page definitions ==========================================================================================
+    let rootedNo = Math.sqrt(products.length);
+    let roundedUpNo = Math.ceil(rootedNo); // next rounded up integer
+    let roundedDownNo = Math.floor(rootedNo); // next rounded down integer
 
-    const pfTriStudio = document.getElementById('studio');
-    const pfTriCV = document.getElementById('currvitae');
-    const pageflipper = document.querySelector('.page-flipper');
-    const spcontainer = document.getElementById('stpg-container');
+    // calclation of the row height
+    const rowDivisor = products.length <= roundedUpNo * roundedDownNo ? roundedDownNo : roundedUpNo;
 
-    // studio page definitions =================================================================================================
+    let rowfactor = (100 / rowDivisor) + 'vh';
 
-    const products = JSON.parse(localStorage.getItem('products')) || [];
-    const studioC = document.getElementById('studio-container');
-    const dynnav = document.getElementById('dynamic-nav');
-    const pagefliptr2 = document.getElementById('pftbiS');
-    const candies = document.querySelectorAll('.candy');
+    // grid composition
+    let initialGrid = `repeat(${roundedUpNo}, 1fr)`;
+    productList.style.gridTemplateColumns = initialGrid;
+    productList.style.gridAutoRows = rowfactor;
 
-    // cv page definitions =====================================================================================================
+    // Add each product to the grid
+    products.forEach(product => {
+      const productElement = document.createElement('div');
+      productElement.classList = 'candy';
+      productElement.id = `c${product.identifier}`;
+      productElement.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+      // it works, just easier to work with colors: productElement.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
+      productList.appendChild(productElement);
+      });
+    
+    // create a filler
+    // 8 products, the row width is incorrect
+    if (!Number.isInteger(rootedNo) && products.length !== roundedUpNo * roundedDownNo) {
+      let colSubtrahend, colDivisor, fillergridCol;
 
-    const cvcontainer = document.getElementById('cv-container');
-
-    // dynamic navigation bar ==================================================================================================
-
-    window.addEventListener('keydown', function(event) {
-      const isSS = pageflipper.classList.contains('ftoSS');
-      const isCS = pageflipper.classList.contains('ftoCS');
-
-      // class juggling
-      const isNkey1 = dynnav.classList.contains('nkey1');
-      const isNkey2 = dynnav.classList.contains('nkey2');
-      const dnIntro = dynnav.classList.contains('dn-intro');
-
-      if (event.key === 'n' && event.type === 'keydown' && (isSS || isCS) && (isNkey2 || dnIntro || dynnav.classList.length === 0)) {
-        dynnav.classList.remove('dn-intro', 'nkey2');
-        dynnav.classList.add('nkey1');
-      } else if (event.key === 'n' && event.type === 'keydown' && (isSS || isCS) && (isNkey1 || dnIntro || dynnav.classList.length === 0)) {
-        dynnav.classList.remove('dn-intro', 'nkey1');
-        dynnav.classList.add('nkey2');
+      if (products.length > roundedUpNo ** 2 || products.length > (roundedUpNo * roundedDownNo)) {
+        colSubtrahend = roundedUpNo ** 2;
+        colDivisor = roundedUpNo;
+      } else {
+        colSubtrahend = roundedUpNo * roundedDownNo;
+        colDivisor = roundedDownNo;
       }
-      else {
-        dynnav.classList.remove('nkey1', 'nkey2');
-      }
-    });
 
-    // swiping to left or right in Studio =======================================================================================
+      let colDifference = colSubtrahend - products.length;
+      let colQuotient = 100 / colDivisor;
 
-    function classjuggler(p) {
-      p.classList.remove('hidden');
-      p.classList.add('expanded');      
+      let ColProduct = colQuotient * colDifference;
+
+      fillergridCol = (colDifference === 1) ? '' : 'span ' + colDifference;
+
+      const filler = document.createElement('div');
+      filler.classList = 'candy';
+      filler.id = 'Filler';
+      filler.style.width = ColProduct + 'vw';
+      filler.style.gridColumn = fillergridCol;
+      filler.style.height = rowfactor;
+      filler.innerHTML = `<img id="brooder" src="Materials/brooder.webp" onmouseover="this.src='Materials/fut-proj.webp';" onmouseout="this.src='Materials/brooder.webp';" alt="man working before his laptop" style="object-fit: contain">`;
+      productList.appendChild(filler);
+    }
     }
 
-    window.addEventListener('wheel', function(event) {
-        //left swipe
-        if (event.deltaY > 0 && event.target.classList.contains('expanded')) {
-          const prodIndOld = document.getElementById(`${event.target.id}`);
-          prodIndOld.classList.remove('expanded');
-          prodIndOld.classList.add('hidden');
-          const prodIndNewId = Number(event.target.id.slice(1)) + 1;
-          if (prodIndNewId > products.length) {
-            const prodIndNew = document.getElementById(`c1`);
-            classjuggler(prodIndNew);
-          } else {
-            const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-            classjuggler(prodIndNew)
-          }
-        }
-        //right swipe
-        else if (event.deltaY < 0 && event.target.classList.contains('expanded')) {      
-          const prodIndOld = document.getElementById(`${event.target.id}`);
-          prodIndOld.classList.remove('expanded');
-          prodIndOld.classList.add('hidden');
-          const prodIndNewId = Number(event.target.id.slice(1)) - 1;
-          if (prodIndNewId <= 0) {
-            const prodIndNew = document.getElementById(`c${products.length}`);
-            classjuggler(prodIndNew)
-          } else {
-            const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-            classjuggler(prodIndNew)
-          }
-        }
-    });
+  // .candy expand and collapse =====================================================================================================
 
-    window.addEventListener('keydown', function(event) {
-      // Left swipe 
-      if (event.key === 'ArrowLeft' && event.type === 'keydown') {
-        // Find the currently expanded element
-        const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
-        if (prodIndOld) {
-          prodIndOld.classList.remove('expanded');
-          prodIndOld.classList.add('hidden');
-          const prodIndNewId = Number(prodIndOld.id.slice(1)) + 1; // Get the new product ID
-          if (prodIndNewId > products.length) {
-            // Wrap around to the first product if the new ID exceeds the total number of products
-            const prodIndNew = document.getElementById('c1');
-            classjuggler(prodIndNew);
-          } else {
-            // Move to the next product element
-            const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-            classjuggler(prodIndNew);
-          }
+  window.addEventListener('click', function(event) {
+    if (event.target.classList.contains('candy')) {
+      event.target.classList.toggle('expanded');
+      document.getElementById('studio-container').classList.toggle('flexed');
+      document.querySelectorAll('.candy').forEach(c => {
+        if (c !== event.target) {
+          c.classList.toggle('hidden');
         }
-      }
-      //right swipe
-      else if (event.key === 'ArrowRight' && event.type === 'keydown') {
-        const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
-        if (prodIndOld) {
-          prodIndOld.classList.remove('expanded');
-          prodIndOld.classList.add('hidden');
-          const prodIndNewId = Number(prodIndOld.id.slice(1)) - 1;
-          if (prodIndNewId <= 0) {
-            const prodIndNew = document.getElementById(`c${products.length}`);
-            classjuggler(prodIndNew)
-          } else {
-            const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-            classjuggler(prodIndNew)
-          }
-        }
-      }
-    });
+      });
+    }
+    else if (event.target.classList.contains('expanded')) {
+      event.target.classList.remove('expanded');
+      document.getElementById('studio-container').classList.remove('flexed');
+      document.querySelectorAll('.candy').forEach(c => {
+        c.classList.remove('hidden');
+      });
+    }
+  });
 
+</script>
+<script aria-label="cv-composer">
+// Display steps =========================================================================================================
 
-  </script>
-  <script aria-label="studio-composer">
-    // Display products =========================================================================================================
+function displaySteps() {
+  const cvinput = document.createElement('input');
+  cvinput.type = 'file';
+  cvinput.accept = '.json';
+  cvinput.id = 'cv-input';
+  cvinput.style.display = 'none';
+  cvinput.addEventListener('change', function() {
+    const reader = new FileReader();
+    reader.onload = function() {
+      const json = JSON.parse(reader.result);
+      const cvContainer = document.getElementById('cv-container');
+      cvContainer.innerHTML = '';
+      cvContainer.appendChild(json);
+    };
+    reader.readAsText(cvinput.files[0]);
+  });
+}
   
-    function displayProducts() {
-      
-      const productList = document.getElementById('studio-container');
-      productList.innerHTML = ''; // Clear existing content
-  
-      let rootedNo = Math.sqrt(products.length);
-      let roundedUpNo = Math.ceil(rootedNo); // next rounded up integer
-      let roundedDownNo = Math.floor(rootedNo); // next rounded down integer
-  
-      // calclation of the row height
-      const rowDivisor = products.length <= roundedUpNo * roundedDownNo ? roundedDownNo : roundedUpNo;
-  
-      let rowfactor = (100 / rowDivisor) + 'vh';
-  
-      // grid composition
-      let initialGrid = `repeat(${roundedUpNo}, 1fr)`;
-      productList.style.gridTemplateColumns = initialGrid;
-      productList.style.gridAutoRows = rowfactor;
-  
-      // Add each product to the grid
-      products.forEach(product => {
-        const productElement = document.createElement('div');
-        productElement.classList = 'candy';
-        productElement.id = `c${product.identifier}`;
-        productElement.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-        // it works, just easier to work with colors: productElement.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
-        productList.appendChild(productElement);
-        });
-     
-      // create a filler
-      // 8 products, the row width is incorrect
-      if (!Number.isInteger(rootedNo) && products.length !== roundedUpNo * roundedDownNo) {
-        let colSubtrahend, colDivisor, fillergridCol;
-  
-        if (products.length > roundedUpNo ** 2 || products.length > (roundedUpNo * roundedDownNo)) {
-          colSubtrahend = roundedUpNo ** 2;
-          colDivisor = roundedUpNo;
+</script>
+<script aria-label="contact-page">
+</script>
+<script aria-label="toStudio">
+// flip to Studio ==========================================================================================================
+
+pfTriStudio.addEventListener('click', () => {
+// flip pageflipper
+pageflipper.classList.remove('ftoISfSS');
+void pageflipper.offsetWidth; // This forces a reflow
+pageflipper.classList.add('ftoSS');
+
+// disappear stpg-container
+spcontainer.classList.remove('appear');
+spcontainer.classList.add('disappear');
+
+// dynamic composer
+studioC.classList.remove('disappear');
+setTimeout(() => {studioC.classList.add('appear')}, 1000);
+
+displayProducts();
+
+// appearance and disappearance of dynav bar
+dynnav.classList.add('dn-intro');
+setTimeout(() => {
+  dynnav.classList.remove('dn-intro');
+}, 4000);
+});
+
+// back to Initial State / Start Page ==============================================================================
+
+pagefliptr.addEventListener('click', () => {
+// to the intial state
+if (pageflipper.classList.contains('ftoSS')) {
+  pageflipper.classList.remove('ftoSS');
+  void pageflipper.offsetWidth;
+  pageflipper.classList.add('ftoISfSS'); 
+}
+
+// appear stpg-container
+setTimeout(() => {
+  spcontainer.classList.remove('disappear');
+  spcontainer.classList.add('appear');
+}, 1000);
+
+// disappearance of dynamic navigation bar
+dynnav.classList.remove('nkey2', 'nkey1');
+
+// disappearance of studio
+studioC.classList.remove('appear', 'flexed');
+studioC.classList.add('disappear');
+studioC.innerHTML = '';
+});
+</script>
+<script aria-label="toCV">
+// flip to Curriculum ====================================================================================================
+
+pfTriCV.addEventListener('click', () => {
+// flip pageflipper
+pageflipper.classList.remove('ftoISfCS');
+void pageflipper.offsetWidth; // This forces a reflow
+pageflipper.classList.add('ftoCS');
+
+// disappear stpg-container
+spcontainer.classList.remove('appear');
+spcontainer.classList.add('disappear');
+
+// dynamic cv composer
+displaySteps();
+
+// appearance and disappearance of dynav bar
+dynnav.classList.add('dn-intro');
+setTimeout(() => {
+  dynnav.classList.remove('dn-intro');
+}, 4000);
+});
+
+// back to Initial State / Start Page ==============================================================================
+
+pagefliptr.addEventListener('click', () => {
+// to the intial state
+if (pageflipper.classList.contains('ftoCS')) {
+  pageflipper.classList.remove('ftoCS');
+  void pageflipper.offsetWidth;
+  pageflipper.classList.add('ftoISfCS');
+}
+
+// appear stpg-container
+setTimeout(() => {
+  spcontainer.classList.remove('disappear');
+  spcontainer.classList.add('appear');
+}, 1000);
+
+// disappearance of dynamic navigation bar
+dynnav.classList.remove('nkey2', 'nkey1');
+
+// disappearance of studio
+
+});
+</script>
+<script aria-label="toContact">
+// flip to Curriculum ====================================================================================================
+
+pfTriContact.addEventListener('click', () => {
+  // flip pageflipper
+  pageflipper.classList.remove('ftoISfCo');
+  void pageflipper.offsetWidth; // This forces a reflow
+  pageflipper.classList.add('ftoCo');
+
+  // disappear stpg-container
+  spcontainer.classList.remove('appear');
+  spcontainer.classList.add('disappear');
+
+  // dynamic cv composer
+  displaySteps();
+
+  // appearance and disappearance of dynav bar
+  dynnav.classList.add('dn-intro');
+  setTimeout(() => {
+    dynnav.classList.remove('dn-intro');
+  }, 4000);
+});
+
+// back to Initial State / Start Page ==============================================================================
+
+pagefliptr.addEventListener('click', () => {
+// to the intial state
+if (pageflipper.classList.contains('ftoCo')) {
+  pageflipper.classList.remove('ftoCo');
+  void pageflipper.offsetWidth;
+  pageflipper.classList.add('ftoISfCo');
+}
+
+// appear stpg-container
+setTimeout(() => {
+  spcontainer.classList.remove('disappear');
+  spcontainer.classList.add('appear');
+}, 1000);
+
+// disappearance of dynamic navigation bar
+dynnav.classList.remove('nkey2', 'nkey1');
+
+// disappearance of studio
+
+});
+</script>
+<script aria-label="language-switching">
+// declarations =========================================================================
+
+const LangEng = ["Curriculum", "Studio", "Contact"];
+const LangEsp = ["Currículum", "Portafolio", "Contacto"];
+const LangDeu = ["Lebenslauf", "Studio", "Kontakt"];
+
+const IdiomaEng = document.getElementById('IdiomaEng');
+const IdiomaEsp = document.getElementById('IdiomaEsp');
+const IdiomaDeu = document.getElementById('IdiomaDeu');
+
+// Typewriter fx function
+function typeWriterEffect(element, textArray, delay = 100, deleteDelay = 50) {
+    let j = 0;
+    let isDeleting = false;
+    let currentText = '';
+    let loop = setInterval(() => {
+        if (isDeleting) {
+            currentText = textArray[j].substring(0, currentText.length - 1);
         } else {
-          colSubtrahend = roundedUpNo * roundedDownNo;
-          colDivisor = roundedDownNo;
+            currentText = textArray[j].substring(0, currentText.length + 1);
         }
-  
-        let colDifference = colSubtrahend - products.length;
-        let colQuotient = 100 / colDivisor;
-  
-        let ColProduct = colQuotient * colDifference;
-  
-        fillergridCol = (colDifference === 1) ? '' : 'span ' + colDifference;
-  
-        const filler = document.createElement('div');
-        filler.classList = 'candy';
-        filler.id = 'Filler';
-        filler.style.width = ColProduct + 'vw';
-        filler.style.gridColumn = fillergridCol;
-        filler.style.height = rowfactor;
-        filler.innerHTML = `<img id="brooder" src="Materials/brooder.webp" onmouseover="this.src='Materials/fut-proj.webp';" onmouseout="this.src='Materials/brooder.webp';" alt="man working before his laptop" style="object-fit: contain">`;
-        productList.appendChild(filler);
-      }
-      }
-  
-    // .candy expand and collapse =====================================================================================================
 
-    window.addEventListener('click', function(event) {
-      if (event.target.classList.contains('candy')) {
-        event.target.classList.toggle('expanded');
-        document.getElementById('studio-container').classList.toggle('flexed');
-        document.querySelectorAll('.candy').forEach(c => {
-          if (c !== event.target) {
-            c.classList.toggle('hidden');
-          }
-        });
-      }
-      else if (event.target.classList.contains('expanded')) {
-        event.target.classList.remove('expanded');
-        document.getElementById('studio-container').classList.remove('flexed');
-        document.querySelectorAll('.candy').forEach(c => {
-          c.classList.remove('hidden');
-        });
-      }
-    });
+        element.innerHTML = currentText;
 
-  </script>
-  <script aria-label="cv-composer">
-  // Display steps =========================================================================================================
+        if (!isDeleting && currentText === textArray[j]) {
+            // Pause before starting to delete
+            setTimeout(() => isDeleting = true, 1000);
+        } else if (isDeleting && currentText === '') {
+            // Go to the next word
+            isDeleting = false;
+            j = (j + 1) % textArray.length; // Loop through array
+        }
+    }, isDeleting ? deleteDelay : delay);
+}
 
-  function displaySteps() {
-    const cvinput = document.createElement('input');
-    cvinput.type = 'file';
-    cvinput.accept = '.json';
-    cvinput.id = 'cv-input';
-    cvinput.style.display = 'none';
-    cvinput.addEventListener('change', function() {
-      const reader = new FileReader();
-      reader.onload = function() {
-        const json = JSON.parse(reader.result);
-        const cvContainer = document.getElementById('cv-container');
-        cvContainer.innerHTML = '';
-        cvContainer.appendChild(json);
-      };
-      reader.readAsText(cvinput.files[0]);
-    });
+// Initialize typewriter effect with two words "Contact" and "Kontakt"
+const langElement = document.getElementById('LangEng');
+const words = ['Contact', 'Kontakt'];
+
+document.addEventListener('click', function(event) {
+  if (event.target.id === 'IdiomaEng') {
+    typeWriterEffect(langElement, words);
   }
-    
-  </script>  
-  <script aria-label="toStudio">
-  // flip to Studio ==========================================================================================================
-
-  pfTriStudio.addEventListener('click', () => {
-    // flip pageflipper
-    pageflipper.classList.remove('ftoISfSS');
-    void pageflipper.offsetWidth; // This forces a reflow
-    pageflipper.classList.add('ftoSS');
-
-    // disappear stpg-container
-    spcontainer.classList.remove('appear');
-    spcontainer.classList.add('disappear');
-
-    // dynamic composer
-    studioC.classList.remove('disappear');
-    setTimeout(() => {studioC.classList.add('appear')}, 1000);
-
-    displayProducts();
-
-    // appearance and disappearance of dynav bar
-    dynnav.classList.add('dn-intro');
-    setTimeout(() => {
-      dynnav.classList.remove('dn-intro');
-    }, 4000);
-  });
-
-// back to Initial State / Start Page ==============================================================================
-
-pagefliptr2.addEventListener('click', () => {
-  // to the intial state
-  if (pageflipper.classList.contains('ftoSS')) {
-    pageflipper.classList.remove('ftoSS');
-    void pageflipper.offsetWidth;
-    pageflipper.classList.add('ftoISfSS'); 
+  else if (event.target.id === 'IdiomaEsp') {
+    document.getElementById('currvitae').children[0].textContent = LangEsp[0];
+    document.getElementById('studio').children[0].textContent = LangEsp[1];
+    document.getElementById('contact').children[0].textContent = LangEsp[2];
   }
-
-  // appear stpg-container
-  setTimeout(() => {
-    spcontainer.classList.remove('disappear');
-    spcontainer.classList.add('appear');
-  }, 1000);
-
-  // disappearance of dynamic navigation bar
-  dynnav.classList.remove('nkey2', 'nkey1');
-
-  // disappearance of studio
-  studioC.classList.remove('appear', 'flexed');
-  studioC.classList.add('disappear');
-  studioC.innerHTML = '';
-});
-  </script>
-  <script aria-label="toCV">
-  // flip to Curriculum ====================================================================================================
-
-  pfTriCV.addEventListener('click', () => {
-    // flip pageflipper
-    pageflipper.classList.remove('ftoISfSS');
-    void pageflipper.offsetWidth; // This forces a reflow
-    pageflipper.classList.add('ftoCS');
-
-    // disappear stpg-container
-    spcontainer.classList.remove('appear');
-    spcontainer.classList.add('disappear');
-
-    // dynamic cv composer
-    displaySteps();
-
-    // appearance and disappearance of dynav bar
-    dynnav.classList.add('dn-intro');
-    setTimeout(() => {
-      dynnav.classList.remove('dn-intro');
-    }, 4000);
-  });
-
-// back to Initial State / Start Page ==============================================================================
-
-pagefliptr2.addEventListener('click', () => {
-  // to the intial state
-  if (pageflipper.classList.contains('ftoCS')) {
-    pageflipper.classList.remove('ftoCS');
-    void pageflipper.offsetWidth;
-    pageflipper.classList.add('ftoISfCS');
+  else if (event.target.id === 'IdiomaDeu') {
+    document.getElementById('currvitae').children[0].textContent = LangDeu[0];
+    document.getElementById('studio').children[0].textContent = LangDeu[1];
+    document.getElementById('contact').children[0].textContent = LangDeu[2];
   }
-
-  // appear stpg-container
-  setTimeout(() => {
-    spcontainer.classList.remove('disappear');
-    spcontainer.classList.add('appear');
-  }, 1000);
-
-  // disappearance of dynamic navigation bar
-  dynnav.classList.remove('nkey2', 'nkey1');
-
-  // disappearance of studio
-
-});
-  </script>
-  
+})
+</script>
 </body>
 </html>

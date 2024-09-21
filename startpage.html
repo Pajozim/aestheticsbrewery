@@ -8,15 +8,48 @@
     <style aria-label="core-styles">
       /* root styles -------------------------------------------- */
 
+      @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
       :root {
-        font-size: 1rem;
-        font-family: "Comfortaa", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
+        --fontsize: 1rem;
+        --font-family: "Comfortaa", "Noto", sans-serif;
+        --font-optical-sizing: auto;
+        --font-weight: 300;
+        --font-style: normal;
+        --fontcolor: #fff;
         --pfelemwidth: 95vw;
         --pfelemheight: 90vh;
+        --inpbutmargin: 1vh;
+        --inpbutpad: 1vh;
+        --inpbutbg: bisque;
+        --inpbutcol: #222;
+        --inpbutborwidth: 0;
+        --inpbutborstyle: none;
+        --inpbutborcol: transparent;
+        --inpbutborimg: none;
+        font-family: var(--font-family);
+        font-style: var(--font-style);
+        font-size: var(--fontsize);
+        font-optical-sizing: var(--font-optical-sizing);
+        font-weight: var(--font-weight);
       }
+
+      @font-face {
+        font-family: var(--font-family);
+        font-style: var(--font-style);
+        font-size: var(--fontsize);
+        font-optical-sizing: var(--font-optical-sizing);
+        font-weight: var(--font-weight);
+        src: url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap')
+          format("woff2");
+      }
+
+      :focus-visible {
+        outline: 2px solid darksalmon;
+        outline-offset: -3px;
+        border: 1px solid bisque;
+      }
+
 
       /* core styles -------------------------------------------- */
 
@@ -32,6 +65,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        color: var(--fontcolor);
       }
 
       img {
@@ -40,9 +74,50 @@
         object-fit: cover;
       }
 
+      /* input & button styles -------------------------------------------- */
+
+      input, button, textarea {
+        font-size: var(--fontsize);
+        font-family: var(--font-family);
+        font-optical-sizing: var(--font-optical-sizing);
+        font-weight: var(--font-weight);
+        font-style: var(--font-style);
+        text-rendering: auto;
+        color: var(--inpbutcol);
+        letter-spacing: normal;
+        word-spacing: normal;
+        line-height: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: center;
+        background-color: var(--inpbutbg);
+        margin: var(--inpbutmargin);
+        padding: var(--inpbutpad);
+        border-width: var(--inpbutborwidth);
+        border-style: var(--inpbutborstyle);
+        border-color: var(--inpbutborcol);
+        border-image: var(--inpbutborimg);
+        padding-block: var(--inpbutpad);
+        padding-inline: var(--inpbutpad);
+      }
+
+      input {
+        appearance: auto;
+        -webkit-rtl-ordering: logical;
+        cursor: text;
+      }
+
+      button {
+        align-items: flex-start;
+        cursor: pointer;
+        box-sizing: border-box;
+      }
+
       /* repetitive styles ---------------------------------------- */
 
-      .page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, #currvitae {
+      .page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, #currvitae, #contact, #contact-container, .button-container, #cv-container, [id*="row"], #curriculum {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -64,7 +139,7 @@
         height: 8vh;
         z-index: 10;
         background-color: darkcyan;
-        border-radius: 1em;
+        border-radius: 16px;
       }
 
       #dynamic-nav.nkey1 {
@@ -98,7 +173,7 @@
         width: var(--pfelemwidth);
         height: var(--pfelemheight);
         background-color: salmon;
-        border-radius: 1em;
+        border-radius: 20px;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
       }
 
@@ -118,7 +193,7 @@
         background-color: palevioletred;
         margin: 0 1em;
         padding: 0 1em;
-        border-radius: 0.4em;
+        border-radius: 9px;
       }
 
       #btnsiR {
@@ -129,7 +204,7 @@
       #btnsiR > div {
         width: 30vw;
         height: 23vh;
-        border-radius: 1em;
+        border-radius: 15px;
       }
 
       #contactiR {
@@ -143,7 +218,7 @@
         background-color: tan;
         margin: 0 1em;
         padding: 0 1em;
-        border-radius: 0.4em;
+        border-radius: 9px;
       }
 
       @keyframes l1-appear {from {opacity: 0;} to {opacity: 1;;}}
@@ -161,28 +236,9 @@
         cursor: pointer;
       }
 
-    /* changing language ---------------------------------------- */
-
-      @keyframes blinkCursor {
-        0%, 50% {
-          border-color: rgb(32, 32, 32);
-        }
-        50%, 100% {
-          border-color: transparent;
-        }
-      }
-
-      .typewriter {
-        border-left: 1px solid black;
-        display: inline-block;
-        padding-left: 5px;
-        animation: blinkCursor 0.7s infinite;
-      }
-
-
     /* studio page ---------------------------------------------- */
 
-          @keyframes s-flip {
+      @keyframes s-flip {
       0% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}
       49% {background-color: salmon;}
       50% {transform: perspective(2000px) rotateY(-90deg); width: 95vw; height: 90vh;}
@@ -319,7 +375,7 @@
 
       .candy:hover {
       scale: 1.05;
-      border-radius: 1em;
+      border-radius: 16px;
       cursor: pointer;
       }
 
@@ -327,7 +383,7 @@
       margin: 2.5%;
       width: 95vw;
       height: 95vh;
-      border-radius: 1em;
+      border-radius: 16px;
       scale: none;
       }
 
@@ -348,7 +404,6 @@
       }
 
       #input-box {
-      display: flex;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -357,7 +412,6 @@
       justify-content: center;
       width: fit-content;
       height: auto;
-      background-color: lightsalmon;
       padding: 2em 3em;
       }
 
@@ -385,6 +439,84 @@
       #cv-container {
         display: none;
       }
+
+      #cv-container > * {
+        overflow: hidden;
+      }
+
+      #firstrow, #curriculum {
+        width: 100vw;
+        height: 50vh;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-items: flex-start;
+      }
+
+      #cv-container.appear {
+        display: flex;
+        animation: l1-appear 1s linear forwards;
+      }
+
+      #cv-container.disappear {
+        display: none;
+        animation: l1-appear 2s linear 1s reverse;
+      }
+
+      #firstrow > div {
+        width: 16vw;
+      }
+
+    </style>
+    <style aria-label="contact-styles">
+      #contact-container {
+        display: none;
+      }
+
+      #contact-container.on {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #contact-container > * {
+        width: 40vw;
+        max-width: 40vw;
+      }
+
+      #c-name {
+        margin-top: 0%;
+        border-radius: 15px 15px 0 0;
+      }
+
+      #c-message {
+        margin-bottom: 0%;
+        border-radius: 0 0 15px 15px;
+        height: 33vh;
+        max-height: fit-content;
+        resize: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .button-container {
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 2vh;
+      }
+
+      #c-submit {
+        background-color: darksalmon;
+        width: fit-content;
+        border-radius: 15px;
+        padding: 1.5vh 2vw;
+        color: var(--fontcolor);
+      }
+
+      #c-submit:active {
+        background-color: coral;
+      }
     </style>
 </head>
 <body>
@@ -393,8 +525,18 @@
   </section>
   <section class="page-flipper">
     <div id="studio-container"></div>
-    <div id="cv-container"></div>
-    <div id="contact-container"></div>
+    <div id="cv-container">
+      <div id="firstrow"></div>
+    </div>
+    <div id="contact-container">
+      <input id="c-name" type="text" placeholder="name">
+      <input id="c-email" type="email" placeholder="email - mandatory" required>
+      <input id="c-subject" type="text" placeholder="subject">
+      <textarea id="c-message" type="text" placeholder="message - mandatory" required></textarea>
+      <div class="button-container">
+        <button id="c-submit" onclick="SendMessage()">Send</button>
+      </div>
+    </div>
     <div id="stpg-container">
       <div id="idiomsiR"><div id="IdiomaEng">English</div><div id="IdiomaDeu">Deutsch</div><div id="IdiomaEsp">Espa&ntilde;ol</div></div>
       <div id="btnsiR"><div id="currvitae"><span>Curriculum</span></div><div id="studio"><span>Studio</span></div></div>
@@ -428,7 +570,9 @@ const candies      = document.querySelectorAll('.candy');
 
 // cv page definitions =====================================================================================================
 
+const cvBlocks     = JSON.parse(localStorage.getItem('cv')) || [];
 const cvcontainer  = document.getElementById('cv-container');
+const firstrow  = document.getElementById('firstrow');
 
 // contact page definitions ================================================================================================
 
@@ -540,7 +684,7 @@ window.addEventListener('keydown', function(event) {
   // Display products =========================================================================================================
 
   function displayProducts() {
-    
+      
     const productList = document.getElementById('studio-container');
     productList.innerHTML = ''; // Clear existing content
 
@@ -624,33 +768,104 @@ window.addEventListener('keydown', function(event) {
 <script aria-label="cv-composer">
 // Display steps =========================================================================================================
 
-function displaySteps() {
-  const cvinput = document.createElement('input');
-  cvinput.type = 'file';
-  cvinput.accept = '.json';
-  cvinput.id = 'cv-input';
-  cvinput.style.display = 'none';
-  cvinput.addEventListener('change', function() {
-    const reader = new FileReader();
-    reader.onload = function() {
-      const json = JSON.parse(reader.result);
-      const cvContainer = document.getElementById('cv-container');
-      cvContainer.innerHTML = '';
-      cvContainer.appendChild(json);
-    };
-    reader.readAsText(cvinput.files[0]);
-  });
-}
+  function displayCV() {
+
+    firstrow.innerHTML  = '';
+    if (document.getElementById('curriculum')) {
+      const secondrow = document.getElementById('curriculum');
+      secondrow.parentNode.removeChild(secondrow);
+    }
+
+    cvBlocks.forEach(index => {
+        const divblock = document.createElement('div');
+        divblock.id = index.id;
+        divblock.style.backgroundColor = '#' + ((Math.random() * 0xffffff) << 0).toString(16);
+
+        // Handle photo block
+        if (divblock.id === 'photo') {
+            divblock.innerHTML = `<img src="${index.block.src}" alt="${index.block.name}">`;
+          // Append divblock to the cvcontainer
+          firstrow.appendChild(divblock);
+        }
+        // Handle blocks other than "curriculum"
+        else if (divblock.id !== 'curriculum' && index.block) {
+
+            divblock.innerHTML = `<h3>${index.block.h3}</h3>`;
+
+            // Loop through the `line` properties
+            for (let key in index.block) {
+              // Check if the key matches the pattern "line" followed by a number
+              if (key !== 'h3') {
+                  divblock.innerHTML += `<p>${index.block[key]}</p>`;
+              }
+            }
+          // Append divblock to the cvcontainer
+          firstrow.appendChild(divblock);
+        }
+        // Handle curriculum blocks
+        else if (divblock.id === 'curriculum') {
+            index.blocks.forEach(bline => {
+              const divblockC = document.createElement('div');
+              divblockC.id = `cv-block-${index.blocks.indexOf(bline)}`;
+              divblockC.style.backgroundColor = '#' + ((Math.random() * 0xffffff) << 0).toString(16);
+              divblockC.innerHTML = `<h3>${bline.h3}</h3>`;
+              for (let key in bline) {
+              if (key !== 'h3') {
+                  divblockC.innerHTML += `<p>${bline[key]}</p>`;
+              }
+            }
+            divblock.appendChild(divblockC);
+            });
+
+          // Append divblock to the cvcontainer
+          cvcontainer.appendChild(divblock);
+        }
+    });
+  }
   
 </script>
 <script aria-label="contact-page">
+  // resize of textarea ========================================================================
+
+  const contactMessage = document.getElementById('c-message');
+
+  contactMessage.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+  });
+
+  // sending text ==============================================================================
+
+  function SendMessage() {
+    const contactName = document.getElementById('c-name');
+    const contactSubject = document.getElementById('c-subject');
+    const contactEmail = document.getElementById('c-email');
+    const Mail = [contactName ? contactName.value : '', contactSubject ? contactSubject.value : '', contactEmail ? contactEmail.value : '', contactMessage ? contactMessage.value : ''];
+
+    alert(Mail[0] + ' ' + Mail[1] + ' ' + Mail[2] + ' ' + Mail[3]);
+
+    if (Mail[2] === '') {
+      alert('Please enter your email.');
+    } else if (Mail[3] === '') {
+      alert('Please enter a message.');
+    } else {
+      alert('Thank you for your message, ' + Mail[0] + '!');
+    }
+
+    const link = encodeURIComponent("mailto:name@gmail.com")
+             + "?from=" + encodeURIComponent(Mail[2])
+             + "&subject=" + encodeURIComponent(Mail[1])
+             + "&body=" + encodeURIComponent(Mail[3]);
+             + "&name=" + encodeURIComponent(Mail[0]);
+    window.location.href = link;
+  }
+
 </script>
 <script aria-label="toStudio">
 // flip to Studio ==========================================================================================================
 
 pfTriStudio.addEventListener('click', () => {
 // flip pageflipper
-pageflipper.classList.remove('ftoISfSS');
 void pageflipper.offsetWidth; // This forces a reflow
 pageflipper.classList.add('ftoSS');
 
@@ -678,7 +893,10 @@ pagefliptr.addEventListener('click', () => {
 if (pageflipper.classList.contains('ftoSS')) {
   pageflipper.classList.remove('ftoSS');
   void pageflipper.offsetWidth;
-  pageflipper.classList.add('ftoISfSS'); 
+  pageflipper.classList.add('ftoISfSS');
+  setTimeout(() => {
+    pageflipper.classList.remove('ftoISfSS');
+  }, 1000);
 }
 
 // appear stpg-container
@@ -701,7 +919,6 @@ studioC.innerHTML = '';
 
 pfTriCV.addEventListener('click', () => {
 // flip pageflipper
-pageflipper.classList.remove('ftoISfCS');
 void pageflipper.offsetWidth; // This forces a reflow
 pageflipper.classList.add('ftoCS');
 
@@ -709,8 +926,12 @@ pageflipper.classList.add('ftoCS');
 spcontainer.classList.remove('appear');
 spcontainer.classList.add('disappear');
 
+// dynamic composer
+cvcontainer.classList.remove('disappear');
+setTimeout(() => {cvcontainer.classList.add('appear')}, 1000);
+
 // dynamic cv composer
-displaySteps();
+displayCV();
 
 // appearance and disappearance of dynav bar
 dynnav.classList.add('dn-intro');
@@ -727,7 +948,14 @@ if (pageflipper.classList.contains('ftoCS')) {
   pageflipper.classList.remove('ftoCS');
   void pageflipper.offsetWidth;
   pageflipper.classList.add('ftoISfCS');
+  setTimeout(() => {
+    pageflipper.classList.remove('ftoISfCS');
+  }, 1000);
 }
+
+// dynamic composer disappearance
+cvcontainer.classList.remove('appear');
+setTimeout(() => {cvcontainer.classList.add('disappear')}, 1000);
 
 // appear stpg-container
 setTimeout(() => {
@@ -743,11 +971,10 @@ dynnav.classList.remove('nkey2', 'nkey1');
 });
 </script>
 <script aria-label="toContact">
-// flip to Curriculum ====================================================================================================
+// flip to Contact ====================================================================================================
 
 pfTriContact.addEventListener('click', () => {
   // flip pageflipper
-  pageflipper.classList.remove('ftoISfCo');
   void pageflipper.offsetWidth; // This forces a reflow
   pageflipper.classList.add('ftoCo');
 
@@ -755,8 +982,10 @@ pfTriContact.addEventListener('click', () => {
   spcontainer.classList.remove('appear');
   spcontainer.classList.add('disappear');
 
-  // dynamic cv composer
-  displaySteps();
+  // contact box
+  setTimeout(() => {
+    contactcontainer.classList.add('on');
+  }, 1000);
 
   // appearance and disappearance of dynav bar
   dynnav.classList.add('dn-intro');
@@ -773,7 +1002,13 @@ if (pageflipper.classList.contains('ftoCo')) {
   pageflipper.classList.remove('ftoCo');
   void pageflipper.offsetWidth;
   pageflipper.classList.add('ftoISfCo');
+  setTimeout(() => {
+    pageflipper.classList.remove('ftoISfCo');
+  }, 1000);
 }
+
+// contact box disappearance
+contactcontainer.classList.remove('on');
 
 // appear stpg-container
 setTimeout(() => {
@@ -800,29 +1035,6 @@ const IdiomaEsp = document.getElementById('IdiomaEsp');
 const IdiomaDeu = document.getElementById('IdiomaDeu');
 
 // Typewriter fx function
-function typeWriterEffect(element, textArray, delay = 100, deleteDelay = 50) {
-    let j = 0;
-    let isDeleting = false;
-    let currentText = '';
-    let loop = setInterval(() => {
-        if (isDeleting) {
-            currentText = textArray[j].substring(0, currentText.length - 1);
-        } else {
-            currentText = textArray[j].substring(0, currentText.length + 1);
-        }
-
-        element.innerHTML = currentText;
-
-        if (!isDeleting && currentText === textArray[j]) {
-            // Pause before starting to delete
-            setTimeout(() => isDeleting = true, 1000);
-        } else if (isDeleting && currentText === '') {
-            // Go to the next word
-            isDeleting = false;
-            j = (j + 1) % textArray.length; // Loop through array
-        }
-    }, isDeleting ? deleteDelay : delay);
-}
 
 // Initialize typewriter effect with two words "Contact" and "Kontakt"
 const langElement = document.getElementById('LangEng');
@@ -830,7 +1042,9 @@ const words = ['Contact', 'Kontakt'];
 
 document.addEventListener('click', function(event) {
   if (event.target.id === 'IdiomaEng') {
-    typeWriterEffect(langElement, words);
+    document.getElementById('currvitae').children[0].textContent = LangEng[0];
+    document.getElementById('studio').children[0].textContent = LangEng[1];
+    document.getElementById('contact').children[0].textContent = LangEng[2];
   }
   else if (event.target.id === 'IdiomaEsp') {
     document.getElementById('currvitae').children[0].textContent = LangEsp[0];

@@ -11,7 +11,10 @@
       @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
       :root {
+        /*--calcmarginY: 0%;
+        --calcmarginX: 0%; */
         --fontsize: 1rem;
+        --changfontsize: 1rem;
         --font-family: "Comfortaa", "Noto", sans-serif;
         --font-optical-sizing: auto;
         --font-weight: 300;
@@ -117,7 +120,7 @@
 
       /* repetitive styles ---------------------------------------- */
 
-      .page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, #currvitae, #contact, #contact-container, .button-container, #cv-container, [id*="row"], #curriculum {
+      .page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, .candy, #currvitae, #contact, #contact-container, .button-container, #cv-container, [id*="row"], #curriculum, #firstrow > div {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -175,6 +178,8 @@
         background-color: salmon;
         border-radius: 20px;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        /*background-image: url(Materials/sbsb_nebula.jpg);
+        background-size: cover;*/
       }
 
       [id*="iR"] {
@@ -365,9 +370,6 @@
       /* candy boxes ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
       .candy {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
       box-sizing: border-box;
       transition: all 0.2s ease-in-out;
@@ -464,8 +466,56 @@
       }
 
       #firstrow > div {
-        width: 16vw;
+        min-width: 16vw;
+        height: 50vh;
+        overflow: hidden;
+        transition: all 0.8s ease-in-out;
       }
+
+      #firstrow > div:hover:not(.ixpanded) {
+        cursor: pointer;
+        scale: 1.2;
+        transform-origin: top;
+      }
+
+      #firstrow > div:not(#photo) {
+        padding: 1%;
+        box-sizing: border-box;
+        font-size: var(--changfontsize);
+      }
+
+      #firstrow > [id].ixpanded {
+        height: fit-content;
+        padding: 5% !important;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+        border-radius: 1em;
+        align-items: flex-start;
+        transform: translate(-50%, -50%);
+      }
+
+      #firstrow > [id].ixpanded img {
+        border-radius: 1em;
+      }
+
+      #firstrow > [id].ixpanded:hover {
+        cursor: pointer;
+        transform-origin: center;
+        scale: 1.2;
+      }
+
+      #firstrow  p {
+        margin-left: 5%;
+      }
+ 
+      #photo         { transform-origin: top right;}
+      #personal-data { background-color: rgb(173, 110, 28); }
+      #education     { background-color: rgb(102, 131, 2); }
+      #languages     { background-color: rgb(81, 44, 38); }
+      #skills        { background-color: rgb(121, 119, 154); }
+      #tools         { background-color: rgb(193, 20, 5); transform-origin: top left;}
 
     </style>
     <style aria-label="contact-styles">
@@ -551,6 +601,11 @@
 + 3D effect in swiping left and right, moreso on CV
 
 */
+// root ====================================================================================================================
+
+const root         = document.documentElement;
+/*const screenwidth  = window.screen.width;
+const screenheight = window.screen.height;*/
 
 // start/landing page definitions ==========================================================================================
 
@@ -560,7 +615,7 @@ const pfTriContact = document.getElementById('contact');
 const pageflipper  = document.querySelector('.page-flipper');
 const spcontainer  = document.getElementById('stpg-container');
 const dynnav       = document.getElementById('dynamic-nav');
-const pagefliptr  = document.getElementById('pftbiS');
+const pagefliptr   = document.getElementById('pftbiS');
 
 // studio page definitions =================================================================================================
 
@@ -572,7 +627,8 @@ const candies      = document.querySelectorAll('.candy');
 
 const cvBlocks     = JSON.parse(localStorage.getItem('cv')) || [];
 const cvcontainer  = document.getElementById('cv-container');
-const firstrow  = document.getElementById('firstrow');
+const firstrow     = document.getElementById('firstrow');
+const frchildren   = firstrow.children;
 
 // contact page definitions ================================================================================================
 
@@ -602,227 +658,259 @@ window.addEventListener('keydown', function(event) {
   }
 });
 
-// swiping to left or right in Studio =======================================================================================
-
-function classjuggler(p) {
-  p.classList.remove('hidden');
-  p.classList.add('expanded');      
-}
-
-window.addEventListener('wheel', function(event) {
-    //left swipe
-    if (event.deltaY > 0 && event.target.classList.contains('expanded')) {
-      const prodIndOld = document.getElementById(`${event.target.id}`);
-      prodIndOld.classList.remove('expanded');
-      prodIndOld.classList.add('hidden');
-      const prodIndNewId = Number(event.target.id.slice(1)) + 1;
-      if (prodIndNewId > products.length) {
-        const prodIndNew = document.getElementById(`c1`);
-        classjuggler(prodIndNew);
-      } else {
-        const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-        classjuggler(prodIndNew)
-      }
-    }
-    //right swipe
-    else if (event.deltaY < 0 && event.target.classList.contains('expanded')) {      
-      const prodIndOld = document.getElementById(`${event.target.id}`);
-      prodIndOld.classList.remove('expanded');
-      prodIndOld.classList.add('hidden');
-      const prodIndNewId = Number(event.target.id.slice(1)) - 1;
-      if (prodIndNewId <= 0) {
-        const prodIndNew = document.getElementById(`c${products.length}`);
-        classjuggler(prodIndNew)
-      } else {
-        const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-        classjuggler(prodIndNew)
-      }
-    }
+// screen width value ======================================================================================================
+/*
+document.addEventListener('DOMContentLoaded', () => {
+  const marginX = Math.floor((Math.pow(((screenwidth)/100), 2) / 10)) + '%';
+  root.style.setProperty('--calcmarginX', marginX);
+  const marginY = Math.floor((Math.pow(((screenheight)/100), 2) / 10)) + '%';
+  root.style.setProperty('--calcmarginY', marginY);
 });
-
-window.addEventListener('keydown', function(event) {
-  // Left swipe 
-  if (event.key === 'ArrowLeft' && event.type === 'keydown') {
-    // Find the currently expanded element
-    const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
-    if (prodIndOld) {
-      prodIndOld.classList.remove('expanded');
-      prodIndOld.classList.add('hidden');
-      const prodIndNewId = Number(prodIndOld.id.slice(1)) + 1; // Get the new product ID
-      if (prodIndNewId > products.length) {
-        // Wrap around to the first product if the new ID exceeds the total number of products
-        const prodIndNew = document.getElementById('c1');
-        classjuggler(prodIndNew);
-      } else {
-        // Move to the next product element
-        const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-        classjuggler(prodIndNew);
-      }
-    }
-  }
-  //right swipe
-  else if (event.key === 'ArrowRight' && event.type === 'keydown') {
-    const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
-    if (prodIndOld) {
-      prodIndOld.classList.remove('expanded');
-      prodIndOld.classList.add('hidden');
-      const prodIndNewId = Number(prodIndOld.id.slice(1)) - 1;
-      if (prodIndNewId <= 0) {
-        const prodIndNew = document.getElementById(`c${products.length}`);
-        classjuggler(prodIndNew)
-      } else {
-        const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-        classjuggler(prodIndNew)
-      }
-    }
-  }
-});
-
+*/
 
 </script>
 <script aria-label="studio-composer">
-  // Display products =========================================================================================================
+// Display products =========================================================================================================
 
-  function displayProducts() {
-      
-    const productList = document.getElementById('studio-container');
-    productList.innerHTML = ''; // Clear existing content
-
-    let rootedNo = Math.sqrt(products.length);
-    let roundedUpNo = Math.ceil(rootedNo); // next rounded up integer
-    let roundedDownNo = Math.floor(rootedNo); // next rounded down integer
-
-    // calclation of the row height
-    const rowDivisor = products.length <= roundedUpNo * roundedDownNo ? roundedDownNo : roundedUpNo;
-
-    let rowfactor = (100 / rowDivisor) + 'vh';
-
-    // grid composition
-    let initialGrid = `repeat(${roundedUpNo}, 1fr)`;
-    productList.style.gridTemplateColumns = initialGrid;
-    productList.style.gridAutoRows = rowfactor;
-
-    // Add each product to the grid
-    products.forEach(product => {
-      const productElement = document.createElement('div');
-      productElement.classList = 'candy';
-      productElement.id = `c${product.identifier}`;
-      productElement.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-      // it works, just easier to work with colors: productElement.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
-      productList.appendChild(productElement);
-      });
+function displayProducts() {
     
-    // create a filler
-    // 8 products, the row width is incorrect
-    if (!Number.isInteger(rootedNo) && products.length !== roundedUpNo * roundedDownNo) {
-      let colSubtrahend, colDivisor, fillergridCol;
+  const productList = document.getElementById('studio-container');
+  productList.innerHTML = ''; // Clear existing content
 
-      if (products.length > roundedUpNo ** 2 || products.length > (roundedUpNo * roundedDownNo)) {
-        colSubtrahend = roundedUpNo ** 2;
-        colDivisor = roundedUpNo;
-      } else {
-        colSubtrahend = roundedUpNo * roundedDownNo;
-        colDivisor = roundedDownNo;
+  let rootedNo = Math.sqrt(products.length);
+  let roundedUpNo = Math.ceil(rootedNo); // next rounded up integer
+  let roundedDownNo = Math.floor(rootedNo); // next rounded down integer
+
+  // calclation of the row height
+  const rowDivisor = products.length <= roundedUpNo * roundedDownNo ? roundedDownNo : roundedUpNo;
+
+  let rowfactor = (100 / rowDivisor) + 'vh';
+
+  // grid composition
+  let initialGrid = `repeat(${roundedUpNo}, 1fr)`;
+  productList.style.gridTemplateColumns = initialGrid;
+  productList.style.gridAutoRows = rowfactor;
+
+  // Add each product to the grid
+  products.forEach(product => {
+    const productElement = document.createElement('div');
+    productElement.classList = 'candy';
+    productElement.id = `c${product.identifier}`;
+    productElement.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    // it works, just easier to work with colors: productElement.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
+    productList.appendChild(productElement);
+    });
+  
+  // create a filler
+  // 8 products, the row width is incorrect
+  if (!Number.isInteger(rootedNo) && products.length !== roundedUpNo * roundedDownNo) {
+    let colSubtrahend, colDivisor, fillergridCol;
+
+    if (products.length > roundedUpNo ** 2 || products.length > (roundedUpNo * roundedDownNo)) {
+      colSubtrahend = roundedUpNo ** 2;
+      colDivisor = roundedUpNo;
+    } else {
+      colSubtrahend = roundedUpNo * roundedDownNo;
+      colDivisor = roundedDownNo;
+    }
+
+    let colDifference = colSubtrahend - products.length;
+    let colQuotient = 100 / colDivisor;
+
+    let ColProduct = colQuotient * colDifference;
+
+    fillergridCol = (colDifference === 1) ? '' : 'span ' + colDifference;
+
+    const filler = document.createElement('div');
+    filler.classList = 'candy';
+    filler.id = 'Filler';
+    filler.style.width = ColProduct + 'vw';
+    filler.style.gridColumn = fillergridCol;
+    filler.style.height = rowfactor;
+    filler.innerHTML = `<img id="brooder" src="Materials/brooder.webp" onmouseover="this.src='Materials/fut-proj.webp';" onmouseout="this.src='Materials/brooder.webp';" alt="man working before his laptop" style="object-fit: contain">`;
+    productList.appendChild(filler);
+  }
+  }
+
+// .candy expand and collapse =====================================================================================================
+
+window.addEventListener('click', function(event) {
+  if (event.target.classList.contains('candy')) {
+    event.target.classList.toggle('expanded');
+    document.getElementById('studio-container').classList.toggle('flexed');
+    document.querySelectorAll('.candy').forEach(c => {
+      if (c !== event.target) {
+        c.classList.toggle('hidden');
       }
+    });
+  }
+  else if (event.target.classList.contains('expanded')) {
+    event.target.classList.remove('expanded');
+    document.getElementById('studio-container').classList.remove('flexed');
+    document.querySelectorAll('.candy').forEach(c => {
+      c.classList.remove('hidden');
+    });
+  }
+});
 
-      let colDifference = colSubtrahend - products.length;
-      let colQuotient = 100 / colDivisor;
+// swiping to left or right in Studio =======================================================================================
 
-      let ColProduct = colQuotient * colDifference;
+function classjuggler(p) {
+p.classList.remove('hidden');
+p.classList.add('expanded');      
+}
 
-      fillergridCol = (colDifference === 1) ? '' : 'span ' + colDifference;
-
-      const filler = document.createElement('div');
-      filler.classList = 'candy';
-      filler.id = 'Filler';
-      filler.style.width = ColProduct + 'vw';
-      filler.style.gridColumn = fillergridCol;
-      filler.style.height = rowfactor;
-      filler.innerHTML = `<img id="brooder" src="Materials/brooder.webp" onmouseover="this.src='Materials/fut-proj.webp';" onmouseout="this.src='Materials/brooder.webp';" alt="man working before his laptop" style="object-fit: contain">`;
-      productList.appendChild(filler);
+window.addEventListener('wheel', function(event) {
+  //left swipe
+  if (event.deltaY > 0 && event.target.classList.contains('expanded')) {
+    const prodIndOld = document.getElementById(`${event.target.id}`);
+    prodIndOld.classList.remove('expanded');
+    prodIndOld.classList.add('hidden');
+    const prodIndNewId = Number(event.target.id.slice(1)) + 1;
+    if (prodIndNewId > products.length) {
+      const prodIndNew = document.getElementById(`c1`);
+      classjuggler(prodIndNew);
+    } else {
+      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+      classjuggler(prodIndNew)
     }
+  }
+  //right swipe
+  else if (event.deltaY < 0 && event.target.classList.contains('expanded')) {      
+    const prodIndOld = document.getElementById(`${event.target.id}`);
+    prodIndOld.classList.remove('expanded');
+    prodIndOld.classList.add('hidden');
+    const prodIndNewId = Number(event.target.id.slice(1)) - 1;
+    if (prodIndNewId <= 0) {
+      const prodIndNew = document.getElementById(`c${products.length}`);
+      classjuggler(prodIndNew)
+    } else {
+      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+      classjuggler(prodIndNew)
     }
+  }
+});
 
-  // .candy expand and collapse =====================================================================================================
-
-  window.addEventListener('click', function(event) {
-    if (event.target.classList.contains('candy')) {
-      event.target.classList.toggle('expanded');
-      document.getElementById('studio-container').classList.toggle('flexed');
-      document.querySelectorAll('.candy').forEach(c => {
-        if (c !== event.target) {
-          c.classList.toggle('hidden');
-        }
-      });
+window.addEventListener('keydown', function(event) {
+// Left swipe 
+if (event.key === 'ArrowLeft' && event.type === 'keydown') {
+  // Find the currently expanded element
+  const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
+  if (prodIndOld) {
+    prodIndOld.classList.remove('expanded');
+    prodIndOld.classList.add('hidden');
+    const prodIndNewId = Number(prodIndOld.id.slice(1)) + 1; // Get the new product ID
+    if (prodIndNewId > products.length) {
+      // Wrap around to the first product if the new ID exceeds the total number of products
+      const prodIndNew = document.getElementById('c1');
+      classjuggler(prodIndNew);
+    } else {
+      // Move to the next product element
+      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+      classjuggler(prodIndNew);
     }
-    else if (event.target.classList.contains('expanded')) {
-      event.target.classList.remove('expanded');
-      document.getElementById('studio-container').classList.remove('flexed');
-      document.querySelectorAll('.candy').forEach(c => {
-        c.classList.remove('hidden');
-      });
+  }
+}
+//right swipe
+else if (event.key === 'ArrowRight' && event.type === 'keydown') {
+  const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
+  if (prodIndOld) {
+    prodIndOld.classList.remove('expanded');
+    prodIndOld.classList.add('hidden');
+    const prodIndNewId = Number(prodIndOld.id.slice(1)) - 1;
+    if (prodIndNewId <= 0) {
+      const prodIndNew = document.getElementById(`c${products.length}`);
+      classjuggler(prodIndNew)
+    } else {
+      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+      classjuggler(prodIndNew)
     }
-  });
+  }
+}
+});
 
 </script>
 <script aria-label="cv-composer">
+// load from file ========================================================================================================
+/*
+function loadCV() {
+  fetch('cv.json')
+  .then(response => response.json())
+  .then(data => {
+    cvBlocks = data;
+    displayCV();
+  })
+  .catch(error => console.log('Error fetching cv.json:', error));
+}
+*/
 // Display steps =========================================================================================================
 
-  function displayCV() {
+function displayCV() {
 
-    firstrow.innerHTML  = '';
-    if (document.getElementById('curriculum')) {
-      const secondrow = document.getElementById('curriculum');
-      secondrow.parentNode.removeChild(secondrow);
-    }
-
-    cvBlocks.forEach(index => {
-        const divblock = document.createElement('div');
-        divblock.id = index.id;
-        divblock.style.backgroundColor = '#' + ((Math.random() * 0xffffff) << 0).toString(16);
-
-        // Handle photo block
-        if (divblock.id === 'photo') {
-            divblock.innerHTML = `<img src="${index.block.src}" alt="${index.block.name}">`;
-          // Append divblock to the cvcontainer
-          firstrow.appendChild(divblock);
-        }
-        // Handle blocks other than "curriculum"
-        else if (divblock.id !== 'curriculum' && index.block) {
-
-            divblock.innerHTML = `<h3>${index.block.h3}</h3>`;
-
-            // Loop through the `line` properties
-            for (let key in index.block) {
-              // Check if the key matches the pattern "line" followed by a number
-              if (key !== 'h3') {
-                  divblock.innerHTML += `<p>${index.block[key]}</p>`;
-              }
-            }
-          // Append divblock to the cvcontainer
-          firstrow.appendChild(divblock);
-        }
-        // Handle curriculum blocks
-        else if (divblock.id === 'curriculum') {
-            index.blocks.forEach(bline => {
-              const divblockC = document.createElement('div');
-              divblockC.id = `cv-block-${index.blocks.indexOf(bline)}`;
-              divblockC.style.backgroundColor = '#' + ((Math.random() * 0xffffff) << 0).toString(16);
-              divblockC.innerHTML = `<h3>${bline.h3}</h3>`;
-              for (let key in bline) {
-              if (key !== 'h3') {
-                  divblockC.innerHTML += `<p>${bline[key]}</p>`;
-              }
-            }
-            divblock.appendChild(divblockC);
-            });
-
-          // Append divblock to the cvcontainer
-          cvcontainer.appendChild(divblock);
-        }
-    });
+  firstrow.innerHTML  = '';
+  if (document.getElementById('curriculum')) {
+    const secondrow = document.getElementById('curriculum');
+    secondrow.parentNode.removeChild(secondrow);
   }
+
+  cvBlocks.forEach(index => {
+      const divblock = document.createElement('div');
+      divblock.id = index.id;
+
+      // Handle photo block
+      if (divblock.id === 'photo') {
+          divblock.innerHTML = `<img src="${index.block.src}" alt="${index.block.name}">`;
+        // Append divblock to the cvcontainer
+        firstrow.appendChild(divblock);
+      }
+      // Handle blocks other than "curriculum"
+      else if (divblock.id !== 'curriculum' && index.block) {
+
+          divblock.innerHTML = `<h3>${index.block.h3}</h3>`;
+
+          // Loop through the `line` properties
+          for (let key in index.block) {
+            // Check if the key matches the pattern "line" followed by a number
+            if (key !== 'h3') {
+                divblock.innerHTML += `<p>${index.block[key]}</p>`;
+            }
+          }
+        // Append divblock to the cvcontainer
+        firstrow.appendChild(divblock);
+      }
+      // Handle curriculum blocks
+      else if (divblock.id === 'curriculum') {
+          index.blocks.forEach(bline => {
+            const divblockC = document.createElement('div');
+            divblockC.id = `cv-block-${index.blocks.indexOf(bline)}`;
+            divblockC.style.backgroundColor = '#' + ((Math.random() * 0xffffff) << 0).toString(16);
+            divblockC.innerHTML = `<h3>${bline.h3}</h3>`;
+            for (let key in bline) {
+            if (key !== 'h3') {
+                divblockC.innerHTML += `<p>${bline[key]}</p>`;
+            }
+          }
+          divblock.appendChild(divblockC);
+          });
+
+        // Append divblock to the cvcontainer
+        cvcontainer.appendChild(divblock);
+      }
+  });
+}
+
+// cv blocks scalable =====================================================================================================
+
+window.addEventListener('click', (event) => {
+  const target = event.target;
   
+  // Ensure the target has an id and frchildren exists
+  if (frchildren && target && target.id) {
+    // Toggle the 'expanded' class
+    target.classList.toggle('ixpanded');
+  }
+});
+
 </script>
 <script aria-label="contact-page">
   // resize of textarea ========================================================================
@@ -915,6 +1003,15 @@ studioC.innerHTML = '';
 });
 </script>
 <script aria-label="toCV">
+// adaptable font-size ===================================================================================================
+
+if (window.screen.width > window.screen.height) {
+
+  document.addEventListener('DOMContentLoaded', () => {
+    root.style.setProperty('--changfontsize', `${Math.floor(window.screen.width / 100)}px`);
+    }); 
+}
+
 // flip to Curriculum ====================================================================================================
 
 pfTriCV.addEventListener('click', () => {

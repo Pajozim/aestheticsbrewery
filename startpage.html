@@ -143,6 +143,8 @@
         z-index: 10;
         background-color: darkcyan;
         border-radius: 16px;
+        padding: 2%;
+        box-sizing: border-box;
       }
 
       #dynamic-nav.nkey1 {
@@ -405,6 +407,10 @@
       border-radius: 0;
       }
 
+      #workingon {
+      object-fit: contain;
+      }
+
       #input-box {
       position: absolute;
       top: 50%;
@@ -438,21 +444,36 @@
       /* end of this file */
     </style>
     <style aria-label="cv-styles">
+      /* height adapter */
+
+      .middlestripe {
+        position: absolute;
+        top: 78vh;
+        width: 100vw;
+        height: 2vh;
+        opacity: 0;
+        background-color: aliceblue;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .middlestripe:hover {
+        cursor: pointer;
+        opacity: 1;
+        /* simple repeating white triangle arrows on transparent background */
+      }
+
+      .middlestripe.down {
+        top: 20vh;
+      }
+
+      /* cv container */
+
       #cv-container {
         display: none;
       }
 
       #cv-container > * {
         overflow: hidden;
-      }
-
-      #firstrow, #curriculum {
-        width: 100vw;
-        height: 50vh;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-evenly;
-        align-items: flex-start;
       }
 
       #cv-container.appear {
@@ -465,11 +486,39 @@
         animation: l1-appear 2s linear 1s reverse;
       }
 
+      /* common styling */
+
+      #firstrow, #curriculum {
+        width: 100vw;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-items: flex-start;
+      }
+
+      #firstrow > div:not(#photo), #curriculum > div {
+        padding: 1%;
+        box-sizing: border-box;
+        font-size: var(--changfontsize);
+      }
+
+      /*** first row ***/
+
+      #firstrow {
+        height: 80vh;
+      }
+
+      #firstrow.compressed {
+        height: 20vh;
+      }
+
       #firstrow > div {
         min-width: 16vw;
-        height: 50vh;
+        height: 100%;
         overflow: hidden;
         transition: all 0.8s ease-in-out;
+        justify-content: flex-start;
+        align-items: flex-start;
       }
 
       #firstrow > div:hover:not(.ixpanded) {
@@ -478,11 +527,7 @@
         transform-origin: top;
       }
 
-      #firstrow > div:not(#photo) {
-        padding: 1%;
-        box-sizing: border-box;
-        font-size: var(--changfontsize);
-      }
+      /** #firstrow > div:not(#photo) in common styling **/
 
       #firstrow > [id].ixpanded {
         height: fit-content;
@@ -502,7 +547,7 @@
 
       #firstrow > [id].ixpanded:hover {
         cursor: pointer;
-        transform-origin: center;
+        transform-origin: left top;
         scale: 1.2;
       }
 
@@ -516,6 +561,38 @@
       #languages     { background-color: rgb(81, 44, 38); }
       #skills        { background-color: rgb(121, 119, 154); }
       #tools         { background-color: rgb(193, 20, 5); transform-origin: top left;}
+
+      /*** curriculum/second row ***/
+
+      #curriculum {
+        height: 20vh;
+      }
+
+      #curriculum.enlarged {
+        height: 80vh;
+      }
+
+      /** some definitions for #curriculum > div in common styling **/
+
+      #curriculum > div {
+        min-width: 75vw;
+        height: 100%;
+        overflow: hidden;
+        transition: all 0.8s ease-in-out;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      [id^="cv-block"] p:nth-child(2)::before {
+        content: "";
+        background-image: url("Materials/location.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: var(--changfontsize);
+        height: var(--changfontsize);
+        display: inline-block; /* Ensure the element displays */
+        margin-right: 1%;
+      }
 
     </style>
     <style aria-label="contact-styles">
@@ -577,6 +654,7 @@
     <div id="studio-container"></div>
     <div id="cv-container">
       <div id="firstrow"></div>
+      <div class="middlestripe"></div>
     </div>
     <div id="contact-container">
       <input id="c-name" type="text" placeholder="name">
@@ -668,6 +746,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 */
 
+// change workingon img on every reload ==================================================================================================
+
+const oneofboth = ['Materials/workingon1.webp', 'Materials/workingon2.webp'];
+const workonimg = document.getElementById('workingon');
+/*
+if (workonimg) {
+    workonimg.src = oneofboth[Math.floor(Math.random() * oneofboth.length)];
+}
+*/
 </script>
 <script aria-label="studio-composer">
 // Display products =========================================================================================================
@@ -727,12 +814,12 @@ function displayProducts() {
     filler.style.width = ColProduct + 'vw';
     filler.style.gridColumn = fillergridCol;
     filler.style.height = rowfactor;
-    filler.innerHTML = `<img id="brooder" src="Materials/brooder.webp" onmouseover="this.src='Materials/fut-proj.webp';" onmouseout="this.src='Materials/brooder.webp';" alt="man working before his laptop" style="object-fit: contain">`;
+    filler.innerHTML = `<img id="workingon" src="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}" onmouseover="this.src='Materials/future_projects.webp'" onmouseout="this.src='${oneofboth[Math.floor(Math.random() * oneofboth.length)]}'" alt="working on a project">`;
     productList.appendChild(filler);
   }
   }
 
-// .candy expand and collapse =====================================================================================================
+// .candy expand and collapse ===============================================================================================
 
 window.addEventListener('click', function(event) {
   if (event.target.classList.contains('candy')) {
@@ -899,15 +986,34 @@ function displayCV() {
   });
 }
 
-// cv blocks scalable =====================================================================================================
+// alternating row height ========================================================================================================
 
 window.addEventListener('click', (event) => {
-  const target = event.target;
+
+  console.log(event.target);
+
+  const middlestripe = document.querySelector('.middlestripe');
+  const firstrow     = document.getElementById('firstrow');
+  const curriculum   = document.getElementById('curriculum');
+
+  if (event.target === middlestripe) {
+    console.log(event.target);
+    document.querySelector('.middlestripe').classList.toggle('down');
+    document.getElementById('firstrow').classList.toggle('compressed');
+    document.getElementById('curriculum').classList.toggle('enlarged');
+  }
+});
+
+// firstrow blocks scalable =====================================================================================================
+
+const firstrowids = ['photo', 'personal-data', 'education', 'languages', 'skills', 'tools'];
+
+window.addEventListener('click', (event) => {
+  const parentWithId = event.target.closest('[id]');
   
-  // Ensure the target has an id and frchildren exists
-  if (frchildren && target && target.id) {
-    // Toggle the 'expanded' class
-    target.classList.toggle('ixpanded');
+  if (firstrowids.includes(parentWithId.id) && !parentWithId.classList.contains('compressed') && !parentWithId.parentNode.classList.contains('compressed')) {
+    // Toggle the 'ixpanded' class on the parent element with an id
+    parentWithId.classList.toggle('ixpanded');
   }
 });
 
@@ -1008,7 +1114,7 @@ studioC.innerHTML = '';
 if (window.screen.width > window.screen.height) {
 
   document.addEventListener('DOMContentLoaded', () => {
-    root.style.setProperty('--changfontsize', `${Math.floor(window.screen.width / 100)}px`);
+    root.style.setProperty('--changfontsize', `${(Math.floor(window.screen.width / 100) - 2)}px`);
     }); 
 }
 

@@ -121,7 +121,7 @@
 
       /* repetitive styles ---------------------------------------- */
 
-      .page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, .candy, #currvitae, #contact, #contact-container, .button-container, #cv-container, [id*="row"], #curriculum, #curriculum > div, #curriculum.enlarged > div, #firstrow > div {
+      .page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, .candy, #currvitae, #contact, #contact-container, .button-container, #cv-container, [id*="row"], #curriculum, #curriculum > div, #curriculum.enlarged > div, #firstrow > div, #firstrow.compressed:hover::before, #curriculum.small:hover::before, #indicator {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -445,30 +445,6 @@
       /* end of this file */
     </style>
     <style aria-label="cv-styles">
-      /* height adapter */
-
-      .middlestripe {
-        position: absolute;
-        top: 78vh;
-        width: 100vw;
-        height: 2vh;
-        opacity: 0;
-        background-image: url("Materials/simple-triangle.svg");
-        background-repeat: repeat-x;
-        background-size: contain;
-        transition: opacity 0.5s ease-in-out;
-      }
-
-      .middlestripe:hover {
-        cursor: pointer;
-        opacity: 1;
-      }
-
-      .middlestripe.down {
-        top: 20vh;
-        transform: scaleY(-1);
-      }
-
       /* cv container */
 
       #cv-container {
@@ -496,6 +472,9 @@
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: space-evenly;
+      }
+
+      #firstrow {
         align-items: flex-start;
       }
 
@@ -513,6 +492,26 @@
 
       #firstrow.compressed {
         height: 20vh;
+      }
+
+      #firstrow.compressed:hover::before, #curriculum.small:hover::before {
+        cursor: pointer;
+        content: "expand";
+        text-align: center;
+        font-weight: bold;
+        position: absolute;
+        text-size-adjust: 100%;
+        width: 100vw;
+        height: 20vh;
+        font-size: var(--fontheight);
+        position: absolute;
+        z-index: 1;
+        color: #222;
+        background-color: rgba(230, 230, 230, 0.7);
+      }
+
+      #firstrow.compressed:hover::before {
+        top: 0;
       }
 
       #firstrow > div {
@@ -567,20 +566,18 @@
 
       /*** curriculum/second row ***/
 
-      #curriculum {
+      #curriculum {/* other definitions at firstrow segment */
+        align-items: center;
+      }
+
+      #curriculum.small {
         height: 20vh;
       }
 
-      #curriculum:hover::before {
-        content: "curriculum";
-        text-align: center;
-        text-size-adjust: auto;
-        width: 100vw;
-        position: absolute;
-        z-index: 1;
-        top: 90vh;
-        font-size: 1.5em;
-        color: #222;
+      /*** #curriculum.small:hover::before in first row styling block ***/
+
+      #curriculum.small:hover::before {
+        top: 80vh;
       }
 
       #curriculum.enlarged {
@@ -590,15 +587,17 @@
       #curriculum.enlarged > div {
         padding: 3%;
         align-items: flex-start;
+        flex-wrap: nowrap;
+        overflow: hidden;
       }
 
       #curriculum.enlarged > div:nth-child(1) {min-width: 75vw;}
 
-      #curriculum.enlarged > div:nth-child(2) {min-width: 15vw;}
+      #curriculum.enlarged > div:nth-child(2) {min-width: 15vw; height: 70vh;}
 
-      #curriculum.enlarged > div:nth-child(3) {min-width: 9vw;}
+      #curriculum.enlarged > div:nth-child(3) {min-width: 9vw; height: 60vh;}
 
-      #curriculum.enlarged > div:nth-child(4) {min-width: 6vw;}
+      #curriculum.enlarged > div:nth-child(4) {min-width: 6vw; height: 50vh;}
 
       /** some definitions for #curriculum > div in common styling **/
 
@@ -618,7 +617,7 @@
 
       #curriculum > div:nth-child(4) {min-width: 10vw;}
 
-      [id^="cv-block"] p:nth-child(2)::before {
+      [id^="cv-block"] p:nth-child(3)::before {
         content: "";
         background-image: url("Materials/location.svg");
         background-size: contain;
@@ -636,6 +635,7 @@
       /** div block number indicator **/
 
       #indicator {
+        flex-direction: row;
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -711,7 +711,7 @@
     <div id="studio-container"></div>
     <div id="cv-container">
       <div id="firstrow"></div>
-      <div class="middlestripe"></div>
+      <div id="curriculum" class="small"></div>
       <div id="indicator"></div>
     </div>
     <div id="contact-container">
@@ -764,6 +764,7 @@ const candies      = document.querySelectorAll('.candy');
 const cvBlocks     = JSON.parse(localStorage.getItem('cv')) || [];
 const cvcontainer  = document.getElementById('cv-container');
 const firstrow     = document.getElementById('firstrow');
+const curriculum   = document.getElementById('curriculum');
 const frchildren   = firstrow.children;
 
 // contact page definitions ================================================================================================
@@ -993,53 +994,52 @@ function loadCV() {
 function displayCV() {
 
   firstrow.innerHTML  = '';
-  if (document.getElementById('curriculum')) {
-    const secondrow = document.getElementById('curriculum');
-    secondrow.parentNode.removeChild(secondrow);
-  }
 
   cvBlocks.forEach(index => {
-      const divblock = document.createElement('div');
-      divblock.id = index.id;
+      if (index.id !== 'curriculum') {
+        const divblock = document.createElement('div');
+        divblock.id = index.id;
 
-      // Handle photo block
-      if (divblock.id === 'photo') {
-          divblock.innerHTML = `<img src="${index.block.src}" alt="${index.block.name}">`;
-        // Append divblock to the cvcontainer
-        firstrow.appendChild(divblock);
+        // Handle photo block
+        if (divblock.id === 'photo') {
+            divblock.innerHTML = `<img src="${index.block.src}" alt="${index.block.name}">`;
+          // Append divblock to the cvcontainer
+          firstrow.appendChild(divblock);
+        }
+        // Handle blocks other than "curriculum"
+        else if (divblock.id !== 'curriculum' && index.block) {
+
+            divblock.innerHTML = `<h3>${index.block.h3}</h3>`;
+
+            // Loop through the `line` properties
+            for (let key in index.block) {
+              // Check if the key matches the pattern "line" followed by a number
+              if (key !== 'h3') {
+                  divblock.innerHTML += `<p>${index.block[key]}</p>`;
+              }
+            }
+          // Append divblock to the cvcontainer
+          firstrow.appendChild(divblock);
+        }
       }
-      // Handle blocks other than "curriculum"
-      else if (divblock.id !== 'curriculum' && index.block) {
-
-          divblock.innerHTML = `<h3>${index.block.h3}</h3>`;
-
-          // Loop through the `line` properties
-          for (let key in index.block) {
-            // Check if the key matches the pattern "line" followed by a number
+      else {
+        index.blocks.forEach(bbox => {
+          const currichild = document.createElement('div');
+          currichild.id = `cv-block-${index.blocks.indexOf(bbox)}`;
+          console.log(bbox.bgcolor);
+          if (bbox.bgcolor === '') {
+            currichild.style.backgroundColor = '#' + ((Math.random() * 0xffffff) << 0).toString(16);
+          } else {
+            currichild.style.backgroundColor = bbox.bgcolor;
+          }
+          currichild.innerHTML = `<h3>${bbox.h3}</h3>`;
+          for (let key in bbox) {
             if (key !== 'h3') {
-                divblock.innerHTML += `<p>${index.block[key]}</p>`;
+              currichild.innerHTML += `<p>${bbox[key]}</p>`;
             }
           }
-        // Append divblock to the cvcontainer
-        firstrow.appendChild(divblock);
-      }
-      // Handle curriculum blocks
-      else if (divblock.id === 'curriculum') {
-          index.blocks.forEach(bline => {
-            const divblockC = document.createElement('div');
-            divblockC.id = `cv-block-${index.blocks.indexOf(bline)}`;
-            divblockC.style.backgroundColor = '#' + ((Math.random() * 0xffffff) << 0).toString(16);
-            divblockC.innerHTML = `<h3>${bline.h3}</h3>`;
-            for (let key in bline) {
-            if (key !== 'h3') {
-                divblockC.innerHTML += `<p>${bline[key]}</p>`;
-            }
-          }
-          divblock.appendChild(divblockC);
-          });
-
-        // Append divblock to the cvcontainer
-        cvcontainer.appendChild(divblock);
+        curriculum.appendChild(currichild);
+        });
       }
   });
 }
@@ -1048,25 +1048,31 @@ function displayCV() {
 
 window.addEventListener('click', (event) => {
 
-  console.log(event.target);
+  const currcompr = document.querySelector('.compressed');
+  const firosmall = document.querySelector('.small');
 
-  const middlestripe = document.querySelector('.middlestripe');
-  const firstrow     = document.getElementById('firstrow');
-  const curriculum   = document.getElementById('curriculum');
-
-  if (event.target === middlestripe) {
-    document.querySelector('.middlestripe').classList.toggle('down');
+  if (event.target === currcompr || event.target === firosmall) {
+    
     document.getElementById('firstrow').classList.toggle('compressed');
+    document.getElementById('curriculum').classList.toggle('small');
     document.getElementById('curriculum').classList.toggle('enlarged');
     document.getElementById('indicator').classList.toggle('show');
   }
 });
 
+// curriculum text show =========================================================================================================
+
+function twentyvh() {
+    root.style.setProperty('--fontheight', `${Math.floor(window.screen.height * .12)}px`); // Set the font size
+}
+
 // curriculum count indicator ===================================================================================================
 
 const countindicator = document.getElementById('indicator');
 
-countindicator.innerHTML = `Block <span class="current">${cvBlocks.length}</span> of <span class="total">${document.querySelectorAll('#curriculum > div').length}</span>`;
+console.log(cvBlocks);
+
+countindicator.innerHTML = `<span class="current">${cvBlocks.length}</span> of <span class="total">${cvBlocks[6].blocks.length}</span>`;
 
 // firstrow blocks scalable =====================================================================================================
 
@@ -1199,6 +1205,9 @@ setTimeout(() => {cvcontainer.classList.add('appear')}, 1000);
 
 // dynamic cv composer
 displayCV();
+
+// text size
+twentyvh();
 
 // appearance and disappearance of dynav bar
 dynnav.classList.add('dn-intro');

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <title>Input Sheet</title>
+    <style>
+      /* styles.css */
+      :root {
+        --minheaderwidth: 50vw;
+      }
+
+      body {
+        font-family: "Comfortaa", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;        
+        padding: 2em;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        background-color: antiquewhite;
+        padding: 0 20%;
+      }
+
+      @media screen and (min-width: 815px) {
+        #framer {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          justify-content: center;
+          min-width: var(--minheaderwidth);
+        }        
+      }
+
+      h1, h2, h3, button {
+        text-align: center;
+        padding: 0.5em;
+        border: 2px solid black;
+        border-radius: 0.4em;
+        background-color: darksalmon;
+      }
+
+      h2 {
+        border-width: 2px 0 0 0;
+      }
+
+      h3 {
+        background-color: teal;
+      }
+
+      button {
+        font-family: "Comfortaa", sans-serif;
+        font-weight: 800;
+        background-color: burlywood;
+        padding: 1%;
+        border-radius: 1em;
+        margin: 1%;
+      }
+
+      button:hover {
+        background-color: coral;
+      }
+
+      img {
+        max-width: 100px;
+        max-width: 100px;
+        border-radius: 0.5em;
+        margin: 1em;
+      }
+
+      #product-form, .custom-file-input, .draggable, .row {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+        width: auto;
+        min-width: 66%;
+      }
+
+      .custom-file-input {
+        min-width: 100%;
+        width: 100%;
+        height: auto;
+        padding: 0.8em;
+        margin: 1%;
+        border: 0;
+        border-radius: 0.5em;
+        background-color: aquamarine;
+      }
+
+      .custom-file-input * {
+        margin: 2%;
+      }
+
+      #product-form label {
+          display: block;
+          margin-top: 10px;
+      }
+
+      #product-form input, #product-form textarea {
+        width: 100%;
+        height: auto;
+        padding: 1.2em;
+        margin: 2%;
+        border: 0;
+        border-radius: 0.5em;
+        background-color: aquamarine;
+        text-align: center;
+        font-family: "Comfortaa", sans-serif;
+      }
+
+      #product-form textarea {
+        resize: none;
+        overflow: hidden;
+        min-height: 10vh;
+      }
+
+      #product-sheet {
+        margin-top: 20px;
+        width: 100%;
+        min-width: var(--minheaderwidth);
+      }
+
+      .product-item, .cv-blocks {
+        border: 1px solid darkgoldenrod;
+        border-radius: 1em;
+        padding: 2%;
+        margin: 2%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: bisque;
+      }
+
+      .product-description {
+        text-align: center;
+        padding: 2%;
+      }
+
+      #file-path-button {
+        display: none;
+      }
+
+      #file-path-input {
+        display: block;
+        width: auto;
+        text-align: center;
+        font-family: "Comfortaa", sans-serif;
+      }
+
+      .popupFP {
+        display: block;
+        position: absolute;
+        z-index: 50;
+        top: 25%;
+        left: 25%;
+        width: 50%;
+        height: 50%;
+        background-color: lightcoral;
+      }
+
+      #file-path-buttons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        margin-top: 5%;
+        padding-top: 5%;
+        border-top: 0.3em dashed floralwhite;
+      }
+
+      .product-image {
+        max-width: 20%;
+      }
+
+      #enlister {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      @keyframes ASFfade {
+        0% {opacity: 1;}
+        100% {opacity: 0;}
+      }
+
+      #autosave-feedback {
+        position: fixed;
+        width: 100px;
+        padding: 0.7em;
+        text-align: center;
+        top: 50%;
+        left: 0;
+        z-index: 100;
+        display: block;
+        color: bisque;
+        background-color: brown;
+        border-radius: 0.2em;
+        animation: ASFfade 2s linear 1s 1 forwards;
+      }
+
+      #PSSizeButtons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      #wrapless {
+        display: none;
+      }
+
+      #productsCount {
+        display: flex;
+        justify-content: center;
+        padding: 0.5em;
+        border: 0.2em dashed whitesmoke;
+        margin: 1em;
+      }
+
+      .draggable {
+        cursor: grab;
+        width: 80%;
+        height: auto;
+        flex-direction: row;
+      }
+
+      .draggable::before {
+        content: "↕";
+        margin: 1em 2em;
+      }
+
+    </style>
+</head>
+<body>
+  <div id="framer">
+    <section id="product-input">
+    <h1>Product Input Sheet</h1>
+    <div id="product-form">
+        <div class="draggable" required draggable="true">
+          <div class="row">
+            <label for="product-name">Product Name:</label>
+            <input type="text" id="product-name" name="product-name">
+          </div>
+        </div>
+        <div class="draggable" required draggable="true">
+          <div class="row">
+            <label for="product-category">Category:</label>
+            <input type="number" id="product-category" name="product-category">
+          </div>
+        </div>
+        <div class="draggable" required draggable="true">
+          <div class="row">
+            <label for="product-image">Product Image:</label>
+              <div class="custom-file-input">
+                <input type="file" id="product-image" name="product-image" accept="image/*" style="display: none;">
+                <button id="upload-button">Choose File</button>
+                <span id="file-name">No file chosen</span>
+                <img id="image-preview" src="#" alt="Image Preview" style="display: none; max-width: 100px; margin-top: 10px;">
+              </div>
+          </div>
+        </div>
+        <div class="draggable" required draggable="true">
+          <div class="row">
+            <label for="product-description">Description:</label>
+            <textarea id="product-description" name="product-description"></textarea>
+            <button onclick="generateProductSheet()" type="submit">Add Product</button>
+            <input type="file" id="file-path-input" name="file-path" style="display: none;">
+          </div>
+        </div>
+    </section>
+    <section id="products-management">
+      <div id="file-path-buttons"><button onclick="uploadCV()" type="submit">Upload CV</button><button onclick="uploadProducts()" type="submit">Upload Products</button><button onclick="clearProducts()" type="submit">Clear Products Sheet</button><button onclick="downloadProducts()" type="submit">Download Product Sheet</button></div>
+    </section>
+  </div>
+  <section id="products-display">
+    <span id="productsCount"></span>
+    <div id="product-sheet">
+        <h2>Product Sheet<div id="PSSizeButtons"><button id="wrapmore" onclick="wrapmore()" type="button">-</button><button id="wrapless" onclick="wrapless()" type="button">+</button></div></h2>
+        <div id="enlister"></div>
+    </div>
+  </section>
+<script>
+  // Definitions
+
+  let name, category, description, image, identifier;
+  const products = JSON.parse(localStorage.getItem('products')) || [];
+  const cvBlocks = JSON.parse(localStorage.getItem('cv')) || [];
+  const reader = new FileReader();
+  const enlister = document.getElementById('enlister');
+  const fileInput = document.getElementById('file-path-input');
+
+  // Functions
+
+  function fileInputListener() {
+    fileInput.accept = '.json';
+    fileInput.click(); 
+  }
+
+  // Products Sheet Fetch upon DOM loading =====================================================================================================
+
+  document.addEventListener('DOMContentLoaded', function() {
+    //const products = JSON.parse(localStorage.getItem('products')) || [];
+    displayProducts(products);
+    displayCV(cvBlocks);
+    const reader = new FileReader();
+    let name, category, description, image, identifier;
+    //const path = localStorage.getItem('file-path-input') || '';
+  });
+
+  // Display of exisiting products ================================================================================================================
+
+  function displayProducts(products) {
+      document.getElementById('productsCount').innerHTML = `Products Count: ${products.length}`;
+
+      products.forEach((product, index) => {
+          const productItem = document.createElement('div');
+          productItem.classList.add('product-item');
+          productItem.innerHTML = `
+              <p style="display: none">Order: ${product.identifier}</p>
+              <h3>${product.name}</h3>
+              <p>${product.category}</p>
+              <p>${product.description}</p>
+              <img src="${product.image}" alt="${product.name}" class="product-image">
+              <button onclick="deleteProduct(${index})">Delete</button>
+            `;
+          enlister.appendChild(productItem);
+      });
+  }
+
+  // Display of CV ================================================================================================================
+  function displayCV(cvBlocks) {
+
+    cvBlocks.forEach(index => {
+        const divblock = document.createElement('div');
+        divblock.id = index.id;
+
+        // Handle photo block
+        if (divblock.id === 'photo') {
+            divblock.innerHTML = `<img src="${index.block.src}" alt="${index.block.name}">`;
+        }
+        // Handle blocks other than "curriculum"
+        else if (divblock.id !== 'curriculum' && index.block) {
+
+            divblock.innerHTML = `<h3>${index.block.h3}</h3>`;
+
+            // Loop through the `line` properties
+            for (let key in index.block) {
+              // Check if the key matches the pattern "line" followed by a number
+              if (key !== 'h3') {
+                  divblock.innerHTML += `<p>${index.block[key]}</p>`;
+              }
+            }
+        }
+        // Handle curriculum blocks
+        else if (divblock.id === 'curriculum') {
+            index.blocks.forEach(bline => {
+              const divblockC = document.createElement('div');
+              divblockC.id = `cv-block-${index.blocks.indexOf(bline)}`;
+              divblockC.innerHTML = `<h3>${bline.h3}</h3>`;
+              for (let key in bline) {
+              if (key !== 'h3') {
+                  divblockC.innerHTML += `<p>${bline[key]}</p>`;
+              }
+            }
+            divblock.appendChild(divblockC);
+            });
+        }
+
+        // Append divblock to the enlister
+        enlister.appendChild(divblock);
+    });
+}
+
+
+  // Image Upload and Preview ===================================================================================================================
+
+  document.getElementById('upload-button').addEventListener('click', function() {
+      document.getElementById('product-image').click();
+  });
+
+  document.getElementById('product-image').addEventListener('change', handleFileSelect);
+
+  function handleFileSelect(event) {
+      const file = event.target.files[0];
+      const fileNameElement = document.getElementById('file-name');
+
+      if (!file) {
+          fileNameElement.textContent = 'No file chosen';
+          document.getElementById('image-preview').style.display = 'none';
+          document.getElementById('image-preview').src = '#';
+          return;
+      }
+
+      fileNameElement.textContent = file.name;
+
+      reader.onload = function(e) {
+          const img = document.getElementById('image-preview');
+          img.src = e.target.result;
+          img.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+  }
+
+  // Product Sheet Generation ===================================================================================================================
+  function generateProductSheet() {
+      name = document.getElementById('product-name').value;
+      category = document.getElementById('product-category').value;
+      description = document.getElementById('product-description').value;
+      image = document.getElementById('image-preview').src;
+
+      const products = JSON.parse(localStorage.getItem('products')) || [];
+      
+      identifier = products.length + 1;
+      if (isNaN(identifier) || identifier <= 0) {
+          identifier = 1;
+      }
+      else if (products.some(p => p.identifier === identifier)) {
+        let i = 1;
+        while (products.some(p => p.identifier === i)) {
+            i++;
+        }
+        identifier = i;
+      }
+      if (!name || !category || !description || image === '#') {
+          alert('Please fill in all fields and select an image.');
+          return;
+      }
+
+      const product = { name, category, description, image, identifier };
+      products.push(product);
+      localStorage.setItem('products', JSON.stringify(products));
+
+      displayProducts(products);
+      
+      // Clear the input fields
+      document.getElementById('product-name').value = '';
+      document.getElementById('product-category').value = '';
+      document.getElementById('product-description').value = '';
+      document.getElementById('product-image').value = '';
+      document.getElementById('image-preview').style.display = 'none';
+      document.getElementById('image-preview').src = '#';
+      document.getElementById('file-name').textContent = 'No file chosen';
+  }
+
+  // Product Sheet Upload =======================================================================================================================
+
+  function uploadProducts() {
+    fileInputListener();
+
+    fileInput.addEventListener('change', function() {
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const productsJSON = JSON.parse(event.target.result);
+                localStorage.setItem('products', JSON.stringify(productsJSON));
+                displayProducts(productsJSON);
+            }
+            reader.readAsText(file);
+        }
+    });
+  }; 
+
+  // CV Sheet Upload ============================================================================================================================
+
+  function uploadCV() {
+    fileInputListener();
+
+    fileInput.addEventListener('change', function() {
+        const file = fileInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const cvJSON = JSON.parse(event.target.result);
+                localStorage.setItem('cv', JSON.stringify(cvJSON));
+                displayCV(cvJSON);
+            }
+            reader.readAsText(file);
+        }
+    });
+  }; 
+
+  // Download Product Sheet and set Download Path ===============================================================================================
+
+  function downloadProducts() {
+    const a = document.createElement("a");
+    const file = new Blob([JSON.stringify(products)], { type: "application/json" });
+    a.href = URL.createObjectURL(file);
+    a.setAttribute("download", "product-sheet.json");
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+        document.body.removeChild(a);
+      window.URL.revokeObjectURL(a.href);
+    }, 0);
+  }
+
+  // Clear Products Sheet ========================================================================================================================
+  function clearProducts() {
+    const confirmClear = confirm('Are you sure you want to clear the products sheet? This action is irreversible.');
+    if (!confirmClear) return;
+  
+    products.length = 0;
+    localStorage.setItem('products', JSON.stringify(products));
+    cvBlocks.length = 0;
+    localStorage.setItem('cv', JSON.stringify(cvBlocks));
+    
+    displayProducts(products);
+    displayCV(cvBlocks);
+  }
+
+  // Delete Product ==============================================================================================================================
+  function deleteProduct(index) {
+    products.splice(index, 1);
+    localStorage.setItem('products', JSON.stringify(products));
+    displayProducts(products);
+  }
+
+  // Wrapper Function ============================================================================================================================
+
+  const wrapIndex = ["95%","90%","75%","66%","60%","50%","40%","33%","25%","10%","5%"];
+
+  let wrapCurrentValue = wrapIndex[0];
+
+  // standard procedure of wrapping
+  function wrap() {
+    enlister.style.flexFlow = 'wrap';
+
+    const prodItem = document.querySelectorAll('.product-item');
+
+    prodItem.forEach(item => {
+      item.style.height = 'auto';
+      item.style.width = wrapCurrentValue;
+    });
+
+    if (wrapCurrentValue === wrapIndex[10]) {
+      document.getElementById('wrapmore').style.display = 'none';
+      document.getElementById('wrapless').style.display = 'block';
+    }
+    else if (wrapCurrentValue === wrapIndex[0]) {
+      document.getElementById('wrapmore').style.display = 'block';
+      document.getElementById('wrapless').style.display = 'none';
+    }
+    else {
+      document.getElementById('wrapless').style.display = 'block';
+      document.getElementById('wrapmore').style.display = 'block';
+    }
+  }
+
+  // wrapmore
+  function wrapmore() {
+    wrapCurrentValue = wrapIndex[(wrapIndex.indexOf(wrapCurrentValue) + 1)];
+    wrap();
+  }
+
+  // wraplesl
+  function wrapless() {
+    wrapCurrentValue = wrapIndex[(wrapIndex.indexOf(wrapCurrentValue) - 1)];
+    wrap();
+  }
+
+  // draggable div elements ============================================================================================================================
+  // credits to Alexander Sinigerov
+/*
+  function dragElement(elmnt) {
+    var rowSize = 100; // => container height / number of items
+    var container = document.querySelector(".product-input");
+    var listItems = Array.from(document.querySelectorAll(".draggable")); // Array of elements
+    var sortables = listItems.map(Sortable); // Array of sortables
+    var total = sortables.length;
+
+    TweenLite.to(container, 0.5, { autoAlpha: 1 });
+
+    function changeIndex(item, to) {
+      // Change position in array
+      arrayMove(sortables, item.index, to);
+
+      // Change element's position in DOM. Not always necessary. Just showing how.
+      if (to === total - 1) {
+        container.appendChild(item.element);
+      } else {
+        var i = item.index > to ? to : to + 1;
+        container.insertBefore(item.element, container.children[i]);
+      }
+
+      // Set index for each sortable
+      sortables.forEach((sortable, index) => sortable.setIndex(index));
+    }
+
+    function Sortable(element, index) {
+      var content = element.querySelector(".item-content");
+      var order = element.querySelector(".order");
+
+      var animation = TweenLite.to(content, 0.3, {
+        boxShadow: "rgba(0,0,0,0.2) 0px 16px 32px 0px",
+        force3D: true,
+        scale: 1.1,
+        paused: true
+      });
+
+      var dragger = new Draggable(element, {
+        onDragStart: downAction,
+        onRelease: upAction,
+        onDrag: dragAction,
+        cursor: "inherit",
+        type: "y"
+      });
+
+      // Public properties and methods
+      var sortable = {
+        dragger: dragger,
+        element: element,
+        index: index,
+        setIndex: setIndex
+      };
+
+      TweenLite.set(element, { y: index * rowSize });
+
+      function setIndex(index) {
+        sortable.index = index;
+        order.textContent = index + 1;
+
+        // Don't layout if you're dragging
+        if (!dragger.isDragging) layout();
+      }
+
+      function downAction() {
+        animation.play();
+        this.update();
+      }
+
+      function dragAction() {
+        // Calculate the current index based on element's position
+        var index = clamp(Math.round(this.y / rowSize), 0, total - 1);
+
+        if (index !== sortable.index) {
+          changeIndex(sortable, index);
+        }
+      }
+
+      function upAction() {
+        animation.reverse();
+        layout();
+      }
+
+      function layout() {
+        TweenLite.to(element, 0.3, { y: sortable.index * rowSize });
+      }
+
+      return sortable;
+    }
+
+      // Changes an elements's position in array
+      function arrayMove(array, from, to) {
+        array.splice(to, 0, array.splice(from, 1)[0]);
+      }
+
+      // Clamps a value to a min/max
+      function clamp(value, a, b) {
+        return value < a ? a : value > b ? b : value;
+      }
+
+} */
+
+</script>
+</body>
+</html>

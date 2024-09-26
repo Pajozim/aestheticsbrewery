@@ -121,7 +121,7 @@
 
       /* repetitive styles ---------------------------------------- */
 
-      .page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, .candy, #currvitae, #contact, #contact-container, .button-container, #cv-container, [id*="row"], #curriculum, #curriculum > div, #curriculum.enlarged > div, #firstrow > div, #firstrow.compressed:hover::before, #curriculum.small:hover::before, #indicator {
+      .page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, .candy, #currvitae, #contact, #contact-container, .button-container, #cv-container, [id*="row"], #curriculum, #curriculum > div, #curriculum.enlarged > div, #firstrow > div, #firstrow.compressed:hover::before, #curriculum.small:hover::before, #curriculum.enlarged > div:not(:first-child), #indicator {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -500,9 +500,9 @@
         text-align: center;
         font-weight: bold;
         position: absolute;
-        text-size-adjust: 100%;
         width: 100vw;
-        height: 20vh;
+        height: 18vh;
+        padding: 1vh;
         font-size: var(--fontheight);
         position: absolute;
         z-index: 1;
@@ -531,7 +531,7 @@
 
       /** #firstrow > div:not(#photo) in common styling **/
 
-      #firstrow > [id].ixpanded {
+      #firstrow > div.ixpanded {
         height: fit-content;
         padding: 5% !important;
         position: absolute;
@@ -541,13 +541,14 @@
         border-radius: 1em;
         align-items: flex-start;
         transform: translate(-50%, -50%);
+        font-size: var(--changfontsize) * 1.2 !important;
       }
 
-      #firstrow > [id].ixpanded img {
+      #firstrow > div.ixpanded img {
         border-radius: 1em;
       }
 
-      #firstrow > [id].ixpanded:hover {
+      #firstrow > div.ixpanded:hover {
         cursor: pointer;
         transform-origin: left top;
         scale: 1.2;
@@ -580,25 +581,6 @@
         top: 80vh;
       }
 
-      #curriculum.enlarged {
-        height: 80vh;
-      }
-
-      #curriculum.enlarged > div {
-        padding: 3%;
-        align-items: flex-start;
-        flex-wrap: nowrap;
-        overflow: hidden;
-      }
-
-      #curriculum.enlarged > div:nth-child(1) {min-width: 75vw;}
-
-      #curriculum.enlarged > div:nth-child(2) {min-width: 15vw; height: 70vh;}
-
-      #curriculum.enlarged > div:nth-child(3) {min-width: 9vw; height: 60vh;}
-
-      #curriculum.enlarged > div:nth-child(4) {min-width: 6vw; height: 50vh;}
-
       /** some definitions for #curriculum > div in common styling **/
 
       #curriculum > div {
@@ -617,7 +599,7 @@
 
       #curriculum > div:nth-child(4) {min-width: 10vw;}
 
-      [id^="cv-block"] p:nth-child(3)::before {
+      [id^="cv-block"] p:nth-child(2)::before, #curriculum.enlarged > div p:nth-child(2)::before {
         content: "";
         background-image: url("Materials/location.svg");
         background-size: contain;
@@ -628,9 +610,23 @@
         margin-right: 1%;
       }
 
-      [id^="cv-block"].envisage {
-        min-width: none;
+      #curriculum.enlarged {
+        height: 80vh;
       }
+
+      #curriculum.enlarged > div {
+        height: 98%;
+        margin: 1% 0;
+        padding: 3%;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        border-radius: .5em;
+        font-size: var(--changfontsize) * 1.2;
+      }
+
+      #curriculum.enlarged > div p:nth-child(2)::before {width: calc(var(--changfontsize) * 1.2); height: calc(var(--changfontsize) * 1.2);}
+
 
       /** div block number indicator **/
 
@@ -1024,9 +1020,16 @@ function displayCV() {
       }
       else {
         index.blocks.forEach(bbox => {
+          console.log(bbox); // Check data before appending
+
           const currichild = document.createElement('div');
           currichild.id = `cv-block-${index.blocks.indexOf(bbox)}`;
-          console.log(bbox.bgcolor);
+          if (currichild.id === 'cv-block-0') {
+            currichild.classList.add('envisage');
+          }
+          else if (currichild.id.match(/cv-block-[1-3]/)) {
+            currichild.classList.add('derriere');            
+          }
           if (bbox.bgcolor === '') {
             currichild.style.backgroundColor = '#' + ((Math.random() * 0xffffff) << 0).toString(16);
           } else {
@@ -1034,7 +1037,7 @@ function displayCV() {
           }
           currichild.innerHTML = `<h3>${bbox.h3}</h3>`;
           for (let key in bbox) {
-            if (key !== 'h3') {
+            if (key !== 'h3' && key !== 'bgcolor') {
               currichild.innerHTML += `<p>${bbox[key]}</p>`;
             }
           }
@@ -1063,15 +1066,12 @@ window.addEventListener('click', (event) => {
 // curriculum text show =========================================================================================================
 
 function twentyvh() {
-    root.style.setProperty('--fontheight', `${Math.floor(window.screen.height * .12)}px`); // Set the font size
+    root.style.setProperty('--fontheight', `${window.innerHeight * .1}px`); // Set the font size
 }
 
 // curriculum count indicator ===================================================================================================
 
 const countindicator = document.getElementById('indicator');
-
-console.log(cvBlocks);
-
 countindicator.innerHTML = `<span class="current">${cvBlocks.length}</span> of <span class="total">${cvBlocks[6].blocks.length}</span>`;
 
 // firstrow blocks scalable =====================================================================================================
@@ -1085,6 +1085,82 @@ window.addEventListener('click', (event) => {
     // Toggle the 'ixpanded' class on the parent element with an id
     parentWithId.classList.toggle('ixpanded');
   }
+});
+
+// wheeling/swiping through curriculum blocks ===================================================================================
+
+function classjuggler(p) {
+p.classList.remove('hidden');
+p.classList.add('expanded');      
+}
+
+window.addEventListener('wheel', function(event) {
+  //left swipe
+  if (event.deltaY > 0 && event.target.classList.contains('expanded')) {
+    const prodIndOld = document.getElementById(`${event.target.id}`);
+    prodIndOld.classList.remove('expanded');
+    prodIndOld.classList.add('hidden');
+    const prodIndNewId = Number(event.target.id.slice(1)) + 1;
+    if (prodIndNewId > products.length) {
+      const prodIndNew = document.getElementById(`c1`);
+      classjuggler(prodIndNew);
+    } else {
+      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+      classjuggler(prodIndNew)
+    }
+  }
+  //right swipe
+  else if (event.deltaY < 0 && event.target.classList.contains('expanded')) {      
+    const prodIndOld = document.getElementById(`${event.target.id}`);
+    prodIndOld.classList.remove('expanded');
+    prodIndOld.classList.add('hidden');
+    const prodIndNewId = Number(event.target.id.slice(1)) - 1;
+    if (prodIndNewId <= 0) {
+      const prodIndNew = document.getElementById(`c${products.length}`);
+      classjuggler(prodIndNew)
+    } else {
+      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+      classjuggler(prodIndNew)
+    }
+  }
+});
+
+window.addEventListener('keydown', function(event) {
+// Left swipe 
+if (event.key === 'ArrowLeft' && event.type === 'keydown') {
+  // Find the currently expanded element
+  const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
+  if (prodIndOld) {
+    prodIndOld.classList.remove('expanded');
+    prodIndOld.classList.add('hidden');
+    const prodIndNewId = Number(prodIndOld.id.slice(1)) + 1; // Get the new product ID
+    if (prodIndNewId > products.length) {
+      // Wrap around to the first product if the new ID exceeds the total number of products
+      const prodIndNew = document.getElementById('c1');
+      classjuggler(prodIndNew);
+    } else {
+      // Move to the next product element
+      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+      classjuggler(prodIndNew);
+    }
+  }
+}
+//right swipe
+else if (event.key === 'ArrowRight' && event.type === 'keydown') {
+  const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
+  if (prodIndOld) {
+    prodIndOld.classList.remove('expanded');
+    prodIndOld.classList.add('hidden');
+    const prodIndNewId = Number(prodIndOld.id.slice(1)) - 1;
+    if (prodIndNewId <= 0) {
+      const prodIndNew = document.getElementById(`c${products.length}`);
+      classjuggler(prodIndNew)
+    } else {
+      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
+      classjuggler(prodIndNew)
+    }
+  }
+}
 });
 
 </script>
@@ -1184,7 +1260,7 @@ studioC.innerHTML = '';
 if (window.screen.width > window.screen.height) {
 
   document.addEventListener('DOMContentLoaded', () => {
-    root.style.setProperty('--changfontsize', `${(Math.floor(window.screen.width / 100) - 2)}px`);
+    root.style.setProperty('--changfontsize', `${(Math.floor(window.innerWidth / 100) - 2)}px`);
     }); 
 }
 

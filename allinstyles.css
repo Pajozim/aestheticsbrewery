@@ -1,0 +1,732 @@
+/****************************************************** core-styles ******************************************************/
+/* root styles -------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  /*--calcmarginY: 0%;
+  --calcmarginX: 0%; */
+  --fontsize: 1rem;
+  --changfontsize: 1rem;
+  --fontheight: 1rem;
+  --font-family: "Comfortaa", "Noto", sans-serif;
+  --font-optical-sizing: auto;
+  --font-weight: 300;
+  --font-style: normal;
+  --fontcolor: #fff;
+  --pfelemwidth: 95vw;
+  --pfelemheight: 90vh;
+  --inpbutmargin: 1vh;
+  --inpbutpad: 1vh;
+  --inpbutbg: bisque;
+  --inpbutcol: #222;
+  --inpbutborwidth: 0;
+  --inpbutborstyle: none;
+  --inpbutborcol: transparent;
+  --inpbutborimg: none;
+  font-family: var(--font-family);
+  font-style: var(--font-style);
+  font-size: var(--fontsize);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-weight: var(--font-weight);
+}
+
+@font-face {
+  font-family: var(--font-family);
+  font-style: var(--font-style);
+  font-size: var(--fontsize);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-weight: var(--font-weight);
+  src: url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap')
+    format("woff2");
+}
+
+:focus-visible {
+  outline: 2px solid darksalmon;
+  outline-offset: -3px;
+  border: 1px solid bisque;
+}
+
+
+/* core styles -------------------------------------------- */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #222;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--fontcolor);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* input & button styles -------------------------------------------- */
+
+input, button, textarea {
+  font-size: var(--fontsize);
+  font-family: var(--font-family);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-weight: var(--font-weight);
+  font-style: var(--font-style);
+  text-rendering: auto;
+  color: var(--inpbutcol);
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  background-color: var(--inpbutbg);
+  margin: var(--inpbutmargin);
+  padding: var(--inpbutpad);
+  border-width: var(--inpbutborwidth);
+  border-style: var(--inpbutborstyle);
+  border-color: var(--inpbutborcol);
+  border-image: var(--inpbutborimg);
+  padding-block: var(--inpbutpad);
+  padding-inline: var(--inpbutpad);
+}
+
+input {
+  appearance: auto;
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+}
+
+button {
+  align-items: flex-start;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* repetitive styles ---------------------------------------- */
+
+.page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, .candy, #currvitae, #contact, #contact-container, .button-container, #cv-container, [id*="row"], #curriculum, #curriculum.enlarged > div, #firstrow > div, #firstrow.compressed:hover::before, #curriculum.small:hover::before, #indicator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* dynamic navigation bar ------------------------------------ */
+
+#dynamic-nav {
+  cursor: pointer;
+  visibility: hidden;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10vw;
+  height: 8vh;
+  z-index: 10;
+  background-color: darkcyan;
+  border-radius: 16px;
+  padding: 2%;
+  box-sizing: border-box;
+}
+
+#dynamic-nav.nkey1 {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+}
+
+#dynamic-nav.nkey2 {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+@keyframes dn-intro {
+  0% {opacity: 0; visibility: hidden;}
+  33%, 80% {opacity: 1; visibility: visible;}
+  100% {opacity: 0; visibility: hidden;}
+}
+
+#dynamic-nav.dn-intro {
+  animation: dn-intro 3s linear 1s forwards;
+}
+
+/****************************************************** startpage-styles ******************************************************/
+/* landing page---------------------------------------------- */
+
+.page-flipper {
+  justify-content: space-evenly;
+  position: relative;
+  width: var(--pfelemwidth);
+  height: var(--pfelemheight);
+  background-color: salmon;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /*background-image: url(Materials/sbsb_nebula.jpg);
+  background-size: cover;*/
+}
+
+[id*="iR"] {
+  flex-direction: row;
+  width: var(--pfelemwidth);
+}
+
+#idiomsiR {
+  height: 10vh;
+  justify-content: center;
+}
+
+#idiomsiR > div {
+  width: 5vw;
+  height: 4vh;
+  background-color: palevioletred;
+  margin: 0 1em;
+  padding: 0 1em;
+  border-radius: 9px;
+}
+
+#btnsiR {
+  height: 70vh;
+  justify-content: space-around;
+}
+
+#btnsiR > div {
+  width: 30vw;
+  height: 23vh;
+  border-radius: 15px;
+}
+
+#contactiR {
+  height: 10vh;
+  justify-content: center;
+}
+
+#contactiR > div {
+  width: 5vw;
+  height: 4vh;
+  background-color: tan;
+  margin: 0 1em;
+  padding: 0 1em;
+  border-radius: 9px;
+}
+
+@keyframes l1-appear {from {opacity: 0;} to {opacity: 1;;}}
+
+#stpg-container.disappear {
+  display: none;
+  animation: l1-appear 1s ease-out reverse;
+}
+
+#stpg-container.appear {
+  animation: l1-appear 1s linear forwards;
+}
+
+#studio, #currvitae, #contact, #idiomsiR > div {
+  cursor: pointer;
+}
+
+/* studio page ---------------------------------------------- */
+
+@keyframes s-flip {
+0% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}
+49% {background-color: salmon;}
+50% {transform: perspective(2000px) rotateY(-90deg); width: 95vw; height: 90vh;}
+51% {background-color: sandybrown;}
+99.99% {transform: perspective(1500px) rotateY(-180deg);}
+100% {background-color: sandybrown; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
+
+@keyframes s-flip-rev {
+0% {background-color: sandybrown; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
+10% {width: 95vw; height: 90vh;}
+49% {background-color: sandybrown;}
+50% {transform: perspective(2000px) rotateY(90deg); width: 95vw; height: 90vh;}
+51% {background-color: salmon;}
+99.99% {transform: perspective(1500px) rotateY(180deg);}
+100% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}}
+
+#studio {
+  background-color: sandybrown;
+}
+
+.ftoSS {
+  animation: s-flip 1s ease-out forwards;
+}
+
+.ftoISfSS {
+  animation: s-flip-rev 1s ease-out forwards;
+}
+
+/* curriculum page ---------------------------------------------- */
+
+@keyframes c-flip {
+  0% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}
+  49% {background-color: salmon;}
+  50% {transform: perspective(2000px) rotateY(90deg); width: 95vw; height: 90vh;}
+  51% {background-color: steelblue;}
+  99.99% {transform: perspective(1500px) rotateY(180deg);}
+  100% {background-color: steelblue; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
+
+@keyframes c-flip-rev {
+  0% {background-color: steelblue; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
+  10% {width: 95vw; height: 90vh;}
+  49% {background-color: steelblue;}
+  50% {transform: perspective(2000px) rotateY(-90deg); width: 95vw; height: 90vh;}
+  51% {background-color: salmon;}
+  99.99% {transform: perspective(1500px) rotateY(-180deg);}
+  100% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}}
+
+#currvitae {
+  background-color: steelblue;
+}
+
+.ftoCS {
+  animation: c-flip 1s ease-out forwards;
+}
+
+.ftoISfCS {
+  animation: c-flip-rev 1s ease-out forwards;
+}
+
+/* contact page---------------------------------------------- */
+
+@keyframes co-flip {
+  0% {background-color: salmon; transform: perspective(1500px) rotateX(0deg);}
+  49% {background-color: salmon;}
+  50% {transform: perspective(2000px) rotateX(90deg); width: 95vw; height: 90vh;}
+  51% {background-color: tan;}
+  99.99% {transform: perspective(1500px) rotateX(180deg);}
+  100% {background-color: tan; transform: perspective(1500px) rotateX(0deg); width: 100vw; height: 100vh;}}
+
+@keyframes co-flip-rev {
+  0% {background-color: tan; transform: perspective(1500px) rotateX(0deg); width: 100vw; height: 100vh;}
+  10% {width: 95vw; height: 90vh;}
+  49% {background-color: tan;}
+  50% {transform: perspective(2000px) rotateX(-90deg); width: 95vw; height: 90vh;}
+  51% {background-color: salmon;}
+  99.99% {transform: perspective(1500px) rotateX(-180deg);}
+  100% {background-color: salmon; transform: perspective(1500px) rotateX(0deg);}}
+
+#contact {
+  background-color: tan;
+}
+
+.ftoCo {
+  animation: co-flip 1s ease-out forwards;
+}
+
+.ftoISfCo {
+  animation: co-flip-rev 1s ease-out forwards;
+}   
+
+/****************************************************** studio-styles ******************************************************/
+/* studio composer ------------------------------------------------------------------------- */
+
+[id*="container"] {
+width: 100%;
+height: 100vh;
+}
+
+#studio-container {
+display: none;
+overflow: hidden;
+background-color: #333;
+}
+
+@keyframes s-appear {from {opacity: 0;} to {opacity: 1;}}
+
+#studio-container.appear {
+  display: grid;
+  animation: s-appear 1s ease-in forwards;
+}
+
+#studio-container.disappear {
+  display: none;
+  animation: s-appear 2s ease-in 1s reverse;
+}
+
+#studio-container.flexed {
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: darkcyan;
+}
+
+/* candy boxes ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+.candy {
+overflow: hidden;
+box-sizing: border-box;
+transition: all 0.2s ease-in-out;
+}
+
+.candy:hover {
+scale: 1.05;
+border-radius: 16px;
+cursor: pointer;
+}
+
+.candy.expanded {
+margin: 2.5%;
+width: 95vw;
+height: 95vh;
+border-radius: 16px;
+scale: none;
+}
+
+.candy.hidden {
+display: none;
+}
+
+/* filler box */
+
+#Filler {
+background-color: darkviolet;
+}
+
+#Filler:hover {
+cursor: default;
+scale: 1;
+border-radius: 0;
+}
+
+#workingon {
+object-fit: contain;
+}
+
+#input-box {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+align-items: center;
+justify-content: center;
+width: fit-content;
+height: auto;
+padding: 2em 3em;
+}
+
+/* categories colors ------------------------------------------------------------------------- */
+
+.webdesign {
+background-color: midnightblue;
+}
+
+.printdesign {
+background-color: teal;
+}
+
+.artcrafts {
+background-color: tomato;
+}
+
+.digitaldesign {
+background-color: goldenrod;
+}
+
+/****************************************************** cv-styles ******************************************************/
+/* cv container */
+
+#cv-container {
+  display: none;
+}
+
+#cv-container > * {
+  overflow: hidden;
+}
+
+#cv-container.appear {
+  display: flex;
+  animation: l1-appear 1s linear forwards;
+}
+
+#cv-container.disappear {
+  display: none;
+  animation: l1-appear 2s linear 1s reverse;
+}
+
+/* common styling */
+
+#firstrow, #curriculum {
+  width: 100vw;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+
+#firstrow {
+  align-items: flex-start;
+}
+
+#firstrow > div:not(#photo), #curriculum > div {
+  padding: 1%;
+  box-sizing: border-box;
+  font-size: var(--changfontsize);
+}
+
+/*** first row ***/
+
+#firstrow {
+  height: 80vh;
+}
+
+#firstrow.compressed {
+  height: 20vh;
+}
+
+#firstrow.compressed:hover::before, #curriculum.small:hover::before {
+  cursor: pointer;
+  content: "expand";
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  width: 100vw;
+  height: 18vh;
+  padding: 1vh;
+  font-size: var(--fontheight);
+  position: absolute;
+  z-index: 1;
+  color: #222;
+  background-color: rgba(230, 230, 230, 0.7);
+}
+
+#firstrow.compressed:hover::before {
+  top: 0;
+}
+
+#firstrow > div {
+  min-width: 16.66vw;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.8s ease-in-out;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#firstrow > div:hover:not(.ixpanded) {
+  cursor: pointer;
+  scale: 1.2;
+  transform-origin: top;
+}
+
+/** #firstrow > div:not(#photo) in common styling **/
+
+#firstrow > div.ixpanded {
+  height: fit-content;
+  padding: 5% !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  border-radius: 1em;
+  align-items: flex-start;
+  transform: translate(-50%, -50%);
+  font-size: var(--changfontsize) * 1.2 !important;
+}
+
+#firstrow > div.ixpanded img {
+  border-radius: 1em;
+}
+
+#firstrow > div.ixpanded:hover {
+  cursor: pointer;
+  transform-origin: left top;
+  scale: 1.2;
+}
+
+#firstrow  p {
+  margin-left: 5%;
+}
+
+#photo         { transform-origin: top right;}
+#personal-data { background-color: rgb(173, 110, 28); }
+#education     { background-color: rgb(102, 131, 2); }
+#languages     { background-color: rgb(81, 44, 38); }
+#skills        { background-color: rgb(121, 119, 154); }
+#tools         { background-color: rgb(193, 20, 5); transform-origin: top left;}
+
+/*** curriculum/second row ***/
+
+#curriculum {/* other definitions at firstrow segment */
+  align-items: center;
+}
+
+#curriculum.small {
+  height: 20vh;
+}
+
+/*** #curriculum.small:hover::before in first row styling block ***/
+
+#curriculum.small:hover::before {
+  top: 80vh;
+}
+
+/** some definitions for #curriculum > div in common styling **/
+
+#curriculum.small > div {
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.8s ease-in-out;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#curriculum.small > div:nth-child(1) {min-width: 45vw;}
+
+#curriculum.small > div:nth-child(2) {min-width: 28vw;}
+
+#curriculum.small > div:nth-child(3) {min-width: 17vw;}
+
+#curriculum.small > div:nth-child(4) {min-width: 10vw;}
+
+#curriculum.small > div h3 {margin-left: 1%; justify-content: center;}
+
+#curriculum.small > div p:not(:nth-child(2)) {display: none;}
+
+[id^="cv-block"] p:nth-child(2)::before, #curriculum.enlarged > div p:nth-child(2)::before {
+  content: "";
+  background-image: url("Materials/location.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: var(--changfontsize);
+  height: var(--changfontsize);
+  display: inline-block; /* Ensure the element displays */
+  margin-right: 1%;
+}
+
+[id^="cv-block"] p:nth-child(2), #curriculum.enlarged > div p:nth-child(2) {
+  white-space: nowrap;
+}
+
+#curriculum.enlarged {
+  height: 80vh;
+}
+
+#curriculum.enlarged > div {
+  height: 98%;
+  margin: 1% 0;
+  padding: 3%;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  border-radius: .5em;
+  font-size: var(--changfontsize) * 1.2;
+}
+
+#curriculum.enlarged > div p:nth-child(2)::before {width: calc(var(--changfontsize) * 1.2); height: calc(var(--changfontsize) * 1.2);}
+
+#curriculum.enlarged > div.hidden {display: none;}
+
+#curriculum.enlarged > div[class^="futur"] {align-items: center; border-radius: .5em 0 0 .5em;}
+#curriculum.enlarged > div[class^="futur"] h3 {transform: rotate(-90deg); white-space: nowrap;}
+#curriculum.enlarged > div[class^="futur"] p {display: none;}
+
+#curriculum.enlarged > div.futur2 {min-width: 11vw; height: 80%;}
+
+#curriculum.enlarged > div.futur {min-width: 17vw; height: 90%;}
+
+#curriculum.enlarged > div.envisage {min-width: 45vw;}
+
+#curriculum.enlarged > div[class^="passee"] {flex-direction: row; align-items: center; border-radius: 0 .5em .5em 0;}
+
+#curriculum.enlarged > div.passee1 {min-width: 27vw; height: 90%;}
+
+#curriculum.enlarged > div.passee2 {min-width: 17vw; height: 80%;}
+
+#curriculum.enlarged > div.passee3 {min-width: 11vw; height: 70%;}
+
+#curriculum.enlarged > div[class^="passee"] p {display: none;}
+#curriculum.enlarged > div[class^="passee"] h3 {transform: rotate(90deg); white-space: nowrap;}
+
+/* #curriculum.enlarged > div:nth-child(1) {min-width: 75vw;}
+
+#curriculum.enlarged > div:nth-child(2) {min-width: 15vw; height: 70vh; border-radius: ;}
+
+#curriculum.enlarged > div:nth-child(3) {min-width: 9vw; height: 60vh;}
+
+#curriculum.enlarged > div:nth-child(4) {min-width: 6vw; height: 50vh;}
+
+#curriculum.enlarged > div:not(:first-child) {flex-direction: row;}
+
+#curriculum.enlarged > div:not(:first-child) h3 {transform: rotate(90deg); white-space: nowrap;}
+#curriculum.enlarged > div:not(:first-child) p {display: none;}
+
+/** div block number indicator **/
+
+#indicator {
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10vw;
+  height: 6vh;
+  border-radius: var(--changfontsize) var(--changfontsize) 0 0;
+  background-color: rgba(55, 55, 55, 0.8);
+  visibility: hidden;
+}
+
+#indicator.show {
+  visibility: visible;
+}
+
+/****************************************************** contact-styles ******************************************************/
+#contact-container {
+  display: none;
+}
+
+#contact-container.on {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#contact-container > * {
+  width: 40vw;
+  max-width: 40vw;
+}
+
+#c-name {
+  margin-top: 0%;
+  border-radius: 15px 15px 0 0;
+}
+
+#c-message {
+  margin-bottom: 0%;
+  border-radius: 0 0 15px 15px;
+  height: 33vh;
+  max-height: fit-content;
+  resize: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container {
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 2vh;
+}
+
+#c-submit {
+  background-color: darksalmon;
+  width: fit-content;
+  border-radius: 15px;
+  padding: 1.5vh 2vw;
+  color: var(--fontcolor);
+}
+
+#c-submit:active {
+  background-color: coral;
+}

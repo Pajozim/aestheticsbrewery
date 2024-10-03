@@ -68,8 +68,10 @@ const candies      = document.querySelectorAll('.candy');
 const cvBlocks     = JSON.parse(localStorage.getItem('cv')) || [];
 const cvcontainer  = document.getElementById('cv-container');
 const firstrow     = document.getElementById('firstrow');
-const curriculum   = document.getElementById('curriculum');
 const frchildren   = firstrow.children;
+const curriculum   = document.getElementById('curriculum');
+const curBlocks    = cvBlocks[6].blocks;
+
 
 // contact page definitions ================================================================================================
 
@@ -330,7 +332,6 @@ function displayCV() {
         index.blocks.forEach(bbox => {
           const currichild = document.createElement('div');
           currichild.id = `cv-block-${index.blocks.indexOf(bbox)}`;
-          console.log(bbox.bgcolor);
           currichild.style.backgroundColor = bbox.bgcolor;
           currichild.innerHTML = `<h3>${bbox.h3}</h3>`;
           for (let key in bbox) {
@@ -358,9 +359,9 @@ window.addEventListener('click', (event) => {
     document.getElementById('curriculum').classList.toggle('small');
     document.getElementById('curriculum').classList.toggle('enlarged');
     document.getElementById('cv-block-0').classList.toggle('envisage');
-    document.getElementById('cv-block-1').classList.toggle('derriereUne');
-    document.getElementById('cv-block-2').classList.toggle('derriereDeux');
-    document.getElementById('cv-block-3').classList.toggle('derriereTrois'); // ACHTUNG: muss verschwinden sobald wheeling in action
+    document.getElementById('cv-block-1').classList.toggle('passee1');
+    document.getElementById('cv-block-2').classList.toggle('passee2');
+    document.getElementById('cv-block-3').classList.toggle('passee3'); // ACHTUNG: muss verschwinden sobald wheeling in action
     document.getElementById('indicator').classList.toggle('show');
   }
 });
@@ -371,10 +372,10 @@ function twentyvh() {
     root.style.setProperty('--fontheight', `${window.innerHeight * .1}px`); // Set the font size
 }
 
-// curriculum count indicator ===================================================================================================
+// initial curriculum block count indicator ===================================================================================================
 
 const countindicator = document.getElementById('indicator');
-countindicator.innerHTML = `<span class="current">${cvBlocks.length}</span> of <span class="total">${cvBlocks[6].blocks.length}</span>`;
+countindicator.innerHTML = `<span id="currentblock">1</span> of <span id="totalbcount">${cvBlocks[6].blocks.length}</span>`;
 
 // firstrow blocks scalable =====================================================================================================
 
@@ -391,79 +392,50 @@ window.addEventListener('click', (event) => {
 
 // wheeling/swiping through curriculum blocks ===================================================================================
 
-function classjuggler(p) {
-p.classList.remove('hidden');
-p.classList.add('envisage');      
-}
+const curBlklength = curBlocks.length;
 
 window.addEventListener('wheel', function(event) {
-  //left swipe
-  if (event.deltaY > 0 && event.target.classList.contains('expanded')) {
-    const prodIndOld = document.getElementById(`${event.target.id}`);
-    prodIndOld.classList.remove('expanded');
-    prodIndOld.classList.add('hidden');
-    const prodIndNewId = Number(event.target.id.slice(1)) + 1;
-    if (prodIndNewId > products.length) {
-      const prodIndNew = document.getElementById(`c1`);
-      classjuggler(prodIndNew);
-    } else {
-      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-      classjuggler(prodIndNew)
-    }
-  }
-  //right swipe
-  else if (event.deltaY < 0 && event.target.classList.contains('expanded')) {      
-    const prodIndOld = document.getElementById(`${event.target.id}`);
-    prodIndOld.classList.remove('expanded');
-    prodIndOld.classList.add('hidden');
-    const prodIndNewId = Number(event.target.id.slice(1)) - 1;
-    if (prodIndNewId <= 0) {
-      const prodIndNew = document.getElementById(`c${products.length}`);
-      classjuggler(prodIndNew)
-    } else {
-      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-      classjuggler(prodIndNew)
-    }
+  if (!curriculum.classList.contains('enlarged')) return;
+
+  let cvenvisage = document.querySelector('.envisage'),
+    currentcvblNr = Number(cvenvisage.id.split('-')[2]),
+    futtostacked = document.querySelector('.futur'),
+    cv1toEV = document.querySelector(`#cv-block-${currentcvblNr + 1}`),
+    cv2to1 = document.querySelector(`#cv-block-${currentcvblNr + 2}`),
+    cv3to2 = document.querySelector(`#cv-block-${currentcvblNr + 3}`);
+
+  if (event.deltaY > 0 && currentcvblNr < curBlklength - 1) {
+    SwipeToLeft(cvenvisage, futtostacked, cv1toEV, cv2to1, cv3to2, currentcvblNr);
+  } else if (event.deltaY < 0) {
+    SwipeToRight();
   }
 });
+
+function SwipeToLeft(cvenvisage, futtostacked, cv1toEV, cv2to1, cv3to2, currentcvblNr) {
+  if (currentcvblNr === curBlklength - 2) document.querySelector(`#cv-block-${currentcvblNr - 1}`).classList.replace('futur', 'futur2');
+  if (futtostacked && currentcvblNr !== curBlklength - 2) futtostacked.classList.replace('futur', 'hidden');  
+  
+  cvenvisage.classList.replace('envisage', 'futur');
+  cv1toEV.classList.replace('passee1', 'envisage');
+  if (currentcvblNr + 2 < curBlklength) cv2to1.classList.replace('passee2', 'passee1');
+  if (currentcvblNr + 3 === 3) cv3to2.classList.replace('passee3', 'passee2');
+  else if (currentcvblNr + 3 < curBlklength) cv3to2.classList.add('passee2');
+
+  //update of the indicator
+  const currentblock = document.getElementById('currentblock');
+  currentblock.innerHTML = currentcvblNr + 2;
+}
+
 
 window.addEventListener('keydown', function(event) {
 // Left swipe 
 if (event.key === 'ArrowLeft' && event.type === 'keydown') {
-  // Find the currently expanded element
-  const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
-  if (prodIndOld) {
-    prodIndOld.classList.remove('expanded');
-    prodIndOld.classList.add('hidden');
-    const prodIndNewId = Number(prodIndOld.id.slice(1)) + 1; // Get the new product ID
-    if (prodIndNewId > products.length) {
-      // Wrap around to the first product if the new ID exceeds the total number of products
-      const prodIndNew = document.getElementById('c1');
-      classjuggler(prodIndNew);
-    } else {
-      // Move to the next product element
-      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-      classjuggler(prodIndNew);
-    }
+
   }
-}
 //right swipe
 else if (event.key === 'ArrowRight' && event.type === 'keydown') {
-  const prodIndOld = document.querySelector('.expanded'); // Assuming only one element is expanded at a time
-  if (prodIndOld) {
-    prodIndOld.classList.remove('expanded');
-    prodIndOld.classList.add('hidden');
-    const prodIndNewId = Number(prodIndOld.id.slice(1)) - 1;
-    if (prodIndNewId <= 0) {
-      const prodIndNew = document.getElementById(`c${products.length}`);
-      classjuggler(prodIndNew)
-    } else {
-      const prodIndNew = document.getElementById(`c${prodIndNewId}`);
-      classjuggler(prodIndNew)
-    }
-  }
-}
-});
+
+}});
 
 </script>
 <script aria-label="contact-page">

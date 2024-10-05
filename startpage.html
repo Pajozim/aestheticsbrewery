@@ -332,6 +332,7 @@ function displayCV() {
         index.blocks.forEach(bbox => {
           const currichild = document.createElement('div');
           currichild.id = `cv-block-${index.blocks.indexOf(bbox)}`;
+          if (index.blocks.indexOf(bbox) > 3) currichild.classList.add('hidden');
           currichild.style.backgroundColor = bbox.bgcolor;
           currichild.innerHTML = `<h3>${bbox.h3}</h3>`;
           for (let key in bbox) {
@@ -361,7 +362,7 @@ window.addEventListener('click', (event) => {
     document.getElementById('cv-block-0').classList.toggle('envisage');
     document.getElementById('cv-block-1').classList.toggle('passee1');
     document.getElementById('cv-block-2').classList.toggle('passee2');
-    document.getElementById('cv-block-3').classList.toggle('passee3'); // ACHTUNG: muss verschwinden sobald wheeling in action
+    document.getElementById('cv-block-3').classList.toggle('passee3');
     document.getElementById('indicator').classList.toggle('show');
   }
 });
@@ -375,7 +376,7 @@ function twentyvh() {
 // initial curriculum block count indicator ===================================================================================================
 
 const countindicator = document.getElementById('indicator');
-countindicator.innerHTML = `<span id="currentblock">1</span> of <span id="totalbcount">${cvBlocks[6].blocks.length}</span>`;
+countindicator.innerHTML = `<span id="currentblock">1</span>&nbsp;of&nbsp;<span id="totalbcount"> ${cvBlocks[6].blocks.length}</span>`;
 
 // firstrow blocks scalable =====================================================================================================
 
@@ -398,34 +399,98 @@ window.addEventListener('wheel', function(event) {
   if (!curriculum.classList.contains('enlarged')) return;
 
   let cvenvisage = document.querySelector('.envisage'),
-    currentcvblNr = Number(cvenvisage.id.split('-')[2]),
-    futtostacked = document.querySelector('.futur'),
-    cv1toEV = document.querySelector(`#cv-block-${currentcvblNr + 1}`),
-    cv2to1 = document.querySelector(`#cv-block-${currentcvblNr + 2}`),
-    cv3to2 = document.querySelector(`#cv-block-${currentcvblNr + 3}`);
+  cvNr = Number(cvenvisage.id.split('-')[2]),
+  cvNrm3 = document.getElementById(`cv-block-${cvNr - 3}`),
+  cvNrm2 = document.getElementById(`cv-block-${cvNr - 2}`),
+  cvNrm1 = document.getElementById(`cv-block-${cvNr - 1}`),
+  cvNr0 = document.getElementById(`cv-block-${cvNr}`),
+  cvNrp1 = document.getElementById(`cv-block-${cvNr + 1}`),
+  cvNrp2 = document.getElementById(`cv-block-${cvNr + 2}`),
+  cvNrp3 = document.getElementById(`cv-block-${cvNr + 3}`);
 
-  if (event.deltaY > 0 && currentcvblNr < curBlklength - 1) {
-    SwipeToLeft(cvenvisage, futtostacked, cv1toEV, cv2to1, cv3to2, currentcvblNr);
-  } else if (event.deltaY < 0) {
-    SwipeToRight();
+  const currentblock = document.getElementById('currentblock');
+
+  if (event.deltaY > 0 && cvNr < curBlklength - 1) {
+    SwipeToLeft(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
+    currentblock.innerHTML = `${cvNr+2}`;
+  } else if (event.deltaY < 0 && cvNr > 0) {
+    SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
+    currentblock.innerHTML = `${cvNr}`;
   }
 });
 
-function SwipeToLeft(cvenvisage, futtostacked, cv1toEV, cv2to1, cv3to2, currentcvblNr) {
-  if (currentcvblNr === curBlklength - 2) document.querySelector(`#cv-block-${currentcvblNr - 1}`).classList.replace('futur', 'futur2');
-  if (futtostacked && currentcvblNr !== curBlklength - 2) futtostacked.classList.replace('futur', 'hidden');  
-  
-  cvenvisage.classList.replace('envisage', 'futur');
-  cv1toEV.classList.replace('passee1', 'envisage');
-  if (currentcvblNr + 2 < curBlklength) cv2to1.classList.replace('passee2', 'passee1');
-  if (currentcvblNr + 3 === 3) cv3to2.classList.replace('passee3', 'passee2');
-  else if (currentcvblNr + 3 < curBlklength) cv3to2.classList.add('passee2');
+function SwipeToLeft(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3) {
 
-  //update of the indicator
-  const currentblock = document.getElementById('currentblock');
-  currentblock.innerHTML = currentcvblNr + 2;
+  if (cvNr > 2) {
+    cvNrm3.classList.remove('futur0', 'futur1', 'futur2', 'futur3');
+    cvNrm3.classList.add('hidden');
+  }
+  if (cvNr > 1) {
+    cvNrm2.classList.remove('futur0', 'futur1', 'futur2', 'futur3');
+    if (cvNr === curBlklength - 2) cvNrm2.classList.add('futur3'); // one step before end of line
+    else cvNrm2.classList.add('hidden');
+  }
+  if (cvNr > 0) {
+    cvNrm1.classList.remove('futur0', 'futur1', 'futur2', 'futur3');
+    if (cvNr === curBlklength - 3 || cvNr === curBlklength - 2) cvNrm1.classList.add('futur2'); //two/one step(s) before end of line
+    else cvNrm1.classList.add('hidden');
+  }
+  
+  cvNr0.classList.remove('envisage');
+  if (cvNr === curBlklength - 3 || cvNr === curBlklength - 2) cvNr0.classList.add('futur1'); // two/one step(s) before end of line
+  else cvNr0.classList.add('futur0');
+  
+  if (cvNr < curBlklength - 1) {
+    cvNrp1.classList.remove('passee0', 'passee1', 'passee2', 'passee3', 'hidden');
+    cvNrp1.classList.add('envisage');
+  }
+  if (cvNr < curBlklength - 2) {
+    cvNrp2.classList.remove('passee0', 'passee1', 'passee2', 'passee3', 'hidden');
+    if (cvNr === curBlklength - 3) cvNrp2.classList.add('passee0'); //two steps before end of line
+    else cvNrp2.classList.add('passee1');
+  }
+  if (cvNr < curBlklength - 3) {
+    cvNrp3.classList.remove('passee0', 'passee1', 'passee2', 'passee3', 'hidden');
+    cvNrp3.classList.add('passee2');
+  }
 }
 
+function SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3) {
+
+  if (cvNr > 2) {
+    cvNrm3.classList.remove('futur0', 'futur1', 'futur2', 'futur3', 'hidden');
+    cvNrm3.classList.add('futur2');
+  }
+  if (cvNr > 1) {
+    cvNrm2.classList.remove('futur0', 'futur1', 'futur2', 'futur3', 'hidden');
+    if (cvNr === 2) cvNrm2.classList.add('futur0'); // one step before starting point
+    else cvNrm2.classList.add('futur1');
+  }
+  if (cvNr > 0) {
+  cvNrm1.classList.remove('futur0', 'futur1', 'futur2', 'futur3');
+  cvNrm1.classList.add('envisage');
+  }
+
+  cvNr0.classList.remove('envisage');
+  if (cvNr === 2 || cvNr === 1) cvNr0.classList.add('passee1'); // one/two step(s) before starting point
+  else cvNr0.classList.add('passee0');
+
+  if (cvNr < curBlklength - 1) {
+    cvNrp1.classList.remove('passee0', 'passee1', 'passee2', 'passee3');
+    if (cvNr === 2 || cvNr === 1) cvNrp1.classList.add('passee2'); // one/two step(s) before starting point
+    else cvNrp1.classList.add('hidden');
+  }
+  if (cvNr < curBlklength - 2) {
+    cvNrp2.classList.remove('passee0', 'passee1', 'passee2', 'passee3');
+    if (cvNr === 1) cvNrp2.classList.add('passee3'); // one step before starting point
+    else cvNrp2.classList.add('hidden');
+  }
+  if (cvNr < curBlklength - 3) {
+    cvNrp3.classList.remove('passee0', 'passee1', 'passee2', 'passee3');
+    cvNrp3.classList.add('hidden');
+  }
+  
+}
 
 window.addEventListener('keydown', function(event) {
 // Left swipe 

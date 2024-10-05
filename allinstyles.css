@@ -628,39 +628,27 @@ background-color: goldenrod;
 
 #curriculum.enlarged > div.hidden {display: none;}
 
-#curriculum.enlarged > div[class^="futur"] {align-items: center; border-radius: .5em 0 0 .5em;}
-#curriculum.enlarged > div[class^="futur"] h3 {transform: rotate(-90deg); white-space: nowrap;}
-#curriculum.enlarged > div[class^="futur"] p {display: none;}
+#curriculum.enlarged > div[class^="futur"], #curriculum.enlarged > div[class^="passee"] {align-items: center;}
+#curriculum.enlarged > div[class^="futur"] {border-radius: .5em 0 0 .5em;}
+#curriculum.enlarged > div[class^="passee"] {border-radius: 0 .5em .5em 0;}
 
-#curriculum.enlarged > div.futur2 {min-width: 11vw; height: 80%;}
+#curriculum.enlarged > div[class^="passee"] h3, #curriculum.enlarged > div[class^="futur"] h3 {white-space: nowrap;}
+#curriculum.enlarged > div[class^="passee"] h3 {transform: rotate(90deg);}
+#curriculum.enlarged > div[class^="futur"] h3 {transform: rotate(-90deg);}
 
-#curriculum.enlarged > div.futur {min-width: 17vw; height: 90%;}
+#curriculum.enlarged > div[class^="futur"] p, #curriculum.enlarged > div[class^="passee"] p {display: none;}
+
+#curriculum.enlarged > div.futur3 {min-width: 11vw; height: 70%;}
+#curriculum.enlarged > div.futur2 {min-width: 17vw; height: 80%;}
+#curriculum.enlarged > div.futur1 {min-width: 27vw; height: 90%;}
+#curriculum.enlarged > div.futur0 {min-width: 11vw; height: 90%;}
 
 #curriculum.enlarged > div.envisage {min-width: 45vw;}
 
-#curriculum.enlarged > div[class^="passee"] {flex-direction: row; align-items: center; border-radius: 0 .5em .5em 0;}
-
+#curriculum.enlarged > div.passee0 {min-width: 11vw; height: 90%;}
 #curriculum.enlarged > div.passee1 {min-width: 27vw; height: 90%;}
-
 #curriculum.enlarged > div.passee2 {min-width: 17vw; height: 80%;}
-
 #curriculum.enlarged > div.passee3 {min-width: 11vw; height: 70%;}
-
-#curriculum.enlarged > div[class^="passee"] p {display: none;}
-#curriculum.enlarged > div[class^="passee"] h3 {transform: rotate(90deg); white-space: nowrap;}
-
-/* #curriculum.enlarged > div:nth-child(1) {min-width: 75vw;}
-
-#curriculum.enlarged > div:nth-child(2) {min-width: 15vw; height: 70vh; border-radius: ;}
-
-#curriculum.enlarged > div:nth-child(3) {min-width: 9vw; height: 60vh;}
-
-#curriculum.enlarged > div:nth-child(4) {min-width: 6vw; height: 50vh;}
-
-#curriculum.enlarged > div:not(:first-child) {flex-direction: row;}
-
-#curriculum.enlarged > div:not(:first-child) h3 {transform: rotate(90deg); white-space: nowrap;}
-#curriculum.enlarged > div:not(:first-child) p {display: none;}
 
 /** div block number indicator **/
 

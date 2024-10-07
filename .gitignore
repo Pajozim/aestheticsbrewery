@@ -1,7 +1,16 @@
-# Ignore /Materials/ folder and its contents
-/Materials/
+# Ignore folder and its contents
+/Storage/
 /Product Images/
-MediaInput.html
 dynamicShop.html
 product-sheet.json
-/Studio/
+buen colores.rtf
+core-styles.css
+cv-composer.js
+cv.styles.css
+globalscope.js
+startpage-styles.css
+studio-composer.js
+studio-styles.css
+toCV.js
+toStudio.js
+/to edit for Studio/

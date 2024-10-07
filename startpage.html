@@ -28,11 +28,16 @@
       </div>
     </div>
     <div id="stpg-container">
-      <div id="idiomsiR"><div id="IdiomaEng">English</div><div id="IdiomaDeu">Deutsch</div><div id="IdiomaEsp">Espa&ntilde;ol</div></div>
+      <div id="idiomsiR"><!--<div id="IdiomaEng">English</div><div id="IdiomaDeu">Deutsch</div><div id="IdiomaEsp">Espa&ntilde;ol</div>--></div>
       <div id="btnsiR"><div id="currvitae"><span>Curriculum</span></div><div id="studio"><span>Studio</span></div></div>
       <div id="contactiR"><div id="contact"><span>Contact</span></div></div>
     </div>
   </section>
+<script aria-label="ForwardIfMobile">
+  if (window.innerHeight > window.innerWidth) {
+    window.location.href = "https://paul-zimmermann.framer.ai";
+  }
+</script>
 <script aria-label="globalScope">
 
 /* propositions/to dos: 
@@ -419,6 +424,33 @@ window.addEventListener('wheel', function(event) {
   }
 });
 
+window.addEventListener('keydown', function(event) {
+  if (!curriculum.classList.contains('enlarged')) return;
+
+  let cvenvisage = document.querySelector('.envisage'),
+  cvNr = Number(cvenvisage.id.split('-')[2]),
+  cvNrm3 = document.getElementById(`cv-block-${cvNr - 3}`),
+  cvNrm2 = document.getElementById(`cv-block-${cvNr - 2}`),
+  cvNrm1 = document.getElementById(`cv-block-${cvNr - 1}`),
+  cvNr0 = document.getElementById(`cv-block-${cvNr}`),
+  cvNrp1 = document.getElementById(`cv-block-${cvNr + 1}`),
+  cvNrp2 = document.getElementById(`cv-block-${cvNr + 2}`),
+  cvNrp3 = document.getElementById(`cv-block-${cvNr + 3}`);
+
+  const currentblock = document.getElementById('currentblock');
+
+  // Left swipe 
+  if (event.key === 'ArrowLeft' && event.type === 'keydown' && cvNr > 0) {
+    SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
+    currentblock.innerHTML = `${cvNr}`;
+  }
+  //right swipe
+  else if (event.key === 'ArrowRight' && event.type === 'keydown' && cvNr < curBlklength - 1) {
+    SwipeToLeft(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
+    currentblock.innerHTML = `${cvNr+2}`;
+  }
+});
+
 function SwipeToLeft(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3) {
 
   if (cvNr > 2) {
@@ -491,16 +523,6 @@ function SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp
   }
   
 }
-
-window.addEventListener('keydown', function(event) {
-// Left swipe 
-if (event.key === 'ArrowLeft' && event.type === 'keydown') {
-
-  }
-//right swipe
-else if (event.key === 'ArrowRight' && event.type === 'keydown') {
-
-}});
 
 </script>
 <script aria-label="contact-page">

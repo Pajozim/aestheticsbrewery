@@ -3,7 +3,7 @@
     "id": "photo",
     "block": {
       "name": "photo",
-      "src": "self.webp"
+      "src": "Materials/self.webp"
     }
   },
   {

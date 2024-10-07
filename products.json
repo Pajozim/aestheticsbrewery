@@ -1,0 +1,54 @@
+[
+  {
+    "MaterialsFolder" : "Materials/",
+    "MFcontent":
+    [
+      {
+        "name":"self",
+        "dir": "self.webp"
+      },
+      {
+        "name":"future projects sticker",
+        "dir": "future_projects.webp"
+      },
+      {
+        "name":"working on 1 sticker",
+        "dir": "workingon1.webp"
+      },
+      {
+        "name":"working on 2 sticker",
+        "dir": "workingon2.webp"
+      }
+    ]
+  },
+  {
+    "StudioFolder" : "Studio/",
+    "SFcontent":
+    [
+      { "name": "Hombre", "dir": "AC-Hombre.webp" },
+      { "name": "KusudamaBall", "dir": "AC-KusudamaBall.webp" },
+      { "name": "PerroDeAcero", "dir": "AC-PerroDeAcero.webp" },
+      { "name": "soapyFlowers", "dir": "AC-soapyFlowers.webp" },
+      { "name": "sombramano", "dir": "AC-sombramano.webp" },
+      { "name": "Assassin", "dir": "DA-Assassin.webp" },
+      { "name": "AudiUnion", "dir": "DD-AudiUnion.svg" },
+      { "name": "History wCC", "dir": "DD-JKJRG-History-wCC.mp4" },
+      { "name": "History wCC Cover", "dir": "DD-JKJRG-History-wCC-Cover.jpg" },
+      { "name": "RedGinseng", "dir": "DD-RedGinseng.mp4" },
+      { "name": "RedGinseng Cover", "dir": "DD-RedGinseng-Cover.jpg" },
+      { "name": "fontsCompilation", "dir": "FD-fontsCompilation.webp" },
+      { "name": "WerewolfTShirt", "dir": "PD-WerewolfTShirt.webp" },
+      { "name": "BZ", "dir": "WD-BZ.webp" },
+      { "name": "BZ mobile", "dir": "WD-BZ_mobile.webp" },
+      { "name": "IngCEA", "dir": "WD-IngCEA.webp" },
+      { "name": "INGCea mobile", "dir": "WD-INGCea_mobile.webp" },
+      { "name": "Steamboy", "dir": "3D-Steamboy.mp4" },
+      { "name": "Aguilar", "dir": "AC-Aguilar.webp" },
+      { "name": "Buhu", "dir": "AC-Buhu.webp" },
+      { "name": "Caricatura", "dir": "AC-Caricatura.webp" },
+      { "name": "elCondor", "dir": "AC-elCondor.webp" },
+      { "name": "hangingflowers", "dir": "AC-hangingflowers.webp" },
+      { "name": "HolderOfPlants", "dir": "AC-HolderOfPlants.webp" }
+    ]
+  }
+]

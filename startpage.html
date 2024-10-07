@@ -39,6 +39,23 @@
   }
 </script>
 <script aria-label="ParseFromFile">
+  const requestCV = new XMLHttpRequest();
+  requestCV.open('GET', 'cv.json');
+  requestCV.responseType = 'json';
+  requestCV.send();
+  requestCV.onload = function() {
+    const cv = requestCV.response;
+    localStorage.setItem('cv', JSON.stringify(cv));
+  }
+
+  const requestProducts = new XMLHttpRequest();
+  requestProducts.open('GET', 'products.json');
+  requestProducts.responseType = 'json';
+  requestProducts.send();
+  requestProducts.onload = function() {
+    const products = requestProducts.response;
+    localStorage.setItem('products', JSON.stringify(products));
+  }
 </script>
 </script>
 <script aria-label="globalScope">
@@ -291,18 +308,6 @@ else if (event.key === 'ArrowRight' && event.type === 'keydown') {
 
 </script>
 <script aria-label="cv-composer">
-// load from file ========================================================================================================
-/*
-function loadCV() {
-  fetch('cv.json')
-  .then(response => response.json())
-  .then(data => {
-    cvBlocks = data;
-    displayCV();
-  })
-  .catch(error => console.log('Error fetching cv.json:', error));
-}
-*/
 // Display steps =========================================================================================================
 
 function displayCV() {

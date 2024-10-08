@@ -33,30 +33,16 @@
       <div id="contactiR"><div id="contact"><span>Contact</span></div></div>
     </div>
   </section>
+
+<!-- TO-DO: + hover over images, the names popup; especially useful for website this mobile;
+            + in cv-composer should be there a code snippet for all included inside (for wheeling and clicking on it in studio composer);
+  -->
+
+
 <script aria-label="ForwardIfMobile">
   if (window.innerHeight > window.innerWidth) {
     window.location.href = "https://paul-zimmermann.framer.ai";
   }
-</script>
-<script aria-label="ParseFromFile">
-  const requestCV = new XMLHttpRequest();
-  requestCV.open('GET', 'cv.json');
-  requestCV.responseType = 'json';
-  requestCV.send();
-  requestCV.onload = function() {
-    const cv = requestCV.response;
-    localStorage.setItem('cv', JSON.stringify(cv));
-  }
-
-  const requestProducts = new XMLHttpRequest();
-  requestProducts.open('GET', 'products.json');
-  requestProducts.responseType = 'json';
-  requestProducts.send();
-  requestProducts.onload = function() {
-    const products = requestProducts.response;
-    localStorage.setItem('products', JSON.stringify(products));
-  }
-</script>
 </script>
 <script aria-label="globalScope">
 
@@ -74,6 +60,7 @@ const screenheight = window.screen.height;
 
 // start/landing page definitions ==========================================================================================
 
+const materials    = JSON.parse(localStorage.getItem('materials')) || [];
 const pfTriStudio  = document.getElementById('studio');
 const pfTriCV      = document.getElementById('currvitae');
 const pfTriContact = document.getElementById('contact');
@@ -97,7 +84,7 @@ const frchildren   = firstrow.children;
 const curriculum   = document.getElementById('curriculum');
 const curBlocks    = cvBlocks[6].blocks;
 
-
+console.log(cvBlocks, products, materials);
 // contact page definitions ================================================================================================
 
 const contactcontainer = document.getElementById('contact-container');
@@ -146,6 +133,65 @@ if (workonimg) {
 }
 */
 </script>
+<script aria-label="ParseFromFile">
+// offline/local integration of files
+/* function fetchAndStoreData(url, localStorageKey) {
+  const request = new XMLHttpRequest();
+  request.open('GET', url);
+  request.responseType = 'json';
+  request.send();
+  request.onload = function() {
+    const data = request.response;
+    localStorage.setItem(localStorageKey, JSON.stringify(data));
+  };
+  request.onerror = function() {
+  console.error('An error occurred while fetching data.');
+  };
+}
+
+if (navigator.onLine) {
+  fetchAndStoreData('cv.json', 'cv');
+  fetchAndStoreData('products.json', 'products');
+} */
+if (!products.length || !cvBlocks.length || !materials.length) 
+ {
+   const fileInput = document.createElement('input');
+   fileInput.type = 'file';
+   fileInput.multiple = true;
+   fileInput.style.backgroundColor = 'DodgerBlue';
+   
+   const parentNode = document.getElementById('idiomsiR');
+ 
+   parentNode.appendChild(fileInput);
+ 
+   fileInput.accept = '.json';
+ 
+   fileInput.addEventListener('change', function() {
+    const files = fileInput.files;
+    Array.from(files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const result = JSON.parse(event.target.result);
+        if (file.name === "products.json") {
+          localStorage.setItem('products', JSON.stringify(result));
+          displayProducts(result);
+        } else if (file.name === "cv.json") {
+          localStorage.setItem('cv', JSON.stringify(result));
+          displayCV(result);
+        } else if (file.name === "materials.json") {
+          localStorage.setItem('materials', JSON.stringify(result));
+        }
+        location.reload();
+      };
+      reader.readAsText(file);
+    });
+    fileInput.remove(); // Remove the input element from the DOM
+    fileInput.style.display = 'none'; // Hide the input element
+    fileInput.value = ''; // Clear the file input
+    });
+}
+ 
+ </script>
 <script aria-label="studio-composer">
 // Display products =========================================================================================================
 
@@ -172,9 +218,9 @@ function displayProducts() {
   products.forEach(product => {
     const productElement = document.createElement('div');
     productElement.classList = 'candy';
-    productElement.id = `c${product.identifier}`;
+    productElement.id = `c${products.indexOf(products) + 1}`;
     productElement.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-    // it works, just easier to work with colors: productElement.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
+    productElement.innerHTML = `<` + product.mediaType + ` src="${product.src}" alt="${product.name}">`;
     productList.appendChild(productElement);
     });
   
@@ -238,6 +284,7 @@ p.classList.add('expanded');
 }
 
 window.addEventListener('wheel', function(event) {
+  
   //left swipe
   if (event.deltaY > 0 && event.target.classList.contains('expanded')) {
     const prodIndOld = document.getElementById(`${event.target.id}`);

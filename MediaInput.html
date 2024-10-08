@@ -347,38 +347,7 @@
     cvBlocks.forEach(index => {
         const divblock = document.createElement('div');
         divblock.id = index.id;
-
-        // Handle photo block
-        if (divblock.id === 'photo') {
-            divblock.innerHTML = `<img src="${index.block.src}" alt="${index.block.name}">`;
-        }
-        // Handle blocks other than "curriculum"
-        else if (divblock.id !== 'curriculum' && index.block) {
-
-            divblock.innerHTML = `<h3>${index.block.h3}</h3>`;
-
-            // Loop through the `line` properties
-            for (let key in index.block) {
-              // Check if the key matches the pattern "line" followed by a number
-              if (key !== 'h3') {
-                  divblock.innerHTML += `<p>${index.block[key]}</p>`;
-              }
-            }
-        }
-        // Handle curriculum blocks
-        else if (divblock.id === 'curriculum') {
-            index.blocks.forEach(bline => {
-              const divblockC = document.createElement('div');
-              divblockC.id = `cv-block-${index.blocks.indexOf(bline)}`;
-              divblockC.innerHTML = `<h3>${bline.h3}</h3>`;
-              for (let key in bline) {
-              if (key !== 'h3') {
-                  divblockC.innerHTML += `<p>${bline[key]}</p>`;
-              }
-            }
-            divblock.appendChild(divblockC);
-            });
-        }
+        divblock.innerHTML = index.block.h3;
 
         // Append divblock to the enlister
         enlister.appendChild(divblock);

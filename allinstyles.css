@@ -147,6 +147,9 @@ button {
   border-radius: 16px;
   padding: 2%;
   box-sizing: border-box;
+  /*outline: 1px solid white;
+  outline-offset: -5px;
+  border: 1px solid white;*/
 }
 
 #dynamic-nav.nkey1 {

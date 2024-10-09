@@ -128,7 +128,7 @@ if (workonimg) {
 </script>
 <script aria-label="ParseFromFile">
 // offline/local integration of files
-/* function fetchAndStoreData(url, localStorageKey) {
+function fetchAndStoreData(url, localStorageKey) {
   const request = new XMLHttpRequest();
   request.open('GET', url);
   request.responseType = 'json';
@@ -145,7 +145,7 @@ if (workonimg) {
 if (navigator.onLine) {
   fetchAndStoreData('cv.json', 'cv');
   fetchAndStoreData('products.json', 'products');
-} */
+} 
 if (!products.length || !cvBlocks.length || !materials.length) 
  {
    const fileInput = document.createElement('input');

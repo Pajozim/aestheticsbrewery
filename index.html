@@ -120,11 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const oneofboth = ['Materials/workingon1.webp', 'Materials/workingon2.webp'];
 const workonimg = document.getElementById('workingon');
-/*
-if (workonimg) {
-    workonimg.src = oneofboth[Math.floor(Math.random() * oneofboth.length)];
-}
-*/
+
 </script>
 <script aria-label="ParseFromFile">
 // offline/local integration of files
@@ -142,12 +138,11 @@ function fetchAndStoreData(url, localStorageKey) {
   };
 }
 
-/*
 if (navigator.onLine) {
   fetchAndStoreData('cv.json', 'cv');
   fetchAndStoreData('products.json', 'products');
 } 
-if (!products.length || !cvBlocks.length || !materials.length) 
+else if (!products.length || !cvBlocks.length || !materials.length) 
  {
    const fileInput = document.createElement('input');
    fileInput.type = 'file';
@@ -183,7 +178,7 @@ if (!products.length || !cvBlocks.length || !materials.length)
     fileInput.style.display = 'none'; // Hide the input element
     fileInput.value = ''; // Clear the file input
     });
-} */
+}
  
  </script>
 <script aria-label="studio-composer">

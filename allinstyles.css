@@ -140,16 +140,16 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 10vw;
-  height: 8vh;
+  width: 20vw;
+  height: 12vh;
   z-index: 10;
   background-color: darkcyan;
   border-radius: 16px;
   padding: 2%;
   box-sizing: border-box;
-  /*outline: 1px solid white;
+  outline: 1px solid white;
   outline-offset: -5px;
-  border: 1px solid white;*/
+  border: 1px solid white;
 }
 
 #dynamic-nav.nkey1 {
@@ -172,6 +172,16 @@ button {
 
 #dynamic-nav.dn-intro {
   animation: dn-intro 3s linear 1s forwards;
+}
+
+#imgCtner {
+  width: 10vw;
+  height: auto;
+}
+
+#nkeytosp {
+  max-width: fit-content;
+  height: auto;
 }
 
 /****************************************************** startpage-styles ******************************************************/

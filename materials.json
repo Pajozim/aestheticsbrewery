@@ -7,16 +7,24 @@
   "src": "Materials/future_projects.webp"
 },
 {
-  "name":"working on 1 sticker",
+  "name":"working on a project - 1 sticker",
   "src": "Materials/workingon1.webp"
 },
 {
-  "name":"working on 2 sticker",
+  "name":"working on a project - 2 sticker",
   "src": "Materials/workingon2.webp"
 }
 ,
 {
   "name":"finger on n key button",
-  "src":"Materialien\fingeronnkey.svg"
+  "src":"Materials/fingeronnkey.svg"
+},
+{
+  "name":"back to startpage",
+  "src":"Materials/BackToSP.svg"
+},
+{
+  "name":"FavIcon",
+  "src":"Materials/FavIcon.png"
 }
 ]

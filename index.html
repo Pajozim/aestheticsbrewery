@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PaJoZi's Aesthetics Brewery</title>
+    <link rel="icon" href="Materials/FavIcon.png" type="image/png">
     <link rel="stylesheet" href="allinstyles.css">
 </head>
 <body>
+  <div class="triangleBtn SP"></div>
   <section id="dynamic-nav">
-    <div id="pftbiS">Back to Start</div><div id="imgCtner"><img id="nkeytosp" src="Materials/fingeronnkey.svg" alt="key to return to start"></div>
+    <div id="imgCtner"><img id="nkeytosp"></div><div id="pftbiS">Back to Start</div>
   </section>
   <section class="page-flipper">
     <div id="studio-container"></div>
@@ -82,48 +84,55 @@ const curBlocks    = cvBlocks[6].blocks;
 
 const contactcontainer = document.getElementById('contact-container');
 
+// source lines ============================================================================================================
+
+const triangleBtn = document.querySelector('.triangleBtn');
+triangleBtn.style.backgroundImage = `url(${materials[5].src})`;
+
+const nkeytosp = document.getElementById('nkeytosp');
+nkeytosp.src = materials[4].src;
+nkeytosp.alt = materials[4].name;
+
+// return to start button ==================================================================================================
+
+triangleBtn.addEventListener('click', () => {
+  if (pageflipper.classList.contains('ftoSS')) {
+    backToSPFromStudio();
+  }
+  else if (pageflipper.classList.contains('ftoCS')) {
+    backToSPFromCV();
+  }
+  else if (pageflipper.classList.contains('ftoCo')) {
+    backToSPFromContact();
+  }
+})
+
 // dynamic navigation bar ==================================================================================================
 
 window.addEventListener('keydown', function(event) {
-  const isSS = pageflipper.classList.contains('ftoSS');
-  const isCS = pageflipper.classList.contains('ftoCS');
-  const isCo = pageflipper.classList.contains('ftoCo');
-
-  // class juggling
-  const isNkey1 = dynnav.classList.contains('nkey1');
-  const isNkey2 = dynnav.classList.contains('nkey2');
   const dnIntro = dynnav.classList.contains('dn-intro');
 
-  if (event.key === 'n' && event.type === 'keydown' && (isSS || isCS || isCo) && (isNkey2 || dnIntro || dynnav.classList.length === 0)) {
-    dynnav.classList.remove('dn-intro', 'nkey2');
-    dynnav.classList.add('nkey1');
-  } else if (event.key === 'n' && event.type === 'keydown' && (isSS || isCS || isCo) && (isNkey1 || dnIntro || dynnav.classList.length === 0)) {
-    dynnav.classList.remove('dn-intro', 'nkey1');
-    dynnav.classList.add('nkey2');
+  if (event.key === 'n' && event.type === 'keydown' && pageflipper.classList.contains('ftoSS')) {
+    backToSPFromStudio();
   }
-  else {
-    dynnav.classList.remove('nkey1', 'nkey2');
+  else if (event.key === 'n' && event.type === 'keydown' && pageflipper.classList.contains('ftoCS')) {
+    backToSPFromCV();
+  }
+  else if (event.key === 'n' && event.type === 'keydown' && pageflipper.classList.contains('ftoCo')) {
+    backToSPFromContact();
   }
 });
-
-// screen width value ======================================================================================================
-/*
-document.addEventListener('DOMContentLoaded', () => {
-  const marginX = Math.floor((Math.pow(((screenwidth)/100), 2) / 10)) + '%';
-  root.style.setProperty('--calcmarginX', marginX);
-  const marginY = Math.floor((Math.pow(((screenheight)/100), 2) / 10)) + '%';
-  root.style.setProperty('--calcmarginY', marginY);
-});
-*/
 
 // change workingon img on every reload ==================================================================================================
 
-const oneofboth = ['Materials/workingon1.webp', 'Materials/workingon2.webp'];
+const oneofboth = [materials[2].src, materials[3].src];
+const onofbothN = [materials[2].name, materials[3].name];
 const workonimg = document.getElementById('workingon');
 
 </script>
 <script aria-label="ParseFromFile">
 // offline/local integration of files
+
 function fetchAndStoreData(url, localStorageKey) {
   const request = new XMLHttpRequest();
   request.open('GET', url);
@@ -141,7 +150,8 @@ function fetchAndStoreData(url, localStorageKey) {
 if (navigator.onLine) {
   fetchAndStoreData('cv.json', 'cv');
   fetchAndStoreData('products.json', 'products');
-} 
+  fetchAndStoreData('materials.json', 'materials');
+}/*
 else if (!products.length || !cvBlocks.length || !materials.length) 
  {
    const fileInput = document.createElement('input');
@@ -179,8 +189,9 @@ else if (!products.length || !cvBlocks.length || !materials.length)
     fileInput.value = ''; // Clear the file input
     });
 }
- 
- </script>
+*/
+
+</script>
 <script aria-label="studio-composer">
 // Display products =========================================================================================================
 
@@ -239,7 +250,7 @@ function displayProducts() {
     filler.style.width = ColProduct + 'vw';
     filler.style.gridColumn = fillergridCol;
     filler.style.height = rowfactor;
-    filler.innerHTML = `<img id="workingon" src="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}" onmouseover="this.src='Materials/future_projects.webp'" onmouseout="this.src='${oneofboth[Math.floor(Math.random() * oneofboth.length)]}'" alt="working on a project">`;
+    filler.innerHTML = `<img id="workingon" src="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}" onmouseover="this.src='${materials[1].src}'" onmouseout="this.src='${oneofboth[Math.floor(Math.random() * oneofboth.length)]}'" alt="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}">`;
     productList.appendChild(filler);
   }
   }
@@ -415,7 +426,6 @@ window.addEventListener('click', (event) => {
   const currcompr    = document.querySelector('.compressed');
   const firosmall    = document.querySelector('.small');
 
-
   if (event.target === currcompr || event.target === firosmall) {
     
     document.getElementById('firstrow').classList.toggle('compressed');
@@ -457,19 +467,24 @@ window.addEventListener('click', (event) => {
 
 const curBlklength = curBlocks.length;
 
+let cvenvisage, cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3;
+
+function cvdeclarations() {
+cvenvisage = document.querySelector('.envisage'),
+cvNr    = Number(cvenvisage.id.split('-')[2]),
+cvNrm3  = document.getElementById(`cv-block-${cvNr - 3}`),
+cvNrm2  = document.getElementById(`cv-block-${cvNr - 2}`),
+cvNrm1  = document.getElementById(`cv-block-${cvNr - 1}`),
+cvNr0   = document.getElementById(`cv-block-${cvNr}`),
+cvNrp1  = document.getElementById(`cv-block-${cvNr + 1}`),
+cvNrp2  = document.getElementById(`cv-block-${cvNr + 2}`),
+cvNrp3  = document.getElementById(`cv-block-${cvNr + 3}`);
+}
+
 window.addEventListener('wheel', function(event) {
   if (!curriculum.classList.contains('enlarged')) return;
 
-  let cvenvisage = document.querySelector('.envisage'),
-  cvNr = Number(cvenvisage.id.split('-')[2]),
-  cvNrm3 = document.getElementById(`cv-block-${cvNr - 3}`),
-  cvNrm2 = document.getElementById(`cv-block-${cvNr - 2}`),
-  cvNrm1 = document.getElementById(`cv-block-${cvNr - 1}`),
-  cvNr0 = document.getElementById(`cv-block-${cvNr}`),
-  cvNrp1 = document.getElementById(`cv-block-${cvNr + 1}`),
-  cvNrp2 = document.getElementById(`cv-block-${cvNr + 2}`),
-  cvNrp3 = document.getElementById(`cv-block-${cvNr + 3}`);
-
+  cvdeclarations();
   const currentblock = document.getElementById('currentblock');
 
   if (event.deltaY > 0 && cvNr < curBlklength - 1) {
@@ -484,16 +499,7 @@ window.addEventListener('wheel', function(event) {
 window.addEventListener('keydown', function(event) {
   if (!curriculum.classList.contains('enlarged')) return;
 
-  let cvenvisage = document.querySelector('.envisage'),
-  cvNr = Number(cvenvisage.id.split('-')[2]),
-  cvNrm3 = document.getElementById(`cv-block-${cvNr - 3}`),
-  cvNrm2 = document.getElementById(`cv-block-${cvNr - 2}`),
-  cvNrm1 = document.getElementById(`cv-block-${cvNr - 1}`),
-  cvNr0 = document.getElementById(`cv-block-${cvNr}`),
-  cvNrp1 = document.getElementById(`cv-block-${cvNr + 1}`),
-  cvNrp2 = document.getElementById(`cv-block-${cvNr + 2}`),
-  cvNrp3 = document.getElementById(`cv-block-${cvNr + 3}`);
-
+  cvdeclarations();
   const currentblock = document.getElementById('currentblock');
 
   // Left swipe 
@@ -508,6 +514,25 @@ window.addEventListener('keydown', function(event) {
   }
 });
 
+window.addEventListener('click', (event) => {
+  if (!curriculum.classList.contains('enlarged')) return;
+
+  cvdeclarations();
+  let parentid   = event.target.closest('[id]'),
+  hascvblock = parentid.id.startsWith('cv-block'),
+  whichidNr  = Number(parentid.id.split('-')[2]),
+  whichEnvge = document.querySelector('.envisage'),
+  envgeidNr  = Number(whichEnvge.id.split('-')[2]);
+
+  if ((event.target === parentid || hascvblock) && whichidNr > envgeidNr) {
+    SwipeToLeft(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
+    currentblock.innerHTML = `${cvNr+2}`;
+  }
+  else if ((event.target === parentid || hascvblock) && whichidNr < envgeidNr) {
+    SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
+    currentblock.innerHTML = `${cvNr}`;
+  }
+});
 function SwipeToLeft(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3) {
 
   if (cvNr > 2) {
@@ -610,7 +635,7 @@ function SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp
       alert('Thank you for your message, ' + Mail[0] + '!');
     }
 
-    const link = encodeURIComponent("mailto:name@gmail.com")
+    const link = encodeURIComponent("mailto:pajozim@gmail.com")
              + "?from=" + encodeURIComponent(Mail[2])
              + "&subject=" + encodeURIComponent(Mail[1])
              + "&body=" + encodeURIComponent(Mail[3]);
@@ -631,6 +656,9 @@ pageflipper.classList.add('ftoSS');
 spcontainer.classList.remove('appear');
 spcontainer.classList.add('disappear');
 
+// flicker of return-to-startpage button
+triangleBtn.classList.replace('SP', 'Studio');
+
 // dynamic composer
 studioC.classList.remove('disappear');
 setTimeout(() => {studioC.classList.add('appear')}, 1000);
@@ -641,35 +669,39 @@ displayProducts();
 dynnav.classList.add('dn-intro');
 setTimeout(() => {
   dynnav.classList.remove('dn-intro');
-}, 4000);
+}, 6000);
 });
 
 // back to Initial State / Start Page ==============================================================================
 
-pagefliptr.addEventListener('click', () => {
-// to the intial state
-if (pageflipper.classList.contains('ftoSS')) {
-  pageflipper.classList.remove('ftoSS');
-  void pageflipper.offsetWidth;
-  pageflipper.classList.add('ftoISfSS');
+function backToSPFromStudio() {
+  // to the intial state
+  if (pageflipper.classList.contains('ftoSS')) {
+    pageflipper.classList.remove('ftoSS');
+    void pageflipper.offsetWidth;
+    pageflipper.classList.add('ftoISfSS');
+    setTimeout(() => {
+      pageflipper.classList.remove('ftoISfSS');
+    }, 1000);
+  }
+
+  // appear stpg-container
   setTimeout(() => {
-    pageflipper.classList.remove('ftoISfSS');
+    spcontainer.classList.remove('disappear');
+    spcontainer.classList.add('appear');
   }, 1000);
-}
 
-// appear stpg-container
-setTimeout(() => {
-  spcontainer.classList.remove('disappear');
-  spcontainer.classList.add('appear');
-}, 1000);
+  // removal of return-to-startpage button
+  triangleBtn.classList.replace('Studio', 'SP');
 
-// disappearance of dynamic navigation bar
-dynnav.classList.remove('nkey2', 'nkey1');
+  // disappearance of studio
+  studioC.classList.remove('appear', 'flexed');
+  studioC.classList.add('disappear');
+  studioC.innerHTML = '';
+};
 
-// disappearance of studio
-studioC.classList.remove('appear', 'flexed');
-studioC.classList.add('disappear');
-studioC.innerHTML = '';
+pagefliptr.addEventListener('click', () => {
+  backToSPFromStudio();
 });
 </script>
 <script aria-label="toCV">
@@ -693,6 +725,9 @@ pageflipper.classList.add('ftoCS');
 spcontainer.classList.remove('appear');
 spcontainer.classList.add('disappear');
 
+// flicker of return-to-startpage button
+triangleBtn.classList.replace('SP', 'CV');
+
 // dynamic composer
 cvcontainer.classList.remove('disappear');
 setTimeout(() => {cvcontainer.classList.add('appear')}, 1000);
@@ -707,13 +742,13 @@ twentyvh();
 dynnav.classList.add('dn-intro');
 setTimeout(() => {
   dynnav.classList.remove('dn-intro');
-}, 4000);
+}, 6000);
 });
 
 // back to Initial State / Start Page ==============================================================================
 
-pagefliptr.addEventListener('click', () => {
-// to the intial state
+function backToSPFromCV() {
+  // to the intial state
 if (pageflipper.classList.contains('ftoCS')) {
   pageflipper.classList.remove('ftoCS');
   void pageflipper.offsetWidth;
@@ -727,17 +762,18 @@ if (pageflipper.classList.contains('ftoCS')) {
 cvcontainer.classList.remove('appear');
 setTimeout(() => {cvcontainer.classList.add('disappear')}, 1000);
 
+// removal of return-to-startpage button
+triangleBtn.classList.replace('CV', 'SP');
+
 // appear stpg-container
 setTimeout(() => {
   spcontainer.classList.remove('disappear');
   spcontainer.classList.add('appear');
 }, 1000);
+};
 
-// disappearance of dynamic navigation bar
-dynnav.classList.remove('nkey2', 'nkey1');
-
-// disappearance of studio
-
+pagefliptr.addEventListener('click', () => {
+  backToSPFromCV();
 });
 </script>
 <script aria-label="toContact">
@@ -751,6 +787,9 @@ pfTriContact.addEventListener('click', () => {
   // disappear stpg-container
   spcontainer.classList.remove('appear');
   spcontainer.classList.add('disappear');
+
+  // flicker of return-to-startpage button
+  triangleBtn.classList.replace('SP', 'Contact');
 
   // contact box
   setTimeout(() => {
@@ -766,31 +805,35 @@ pfTriContact.addEventListener('click', () => {
 
 // back to Initial State / Start Page ==============================================================================
 
-pagefliptr.addEventListener('click', () => {
-// to the intial state
-if (pageflipper.classList.contains('ftoCo')) {
-  pageflipper.classList.remove('ftoCo');
-  void pageflipper.offsetWidth;
-  pageflipper.classList.add('ftoISfCo');
+function backToSPFromContact() {
+  // to the intial state
+  if (pageflipper.classList.contains('ftoCo')) {
+    pageflipper.classList.remove('ftoCo');
+    void pageflipper.offsetWidth;
+    pageflipper.classList.add('ftoISfCo');
+    setTimeout(() => {
+      pageflipper.classList.remove('ftoISfCo');
+    }, 1000);
+  }
+
+  // removal of return-to-startpage button
+  triangleBtn.classList.replace('Contact', 'SP');
+
+  // contact box disappearance
+  contactcontainer.classList.remove('on');
+
+  // appear stpg-container
   setTimeout(() => {
-    pageflipper.classList.remove('ftoISfCo');
+    spcontainer.classList.remove('disappear');
+    spcontainer.classList.add('appear');
   }, 1000);
+
+  // disappearance of dynamic navigation bar
+  dynnav.classList.remove('nkey2', 'nkey1');
 }
 
-// contact box disappearance
-contactcontainer.classList.remove('on');
-
-// appear stpg-container
-setTimeout(() => {
-  spcontainer.classList.remove('disappear');
-  spcontainer.classList.add('appear');
-}, 1000);
-
-// disappearance of dynamic navigation bar
-dynnav.classList.remove('nkey2', 'nkey1');
-
-// disappearance of studio
-
+pagefliptr.addEventListener('click', () => {
+  backToSPFromContact();
 });
 </script>
 <script aria-label="language-switching">

@@ -122,7 +122,7 @@ button {
 
 /* repetitive styles ---------------------------------------- */
 
-.page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, .candy, #currvitae, #contact, #contact-container, .button-container, #cv-container, [id*="row"], #curriculum, #curriculum.enlarged > div, #firstrow > div, #firstrow.compressed:hover::before, #curriculum.small:hover::before, #indicator {
+.page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, .candy, #currvitae, #contact, #contact-page, #contact-form, .button-container, #cv-container, [id*="row"], #curriculum, #curriculum.enlarged > div, #firstrow > div, #firstrow.compressed:hover::before, #curriculum.small:hover::before, #indicator {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -756,17 +756,17 @@ background-color: goldenrod;
 }
 
 /****************************************************** contact-styles ******************************************************/
-#contact-container {
+#contact-page {
   display: none;
 }
 
-#contact-container.on {
+#contact-page.on {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#contact-container > * {
+#contact-form > * {
   width: 40vw;
   max-width: 40vw;
 }

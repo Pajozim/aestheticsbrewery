@@ -20,14 +20,16 @@
       <div id="curriculum" class="small"></div>
       <div id="indicator"></div>
     </div>
-    <div id="contact-container">
-      <input id="c-name" type="text" placeholder="name">
-      <input id="c-email" type="email" placeholder="email - mandatory" required>
-      <input id="c-subject" type="text" placeholder="subject">
-      <textarea id="c-message" type="text" placeholder="message - mandatory" required></textarea>
-      <div class="button-container">
-        <button id="c-submit" onclick="SendMessage()">Send</button>
-      </div>
+    <div id="contact-page">
+      <form id="contact-form" action="https://submit-form.com/BzCPIVvkV">
+        <input type="text" id="c-name" name="name" placeholder="name" />
+        <input type="email" id="c-email" name="email" placeholder="email - mandatory" required="" />
+        <input type="text" id="c-subject" name="subject" placeholder="subject">
+        <textarea type="text" id="c-message" name="message" placeholder="message - mandatory" required></textarea>
+        <div class="button-container">
+          <button type="submit" id="c-submit" onclick="SendMessage()">Send</button>
+        </div>
+      </form>
     </div>
     <div id="stpg-container">
       <div id="idiomsiR"><!--<div id="IdiomaEng">English</div><div id="IdiomaDeu">Deutsch</div><div id="IdiomaEsp">Espa&ntilde;ol</div>--></div>
@@ -82,7 +84,7 @@ const curBlocks    = cvBlocks[6].blocks;
 
 // contact page definitions ================================================================================================
 
-const contactcontainer = document.getElementById('contact-container');
+const contactcontainer = document.getElementById('contact-page');
 
 // source lines ============================================================================================================
 

@@ -22,5 +22,7 @@
 { "name": "BZ mobile", "mediaType": "img", "src": "Studio/WD-BZ_mobile.webp", "extraclass": ".showweb"  },
 { "name": "IngCEA", "mediaType": "img", "src": "Studio/WD-IngCEA.webp", "extraclass": ".showweb"  },
 { "name": "INGCea mobile", "mediaType": "img", "src": "Studio/WD-INGCea_mobile.webp", "extraclass": ".showweb"  },
-{ "name": "Steamboy", "mediaType": "video", "src": "Studio/3D-Steamboy.mp4" }
+{ "name": "Steamboy", "mediaType": "video", "src": "Studio/3D-Steamboy.mp4" },
+{ "name": "etiquetas de velas", "mediaType": "video", "src": "Studio/PD-etiquetas-de-velas.webm"},
+{ "name": "marca por la caja", "mediaType": "video", "src": "Studio/PD-marca-por-cajon.webm" }
 ]

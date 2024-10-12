@@ -45,11 +45,10 @@
 <script aria-label="globalScope">
 
 /* propositions/to dos: 
-+ pop up div with small instruction about n-key for nav-bar 
 + categories (webdesign, printdesign, artcrafts etc.) higlighted at the beginning and when pressing a key => change media input structure ALSO if candy expanded background color depending on which category
 + 3D effect in swiping left and right, moreso on CV
-
 */
+
 // root ====================================================================================================================
 
 const root         = document.documentElement;
@@ -191,7 +190,7 @@ else if (!products.length || !cvBlocks.length || !materials.length)
     fileInput.value = ''; // Clear the file input
     });
 }
-*/
+    */
 
 </script>
 <script aria-label="studio-composer">
@@ -249,9 +248,9 @@ function displayProducts() {
     const filler = document.createElement('div');
     filler.classList = 'candy';
     filler.id = 'Filler';
-    filler.style.width = ColProduct + 'vw';
+    // filler.style.width = ColProduct + 'vw';
     filler.style.gridColumn = fillergridCol;
-    filler.style.height = rowfactor;
+    // filler.style.height = rowfactor;
     filler.innerHTML = `<img id="workingon" src="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}" onmouseover="this.src='${materials[1].src}'" onmouseout="this.src='${oneofboth[Math.floor(Math.random() * oneofboth.length)]}'" alt="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}">`;
     productList.appendChild(filler);
   }

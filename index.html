@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="allinstyles.css">
 </head>
 <body>
+  <div class="linktogame"><a target="_blank" href="https://pajozim.github.io/Stranded/">click here to play</a></div>
   <div class="triangleBtn SP"></div>
   <section id="dynamic-nav">
     <div id="imgCtner"><img id="nkeytosp"></div><div id="pftbiS">Back to Start</div>
@@ -22,9 +23,9 @@
     </div>
     <div id="contact-page">
       <form id="contact-form" action="https://submit-form.com/BzCPIVvkV">
-        <input type="text" id="c-name" name="name" placeholder="name" />
-        <input type="email" id="c-email" name="email" placeholder="email - mandatory" required="" />
-        <input type="text" id="c-subject" name="subject" placeholder="subject">
+        <input type="text" id="c-name" name="name" placeholder="name" autocomplete="on" />
+        <input type="email" id="c-email" name="email" placeholder="email - mandatory" autocomplete="on" required="" />
+        <input type="text" id="c-subject" name="subject" placeholder="subject" autocomplete="on">
         <textarea type="text" id="c-message" name="message" placeholder="message - mandatory" required></textarea>
         <div class="button-container">
           <button type="submit" id="c-submit" onclick="SendMessage()">Send</button>
@@ -35,7 +36,6 @@
       <div id="idiomsiR"><!--<div id="IdiomaEng">English</div><div id="IdiomaDeu">Deutsch</div><div id="IdiomaEsp">Espa&ntilde;ol</div>--></div>
       <div id="btnsiR"><div id="currvitae"><span>Curriculum</span></div><div id="studio"><span>Studio</span></div></div>
       <div id="contactiR"><div id="contact"><span>Contact</span></div></div>
-    </div>
   </section>
 <script aria-label="ForwardIfMobile">
   if (window.innerHeight > window.innerWidth) {
@@ -71,6 +71,9 @@ const pagefliptr   = document.getElementById('pftbiS');
 const products     = JSON.parse(localStorage.getItem('products')) || [];
 const studioC      = document.getElementById('studio-container');
 const candies      = document.querySelectorAll('.candy');
+const linktogame   = document.querySelector('.linktogame');
+
+document.addEventListener('DOMContentLoaded', () => displayProducts());
 
 // cv page definitions =====================================================================================================
 
@@ -115,6 +118,7 @@ window.addEventListener('keydown', function(event) {
 
   if (event.key === 'n' && event.type === 'keydown' && pageflipper.classList.contains('ftoSS')) {
     backToSPFromStudio();
+    linktogame.classList.remove('block');
   }
   else if (event.key === 'n' && event.type === 'keydown' && pageflipper.classList.contains('ftoCS')) {
     backToSPFromCV();
@@ -133,7 +137,7 @@ const workonimg = document.getElementById('workingon');
 </script>
 <script aria-label="ParseFromFile">
 // offline/local integration of files
-
+/*
 function fetchAndStoreData(url, localStorageKey) {
   const request = new XMLHttpRequest();
   request.open('GET', url);
@@ -152,8 +156,8 @@ if (navigator.onLine) {
   fetchAndStoreData('cv.json', 'cv');
   fetchAndStoreData('products.json', 'products');
   fetchAndStoreData('materials.json', 'materials');
-}/*
-else if (!products.length || !cvBlocks.length || !materials.length) 
+}
+else */ if (!products.length || !cvBlocks.length || !materials.length) 
  {
    const fileInput = document.createElement('input');
    fileInput.type = 'file';
@@ -190,14 +194,12 @@ else if (!products.length || !cvBlocks.length || !materials.length)
     fileInput.value = ''; // Clear the file input
     });
 }
-    */
 
 </script>
 <script aria-label="studio-composer">
 // Display products =========================================================================================================
 
-function displayProducts() {
-    
+function displayProducts() {    
   const productList = document.getElementById('studio-container');
   productList.innerHTML = ''; // Clear existing content
 
@@ -218,7 +220,7 @@ function displayProducts() {
   // Add each product to the grid
   products.forEach(product => {
     const productElement = document.createElement('div');
-    productElement.classList = product.extraclass ? 'candy showweb' : 'candy';
+    productElement.classList = product.extraclass ? 'candy ' + product.extraclass : 'candy';
     productElement.id = `c${products.indexOf(product) + 1}`;
     productElement.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
     productElement.innerHTML = `<${product.mediaType} src="${product.src}" alt="${product.name}" ${product.mediaType === 'video' ? 'controls autoplay muted' : ''}>`;
@@ -254,31 +256,30 @@ function displayProducts() {
     filler.innerHTML = `<img id="workingon" src="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}" onmouseover="this.src='${materials[1].src}'" onmouseout="this.src='${oneofboth[Math.floor(Math.random() * oneofboth.length)]}'" alt="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}">`;
     productList.appendChild(filler);
   }
-  }
+
+  // Save products to localStorage
+  localStorage.setItem('products', JSON.stringify(products));
+}
 
 // .candy expand and collapse ===============================================================================================
 
 window.addEventListener('click', function(event) {
   const elementToToggle = event.target.classList.contains('candy') ? event.target : event.target.parentElement;
   const FillerElement   = event.target.id.includes('Filler') || event.target.parentElement.id.includes('Filler');
+  const showlink        = event.target.classList.contains('showlink') || event.target.parentElement.classList.contains('showlink');
 
-  if (!FillerElement && (event.target.classList.contains('candy') || event.target.parentElement.classList.contains('candy'))) {    
+  if (!FillerElement && (event.target.classList.contains('candy') || event.target.parentElement.classList.contains('candy'))) { 
     elementToToggle.classList.toggle('expanded');
     document.getElementById('studio-container').classList.toggle('flexed');
+    if (showlink) {
+      linktogame.classList.toggle('block');
+    }
     document.querySelectorAll('.candy').forEach(c => {
       if (c !== event.target && c !== event.target.parentElement) {
         c.classList.toggle('hidden');
       }
     });
-  }
-  else if (!FillerElement && (event.target.classList.contains('expanded') || event.target.parentElement.classList.contains('candy'))) {
-    elementToToggle.classList.remove('expanded');
-    document.getElementById('studio-container').classList.remove('flexed');
-    document.querySelectorAll('.candy').forEach(c => {
-      c.classList.remove('hidden');
-    });
-  }
-});
+  }});
 
 // swiping to left or right in Studio =======================================================================================
 
@@ -649,29 +650,31 @@ function SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp
 // flip to Studio ==========================================================================================================
 
 pfTriStudio.addEventListener('click', () => {
-// flip pageflipper
-void pageflipper.offsetWidth; // This forces a reflow
-pageflipper.classList.add('ftoSS');
+  // Flip pageflipper
+  void pageflipper.offsetWidth; // This forces a reflow
+  pageflipper.classList.add('ftoSS');
 
-// disappear stpg-container
-spcontainer.classList.remove('appear');
-spcontainer.classList.add('disappear');
+  // Disappear stpg-container
+  spcontainer.classList.remove('appear');
+  spcontainer.classList.add('disappear');
 
-// flicker of return-to-startpage button
-triangleBtn.classList.replace('SP', 'Studio');
+  // Flicker of return-to-startpage button
+  triangleBtn.classList.replace('SP', 'Studio');
 
-// dynamic composer
-studioC.classList.remove('disappear');
-setTimeout(() => {studioC.classList.add('appear')}, 1000);
+  // Dynamic composer
+  studioC.classList.remove('disappear');
+  setTimeout(() => {studioC.classList.add('appear')}, 1000);
 
-displayProducts();
+  // products composition
+  displayProducts()
 
-// appearance and disappearance of dynav bar
-dynnav.classList.add('dn-intro');
-setTimeout(() => {
-  dynnav.classList.remove('dn-intro');
-}, 6000);
+  // Appearance and disappearance of dynav bar
+  dynnav.classList.add('dn-intro');
+  setTimeout(() => {
+    dynnav.classList.remove('dn-intro');
+  }, 6000);
 });
+
 
 // back to Initial State / Start Page ==============================================================================
 

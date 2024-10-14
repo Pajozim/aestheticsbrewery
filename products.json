@@ -18,11 +18,12 @@
 { "name": "RedGinseng Cover", "mediaType": "img", "src": "Studio/DD-RedGinseng-Cover.jpg" },
 { "name": "fontsCompilation", "mediaType": "img", "src": "Studio/FD-fontsCompilation.webp" },
 { "name": "WerewolfTShirt", "mediaType": "img", "src": "Studio/PD-WerewolfTShirt.webp" },
-{ "name": "BZ", "mediaType": "img", "src": "Studio/WD-BZ.webp", "extraclass": ".showweb"  },
-{ "name": "BZ mobile", "mediaType": "img", "src": "Studio/WD-BZ_mobile.webp", "extraclass": ".showweb"  },
-{ "name": "IngCEA", "mediaType": "img", "src": "Studio/WD-IngCEA.webp", "extraclass": ".showweb"  },
-{ "name": "INGCea mobile", "mediaType": "img", "src": "Studio/WD-INGCea_mobile.webp", "extraclass": ".showweb"  },
+{ "name": "BZ", "mediaType": "img", "src": "Studio/WD-BZ.webp", "extraclass": "showweb"  },
+{ "name": "BZ mobile", "mediaType": "img", "src": "Studio/WD-BZ_mobile.webp", "extraclass": "showweb"  },
+{ "name": "IngCEA", "mediaType": "img", "src": "Studio/WD-IngCEA.webp", "extraclass": "showweb"  },
+{ "name": "INGCea mobile", "mediaType": "img", "src": "Studio/WD-INGCea_mobile.webp", "extraclass": "showweb"  },
 { "name": "Steamboy", "mediaType": "video", "src": "Studio/3D-Steamboy.mp4" },
 { "name": "etiquetas de velas", "mediaType": "video", "src": "Studio/PD-etiquetas-de-velas.webm"},
-{ "name": "marca por la caja", "mediaType": "video", "src": "Studio/PD-marca-por-cajon.webm" }
+{ "name": "marca por la caja", "mediaType": "video", "src": "Studio/PD-marca-por-caja.webm" },
+{ "name": "Stranded - HTML game", "mediaType": "img", "src": "Studio/GD-Stranded-Game.webp", "extraclass": "showlink"  }
 ]

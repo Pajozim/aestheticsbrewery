@@ -271,12 +271,12 @@ button {
 }
 
 #contactiR {
+  flex-direction: row;
   height: 10vh;
   justify-content: center;
 }
 
 #contactiR > div {
-  width: 5vw;
   height: 4vh;
   background-color: tan;
   margin: 0 1em;
@@ -465,6 +465,41 @@ max-width: fit-content;
 height: auto;
 }
 
+.expanded.showlink:hover, .linktogame:hover {
+  cursor: pointer;
+}
+
+.linktogame {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1% 5%;
+  background-color: #222;
+  transition: all 0.2s ease-in-out;
+  outline: 3px solid #222;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.linktogame.block {
+  display: block;
+}
+
+.linktogame:hover {
+  cursor: pointer;
+  background-color: #444;
+  outline: 3px solid #444;
+}
+
+.linktogame a {
+  color: var(--fontcolor);
+  font-size: var(--fontsize);
+  text-decoration: none;
+}
+
 .candy.hidden {
 display: none;
 }
@@ -478,7 +513,7 @@ display: none;
 /* filler box */
 
 #Filler {
-background-color: darkviolet;
+background-color: #080808;
 }
 
 #Filler:hover {

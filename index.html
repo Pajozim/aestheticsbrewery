@@ -137,7 +137,7 @@ const workonimg = document.getElementById('workingon');
 </script>
 <script aria-label="ParseFromFile">
 // offline/local integration of files
-/*
+
 function fetchAndStoreData(url, localStorageKey) {
   const request = new XMLHttpRequest();
   request.open('GET', url);
@@ -156,8 +156,8 @@ if (navigator.onLine) {
   fetchAndStoreData('cv.json', 'cv');
   fetchAndStoreData('products.json', 'products');
   fetchAndStoreData('materials.json', 'materials');
-}
-else */ if (!products.length || !cvBlocks.length || !materials.length) 
+} /*
+else if (!products.length || !cvBlocks.length || !materials.length) 
  {
    const fileInput = document.createElement('input');
    fileInput.type = 'file';
@@ -193,7 +193,7 @@ else */ if (!products.length || !cvBlocks.length || !materials.length)
     fileInput.style.display = 'none'; // Hide the input element
     fileInput.value = ''; // Clear the file input
     });
-}
+} */
 
 </script>
 <script aria-label="studio-composer">

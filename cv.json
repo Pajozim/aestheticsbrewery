@@ -1,206 +1,613 @@
 [
   {
-    "id": "photo",
-    "block": {
-      "name": "photo",
-      "src": "Materials/self.webp"
-    }
-  },
-  {
-    "id": "personal-data",
-    "block": {
-      "h3": "Personal Data",
-      "line1": "Paul Zimmermann",
-      "line3": "83243 Hermosillo, Sonora, Mexiko"
-    }
-  },
-  {
-    "id": "education",
-    "block": {
-      "h3": "Education",
-      "line1": "Psychology",
-      "line2": "Bachelor of Science (3 years)",
-      "line3": "Technische Universität Chemnitz",
-      "line4": "2008 - 2012",
-      "line5": "&nbsp;",
-      "line6": "Digital and Print Design",
-      "line7": "Vocational Qualification (3 years)",
-      "line8": "L4 Akademie, Berlin",
-      "line9": "2004 - 2008"
-    }
-  },
-  {
-    "id": "languages",
-    "block": {
-      "h3": "Languages",
-      "line1": "German - Native",
-      "line2": "English - Fluent (C1)",
-      "line3": "Business English - Fluent (B2)",
-      "line4": "Spanish - Beginner (A2)"
-    }
-  },
-  {
-    "id": "skills",
-    "block": {
-      "h3": "Skills",
-      "line1": "interactive",
-      "line2": "calm",
-      "line3": "attentive",
-      "line4": "creative",
-      "line5": "reflective",
-      "line6": "spatial acuteness"
-    }
-  },
-  {
-    "id": "tools",
-    "block": {
-      "h3": "Tools",
-      "line1": "GIMP",
-      "line2": "Inkscape",
-      "line3": "Squarespace",
-      "line4": "Framer",
-      "line5": "Wix",
-      "line6": "Visual Studio Code",
-      "line7": "Blender"
-    }
-  },
-  {
-    "id": "curriculum",
-    "blocks": [
-      {
-        "bgcolor" : "rgb(223, 81, 46)",
-        "h3": "now - December 2023",
-        "line1": "Hermosillo, Sonora, México",
-        "line2": "&nbsp;",
-        "line3": "1x creation of candle stickers and label for parcels",
-        "line4": "2x social media reels (CapCut)",
-        "line5": "1x video presentation of a workplace (DaVinci)",
-        "line6": "1x own website creation (Framer)",
-        "line7": "3x redesigns of my curriculums in design (Canva) and language (esp, eng & ger)",
-        "line8": "1x game creation (Twine - HTML/CSS/JavaScript)"
-      },
-      {
-        "bgcolor" : "rgb(189, 9, 52)",
-        "h3": "November 2023 - May 2023",
-        "line1": "Mexico City, México",
-        "line2": "&nbsp;",
-        "line3": "2x website stacking (Squarespace)",
-        "line4": "2x logo designs (Inkscape)",
-        "line5": "physical plastic modelling and selling",
-        "line6": "1x game creation (Arcweave)",
-        "line7": "polishing kitchen furniture",
-        "line8": "painting the balustrade of two stairways",
-        "line9": "job searches for remote work in the German market (psychotherapy & digital design)",
-        "line10": "1x updating my resume"
-      },
-      {
-        "bgcolor" : "rgb(99, 93, 122)",
-        "h3": "April 2023 - November 2014",
-        "line1": "Kröpelin, Mecklenburg-Vorpommern, Germany",
-        "line2": "&nbsp;",
-        "line3": "climbing up, cutting down and rappelling branches or trunks",
-        "line4": "tree felling, tree pruning"
-      },
-      {
-        "bgcolor" : "rgb(252, 41, 88)",
-        "h3": "October 2014 - October 2013",
-        "line1": "Free University of Berlin",
-        "line2": "&nbsp;",
-        "line3": "aborted study of psychology (master of science)"
-      },
-      {
-        "bgcolor" : "rgb(47, 74, 76)",
-        "h3": "September 2013 - August 2013",
-        "line1": "Germany",
-        "line2": "&nbsp;",
-        "line3": "vacation"
-      },
-      {
-        "bgcolor" : "rgb(233, 95, 21)",
-        "h3": "July 2013 - July 2012",
-        "line1": "sports-box.de, Berlin",
-        "line2": "&nbsp;",
-        "line3": "bookkeeping clerk & customer service",
-        "line4": "digital lay in of products and its data onto Excel tables",
-        "line5": "management of returns",
-        "line6": "customer service (eMail & chat)"
-      },
-      {
-        "bgcolor" : "rgb(65, 123, 69)",
-        "h3": "July 2012 - October 2011",
-        "line1": "m.i.s. GmbH, Berlin",
-        "line2": "&nbsp;",
-        "line3": "warehouse operative"
-      },
-      {
-        "bgcolor" : "rgb(111, 79, 122)",
-        "h3": "March 2012 - October 2008",
-        "line1": "University of Technology Chemnitz",
-        "line2": "&nbsp;",
-        "line3": "study of psychology",
-        "line4": "final grade : 2.5 of 5 (Bachelor of science)"
-      },
-      {
-        "bgcolor" : "rgb(28, 68, 145)",
-        "h3": "August 2011 - April 2011",
-        "line1": "Carolabad Clinic, Chemnitz",
-        "line2": "&nbsp;",
-        "line3": "internship of clinical psychotherapy a"
-
-      },{
-        "bgcolor" : "rgb(70, 0, 59)",
-        "h3": "September 2008 - September 2004",
-        "line1": "L4 - Academy, Berlin",
-        "line2": "&nbsp;",
-        "line3": "vocational training in digital & print design",
-        "line4": "basics in communications and compositions",
-        "line5": "digital data management",
-        "line6": "use of Photoshop, HTML-Codes and InDesign",
-        "line7": "Web-Authoring (CSS + HTML)",
-        "line8": "basics in business administration",
-        "line9": "final grades: 83% and 64 of 100 pts"
-      },{
-        "bgcolor" : "rgb(151, 50, 70)",
-        "h3": "July 2008 - July 2007",
-        "line1": "Berlin",
-        "line2": "&nbsp;",
-        "line3": "portfolio preparation for university of Leipzig and Film University Babelsberg"
-      },{
-        "bgcolor" : "rgb(25, 151, 218)",
-        "h3": "September 2007 - September 2006",
-        "line1": "digimedia services ltd., Berlin",
-        "line2": "&nbsp;",
-        "line3": "digital design content creation (logo, website) of a public school"
-      },{ 
-        "bgcolor" : "rgb(101, 125, 49)",
-        "h3": "August 2006 - April 2006",
-        "line1": "debitel-competenz-center, Berlin",
-        "line2": "&nbsp;",
-        "line3": "Content management & data entries",
-        "line4": "of telecommunications products to",
-        "line5": "ebay"
-      },{
-        "bgcolor" : "rgb(241, 4, 137)",
-        "h3": "May 2006 - September 2005",
-        "line1": "Starke Internethandel, Berlin",
-        "line2": "&nbsp;",
-        "line3": "maintaining homepage & data",
-        "line4": "entries of electronic products to eBay",
-        "line5": "and amazon"
-      },{
-        "bgcolor" : "rgb(102, 112, 92)",
-        "h3": "February 2006 - Juni 2004",
-        "line1": "Skandia GmbH, Berlin",
-        "line2": "&nbsp;",
-        "line3": "file search clerk"
-      },{
-        "bgcolor" : "rgb(146, 104, 139)",
-        "h3": "June 2004 - September 1990",
-        "line1": "Berlin",
-        "line2": "&nbsp;",
-        "line3": "general school and Abitur",
-        "line4": "final grade : 3.0 of 6"
+    "langCode": "eng",
+    "resume": [
+    {
+      "id": "photo",
+      "block": {
+        "name": "photo",
+        "src": "Materials/self.webp"
       }
+    },
+    {
+      "id": "personal-data",
+      "block": {
+        "h3": "Personal Data",
+        "line1": "Paul Zimmermann",
+        "line3": "83243 Hermosillo, Sonora, Mexiko"
+      }
+    },
+    {
+      "id": "education",
+      "block": {
+        "h3": "Education",
+        "line1": "Psychology",
+        "line2": "Bachelor of Science (3 years)",
+        "line3": "Technische Universität Chemnitz",
+        "line4": "2008 - 2012",
+        "line5": "&nbsp;",
+        "line6": "Digital and Print Design",
+        "line7": "Vocational Qualification (3 years)",
+        "line8": "L4 Akademie, Berlin",
+        "line9": "2004 - 2008"
+      }
+    },
+    {
+      "id": "languages",
+      "block": {
+        "h3": "Languages",
+        "line1": "German - Native",
+        "line2": "English - Fluent (C1)",
+        "line3": "Business English - Fluent (B2)",
+        "line4": "Spanish - Beginner (A2)"
+      }
+    },
+    {
+      "id": "skills",
+      "block": {
+        "h3": "Skills",
+        "line1": "interactive",
+        "line2": "calm",
+        "line3": "attentive",
+        "line4": "creative",
+        "line5": "reflective",
+        "line6": "spatial acuteness"
+      }
+    },
+    {
+      "id": "tools",
+      "block": {
+        "h3": "Tools",
+        "line1": "GIMP",
+        "line2": "Inkscape",
+        "line3": "Squarespace",
+        "line4": "Framer",
+        "line5": "Wix",
+        "line6": "Visual Studio Code",
+        "line7": "Blender"
+      }
+    },
+    {
+      "id": "curriculum",
+      "blocks": [
+        {
+          "bgcolor" : "rgb(223, 81, 46)",
+          "h3": "now - December 2023",
+          "line1": "Hermosillo, Sonora, México",
+          "line2": "&nbsp;",
+          "line3": "1x creation of candle stickers and label for parcels",
+          "line4": "2x social media reels (CapCut)",
+          "line5": "1x video presentation of a workplace (DaVinci)",
+          "line6": "1x own website creation (Framer)",
+          "line7": "3x redesigns of my curriculums in design (Canva) and language (esp, eng & ger)",
+          "line8": "1x game creation (Twine - HTML/CSS/JavaScript)"
+        },
+        {
+          "bgcolor" : "rgb(189, 9, 52)",
+          "h3": "November 2023 - May 2023",
+          "line1": "Mexico City, México",
+          "line2": "&nbsp;",
+          "line3": "2x website stacking (Squarespace)",
+          "line4": "2x logo designs (Inkscape)",
+          "line5": "physical plastic modelling and selling",
+          "line6": "1x game creation (Arcweave)",
+          "line7": "polishing kitchen furniture",
+          "line8": "painting the balustrade of two stairways",
+          "line9": "job searches for remote work in the German market (psychotherapy & digital design)",
+          "line10": "1x updating my resume"
+        },
+        {
+          "bgcolor" : "rgb(99, 93, 122)",
+          "h3": "April 2023 - November 2014",
+          "line1": "Kröpelin, Mecklenburg-Vorpommern, Germany",
+          "line2": "&nbsp;",
+          "line3": "climbing up, cutting down and rappelling branches or trunks",
+          "line4": "tree felling, tree pruning"
+        },
+        {
+          "bgcolor" : "rgb(252, 41, 88)",
+          "h3": "October 2014 - October 2013",
+          "line1": "Free University of Berlin",
+          "line2": "&nbsp;",
+          "line3": "aborted study of psychology (master of science)"
+        },
+        {
+          "bgcolor" : "rgb(47, 74, 76)",
+          "h3": "September 2013 - August 2013",
+          "line1": "Germany",
+          "line2": "&nbsp;",
+          "line3": "vacation"
+        },
+        {
+          "bgcolor" : "rgb(233, 95, 21)",
+          "h3": "July 2013 - July 2012",
+          "line1": "sports-box.de, Berlin",
+          "line2": "&nbsp;",
+          "line3": "bookkeeping clerk & customer service",
+          "line4": "digital lay in of products and its data onto Excel tables",
+          "line5": "management of returns",
+          "line6": "customer service (eMail & chat)"
+        },
+        {
+          "bgcolor" : "rgb(65, 123, 69)",
+          "h3": "July 2012 - October 2011",
+          "line1": "m.i.s. GmbH, Berlin",
+          "line2": "&nbsp;",
+          "line3": "warehouse operative"
+        },
+        {
+          "bgcolor" : "rgb(111, 79, 122)",
+          "h3": "March 2012 - October 2008",
+          "line1": "University of Technology Chemnitz",
+          "line2": "&nbsp;",
+          "line3": "study of psychology",
+          "line4": "final grade : 2.5 of 5 (Bachelor of science)"
+        },
+        {
+          "bgcolor" : "rgb(28, 68, 145)",
+          "h3": "August 2011 - April 2011",
+          "line1": "Carolabad Clinic, Chemnitz",
+          "line2": "&nbsp;",
+          "line3": "internship of clinical psychotherapy"
+        },{
+          "bgcolor" : "rgb(151, 50, 70)",
+          "h3": "September 2008 - October 2007",
+          "line1": "Berlin",
+          "line2": "&nbsp;",
+          "line3": "portfolio preparation for HGB Leipzig and Film University Babelsberg"
+        },{
+          "bgcolor" : "rgb(70, 0, 59)",
+          "h3": "September 2007 - September 2004",
+          "line1": "L4 - Academy, Berlin",
+          "line2": "&nbsp;",
+          "line3": "vocational training in digital & print design",
+          "line4": "basics in communications and compositions",
+          "line5": "digital data management",
+          "line6": "use of Photoshop, HTML-Codes and InDesign",
+          "line7": "Web-Authoring (CSS + HTML)",
+          "line8": "basics in business administration",
+          "line9": "final grades: 83% and 64 of 100 pts"
+        },{
+          "bgcolor" : "rgb(25, 151, 218)",
+          "h3": "February 2007 - September 2006",
+          "line1": "digimedia services ltd., Berlin",
+          "line2": "&nbsp;",
+          "line3": "digital design content creation (logo, website) of a public school"
+        },{ 
+          "bgcolor" : "rgb(101, 125, 49)",
+          "h3": "August 2006 - April 2006",
+          "line1": "debitel-competenz-center, Berlin",
+          "line2": "&nbsp;",
+          "line3": "Content management & data entries",
+          "line4": "of telecommunications products to ebay"
+        },{
+          "bgcolor" : "rgb(241, 4, 137)",
+          "h3": "May 2006 - September 2005",
+          "line1": "Starke Internethandel, Berlin",
+          "line2": "&nbsp;",
+          "line3": "maintaining homepage & data",
+          "line4": "entries of electronic products to eBay and amazon"
+        },{
+          "bgcolor" : "rgb(102, 112, 92)",
+          "h3": "February 2006 - Juni 2004",
+          "line1": "Skandia GmbH, Berlin",
+          "line2": "&nbsp;",
+          "line3": "file search clerk"
+        },{
+          "bgcolor" : "rgb(146, 104, 139)",
+          "h3": "June 2004 - September 1990",
+          "line1": "Berlin",
+          "line2": "&nbsp;",
+          "line3": "general school and Abitur",
+          "line4": "final grade : 3.0 of 6"
+        }
+      ]
+    }
+    ]
+  },
+  {
+    "langCode": "deu",
+    "resume": [
+    {
+      "id": "photo",
+      "block": {
+        "name": "Foto",
+        "src": "Materials/self.webp"
+      }
+    },
+    {
+      "id": "personal-data",
+      "block": {
+        "h3": "Persönliche Infos",
+        "line1": "Paul Zimmermann",
+        "line3": "83243 Hermosillo, Sonora, Mexiko"
+      }
+    },
+    {
+      "id": "education",
+      "block": {
+        "h3": "Bildung",
+        "line1": "Psychologie",
+        "line2": "Bachelor of Science (3 Jahre)",
+        "line3": "Technische Universität Chemnitz",
+        "line4": "2008 - 2012",
+        "line5": "&nbsp;",
+        "line6": "Digital and Print Design",
+        "line7": "Berufsfachschulausbildung (3 Jahre)",
+        "line8": "L4 Akademie, Berlin",
+        "line9": "2004 - 2008"
+      }
+    },
+    {
+      "id": "languages",
+      "block": {
+        "h3": "Sprachen",
+        "line1": "Deutsch - Muttersprache",
+        "line2": "Englisch - verhandlungssicher (C1)",
+        "line3": "Business English - fließend (B2)",
+        "line4": "Spanish - Grundkenntnisse (A2)"
+      }
+    },
+    {
+      "id": "skills",
+      "block": {
+        "h3": "Fähigkeiten",
+        "line1": "interaktiv",
+        "line2": "ruhig",
+        "line3": "aufmerksam",
+        "line4": "kreativ",
+        "line5": "reflektiv",
+        "line6": "gute räumliche Wahrnehmung"
+      }
+    },
+    {
+      "id": "tools",
+      "block": {
+        "h3": "Werkzeuge",
+        "line1": "GIMP",
+        "line2": "Inkscape",
+        "line3": "Squarespace",
+        "line4": "Framer",
+        "line5": "Wix",
+        "line6": "Visual Studio Code",
+        "line7": "Blender"
+      }
+    },
+    {
+      "id": "curriculum",
+      "blocks": [
+        {
+          "bgcolor" : "rgb(223, 81, 46)",
+          "h3": "aktuell - Dezember 2023",
+          "line1": "Hermosillo, Sonora, México",
+          "line2": "&nbsp;",
+          "line3": "1x Erstellung von Kerzensticker und -aufkleber für eine Versandbox",
+          "line4": "2x Social Media Reels (CapCut)",
+          "line5": "1x Videopräsentation einer Baustelle (DaVinci)",
+          "line6": "1x Erstellen eigener Webseite (Framer, danach mit Visual Studio Code)",
+          "line8": "1x Aufbau einer HTML Spielstory (Twine - HTML/CSS/JavaScript)"
+        },
+        {
+          "bgcolor" : "rgb(189, 9, 52)",
+          "h3": "November 2023 - May 2023",
+          "line1": "Mexico City, México",
+          "line2": "&nbsp;",
+          "line3": "2x Erstellen zweier Webseiten INGCEA & BD Zimmermann (Squarespace)",
+          "line4": "2x Logogestaltung (Inkscape)",
+          "line5": "plastisches Gestalten und Verkauf",
+          "line6": "1x Spielentwicklung (Arcweave)",
+          "line7": "Polieren von Küchenmöbel",
+          "line8": "Treppengeländer streichen",
+          "line9": "Jobsuche für Home Office auf dem deutschen Markt (Psychotherapie & Digital Design)",
+          "line10": "1x Aktualisierung meines Lebenslaufs"
+        },
+        {
+          "bgcolor" : "rgb(99, 93, 122)",
+          "h3": "April 2023 - November 2014",
+          "line1": "Kröpelin, Mecklenburg-Vorpommern, Germany",
+          "line2": "&nbsp;",
+          "line3": "erklettern, schneiden und abseilen von Ästen und Stämmen",
+          "line4": "Baumfällung, Baumschnitt"
+        },
+        {
+          "bgcolor" : "rgb(252, 41, 88)",
+          "h3": "Oktober 2014 - Oktober 2013",
+          "line1": "Freie Universität Berlin",
+          "line2": "&nbsp;",
+          "line3": "abgebrochenes Psychologiestudium (Master of Science)"
+        },
+        {
+          "bgcolor" : "rgb(47, 74, 76)",
+          "h3": "September 2013 - August 2013",
+          "line1": "Deutschland",
+          "line2": "&nbsp;",
+          "line3": "Urlaub"
+        },
+        {
+          "bgcolor" : "rgb(233, 95, 21)",
+          "h3": "Juli 2013 - Juli 2012",
+          "line1": "sports-box.de, Berlin",
+          "line2": "&nbsp;",
+          "line3": "Buchhaltung von Produkten",
+          "line4": "Übertragung con Produkten und Produktdaten zu Excel",
+          "line5": "Retourenmanagement",
+          "line6": "Kundenservice (eMail & Chat)"
+        },
+        {
+          "bgcolor" : "rgb(65, 123, 69)",
+          "h3": "Juli 2012 - Oktober 2011",
+          "line1": "m.i.s. GmbH, Berlin",
+          "line2": "&nbsp;",
+          "line3": "Wareneinsortierung"
+        },
+        {
+          "bgcolor" : "rgb(111, 79, 122)",
+          "h3": "März 2012 - Oktober 2008",
+          "line1": "Technische Universität Chemnitz",
+          "line2": "&nbsp;",
+          "line3": "Psychologiestudium",
+          "line4": "Abschluss: 2.5 von 5 (Bachelor of Science)"
+        },
+        {
+          "bgcolor" : "rgb(28, 68, 145)",
+          "h3": "August 2011 - April 2011",
+          "line1": "Carolabad Klinic, Chemnitz",
+          "line2": "&nbsp;",
+          "line3": "Praktikum"
+  
+        },{
+          "bgcolor" : "rgb(151, 50, 70)",
+          "h3": "September 2008 - Oktober 2007",
+          "line1": "Berlin",
+          "line2": "&nbsp;",
+          "line3": "Mappenvorbereitung für HGB Leipzig and Filmuniversität Babelsberg"
+        },{
+          "bgcolor" : "rgb(70, 0, 59)",
+          "h3": "September 2007 - September 2004",
+          "line1": "L4 - Academy, Berlin",
+          "line2": "&nbsp;",
+          "line3": "Berufsfachschule in Mediengestaltung Digital und Print",
+          "line4": "Grundlagen von Kommunikation und Komposition",
+          "line5": "Digitaldatenmanagement",
+          "line6": "Photoshop, Illustrator and InDesign",
+          "line7": "Webgestaltung (CSS + HTML)",
+          "line8": "Grundlagen in Betriebsverwaltung",
+          "line9": "Abschluss: 83% and 64%"
+        },{
+          "bgcolor" : "rgb(25, 151, 218)",
+          "h3": "Februar 2007 - September 2006",
+          "line1": "digimedia services ltd., Berlin",
+          "line2": "&nbsp;",
+          "line3": "digitale Contentgestaltung (Logo, Webseite) einer öffentlichen Schule"
+        },{ 
+          "bgcolor" : "rgb(101, 125, 49)",
+          "h3": "August 2006 - April 2006",
+          "line1": "debitel-competenz-center, Berlin",
+          "line2": "&nbsp;",
+          "line3": "Content management & Dateneingabe von Telekommunikationsprodukten zu eBay"
+        },{
+          "bgcolor" : "rgb(241, 4, 137)",
+          "h3": "May 2006 - September 2005",
+          "line1": "Starke Internethandel, Berlin",
+          "line2": "&nbsp;",
+          "line3": "Webseitenpflege & Dateneingabe von elektronischen Produkten zu eBay und Amazon"
+        },{
+          "bgcolor" : "rgb(102, 112, 92)",
+          "h3": "February 2006 - Juni 2004",
+          "line1": "Skandia GmbH, Berlin",
+          "line2": "&nbsp;",
+          "line3": "Aktienverwalter"
+        },{
+          "bgcolor" : "rgb(146, 104, 139)",
+          "h3": "Juni 2004 - September 1990",
+          "line1": "Berlin",
+          "line2": "&nbsp;",
+          "line3": "Schule and Abitur",
+          "line4": "Abschluss: 3.0 von 6"
+        }
+      ]
+    }  
+    ]
+  },
+  {
+    "langCode": "esp",
+    "resume": [
+    {
+      "id": "photo",
+      "block": {
+        "name": "Foto",
+        "src": "Materials/self.webp"
+      }
+    },
+    {
+      "id": "personal-data",
+      "block": {
+        "h3": "información personal",
+        "line1": "Paul Zimmermann",
+        "line3": "83243 Hermosillo, Sonora, Mexiko"
+      }
+    },
+    {
+      "id": "education",
+      "block": {
+        "h3": "Educación",
+        "line1": "Psicología",
+        "line2": "Bachelor of Science (3 años)",
+        "line3": "Universidad Politécnica Chemnitz",
+        "line4": "2008 - 2012",
+        "line5": "&nbsp;",
+        "line6": "Diseño en Digital y Impreso",
+        "line7": "Vocación (3 Jahre)",
+        "line8": "L4 Academia, Berlin",
+        "line9": "2004 - 2008"
+      }
+    },
+    {
+      "id": "languages",
+      "block": {
+        "h3": "Idiomas",
+        "line1": "Alemán - lengua materna",
+        "line2": "Inglés - con fluidez (C1)",
+        "line3": "Inglés de Negocio - con fluidez (B2)",
+        "line4": "Español - Conocimientos básicos (A2)"
+      }
+    },
+    {
+      "id": "skills",
+      "block": {
+        "h3": "Habilidades",
+        "line1": "interactivo",
+        "line2": "tranquilo",
+        "line3": "attentivo",
+        "line4": "creativo",
+        "line5": "reflexivo",
+        "line6": "agudeza espacial"
+      }
+    },
+    {
+      "id": "tools",
+      "block": {
+        "h3": "Herramientas",
+        "line1": "GIMP",
+        "line2": "Inkscape",
+        "line3": "Squarespace",
+        "line4": "Framer",
+        "line5": "Wix",
+        "line6": "Visual Studio Code",
+        "line7": "Blender"
+      }
+    },
+    {
+      "id": "curriculum",
+      "blocks": [
+        {
+          "bgcolor" : "rgb(223, 81, 46)",
+          "h3": "presente - Deciembre 2023",
+          "line1": "Hermosillo, Sonora, México",
+          "line2": "&nbsp;",
+          "line3": "1x creación de mi página web (HTML, CSS & JS) con VS Code",
+          "line4": "2x publicaciones (Ginseng) para redes sociales (CapCut)",
+          "line5": "1x presentación del progreso en un projecto (Davinci)",
+          "line6": "creación de páginas web: INGCEA & Baumdienst Zimmermann",
+          "line7": "(SquareSpace)",
+          "line8": "creación de mi página web (Framer)",
+          "line9": "rediseño de CV en alemán, inglés y español (Canva)",
+          "line10": "creación de juegos (Twine = HTML / CSS / JavaScript)",
+          "line11": "diseño de 2x logos (Inkscape)"
+        },
+        {
+          "bgcolor" : "rgb(189, 9, 52)",
+          "h3": "Noviembre 2023 - Mayo 2023",
+          "line1": "Mexico City, México",
+          "line2": "&nbsp;",
+          "line3": "alojamiento en México",
+          "line4": "búsqueda como terapeuta psicológico",
+          "line5": "creación de un juego (Arcweave)",
+          "line6": "búsqueda de empleo en diseño",
+          "line7": "vender artes"
+        },
+        {
+          "bgcolor" : "rgb(99, 93, 122)",
+          "h3": "Abril 2023 - Noviembre 2014",
+          "line1": "Kröpelin, Mecklenburg-Vorpommern, Germany",
+          "line2": "&nbsp;",
+          "line3": "trepar, serrar, rapelar desde ramas",
+          "line4": "tala de árboles"
+        },
+        {
+          "bgcolor" : "rgb(252, 41, 88)",
+          "h3": "Octubre 2014 - Octubre 2013",
+          "line1": "Freie Universität Berlin",
+          "line2": "&nbsp;",
+          "line3": "estudio abortado de psicología en maestría de cienca"
+        },
+        {
+          "bgcolor" : "rgb(47, 74, 76)",
+          "h3": "Septiembre 2013 - Agosto 2013",
+          "line1": "Alemania",
+          "line2": "&nbsp;",
+          "line3": "vacaciones"
+        },
+        {
+          "bgcolor" : "rgb(233, 95, 21)",
+          "h3": "Julioo 2013 - Julioo 2012",
+          "line1": "sports-box.de, Berlin",
+          "line2": "&nbsp;",
+          "line3": "empleado de contabilidad y servicio al cliente",
+          "line4": "entradas de datos de productos deportivos en la tabla de Excel"
+        },
+        {
+          "bgcolor" : "rgb(65, 123, 69)",
+          "h3": "Julioo 2012 - Octubre 2011",
+          "line1": "m.i.s. GmbH, Berlin",
+          "line2": "&nbsp;",
+          "line3": "cajas de almacenamiento de bebidas"
+        },
+        {
+          "bgcolor" : "rgb(111, 79, 122)",
+          "h3": "Marzo 2012 - Octubre 2008",
+          "line1": "Technische Universität Chemnitz",
+          "line2": "&nbsp;",
+          "line3": "estudio de psicología",
+          "line4": "nota final: 2.5 de 5 (Licenciatura en ciencias)"
+        },
+        {
+          "bgcolor" : "rgb(28, 68, 145)",
+          "h3": "Agosto 2011 - Abril 2011",
+          "line1": "Carolabad Klinic, Chemnitz",
+          "line2": "&nbsp;",
+          "line3": "práctica en hospitaciones, moderaciones y guía de pruebas"
+  
+        },{
+          "bgcolor" : "rgb(151, 50, 70)",
+          "h3": "Septiembre 2008 - Octubre 2007",
+          "line1": "Berlin",
+          "line2": "&nbsp;",
+          "line3": "preparación de la cartera",
+          "line4": "para la Academia de Arte en Leipzig",
+          "line5": "impresas & diseño digital (folleto y sitio web)"
+        },{
+          "bgcolor" : "rgb(70, 0, 59)",
+          "h3": "Septiembre 2007 - Septiembre 2004",
+          "line1": "L4 - Academy, Berlin",
+          "line2": "&nbsp;",
+          "line3": "formación vocacional en diseño digital e impreso",
+          "line4": "calificaciones finales: 83% y 64%"
+        },{
+          "bgcolor" : "rgb(25, 151, 218)",
+          "h3": "Febrero 2007 - Septiembre 2006",
+          "line1": "digimedia services ltd., Berlin",
+          "line2": "&nbsp;",
+          "line3": "diseño digital",
+          "line4": "creación de contenido (logotipo, sitio web) de una escuela pública"
+        },{ 
+          "bgcolor" : "rgb(101, 125, 49)",
+          "h3": "Agosto 2006 - Abril 2006",
+          "line1": "debitel-competenz-center, Berlin",
+          "line2": "&nbsp;",
+          "line3": "gestión de contenidos y entradas de datos de productos telecomunicaciones en ebay"
+        },{
+          "bgcolor" : "rgb(241, 4, 137)",
+          "h3": "Mayo 2006 - Septiembre 2005",
+          "line1": "Starke Internethandel, Berlin",
+          "line2": "&nbsp;",
+          "line3": "mantenimiento de la página de web y entradas de datos de productos en eBay y amazon"
+        },{
+          "bgcolor" : "rgb(102, 112, 92)",
+          "h3": "Febrero 2006 - Junio 2004",
+          "line1": "Skandia GmbH, Berlin",
+          "line2": "&nbsp;",
+          "line3": "localización y clasificación de archivos"
+        },{
+          "bgcolor" : "rgb(146, 104, 139)",
+          "h3": "Junio 2004 - Septiembre 1990",
+          "line1": "Berlin",
+          "line2": "&nbsp;",
+          "line3": "escuela & bachillerato",
+          "line4": "calificación final: 3.0 of 6"
+        }
+      ]
+    }
     ]
   }
 ]

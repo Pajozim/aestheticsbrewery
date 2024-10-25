@@ -33,14 +33,138 @@
       </form>
     </div>
     <div id="stpg-container">
-      <div id="idiomsiR"><!--<div id="IdiomaEng">English</div><div id="IdiomaDeu">Deutsch</div><div id="IdiomaEsp">Espa&ntilde;ol</div>--></div>
+      <div id="idiomsiR"><div id="eng">English</div><div id="deu">Deutsch</div><div id="esp">Espa&ntilde;ol</div></div>
       <div id="btnsiR"><div id="currvitae"><span>Curriculum</span></div><div id="studio"><span>Studio</span></div></div>
       <div id="contactiR"><div id="contact"><span>Contact</span></div></div>
   </section>
 <script aria-label="ForwardIfMobile">
-  if (window.innerHeight > window.innerWidth) {
+  /* if (window.innerHeight > window.innerWidth) {
     window.location.href = "https://paul-zimmermann.framer.ai";
+  } */
+</script>
+<script aria-label="ParseFromFile">
+// offline/local integration of files
+
+function fetchAndStoreData(url, localStorageKey) {
+  const request = new XMLHttpRequest();
+  request.open('GET', url);
+  request.responseType = 'json';
+  request.send();
+  request.onload = function() {
+    const data = request.response;
+    localStorage.setItem(localStorageKey, JSON.stringify(data));
+  };
+  request.onerror = function() {
+  console.error('An error occurred while fetching data.');
+  };
+}
+
+if (navigator.onLine) {
+  fetchAndStoreData('cv.json', 'cv');
+  fetchAndStoreData('products.json', 'products');
+  fetchAndStoreData('materials.json', 'materials');
+  fetchAndStoreData('languages.json', 'languages');
+}
+else if (!products.length || !cvBlocks.length || !materials.length || !languages.length) 
+ {
+   const fileInput = document.createElement('input');
+   fileInput.type = 'file';
+   fileInput.multiple = true;
+   fileInput.style.backgroundColor = 'DodgerBlue';
+   
+   const parentNode = document.getElementById('idiomsiR');
+ 
+   parentNode.appendChild(fileInput);
+ 
+   fileInput.accept = '.json';
+ 
+   fileInput.addEventListener('change', function() {
+    const files = fileInput.files;
+    Array.from(files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const result = JSON.parse(event.target.result);
+        if (file.name === "products.json") {
+          localStorage.setItem('products', JSON.stringify(result));
+          displayProducts(result);
+        } else if (file.name === "cv.json") {
+          localStorage.setItem('cv', JSON.stringify(result));
+          displayCV(result);
+        } else if (file.name === "materials.json") {
+          localStorage.setItem('materials', JSON.stringify(result));
+        } else if (file.name === "languages.json") {
+          localStorage.setItem('languages', JSON.stringify(result));
+        }
+        location.reload();
+      };
+      reader.readAsText(file);
+    });
+    fileInput.remove(); // Remove the input element from the DOM
+    fileInput.style.display = 'none'; // Hide the input element
+    fileInput.value = ''; // Clear the file input
+    });
+}
+
+</script>
+<script aria-label="language-switching">
+// declarations =========================================================================
+
+  const LangEng        = document.getElementById('eng');
+  const LangDeu        = document.getElementById('deu');
+  const LangEsp        = document.getElementById('esp');
+
+  const linktogame     = document.querySelector('.linktogame');
+  const pagefliptr     = document.getElementById('pftbiS');
+
+  const pfTriStudio    = document.getElementById('studio');
+  const pfTriCV        = document.getElementById('currvitae');
+  const pfTriContact   = document.getElementById('contact');
+
+  const contactName    = document.getElementById('c-name');
+  const contactMail    = document.getElementById('c-email');
+  const contactSubject = document.getElementById('c-subject');
+  const contactMessage = document.getElementById('c-message');
+  const contactSubmit  = document.getElementById('c-submit');
+
+// crucial cv ante declarations
+
+  const cv             = JSON.parse(localStorage.getItem('cv')) || [];
+
+  // system language and function
+  const systemLang     = navigator.language || navigator.userLanguage;
+  const languages      = JSON.parse(localStorage.getItem('languages')) || []; 
+  const LangIdent      = systemLang.includes('en') ? 'en' : systemLang;
+  let languageIndex    = ['en', 'de-DE', 'es-ES'].indexOf(LangIdent),
+      cvBlocks         = cv[languageIndex].resume;
+  if (languageIndex === -1) languageIndex = 0;
+
+  function setLanguage(languageIndex, cvBlocks) {
+    const chosenLang = languages[languageIndex];
+
+    linktogame.querySelector('a').textContent = chosenLang.contGame;
+    pagefliptr.textContent    = chosenLang.contNavBar;
+      
+    [contactName, contactMail, contactSubject, contactMessage].forEach((el, i) => el.placeholder = chosenLang.contContact[i]);
+    contactSubmit.textContent = chosenLang.contContact[4];
+
+    [pfTriCV, pfTriStudio, pfTriContact].forEach((el, i) => el.textContent = chosenLang.contSP[i]);
+
+    displayCV(cvBlocks);
   }
+
+  // Segment Startpage Language Switcher ===============================================
+
+  function switchLanguage(languageIndex) {
+    setLanguage(languageIndex);
+    cvBlocks = cv[languageIndex].resume;
+    displayCV(cvBlocks);
+    localStorage.setItem('cv', JSON.stringify(cv));
+    localStorage.setItem('languages', JSON.stringify(languages));
+  }
+
+  [LangEng, LangDeu, LangEsp].forEach((el, i) => el.addEventListener('click', () => switchLanguage(i)));
+
+
 </script>
 <script aria-label="globalScope">
 
@@ -58,26 +182,20 @@ const screenheight = window.screen.height;
 // start/landing page definitions ==========================================================================================
 
 const materials    = JSON.parse(localStorage.getItem('materials')) || [];
-const pfTriStudio  = document.getElementById('studio');
-const pfTriCV      = document.getElementById('currvitae');
-const pfTriContact = document.getElementById('contact');
 const pageflipper  = document.querySelector('.page-flipper');
 const spcontainer  = document.getElementById('stpg-container');
 const dynnav       = document.getElementById('dynamic-nav');
-const pagefliptr   = document.getElementById('pftbiS');
 
 // studio page definitions =================================================================================================
 
 const products     = JSON.parse(localStorage.getItem('products')) || [];
 const studioC      = document.getElementById('studio-container');
 const candies      = document.querySelectorAll('.candy');
-const linktogame   = document.querySelector('.linktogame');
 
 document.addEventListener('DOMContentLoaded', () => displayProducts());
 
 // cv page definitions =====================================================================================================
 
-const cvBlocks     = JSON.parse(localStorage.getItem('cv')) || [];
 const cvcontainer  = document.getElementById('cv-container');
 const firstrow     = document.getElementById('firstrow');
 const frchildren   = firstrow.children;
@@ -133,67 +251,6 @@ window.addEventListener('keydown', function(event) {
 const oneofboth = [materials[2].src, materials[3].src];
 const onofbothN = [materials[2].name, materials[3].name];
 const workonimg = document.getElementById('workingon');
-
-</script>
-<script aria-label="ParseFromFile">
-// offline/local integration of files
-
-function fetchAndStoreData(url, localStorageKey) {
-  const request = new XMLHttpRequest();
-  request.open('GET', url);
-  request.responseType = 'json';
-  request.send();
-  request.onload = function() {
-    const data = request.response;
-    localStorage.setItem(localStorageKey, JSON.stringify(data));
-  };
-  request.onerror = function() {
-  console.error('An error occurred while fetching data.');
-  };
-}
-
-if (navigator.onLine) {
-  fetchAndStoreData('cv.json', 'cv');
-  fetchAndStoreData('products.json', 'products');
-  fetchAndStoreData('materials.json', 'materials');
-} /*
-else if (!products.length || !cvBlocks.length || !materials.length) 
- {
-   const fileInput = document.createElement('input');
-   fileInput.type = 'file';
-   fileInput.multiple = true;
-   fileInput.style.backgroundColor = 'DodgerBlue';
-   
-   const parentNode = document.getElementById('idiomsiR');
- 
-   parentNode.appendChild(fileInput);
- 
-   fileInput.accept = '.json';
- 
-   fileInput.addEventListener('change', function() {
-    const files = fileInput.files;
-    Array.from(files).forEach(file => {
-      const reader = new FileReader();
-      reader.onload = function(event) {
-        const result = JSON.parse(event.target.result);
-        if (file.name === "products.json") {
-          localStorage.setItem('products', JSON.stringify(result));
-          displayProducts(result);
-        } else if (file.name === "cv.json") {
-          localStorage.setItem('cv', JSON.stringify(result));
-          displayCV(result);
-        } else if (file.name === "materials.json") {
-          localStorage.setItem('materials', JSON.stringify(result));
-        }
-        location.reload();
-      };
-      reader.readAsText(file);
-    });
-    fileInput.remove(); // Remove the input element from the DOM
-    fileInput.style.display = 'none'; // Hide the input element
-    fileInput.value = ''; // Clear the file input
-    });
-} */
 
 </script>
 <script aria-label="studio-composer">
@@ -375,6 +432,7 @@ else if (event.key === 'ArrowRight' && event.type === 'keydown') {
 function displayCV() {
 
   firstrow.innerHTML  = '';
+  curriculum.innerHTML = '';
 
   cvBlocks.forEach(index => {
       if (index.id !== 'curriculum') {
@@ -383,7 +441,7 @@ function displayCV() {
 
         // Handle photo block
         if (divblock.id === 'photo') {
-            divblock.innerHTML = `<img src="${index.block.src}" alt="${index.block.name}">`;
+          divblock.innerHTML = `<img src="${index.block.src}" alt="${index.block.name}">`;
           // Append divblock to the cvcontainer
           firstrow.appendChild(divblock);
         }
@@ -457,6 +515,8 @@ countindicator.innerHTML = `<span id="currentblock">1</span>&nbsp;of&nbsp;<span 
 const firstrowids = ['photo', 'personal-data', 'education', 'languages', 'skills', 'tools'];
 
 window.addEventListener('click', (event) => {
+  if (event.target.classList.contains('triangleBtn')) return;
+
   const parentWithId = event.target.closest('[id]');
   
   if (firstrowids.includes(parentWithId.id) && !parentWithId.classList.contains('compressed') && !parentWithId.parentNode.classList.contains('compressed')) {
@@ -612,8 +672,6 @@ function SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp
 <script aria-label="contact-page">
   // resize of textarea ========================================================================
 
-  const contactMessage = document.getElementById('c-message');
-
   contactMessage.addEventListener('input', function() {
     this.style.height = 'auto';
     this.style.height = this.scrollHeight + 'px';
@@ -645,6 +703,9 @@ function SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp
     window.location.href = link;
   }
 
+</script>
+<script aria-label="LonelyCodeBlock">
+  setLanguage(languageIndex, cvBlocks);
 </script>
 <script aria-label="toStudio">
 // flip to Studio ==========================================================================================================
@@ -839,41 +900,6 @@ function backToSPFromContact() {
 pagefliptr.addEventListener('click', () => {
   backToSPFromContact();
 });
-</script>
-<script aria-label="language-switching">
-// declarations =========================================================================
-
-const LangEng = ["Curriculum", "Studio", "Contact"];
-const LangEsp = ["Currículum", "Portafolio", "Contacto"];
-const LangDeu = ["Lebenslauf", "Studio", "Kontakt"];
-
-const IdiomaEng = document.getElementById('IdiomaEng');
-const IdiomaEsp = document.getElementById('IdiomaEsp');
-const IdiomaDeu = document.getElementById('IdiomaDeu');
-
-// Typewriter fx function
-
-// Initialize typewriter effect with two words "Contact" and "Kontakt"
-const langElement = document.getElementById('LangEng');
-const words = ['Contact', 'Kontakt'];
-
-document.addEventListener('click', function(event) {
-  if (event.target.id === 'IdiomaEng') {
-    document.getElementById('currvitae').children[0].textContent = LangEng[0];
-    document.getElementById('studio').children[0].textContent = LangEng[1];
-    document.getElementById('contact').children[0].textContent = LangEng[2];
-  }
-  else if (event.target.id === 'IdiomaEsp') {
-    document.getElementById('currvitae').children[0].textContent = LangEsp[0];
-    document.getElementById('studio').children[0].textContent = LangEsp[1];
-    document.getElementById('contact').children[0].textContent = LangEsp[2];
-  }
-  else if (event.target.id === 'IdiomaDeu') {
-    document.getElementById('currvitae').children[0].textContent = LangDeu[0];
-    document.getElementById('studio').children[0].textContent = LangDeu[1];
-    document.getElementById('contact').children[0].textContent = LangDeu[2];
-  }
-})
 </script>
 </body>
 </html>

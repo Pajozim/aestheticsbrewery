@@ -1,0 +1,23 @@
+[
+  {
+    "languageCode": "en",
+    "contSP": ["Curriculum", "Studio", "Contact"],
+    "contContact": ["name", "email - mandatory", "subject", "message - mandatory", "Send"],
+    "contNavBar": "back to startpage",
+    "contGame": "Click here to play"
+  },
+  {
+    "languageCode": "de-DE",
+    "contSP": ["Lebenslauf", "Studio", "Kontakt"],
+    "contContact": ["Name", "eMail - erforderlich", "Betreff", "Nachricht - erforderlich", "Senden"],
+    "contNavBar": "Zur Startseite",
+    "contGame": "Klick hier, um zu spielen"
+  },
+  {
+    "languageCode": "es-ES",
+    "contSP": ["Currículum", "Portafolio", "Contacto"],
+    "contContact": ["nombre", "correo - obligatorio", "asunto", "mensaje - obligatorio", "Enviar"],
+    "contNavBar": "volver al inicio",
+    "contGame": "Haga clic para jugar"
+  }
+]

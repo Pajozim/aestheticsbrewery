@@ -23,11 +23,11 @@
   "src":"Materials/BackToSP.svg"
 },
 {
-  "name":"FavIcon",
-  "src":"Materials/FavIcon.png"
-},
-{
   "name":"back to startpage",
   "src":"Materials/BackToSP_fCont.svg"
+},
+{
+  "name":"FavIcon",
+  "src":"Materials/FavIcon.png"
 }
 ]

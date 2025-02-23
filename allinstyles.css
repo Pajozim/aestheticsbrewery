@@ -29,6 +29,8 @@
   font-size: var(--fontsize);
   font-optical-sizing: var(--font-optical-sizing);
   font-weight: var(--font-weight);
+  --BI1: url(Materials/BackToSP.svg);
+  --BI2: url(Materials/BackToSP_fCont.svg);
 }
 
 @font-face {
@@ -141,6 +143,7 @@ button {
   background-size: contain;
   background-repeat: no-repeat;
   transition: opacity 0.2s ease-in-out;
+  background-image: var(--BI1);
 }
 
 .triangleBtn.SP {
@@ -168,7 +171,7 @@ button {
 }
 
 .triangleBtn.Contact {
-  background-image: url(Materials/BackToSP_fCont.svg);
+  background-image: var(--BI2)
 }
 
 /* dynamic navigation bar ------------------------------------ */

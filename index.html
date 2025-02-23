@@ -149,7 +149,7 @@ else if (!products.length || !cvBlocks.length || !materials.length || !languages
     const chosenLang = languages[languageIndex];
 
     linktogame.querySelector('a').textContent = chosenLang?.contGame || 'click here to play';
-    pagefliptr.textContent    = chosenLang.contNavBar;
+    pagefliptr.textContent    = chosenLang?.contNavBar;
       
     [contactName, contactMail, contactSubject, contactMessage].forEach((el, i) => el.placeholder = chosenLang.contContact[i]);
     contactSubmit.textContent = chosenLang.contContact[4];
@@ -216,7 +216,6 @@ const contactcontainer = document.getElementById('contact-page');
 // source lines ============================================================================================================
 
 const triangleBtn = document.querySelector('.triangleBtn');
-triangleBtn.style.backgroundImage = `url(${materials[5]?.src || ''})`;
 
 const nkeytosp = document.getElementById('nkeytosp');
 nkeytosp.src = materials[4]?.src || '';
@@ -255,8 +254,8 @@ window.addEventListener('keydown', function(event) {
 
 // change workingon img on every reload ==================================================================================================
 
-const oneofboth = [materials[2].src , materials[3].src];
-const onofbothN = [materials[2].name, materials[3].name];
+const oneofboth = [materials[2]?.src || '' , materials[3]?.src || ''];
+const onofbothN = [materials[2]?.name || '' , materials[3]?.name || ''];
 const workonimg = document.getElementById('workingon');
 
 </script>

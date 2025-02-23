@@ -60,6 +60,7 @@ function fetchAndStoreData(url, localStorageKey) {
 }
 
 if (navigator.onLine) {
+  console.log('online');
   fetchAndStoreData('cv.json', 'cv');
   fetchAndStoreData('products.json', 'products');
   fetchAndStoreData('materials.json', 'materials');
@@ -255,7 +256,8 @@ const workonimg = document.getElementById('workingon');
 <script aria-label="studio-composer">
 // Display products =========================================================================================================
 
-function displayProducts() {    
+function displayProducts() {
+  console.log('done on page load?');
   const productList = document.getElementById('studio-container');
   productList.innerHTML = ''; // Clear existing content
 

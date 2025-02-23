@@ -55,10 +55,16 @@ function fetchAndStoreData(url, localStorageKey) {
     localStorage.setItem(localStorageKey, JSON.stringify(data));
   };
   request.onerror = function() {
-  console.error('An error occurred while fetching data.');
+    console.error(`An error occurred while fetching ${url}`);
   };
 }
 
+fetchAndStoreData('cv.json', 'cv');
+fetchAndStoreData('products.json', 'products');
+fetchAndStoreData('materials.json', 'materials');
+fetchAndStoreData('languages.json', 'languages');
+
+/*
 if (navigator.onLine) {
   fetchAndStoreData('cv.json', 'cv');
   fetchAndStoreData('products.json', 'products');
@@ -104,6 +110,7 @@ else if (!products.length || !cvBlocks.length || !materials.length || !languages
     fileInput.value = ''; // Clear the file input
     });
 }
+*/
 
 </script>
 <script aria-label="language-switching">
@@ -135,13 +142,13 @@ else if (!products.length || !cvBlocks.length || !materials.length || !languages
   const languages      = JSON.parse(localStorage.getItem('languages')) || []; 
   const LangIdent      = systemLang.includes('en') ? 'en' : systemLang;
   let languageIndex    = ['en', 'de-DE', 'es-ES'].indexOf(LangIdent),
-      cvBlocks         = cv[languageIndex].resume;
+      cvBlocks         = cv[languageIndex]?.resume || [];
   if (languageIndex === -1) languageIndex = 0;
 
   function setLanguage(languageIndex, cvBlocks) {
     const chosenLang = languages[languageIndex];
 
-    linktogame.querySelector('a').textContent = chosenLang.contGame;
+    linktogame.querySelector('a').textContent = chosenLang?.contGame || 'click here to play';
     pagefliptr.textContent    = chosenLang.contNavBar;
       
     [contactName, contactMail, contactSubject, contactMessage].forEach((el, i) => el.placeholder = chosenLang.contContact[i]);
@@ -156,7 +163,7 @@ else if (!products.length || !cvBlocks.length || !materials.length || !languages
 
   function switchLanguage(languageIndex) {
     setLanguage(languageIndex);
-    cvBlocks = cv[languageIndex].resume;
+    cvBlocks = cv[languageIndex]?.resume || [];
     displayCV(cvBlocks);
     localStorage.setItem('cv', JSON.stringify(cv));
     localStorage.setItem('languages', JSON.stringify(languages));
@@ -200,7 +207,7 @@ const cvcontainer  = document.getElementById('cv-container');
 const firstrow     = document.getElementById('firstrow');
 const frchildren   = firstrow.children;
 const curriculum   = document.getElementById('curriculum');
-const curBlocks    = cvBlocks[6].blocks;
+const curBlocks    = cvBlocks[6]?.blocks || [];
 
 // contact page definitions ================================================================================================
 
@@ -209,11 +216,11 @@ const contactcontainer = document.getElementById('contact-page');
 // source lines ============================================================================================================
 
 const triangleBtn = document.querySelector('.triangleBtn');
-triangleBtn.style.backgroundImage = `url(${materials[5].src})`;
+triangleBtn.style.backgroundImage = `url(${materials[5]?.src || ''})`;
 
 const nkeytosp = document.getElementById('nkeytosp');
-nkeytosp.src = materials[4].src;
-nkeytosp.alt = materials[4].name;
+nkeytosp.src = materials[4]?.src || '';
+nkeytosp.alt = materials[4]?.name || '';
 
 // return to start button ==================================================================================================
 
@@ -248,7 +255,7 @@ window.addEventListener('keydown', function(event) {
 
 // change workingon img on every reload ==================================================================================================
 
-const oneofboth = [materials[2].src, materials[3].src];
+const oneofboth = [materials[2].src , materials[3].src];
 const onofbothN = [materials[2].name, materials[3].name];
 const workonimg = document.getElementById('workingon');
 
@@ -310,7 +317,7 @@ function displayProducts() {
     // filler.style.width = ColProduct + 'vw';
     filler.style.gridColumn = fillergridCol;
     // filler.style.height = rowfactor;
-    filler.innerHTML = `<img id="workingon" src="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}" onmouseover="this.src='${materials[1].src}'" onmouseout="this.src='${oneofboth[Math.floor(Math.random() * oneofboth.length)]}'" alt="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}">`;
+    filler.innerHTML = `<img id="workingon" src="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}" onmouseover="this.src='${materials[1]?.src || ''}'" onmouseout="this.src='${oneofboth[Math.floor(Math.random() * oneofboth.length)]}'" alt="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}">`;
     productList.appendChild(filler);
   }
 
@@ -508,7 +515,7 @@ function twentyvh() {
 // initial curriculum block count indicator ===================================================================================================
 
 const countindicator = document.getElementById('indicator');
-countindicator.innerHTML = `<span id="currentblock">1</span>&nbsp;of&nbsp;<span id="totalbcount"> ${cvBlocks[6].blocks.length}</span>`;
+countindicator.innerHTML = `<span id="currentblock">1</span>&nbsp;of&nbsp;<span id="totalbcount"> ${cvBlocks[6]?.blocks.length || 0}</span>`;
 
 // firstrow blocks scalable =====================================================================================================
 

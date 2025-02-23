@@ -13,8 +13,7 @@
 {
   "name":"working on a project - 2 sticker",
   "src": "Materials/workingon2.webp"
-}
-,
+},
 {
   "name":"finger on n key button",
   "src":"Materials/fingeronnkey.svg"
@@ -26,5 +25,9 @@
 {
   "name":"FavIcon",
   "src":"Materials/FavIcon.png"
+},
+{
+  "name":"back to startpage",
+  "src":"Materials/BackToSP_fCont.svg"
 }
 ]

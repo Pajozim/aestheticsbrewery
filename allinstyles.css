@@ -168,7 +168,7 @@ button {
 }
 
 .triangleBtn.Contact {
-  transform: rotate(90deg) scaleY(-1);
+  background-image: url(Materials/BackToSP_fCont.svg);
 }
 
 /* dynamic navigation bar ------------------------------------ */

@@ -59,7 +59,12 @@ function fetchAndStoreData(url, localStorageKey) {
   };
 }
 
+fetchAndStoreData('cv.json', 'cv');
+fetchAndStoreData('products.json', 'products');
+fetchAndStoreData('materials.json', 'materials');
+fetchAndStoreData('languages.json', 'languages');
 
+/*
 if (navigator.onLine) {
   fetchAndStoreData('cv.json', 'cv');
   fetchAndStoreData('products.json', 'products');
@@ -105,6 +110,7 @@ else if (!products.length || !cvBlocks.length || !materials.length || !languages
     fileInput.value = ''; // Clear the file input
     });
 }
+*/
 
 </script>
 <script aria-label="language-switching">

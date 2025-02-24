@@ -150,8 +150,14 @@ button {
   visibility: hidden;
 }
 
+@keyframes tb-intro {
+  0% {opacity: 0;}
+  33%, 66% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
 .triangleBtn.Studio:not(:hover), .triangleBtn.CV:not(:hover), .triangleBtn.Contact:not(:hover) {
-  animation: dn-intro 4s linear 2s forwards;
+  animation: tb-intro 4s linear 2s forwards;
 }
 
 .triangleBtn:hover {

@@ -44,12 +44,6 @@
 </script>
 <script aria-label="data independent script">
 
-  /*
-  document.addEventListener('mouseover', (e) => {
-    console.log(`You are hovering over: ${e.target.id} and its class is: ${e.target.className}`);
-  });
-  */
-
   // DOM Elements ==========================================================================================================
 
   const LangEng        = document.getElementById('eng');
@@ -865,55 +859,6 @@ LoadData()
 });
 
 </script>
-<!--
-<script aria-label="ParseFromFile">
-  
-  if (navigator.onLine) {
-    displayIngredient().then(() => console.log('cv', cv, 'products', products, 'materials', materials, 'languages', languages));  // Waits for the data to be fetched
-  };
-  /* else if (!productsData.length || !cvData.length || !materialsData.length || !languagesData.length) 
-   {
-     const fileInput = document.createElement('input');
-     fileInput.type = 'file';
-     fileInput.multiple = true;
-     fileInput.style.backgroundColor = 'DodgerBlue';
-     
-     const parentNode = document.getElementById('idiomsiR');
-   
-     parentNode.appendChild(fileInput);
-   
-     fileInput.accept = '.json';
-   
-     fileInput.addEventListener('change', function() {
-      const files = fileInput.files;
-      Array.from(files).forEach(file => {
-        const reader = new FileReader();
-        reader.onload = function(event) {
-          const result = JSON.parse(event.target.result);
-          if (file.name === "products.json") {
-            localStorage.setItem('products', JSON.stringify(result));
-            displayProducts(result);
-          } else if (file.name === "cv.json") {
-            localStorage.setItem('cv', JSON.stringify(result));
-            displayCV(result);
-          } else if (file.name === "materials.json") {
-            localStorage.setItem('materials', JSON.stringify(result));
-          } else if (file.name === "languages.json") {
-            localStorage.setItem('languages', JSON.stringify(result));
-          }
-          location.reload();
-        };
-        reader.readAsText(file);
-      });
-      fileInput.remove(); // Remove the input element from the DOM
-      fileInput.style.display = 'none'; // Hide the input element
-      fileInput.value = ''; // Clear the file input
-      });
-  }
-  */
-
-</script>
--->
 
 </body>
 </html>

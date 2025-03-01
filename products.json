@@ -20,5 +20,6 @@
 { "name": "IngCEA", "mediaType": "img", "src": "Studio/WD-IngCEA.webp", "extraclass": "showweb"  },
 { "name": "INGCea mobile", "mediaType": "img", "src": "Studio/WD-INGCea_mobile.webp", "extraclass": "showweb"  },
 { "name": "Steamboy", "mediaType": "video", "src": "Studio/3D-Steamboy.webm" },
-{ "name": "Stranded - HTML game", "mediaType": "img", "src": "Studio/GD-Stranded-Game.webp", "extraclass": "showlink"  }
+{ "name": "Stranded - HTML game", "mediaType": "img", "src": "Studio/GD-Stranded-Game.webp", "extraclass": "showlink"  },
+{ "name": "CMSwTPaL - Content Management System with text bubbles, pictures and lines", "mediaType": "img", "src": "Studio/CD-CMSwTPaL.webp", "extraclass": "showlink"  }
 ]

@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="allinstyles.css">
 </head>
 <body>
-  <div class="linktogame"><a target="_blank" href="https://pajozim.github.io/Stranded/">click here to play</a></div>
+  <div id="linkG1" class="linktopage"><a target="_blank" href="https://pajozim.github.io/Stranded/">click here to play</a></div>
+  <div id="linkCD1" class="linktopage"><a target="_blank" href="https://pajozim.github.io/CMSwTPaL/">click here to go to github</a></div>
   <div class="triangleBtn SP"></div>
   <section id="dynamic-nav">
     <div id="imgCtner"><img id="nkeytosp"></div><div id="pftbiS">Back to Start</div>
@@ -50,7 +51,6 @@
   const LangDeu        = document.getElementById('deu');
   const LangEsp        = document.getElementById('esp');
 
-  const linktogame     = document.querySelector('.linktogame');
   const pagefliptr     = document.getElementById('pftbiS');
 
   const pfTriStudio    = document.getElementById('studio');
@@ -105,8 +105,11 @@
     if (!FillerElement && (event.target.classList.contains('candy') || event.target.parentElement.classList.contains('candy'))) { 
       elementToToggle.classList.toggle('expanded');
       document.getElementById('studio-container').classList.toggle('flexed');
-      if (showlink) {
-        linktogame.classList.toggle('block');
+      if (showlink && event.target.parentElement.id === 'c22') {
+        document.getElementById('linkG1').classList.toggle('block');
+      }
+      else if (showlink && event.target.parentElement.id === 'c23') {
+        document.getElementById('linkCD1').classList.toggle('block');
       }
       document.querySelectorAll('.candy').forEach(c => {
         if (c !== event.target && c !== event.target.parentElement) {
@@ -250,9 +253,10 @@ LoadData()
     function setLanguage(index) {
       try {
         const chosenLang    = languages[index];
-
-        linktogame.querySelector('a').textContent = chosenLang?.contGame || 'click here to play';
-        pagefliptr.textContent                    = chosenLang?.contNavBar;
+ 
+        document.getElementById('linkG1').querySelector('a').textContent       = chosenLang?.contGame || 'click here to play';
+        document.getElementById('linkCD1').querySelector('a').textContent      = chosenLang?.contCD || 'click here to go to github';
+        pagefliptr.textContent                                                 = chosenLang?.contNavBar;
           
         [contactName, contactMail, contactSubject, contactMessage].forEach((el, i) => {
           el.placeholder = chosenLang?.contContact[i]?? '';

@@ -474,11 +474,11 @@ max-width: fit-content;
 height: auto;
 }
 
-.expanded.showlink:hover, .linktogame:hover {
+.expanded.showlink:hover, .linktopage:hover {
   cursor: pointer;
 }
 
-.linktogame {
+.linktopage {
   display: none;
   position: absolute;
   z-index: 10;
@@ -493,17 +493,17 @@ height: auto;
   border-radius: 8px;
 }
 
-.linktogame.block {
+.linktopage.block {
   display: block;
 }
 
-.linktogame:hover {
+.linktopage:hover {
   cursor: pointer;
   background-color: #444;
   outline: 3px solid #444;
 }
 
-.linktogame a {
+.linktopage a {
   color: var(--fontcolor);
   font-size: var(--fontsize);
   text-decoration: none;

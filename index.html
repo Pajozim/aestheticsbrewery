@@ -10,7 +10,7 @@
 </head>
 <body>
   <div id="linkG1" class="linktopage"><a target="_blank" href="https://pajozim.github.io/Stranded/">click here to play</a></div>
-  <div id="linkCD1" class="linktopage"><a target="_blank" href="https://pajozim.github.io/CMSwTPaL/">click here to go to github</a></div>
+  <div id="linkCD1" class="linktopage"><a target="_blank" href="https://github.com/Pajozim/CMSwTPaL">click here to go to github</a></div>
   <div class="triangleBtn SP"></div>
   <section id="dynamic-nav">
     <div id="imgCtner"><img id="nkeytosp"></div><div id="pftbiS">Back to Start</div>
@@ -105,10 +105,10 @@
     if (!FillerElement && (event.target.classList.contains('candy') || event.target.parentElement.classList.contains('candy'))) { 
       elementToToggle.classList.toggle('expanded');
       document.getElementById('studio-container').classList.toggle('flexed');
-      if (showlink && event.target.parentElement.id === 'c22') {
+      if (showlink && event.target.parentElement.id === 'c22' || event.target.id === 'c22') {
         document.getElementById('linkG1').classList.toggle('block');
       }
-      else if (showlink && event.target.parentElement.id === 'c23') {
+      else if (showlink && event.target.parentElement.id === 'c23' || event.target.id === 'c23') {
         document.getElementById('linkCD1').classList.toggle('block');
       }
       document.querySelectorAll('.candy').forEach(c => {

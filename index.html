@@ -215,7 +215,13 @@
     'Materials/bg_p6.webp',
     'Materials/bg_p7.webp',
     'Materials/bg_p8.webp',
-    'Materials/bg_p9.webp'
+    'Materials/bg_p9.webp',
+    'Materials/bg_p10.webp',
+    'Materials/bg_p11.webp',
+    'Materials/bg_p12.webp',
+    'Materials/bg_p13.webp',
+    'Materials/bg_p14.webp',
+    'Materials/bg_p15.webp'
   ];
 
   imageUrls.forEach(url => {
@@ -230,7 +236,7 @@
   spcontainer.style.backgroundImage = `url('Materials/bg_p2.webp')`;
 
   setInterval(() => {
-    const rndCol = () => (Math.floor(Math.random() * 10)).toString(16);
+    const rndCol = () => (Math.floor(Math.random() * 15));
     spcontainer.style.backgroundImage = `url('Materials/bg_p${rndCol()}.webp`;    
   }, 10000);
 

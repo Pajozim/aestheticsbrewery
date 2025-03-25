@@ -37,6 +37,7 @@
       <div id="idiomsiR"><div id="eng">English</div><div id="deu">Deutsch</div><div id="esp">Espa&ntilde;ol</div></div>
       <div id="btnsiR"><div id="currvitae"><span>Curriculum</span></div><div id="studio"><span>Studio</span></div></div>
       <div id="contactiR"><div id="contact"><span>Contact</span></div></div>
+    </div>
   </section>
 <script aria-label="ForwardIfMobile">
   if (window.innerHeight > window.innerWidth) {
@@ -200,6 +201,38 @@
       root.style.setProperty('--changfontsize', `${(Math.floor(window.innerWidth / 100) - 2)}px`);
     }); 
   }
+
+  // changing backgrounds ==================================================================================================
+
+    // Preload images
+  const imageUrls = [
+    'Materials/bg_p0.webp',
+    'Materials/bg_p1.webp',
+    'Materials/bg_p2.webp',
+    'Materials/bg_p3.webp',
+    'Materials/bg_p4.webp',
+    'Materials/bg_p5.webp',
+    'Materials/bg_p6.webp',
+    'Materials/bg_p7.webp',
+    'Materials/bg_p8.webp',
+    'Materials/bg_p9.webp'
+  ];
+
+  imageUrls.forEach(url => {
+    const img = new Image();
+    img.src = url;
+    img.onload = function() {
+      const cache = caches.open('image-cache');
+      cache.put(url, img);
+    };
+  });
+
+  spcontainer.style.backgroundImage = `url('Materials/bg_p2.webp')`;
+
+  setInterval(() => {
+    const rndCol = () => (Math.floor(Math.random() * 10)).toString(16);
+    spcontainer.style.backgroundImage = `url('Materials/bg_p${rndCol()}.webp`;    
+  }, 10000);
 
 </script>
 <script aria-label="data dependent script">

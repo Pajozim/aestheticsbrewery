@@ -245,8 +245,8 @@ button {
   background-color: salmon;
   border-radius: 20px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  /*background-image: url(Materials/sbsb_nebula.jpg);
-  background-size: cover;*/
+  /*background-image: url(Materials/bg_damascus.png);
+  background-size: cover; */
 }
 
 [id*="iR"] {
@@ -304,9 +304,28 @@ button {
   animation: l1-appear 1s linear forwards;
 }
 
-#studio, #currvitae, #contact, #idiomsiR > div {
+#studio, #currvitae {
   cursor: pointer;
+  outline: 3px solid ghostwhite;
+  outline-offset: -3px;
 }
+
+#contact, #idiomsiR > div {
+  cursor: pointer;
+  outline: 1px solid ghostwhite;
+  outline-offset: -1px;
+}
+
+#stpg-container {
+  outline: 3px solid rgb(22, 22, 22);
+  outline-offset: -3px;
+  border: 1px solid rgb(22, 22, 22);
+  border-radius: 1em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+}
+
 
 /* studio page ---------------------------------------------- */
 

@@ -39,7 +39,10 @@
         "line1": "German - Native",
         "line2": "English - Fluent (C1)",
         "line3": "Business English - Fluent (B2)",
-        "line4": "Spanish - Beginner (A2)"
+        "line4": "Spanish - Beginner (A2)",
+        "line5": "&nbsp;",
+        "line6": "JavaScript: intermediate",
+        "line7": "Python: beginner"
       }
     },
     {
@@ -73,21 +76,23 @@
         {
           "bgcolor" : "rgb(223, 81, 46)",
           "h3": "now - December 2023",
-          "line1": "Hermosillo, Sonora, México",
+          "line1": "Mexico City, Mexico",
           "line2": "&nbsp;",
-          "line3": "1x content design with a small scale CMS with textbubbles, pictures and markings/lines (HTML, CSS & JS) with VS Code",
-          "line4": "1x creation of my own website (HTML, CSS & JS) with VS Code",
-          "line5": "1x creation of candle stickers and a label for parcels",
-          "line6": "2x social media reels (CapCut)",
-          "line7": "1x video presentation of a workplace (DaVinci)",
-          "line8": "1x own website creation (Framer - mobile)",
-          "line9": "3x redesigns of my curriculums in design (Canva) and language (esp, eng & ger)",
-          "line10": "1x game creation (Twine - HTML/CSS/JavaScript)"
+          "line3": "",
+          "line4": "learning backend programming on boot.dev",
+          "line5": "1x content design with a small scale CMS with textbubbles, pictures and markings/lines (HTML, CSS & JS) with VS Code -- https://github.com/Pajozim/CMSwTPaL",
+          "line6": "1x creation of my own website (HTML, CSS & JS) with VS Code -- https://pajozim.github.io/aestheticsbrewery/",
+          "line7": "12x candle sticker creations and a label for parcels",
+          "line8": "2x social media reels (CapCut)",
+          "line9": "1x video presentation of a workplace (DaVinci)",
+          "line10": "1x own website creation (Framer - mobile) -- https://paul-zimmermann.framer.ai",
+          "line11": "3x redesigns of my curriculums in design (Canva) and language (esp, eng & ger)",
+          "line12": "1x game creation (Twine - HTML/CSS/JavaScript) -- https://pajozim.github.io/Stranded/"
         },
         {
           "bgcolor" : "rgb(189, 9, 52)",
           "h3": "November 2023 - May 2023",
-          "line1": "Mexico City, México",
+          "line1": "Mexico City, Mexico",
           "line2": "&nbsp;",
           "line3": "2x website stacking (Squarespace)",
           "line4": "2x logo designs (Inkscape)",
@@ -95,7 +100,7 @@
           "line6": "1x game creation (Arcweave)",
           "line7": "polishing kitchen furniture",
           "line8": "painting the balustrade of two stairways",
-          "line9": "job searches for remote work in the German market (psychotherapy & digital design)",
+          "line9": "job searches for remote work in the german market (psychotherapy & digital design)",
           "line10": "1x updating my resume"
         },
         {
@@ -109,7 +114,7 @@
         {
           "bgcolor" : "rgb(252, 41, 88)",
           "h3": "October 2014 - October 2013",
-          "line1": "Free University of Berlin",
+          "line1": "Free University of Berlin, Germany",
           "line2": "&nbsp;",
           "line3": "aborted study of psychology (master of science)"
         },
@@ -123,7 +128,7 @@
         {
           "bgcolor" : "rgb(233, 95, 21)",
           "h3": "July 2013 - July 2012",
-          "line1": "sports-box.de, Berlin",
+          "line1": "sports-box.de, Berlin, Germany",
           "line2": "&nbsp;",
           "line3": "bookkeeping clerk & customer service",
           "line4": "digital lay in of products and its data onto Excel tables",
@@ -133,14 +138,14 @@
         {
           "bgcolor" : "rgb(65, 123, 69)",
           "h3": "July 2012 - October 2011",
-          "line1": "m.i.s. GmbH, Berlin",
+          "line1": "m.i.s. GmbH, Berlin, Germany",
           "line2": "&nbsp;",
           "line3": "warehouse operative"
         },
         {
           "bgcolor" : "rgb(111, 79, 122)",
           "h3": "March 2012 - October 2008",
-          "line1": "University of Technology Chemnitz",
+          "line1": "University of Technology Chemnitz, Germany",
           "line2": "&nbsp;",
           "line3": "study of psychology",
           "line4": "final grade : 2.5 of 5 (Bachelor of science)"
@@ -148,19 +153,19 @@
         {
           "bgcolor" : "rgb(28, 68, 145)",
           "h3": "August 2011 - April 2011",
-          "line1": "Carolabad Clinic, Chemnitz",
+          "line1": "Carolabad Clinic, Chemnitz, Germany",
           "line2": "&nbsp;",
           "line3": "internship of clinical psychotherapy"
         },{
           "bgcolor" : "rgb(151, 50, 70)",
           "h3": "September 2008 - October 2007",
-          "line1": "Berlin",
+          "line1": "Berlin, Germany",
           "line2": "&nbsp;",
           "line3": "portfolio preparation for HGB Leipzig and Film University Babelsberg"
         },{
           "bgcolor" : "rgb(70, 0, 59)",
           "h3": "September 2007 - September 2004",
-          "line1": "L4 - Academy, Berlin",
+          "line1": "L4 - Academy, Berlin, Germany",
           "line2": "&nbsp;",
           "line3": "vocational training in digital & print design",
           "line4": "basics in communications and compositions",
@@ -172,33 +177,33 @@
         },{
           "bgcolor" : "rgb(25, 151, 218)",
           "h3": "February 2007 - September 2006",
-          "line1": "digimedia services ltd., Berlin",
+          "line1": "digimedia services ltd., Berlin, Germany",
           "line2": "&nbsp;",
           "line3": "digital design content creation (logo, website) of a public school"
         },{ 
           "bgcolor" : "rgb(101, 125, 49)",
           "h3": "August 2006 - April 2006",
-          "line1": "debitel-competenz-center, Berlin",
+          "line1": "debitel-competenz-center, Berlin, Germany",
           "line2": "&nbsp;",
           "line3": "Content management & data entries",
           "line4": "of telecommunications products to ebay"
         },{
           "bgcolor" : "rgb(241, 4, 137)",
           "h3": "May 2006 - September 2005",
-          "line1": "Starke Internethandel, Berlin",
+          "line1": "Starke Internethandel, Berlin, Germany",
           "line2": "&nbsp;",
           "line3": "maintaining homepage & data",
           "line4": "entries of electronic products to eBay and amazon"
         },{
           "bgcolor" : "rgb(102, 112, 92)",
           "h3": "February 2006 - Juni 2004",
-          "line1": "Skandia GmbH, Berlin",
+          "line1": "Skandia GmbH, Berlin, Germany",
           "line2": "&nbsp;",
           "line3": "file search clerk"
         },{
           "bgcolor" : "rgb(146, 104, 139)",
           "h3": "June 2004 - September 1990",
-          "line1": "Berlin",
+          "line1": "Berlin, Germany",
           "line2": "&nbsp;",
           "line3": "general school and Abitur",
           "line4": "final grade : 3.0 of 6"
@@ -247,7 +252,10 @@
         "line1": "Deutsch - Muttersprache",
         "line2": "Englisch - verhandlungssicher (C1)",
         "line3": "Business English - fließend (B2)",
-        "line4": "Spanish - Grundkenntnisse (A2)"
+        "line4": "Spanish - Grundkenntnisse (A2)",
+        "line5": "&nbsp;",
+        "line6": "JavaScript: fortgeschritten",
+        "line7": "Python: Anfänger"
       }
     },
     {
@@ -281,20 +289,21 @@
         {
           "bgcolor" : "rgb(223, 81, 46)",
           "h3": "aktuell - Dezember 2023",
-          "line1": "Hermosillo, Sonora, México",
+          "line1": "Mexiko-Stadt, Mexiko",
           "line2": "&nbsp;",
-          "line3": "1x Design und Entwicklung eines CMS mit Textfeldern, Bildern und Markierungen (HTML, CSS, JS via VSCode) -- https://github.com/Pajozim/CMSwTPaL",
-          "line4": "1x eigene Webseitengestaltung (HTML, CSS & JS) mit VS Code",
-          "line5": "1x Erstellung von Kerzensticker und -aufkleber für eine Versandbox",
-          "line6": "2x Social Media Reels (CapCut)",
-          "line7": "1x Videopräsentation einer Baustelle (DaVinci)",
-          "line8": "1x Erstellen eigener Webseite (Framer, danach mit Visual Studio Code)",
-          "line9": "1x Aufbau einer HTML Spielstory (Twine - HTML/CSS/JavaScript)"
+          "line3": "Backend Programmierkurse in Boot.dev",
+          "line4": "1x Design und Entwicklung eines CMS mit Textfeldern, Bildern und Markierungen (HTML, CSS, JS via VSCode) -- https://github.com/Pajozim/CMSwTPaL",
+          "line5": "1x eigene Webseitengestaltung (HTML, CSS & JS) mit VS Code -- https://pajozim.github.io/aestheticsbrewery/",
+          "line6": "1x Erstellung von Kerzensticker und -aufkleber für eine Versandbox",
+          "line7": "2x Social Media Reels (CapCut)",
+          "line8": "1x Videopräsentation einer Baustelle (DaVinci)",
+          "line9": "1x Erstellen eigener Webseite (Framer) -- https://paul-zimmermann.framer.ai",
+          "line10": "1x Aufbau einer HTML Spielstory (Twine - HTML/CSS/JavaScript) -- https://pajozim.github.io/Stranded/"
         },
         {
           "bgcolor" : "rgb(189, 9, 52)",
           "h3": "November 2023 - May 2023",
-          "line1": "Mexico City, México",
+          "line1": "Mexiko-Stadt, Mexiko",
           "line2": "&nbsp;",
           "line3": "2x Erstellen zweier Webseiten INGCEA & BD Zimmermann (Squarespace)",
           "line4": "2x Logogestaltung (Inkscape)",
@@ -308,7 +317,7 @@
         {
           "bgcolor" : "rgb(99, 93, 122)",
           "h3": "April 2023 - November 2014",
-          "line1": "Kröpelin, Mecklenburg-Vorpommern, Germany",
+          "line1": "Mecklenburg-Vorpommern",
           "line2": "&nbsp;",
           "line3": "erklettern, schneiden und abseilen von Ästen und Stämmen",
           "line4": "Baumfällung, Baumschnitt"
@@ -355,7 +364,7 @@
         {
           "bgcolor" : "rgb(28, 68, 145)",
           "h3": "August 2011 - April 2011",
-          "line1": "Carolabad Klinic, Chemnitz",
+          "line1": "Carolabad Klinik, Chemnitz",
           "line2": "&nbsp;",
           "line3": "Praktikum"
   
@@ -453,7 +462,10 @@
         "line1": "Alemán - lengua materna",
         "line2": "Inglés - con fluidez (C1)",
         "line3": "Inglés de Negocio - con fluidez (B2)",
-        "line4": "Español - Conocimientos básicos (A2)"
+        "line4": "Español - Conocimientos básicos (A2)",
+        "line5": "&nbsp;",
+        "line6": "JavaScript: intermedio",
+        "line7": "Python: principiante"
       }
     },
     {
@@ -487,22 +499,23 @@
         {
           "bgcolor" : "rgb(223, 81, 46)",
           "h3": "presente - Deciembre 2023",
-          "line1": "Hermosillo, Sonora, México",
+          "line1": "CDMX, México",
           "line2": "&nbsp;",
-          "line3": "1x diseño y desarrollo de CMS textos, imágenes y marcas (HTML, CSS & JS) con VS Code",
-          "line4": "1x creación de mi página web (HTML, CSS & JS) con VS Code",
-          "line5": "2x publicaciones (Ginseng) para redes sociales (CapCut)",
-          "line6": "1x presentación del progreso en un projecto (Davinci)",
-          "line7": "creación de páginas web: INGCEA & Baumdienst Zimmermann (SquareSpace)",
-          "line8": "creación de mi página web (Framer)",
-          "line9": "rediseño de CV en alemán, inglés y español (Canva)",
-          "line10": "creación de juegos (Twine = HTML / CSS / JavaScript)",
-          "line11": "diseño de 2x logos (Inkscape)"
+          "line3": "cursos de programación backend en Boot.dev",
+          "line4": "1x diseño y desarrollo de CMS textos, imágenes y marcas (HTML, CSS & JS) con VS Code -- https://github.com/Pajozim/CMSwTPaL",
+          "line5": "1x creación de mi página web (HTML, CSS & JS) con VS Code -- https://pajozim.github.io/aestheticsbrewery/",
+          "line6": "2x publicaciones (Ginseng) para redes sociales (CapCut)",
+          "line7": "1x presentación del progreso en un projecto (Davinci)",
+          "line8": "creación de páginas web: INGCEA & Baumdienst Zimmermann (SquareSpace)",
+          "line9": "creación de mi página web (Framer) -- https://paul-zimmermann.framer.ai",
+          "line10": "rediseño de CV en alemán, inglés y español (Canva)",
+          "line11": "creación de un juego (Twine = HTML / CSS / JavaScript) -- https://pajozim.github.io/Stranded/",
+          "line12": "diseño de 2x logos (Inkscape)"
         },
         {
           "bgcolor" : "rgb(189, 9, 52)",
           "h3": "Noviembre 2023 - Mayo 2023",
-          "line1": "Mexico City, México",
+          "line1": "CDMX, México",
           "line2": "&nbsp;",
           "line3": "alojamiento en México",
           "line4": "búsqueda como terapeuta psicológico",
@@ -513,7 +526,7 @@
         {
           "bgcolor" : "rgb(99, 93, 122)",
           "h3": "Abril 2023 - Noviembre 2014",
-          "line1": "Kröpelin, Mecklenburg-Vorpommern, Germany",
+          "line1": "Kröpelin, Mecklenburg-Vorpommern, Alemania",
           "line2": "&nbsp;",
           "line3": "trepar, serrar, rapelar desde ramas",
           "line4": "tala de árboles"
@@ -521,7 +534,7 @@
         {
           "bgcolor" : "rgb(252, 41, 88)",
           "h3": "Octubre 2014 - Octubre 2013",
-          "line1": "Freie Universität Berlin",
+          "line1": "Freie Universität Berlin, Alemania",
           "line2": "&nbsp;",
           "line3": "estudio abortado de psicología en maestría de cienca"
         },
@@ -535,7 +548,7 @@
         {
           "bgcolor" : "rgb(233, 95, 21)",
           "h3": "Julioo 2013 - Julioo 2012",
-          "line1": "sports-box.de, Berlin",
+          "line1": "sports-box.de, Berlin, Alemania",
           "line2": "&nbsp;",
           "line3": "empleado de contabilidad y servicio al cliente",
           "line4": "entradas de datos de productos deportivos en la tabla de Excel"
@@ -543,14 +556,14 @@
         {
           "bgcolor" : "rgb(65, 123, 69)",
           "h3": "Julioo 2012 - Octubre 2011",
-          "line1": "m.i.s. GmbH, Berlin",
+          "line1": "m.i.s. GmbH, Berlin, Alemania",
           "line2": "&nbsp;",
           "line3": "cajas de almacenamiento de bebidas"
         },
         {
           "bgcolor" : "rgb(111, 79, 122)",
           "h3": "Marzo 2012 - Octubre 2008",
-          "line1": "Technische Universität Chemnitz",
+          "line1": "Technische Universität Chemnitz, Alemania",
           "line2": "&nbsp;",
           "line3": "estudio de psicología",
           "line4": "nota final: 2.5 de 5 (Licenciatura en ciencias)"
@@ -558,14 +571,14 @@
         {
           "bgcolor" : "rgb(28, 68, 145)",
           "h3": "Agosto 2011 - Abril 2011",
-          "line1": "Carolabad Klinic, Chemnitz",
+          "line1": "Carolabad Klinic, Chemnitz, Alemania",
           "line2": "&nbsp;",
           "line3": "práctica en hospitaciones, moderaciones y guía de pruebas"
   
         },{
           "bgcolor" : "rgb(151, 50, 70)",
           "h3": "Septiembre 2008 - Octubre 2007",
-          "line1": "Berlin",
+          "line1": "Berlin, Alemania",
           "line2": "&nbsp;",
           "line3": "preparación de la cartera",
           "line4": "para la Academia de Arte en Leipzig",
@@ -573,39 +586,39 @@
         },{
           "bgcolor" : "rgb(70, 0, 59)",
           "h3": "Septiembre 2007 - Septiembre 2004",
-          "line1": "L4 - Academy, Berlin",
+          "line1": "L4 - Academy, Berlin, Alemania",
           "line2": "&nbsp;",
           "line3": "formación vocacional en diseño digital e impreso",
           "line4": "calificaciones finales: 83% y 64%"
         },{
           "bgcolor" : "rgb(25, 151, 218)",
           "h3": "Febrero 2007 - Septiembre 2006",
-          "line1": "digimedia services ltd., Berlin",
+          "line1": "digimedia services ltd., Berlin, Alemania",
           "line2": "&nbsp;",
           "line3": "diseño digital",
           "line4": "creación de contenido (logotipo, sitio web) de una escuela pública"
         },{ 
           "bgcolor" : "rgb(101, 125, 49)",
           "h3": "Agosto 2006 - Abril 2006",
-          "line1": "debitel-competenz-center, Berlin",
+          "line1": "debitel-competenz-center, Berlin, Alemania",
           "line2": "&nbsp;",
           "line3": "gestión de contenidos y entradas de datos de productos telecomunicaciones en ebay"
         },{
           "bgcolor" : "rgb(241, 4, 137)",
           "h3": "Mayo 2006 - Septiembre 2005",
-          "line1": "Starke Internethandel, Berlin",
+          "line1": "Starke Internethandel, Berlin, Alemania",
           "line2": "&nbsp;",
           "line3": "mantenimiento de la página de web y entradas de datos de productos en eBay y amazon"
         },{
           "bgcolor" : "rgb(102, 112, 92)",
           "h3": "Febrero 2006 - Junio 2004",
-          "line1": "Skandia GmbH, Berlin",
+          "line1": "Skandia GmbH, Berlin, Alemania",
           "line2": "&nbsp;",
           "line3": "localización y clasificación de archivos"
         },{
           "bgcolor" : "rgb(146, 104, 139)",
           "h3": "Junio 2004 - Septiembre 1990",
-          "line1": "Berlin",
+          "line1": "Berlin, Alemania",
           "line2": "&nbsp;",
           "line3": "escuela & bachillerato",
           "line4": "calificación final: 3.0 of 6"

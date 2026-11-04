@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="allinstyles.css">
 </head>
 <body>
-  <div id="linkG1" class="linktopage"><a target="_blank" href="https://pajozim.github.io/Stranded/">click here to play</a></div>
-  <div id="linkCD1" class="linktopage"><a target="_blank" href="https://github.com/Pajozim/CMSwTPaL">click here to go to github</a></div>
   <div class="triangleBtn SP"></div>
   <section id="dynamic-nav">
     <div id="imgCtner"><img id="nkeytosp"></div><div id="pftbiS">Back to Start</div>
@@ -40,9 +38,9 @@
     </div>
   </section>
 <script aria-label="ForwardIfMobile">
-  if (window.innerHeight > window.innerWidth) {
+  /* if (window.innerHeight > window.innerWidth) {
     window.location.href = "https://paul-zimmermann.framer.ai";
-  }
+  } */
 </script>
 <script aria-label="data independent script">
 
@@ -96,24 +94,29 @@
 
   const nkeytosp = document.getElementById('nkeytosp');
 
+  // callbacks =============================================================================================================
+
+  const COLORPOOL = [
+    "#2b6838", "#a7a5e7", "#c07739", "#7f559c", "#2da48d", "#8a3d0f", "#7faa5a", "#d1819a", "#20759f", "#7f8833", "#8287a2", "#49c0d3", "#8c5c68", "#4e566b", "#e49a6b", "#949b84", "#617969", "#5a9fdb", "#883352", "#bfa6ad", "#58c095", "#6d5c3c", "#9b6701", "#a46ca3", "#7574c3", "#315999", "#b89837", "#bd6973", "#2190a5", "#358249", "#264653", "#2A9D8F", "#F4A261", "#E76F51", "#233D4D", "#FE7F2D", "#FCCA46", "#A1C181", "#619B8A", "#A4243B", "#D8C99B", "#D8973C", "#BD632F", "#273E47", "#585123", "#F2A65A", "#F58549", "#772F1A", "#8ea604", "#523a34", "#b87d4b", "#e5b25d", "#9b9b7a", "#797d62", "#f0b27a", "#f0b27a", "#d08c60", "#aaba78", "#523a34", "#ee4266", "#6a994e", "#004e98", "#f07167", "#df2935", "#ff8c61", "#ce6a85", "#985277", "#5c374c", "#f28482", "#c11405", "#79779a"
+  ]
+
+  const colorRandomizer = () => COLORPOOL[Math.random()*COLORPOOL.length | 0];
+
   // .candy expand and collapse ============================================================================================
 
   window.addEventListener('click', function(event) {
-    const elementToToggle = event.target.classList.contains('candy') ? event.target : event.target.parentElement;
-    const FillerElement   = event.target.id.includes('Filler') || event.target.parentElement.id.includes('Filler');
-    const showlink        = event.target.classList.contains('showlink') || event.target.parentElement.classList.contains('showlink');
+    const ET              = event.target;
+    const elementToToggle = ET.classList.contains('candy') ? ET : ET.parentElement;
+    const FillerElement   = ET.id.includes('Filler') || ET.parentElement.id.includes('Filler');
 
-    if (!FillerElement && (event.target.classList.contains('candy') || event.target.parentElement.classList.contains('candy'))) { 
+    if (!FillerElement && (ET.classList.contains('candy') || ET.parentElement.classList.contains('candy'))) { 
       elementToToggle.classList.toggle('expanded');
+      const first = elementToToggle.children[0];
+      if (first?.matches("video")) first.toggleAttribute("controls");
+      elementToToggle.children[1]?.classList.toggle('hidden');
       document.getElementById('studio-container').classList.toggle('flexed');
-      if (showlink && event.target.parentElement.id === 'c22' || event.target.id === 'c22') {
-        document.getElementById('linkG1').classList.toggle('block');
-      }
-      else if (showlink && event.target.parentElement.id === 'c23' || event.target.id === 'c23') {
-        document.getElementById('linkCD1').classList.toggle('block');
-      }
       document.querySelectorAll('.candy').forEach(c => {
-        if (c !== event.target && c !== event.target.parentElement) {
+        if (c !== ET && c !== ET.parentElement) {
           c.classList.toggle('hidden');
         }
       });
@@ -148,7 +151,7 @@
 
   // firstrow blocks scalable ==============================================================================================
 
-  const firstrowids = ['photo', 'personal-data', 'education', 'languages', 'skills', 'tools'];
+  const firstrowids = ['cv-photo', 'cv-basics', 'cv-education', 'cv-certificates', 'cv-projects', 'cv-skills'];
 
   window.addEventListener('click', (event) => {
     if (event.target.classList.contains('triangleBtn')) return;
@@ -204,7 +207,7 @@
 
   // changing backgrounds ==================================================================================================
 
-    // Preload images
+  // Preload images
   const imageUrls = [
     'Materials/bg_p0.webp',
     'Materials/bg_p1.webp',
@@ -226,7 +229,7 @@
   spcontainer.style.backgroundImage = `url('Materials/bg_p0.webp')`;
 
   setInterval(() => {
-    const rndCol = () => (Math.floor(Math.random() * 16));
+    const rndCol = () => (Math.floor(Math.random() * imageUrls.length));
     spcontainer.style.backgroundImage = `url('Materials/bg_p${rndCol()}.webp`;    
   }, 30000);
 
@@ -236,13 +239,17 @@
 // fetch data ================================================================================
 
 async function fetchAndStoreData(url, localStorageKey) {
+
   const response = await fetch(url);
   const data = await response.json();
+
   localStorage.setItem(localStorageKey, JSON.stringify(data));
+  
   return data;  // Returning the fetched data
 }
 
 async function LoadData() {
+
   // Fetch and store all data asynchronously
   const result = await Promise.all([
     fetchAndStoreData('cv.json', 'cvData'),
@@ -258,8 +265,6 @@ async function LoadData() {
   languages = result[3] || null;
 
   return { cv, products, materials, languages };
-
-  console.log('cv', cv, 'products', products, 'materials', materials, 'languages', languages);
 }
 
 LoadData()
@@ -276,15 +281,15 @@ LoadData()
     if (languageIndex === -1) languageIndex = 0;
 
     // cvBlocks
-    let cvBlocks         = cv[languageIndex]?.resume || [];
+    let cvBlocks         = cv[languageIndex]?.resume || {};
     
     // function for setting/switching language
     function setLanguage(index) {
       try {
         const chosenLang    = languages[index];
  
-        document.getElementById('linkG1').querySelector('a').textContent       = chosenLang?.contGame || 'click here to play';
-        document.getElementById('linkCD1').querySelector('a').textContent      = chosenLang?.contCD || 'click here to go to github';
+        //document.getElementById('linkG1').querySelector('a').textContent       = chosenLang?.contGame || 'click here to play';
+        //document.getElementById('linkCD1').querySelector('a').textContent      = chosenLang?.contCD || 'click here to go to github';
         pagefliptr.textContent                                                 = chosenLang?.contNavBar;
           
         [contactName, contactMail, contactSubject, contactMessage].forEach((el, i) => {
@@ -336,7 +341,6 @@ LoadData()
 
       if (event.key === 'n' && event.type === 'keydown' && pageflipper.classList.contains('ftoSS')) {
         backToSPFromStudio();
-        linktogame.classList.remove('block');
       }
       else if (event.key === 'n' && event.type === 'keydown' && pageflipper.classList.contains('ftoCS')) {
         backToSPFromCV();
@@ -350,11 +354,6 @@ LoadData()
     nkeytosp.src = materials[4]?.src || '';
     nkeytosp.alt = materials[4]?.name || '';
 
-    // change workingon img on every reload
-    const oneofboth = [materials[2]?.src || '' , materials[3]?.src || ''];
-    const onofbothN = [materials[2]?.name || '' , materials[3]?.name || ''];
-    const workonimg = document.getElementById('workingon');
-
   // STUDIO COMPOSER ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // Display products
@@ -366,7 +365,7 @@ LoadData()
       let roundedUpNo       = Math.ceil(rootedNo); // next rounded up integer
       let roundedDownNo     = Math.floor(rootedNo); // next rounded down integer
 
-      // calclation of the row height
+      // calculation of the row height
       const rowDivisor      = products.length <= roundedUpNo * roundedDownNo ? roundedDownNo : roundedUpNo;
 
       let rowfactor = (100 / rowDivisor) + 'vh';
@@ -379,15 +378,18 @@ LoadData()
       // Add each product to the grid
       products.forEach(product => {
         const productElement                 = document.createElement('div');
-        productElement.classList             = product.extraclass ? 'candy ' + product.extraclass : 'candy';
+        productElement.classList             = 'candy';
         productElement.id                    = `c${products.indexOf(product) + 1}`;
-        productElement.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-        productElement.innerHTML             = `<${product.mediaType} src="${product.src}" alt="${product.name}" ${product.mediaType === 'video' ? 'controls autoplay muted' : ''}>`;
+        productElement.style.backgroundColor = `${colorRandomizer()}`;
+        productElement.innerHTML             = `<${product.mediaType} src="${product.src}" alt="${product.name}" ${product.mediaType === 'video' ? 'autoplay loop muted' : ''}>`;
+        productElement.innerHTML             += product.extraComponent ?? '';
         productList.appendChild(productElement);
-        });
+      });
       
       // create a filler
-      // 8 products, the row width is incorrect
+      const oneofboth = [materials[2]?.src || '' , materials[3]?.src || '']; // change workingon img on every reload
+      const curWOimg  = oneofboth[Math.floor(Math.random() * oneofboth.length)];
+      const FPimg     = materials[1]?.src || ''; // FP = furture projects
       if (!Number.isInteger(rootedNo) && products.length !== roundedUpNo * roundedDownNo) {
         let colSubtrahend, colDivisor, fillergridCol;
 
@@ -409,18 +411,19 @@ LoadData()
         const filler             = document.createElement('div');
         filler.classList         = 'candy';
         filler.id                = 'Filler';
-        // filler.style.width = ColProduct + 'vw';
         filler.style.gridColumn  = fillergridCol;
-        // filler.style.height   = rowfactor;
-        filler.innerHTML         = `<img id="workingon" src="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}" onmouseover="this.src='${materials[1]?.src || ''}'" onmouseout="this.src='${oneofboth[Math.floor(Math.random() * oneofboth.length)]}'" alt="${oneofboth[Math.floor(Math.random() * oneofboth.length)]}">`;
+        filler.innerHTML         = `<img id="workingon" src="${curWOimg}" onmouseover="this.src='${FPimg}'" onmouseout="this.src='${curWOimg}'" alt="image depicting the concept of working on">`;
         productList.appendChild(filler);
   }
     }
 
     // swiping to left or right in Studio 
     function classjuggler(p) {
-      p.classList.remove('hidden');
-      p.classList.add('expanded');      
+      p.classList.toggle('hidden');
+      p.classList.toggle('expanded');
+      const first = p.children[0];
+      if (first?.matches("video")) first.toggleAttribute("controls");
+      p.children[1]?.classList.toggle('hidden');
     }
 
     window.addEventListener('wheel', function(event) {
@@ -430,8 +433,7 @@ LoadData()
 
       //left swipe
         if (event.deltaY > 0 && elementToChange.classList.contains('expanded') && !showwebElement && !NoStudioContainer) {
-        elementToChange.classList.remove('expanded');
-        elementToChange.classList.add('hidden');
+        classjuggler(elementToChange);
         const prodIndNewId = Number(elementToChange.id.slice(1)) + 1;
         if (prodIndNewId > products.length) {
           const prodIndNew = document.getElementById(`c1`);
@@ -443,8 +445,7 @@ LoadData()
       }
       //right swipe
       else if (event.deltaY < 0 && elementToChange.classList.contains('expanded') && !showwebElement && !NoStudioContainer) {
-        elementToChange.classList.remove('expanded');
-        elementToChange.classList.add('hidden');
+        classjuggler(elementToChange);
         const prodIndNewId = Number(elementToChange.id.slice(1)) - 1;
         if (prodIndNewId <= 0) {
           const prodIndNew = document.getElementById(`c${products.length}`);
@@ -470,8 +471,7 @@ LoadData()
       if (event.key === 'ArrowLeft' && event.type === 'keydown') {
         // Find the currently expanded element
         if (prodIndOld) {
-          prodIndOld.classList.remove('expanded');
-          prodIndOld.classList.add('hidden');
+          classjuggler(prodIndOld);
           const prodIndNewId = Number(prodIndOld.id.slice(1)) - 1;
           if (prodIndNewId <= 0) {
             const prodIndNew = document.getElementById(`c${products.length}`);
@@ -485,8 +485,7 @@ LoadData()
       //right swipe
       else if (event.key === 'ArrowRight' && event.type === 'keydown') {
         if (prodIndOld) {
-          prodIndOld.classList.remove('expanded');
-          prodIndOld.classList.add('hidden');
+          classjuggler(prodIndOld);
           const prodIndNewId = Number(prodIndOld.id.slice(1)) + 1; // Get the new product ID
           if (prodIndNewId > products.length) {
             // Wrap around to the first product if the new ID exceeds the total number of products
@@ -509,55 +508,57 @@ LoadData()
       firstrow.innerHTML  = '';
       curriculum.innerHTML = '';
 
-      cvBlocks = cv[languageIndex]?.resume || [];
+      //cvBlocks = cv[languageIndex]?.resume || {};
 
-      cvBlocks.forEach(index => {
-        if (index.id !== 'curriculum') {
-          const divblock = document.createElement('div');
-          divblock.id = index.id;
-
-          // Handle photo block
-          if (divblock.id === 'photo') {
-            divblock.innerHTML = `<img src="${index.block.src}" alt="${index.block.name}">`;
-            // Append divblock to the cvcontainer
-            firstrow.appendChild(divblock);
+      const SECTIONS = [
+        ["photo", v => `<img src="${v.image}" alt="${v.name}">`],
+        ["basics",  (v) => {
+          const BASICSKIP = new Set(["image", "summary", "url", "name"]);
+          let html = `<h3>${v.name}</h3>`;
+          for (const [key, value] of Object.entries(v)) {
+            if (BASICSKIP.has(key)) continue;
+            else if (key === "location") html += `<p>${value.city}</p>`
+            else if (key === "profiles") html += `${value.map(p => `<p>${p.network}&nbsp;&nbsp;&nbsp;<a href="${p.url}" target="_blank" class="cv-link"><img src="Materials/link.svg"></a></p>`).join("")}`
+            else html += `<p>${value}</p>`
           }
-          // Handle blocks other than "curriculum"
-          else if (divblock.id !== 'curriculum' && index.block) {
+          return html;
+        }],
+        ["education", v => `<h3>Education</h3>${v.map(e=>`<p><em>${e.startDate} — ${e.endDate}</em><br>${e.area} in ${e.institution} (${e.location.split(", ")[1]})`).join("</p>")}`],
+        ["certificates", v => `<h3>Certificates</h3>${v.map(e=>`<p>${e.name}&nbsp;&nbsp;&nbsp;${e.url ? `<a href="${e.url}" target="_blank" class="cv-link"><img src="Materials/link.svg"></a>` : ""}`).join("</p>")}`],
+        ["projects", v => `<h3>Projects</h3>${v.map(e=>`<p>${e.name}&nbsp;&nbsp;&nbsp;<a href="${e.link}" target="_blank" class="cv-link"><img src="Materials/link.svg"></a></p>`).join("")}`],
+        ["skills", v => `<h3>Skills</h3>${v.map(e=>`<p><em>${e.name}</em>:<br>${e.keywords.join(", ")}`).join("</p>")}`],
+        ["work", (v) => v.map((item, i) =>
+          `<div id="cv-block-${i}" class="" style="background:${colorRandomizer()}">
+            <h3>${item.name}</h3>
+            <p>&nbsp;${item.location}</p>
+            <p><em>${item.startDate} - ${item.endDate}</em></p>
+            <p>${item.position}<br>
+            ${item.highlights ? `<ul><li>${item.highlights.join("</li><li>")}</li></ul>` : ""}
+          </p></div>`
+        ).join("")],
+      ];
 
-              divblock.innerHTML = `<h3>${index.block.h3}</h3>`;
+      const WORK = new Set(["work"]);
+      const EXCWORK = new Set(["photo", "basics", "education", "certificates", "projects", "skills"]); // all the keys except "work"
 
-              // Loop through the `line` properties
-              for (let key in index.block) {
-                // Check if the key matches the pattern "line" followed by a number
-                if (key !== 'h3') {
-                    divblock.innerHTML += `<p>${index.block[key]}</p>`;
-                }
-              }
-            // Append divblock to the cvcontainer
-            firstrow.appendChild(divblock);
-          }
-        }
-        else {
-          index.blocks.forEach(bbox => {
-            const currichild = document.createElement('div');
-            currichild.id = `cv-block-${index.blocks.indexOf(bbox)}`;
-            if (index.blocks.indexOf(bbox) > 3) currichild.classList.add('hidden');
-            currichild.style.backgroundColor = bbox.bgcolor;
-            currichild.innerHTML = `<h3>${bbox.h3}</h3>`;
-            for (let key in bbox) {
-              if (key !== 'h3' && key !== 'bgcolor') {
-                currichild.innerHTML += `<p>${bbox[key]}</p>`;
-              }
-            }
-          curriculum.appendChild(currichild);
-          });
-        }
-      });
+      function renderCV(data, el, filterSet) {
+        el.innerHTML = SECTIONS
+          .filter(([k]) => filterSet.has(k))
+          .map(([k, fn]) => {
+            if (k === 'photo') return `<div id="cv-${k}">${fn(data["basics"])}</div>`
+            else if (k === 'work') return `${fn(data[k])}`
+            else return `<div id="cv-${k}" style="background-color: ${colorRandomizer()}">${fn(data[k])}</div>`
+          })
+          .join("");
+      }
+
+      renderCV(cvBlocks, firstrow, EXCWORK);
+      renderCV(cvBlocks, curriculum, WORK);
+      
     }
 
     // defining current length/quantity of blocks in cvBlocks
-    const curBlklength = cvBlocks[6].blocks.length || 0;
+    const curBlklength = cvBlocks["work"].length || 0;
 
     // initial curriculum block count indicator
     const countindicator     = document.getElementById('indicator');
@@ -612,20 +613,21 @@ LoadData()
     });
 
     window.addEventListener('click', (event) => {
-      if (!curriculum.classList.contains('enlarged')) return;
+      const ET = event.target;
+      if (!curriculum.classList.contains('enlarged') || ET.classList.contains('triangleBtn')) return;
 
       cvdeclarations();
-      let parentid   = event.target.closest('[id]'),
-      hascvblock = parentid.id.startsWith('cv-block'),
-      whichidNr  = Number(parentid.id.split('-')[2]),
-      whichEnvge = document.querySelector('.envisage'),
-      envgeidNr  = Number(whichEnvge.id.split('-')[2]);
+      let parentid   = ET.closest('[id]'),
+      hascvblock     = parentid.id.startsWith('cv-block'),
+      whichidNr      = Number(parentid.id.split('-')[2]),
+      whichEnvge     = document.querySelector('.envisage'),
+      envgeidNr      = Number(whichEnvge.id.split('-')[2]);
 
-      if ((event.target === parentid || hascvblock) && whichidNr > envgeidNr) {
+      if ((ET === parentid || hascvblock) && whichidNr > envgeidNr) {
         SwipeToLeft(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
         currentblock.innerHTML = `${cvNr+2}`;
       }
-      else if ((event.target === parentid || hascvblock) && whichidNr < envgeidNr) {
+      else if ((ET === parentid || hascvblock) && whichidNr < envgeidNr) {
         SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
         currentblock.innerHTML = `${cvNr}`;
       }

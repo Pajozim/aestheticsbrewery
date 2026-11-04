@@ -1,19 +1,9 @@
 # Ignore folder and its contents
-/Storage/
-/Product Images/
-index - Kopie.html
-dynamicShop.html
-buen colores.rtf
-core-styles.css
-cv-composer.js
-cv-styles.css
-globalscope.js
-startpage-styles.css
-studio-composer.js
-studio-styles.css
-toCV.js
-toStudio.js
-cv-deu.json
-cv-esp.json
-/to edit for Studio/
 aestheticsbrewery.code-workspace
+node_modules/
+*_BU
+*_ENG
+*_ESP
+resume.html
+MIT License
+ToDo.txt

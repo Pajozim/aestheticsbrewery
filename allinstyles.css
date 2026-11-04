@@ -13,7 +13,7 @@
   --font-optical-sizing: auto;
   --font-weight: 300;
   --font-style: normal;
-  --fontcolor: #fff;
+  --fontcolor: #FCF5ED;
   --pfelemwidth: 95vw;
   --pfelemheight: 90vh;
   --inpbutmargin: 1vh;
@@ -31,6 +31,7 @@
   font-weight: var(--font-weight);
   --BI1: url(Materials/BackToSP.svg);
   --BI2: url(Materials/BackToSP_fCont.svg);
+  --BI3: url(Materials/link.svg);
 }
 
 @font-face {
@@ -455,6 +456,10 @@ background-color: darkcyan;
 /* candy boxes ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 .candy {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
 overflow: hidden;
 padding: 3%;
 box-sizing: border-box;
@@ -467,6 +472,10 @@ margin: 1%;
 .candy:hover {
 scale: 1.05;
 cursor: pointer;
+}
+
+.candy.hidden {
+display: none;
 }
 
 .candy.expanded {
@@ -492,50 +501,47 @@ max-width: fit-content;
 height: auto;
 }
 
-.expanded.showlink:hover, .linktopage:hover {
-  cursor: pointer;
+.candy * {
+object-fit: contain;
+width: 100%;
 }
+
+.candy img, .candy video {
+height: 90%;
+margin-bottom: 2%;
+}
+
 
 .linktopage {
-  display: none;
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 1% 5%;
-  background-color: #222;
-  transition: all 0.2s ease-in-out;
-  outline: 3px solid #222;
-  outline-offset: 2px;
-  border-radius: 8px;
-}
-
-.linktopage.block {
-  display: block;
+display: flex;
+align-items: center;
+justify-content: center;
+width: auto;
+height: 8%;
+padding: 1% 5%;
+background-color: #222;
+transition: all 0.2s ease-in-out;
+outline: 3px solid #222;
+outline-offset: 2px;
+border-radius: 8px;
 }
 
 .linktopage:hover {
-  cursor: pointer;
-  background-color: #444;
-  outline: 3px solid #444;
+background-color: #444;
+outline: 3px solid #444;
 }
 
-.linktopage a {
-  color: var(--fontcolor);
-  font-size: var(--fontsize);
-  text-decoration: none;
-}
-
-.candy.hidden {
+.linktopage.hidden {
 display: none;
 }
 
-.candy * {
- object-fit: contain;
- width: 100%;
- height: 100%;
+.linktopage a {
+color: var(--fontcolor);
+font-size: var(--fontsize);
+text-decoration: none;
 }
+
+
 
 /* filler box */
 
@@ -617,13 +623,17 @@ background-color: goldenrod;
   align-items: flex-start;
 }
 
-#firstrow > div:not(#photo), #curriculum > div {
+#firstrow > div:not(#cv-photo), #curriculum > div {
   padding: 1%;
   box-sizing: border-box;
   font-size: var(--changfontsize);
 }
 
 /*** first row ***/
+
+#cv-photo > img {
+  border-radius: 15px 0 0 0;
+}
 
 #firstrow {
   height: 80vh;
@@ -683,12 +693,8 @@ background-color: goldenrod;
   font-size: var(--changfontsize) * 1.2 !important;
 }
 
-#firstrow > div.ixpanded img {
-  border-radius: 1em;
-}
-
 #firstrow > div.ixpanded:hover {
-  cursor: pointer;
+  cursor: ne-resize;
   transform-origin: left top;
   scale: 1.2;
 }
@@ -697,12 +703,21 @@ background-color: goldenrod;
   margin-left: 5%;
 }
 
-#photo         { transform-origin: top right;}
-#personal-data { background-color: rgb(173, 110, 28); }
-#education     { background-color: rgb(102, 131, 2); }
-#languages     { background-color: rgb(81, 44, 38); }
-#skills        { background-color: rgb(121, 119, 154); }
-#tools         { background-color: rgb(193, 20, 5); transform-origin: top left;}
+.cv-link img {
+  cursor: pointer;
+  width: 1vw;
+  height: auto;
+  border-radius: 0;
+}  
+
+#cv-photo        { transform-origin: top right;}
+/*
+#cv-basics       { background-color: rgb(173, 110, 28); }
+#cv-education    { background-color: rgb(102, 131, 2); }
+#cv-certificates { background-color: rgb(81, 44, 38); }
+#cv-projects     { background-color: #79779a; }
+#cv-skills       { background-color: #c11405; transform-origin: top left;}
+*/
 
 /*** curriculum/second row ***/
 
@@ -784,7 +799,7 @@ background-color: goldenrod;
 #curriculum.enlarged > div[class^="passee"] h3 {transform: rotate(90deg);}
 #curriculum.enlarged > div[class^="futur"] h3 {transform: rotate(-90deg);}
 
-#curriculum.enlarged > div[class^="futur"] p, #curriculum.enlarged > div[class^="passee"] p {display: none;}
+#curriculum.enlarged > div[class^="futur"] *:not(h3), #curriculum.enlarged > div[class^="passee"] *:not(h3) {display: none;}
 
 #curriculum.enlarged > div.futur3 {min-width: 11vw; height: 70%;}
 #curriculum.enlarged > div.futur2 {min-width: 17vw; height: 80%;}

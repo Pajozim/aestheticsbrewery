@@ -94,13 +94,37 @@
 
   const nkeytosp = document.getElementById('nkeytosp');
 
-  // callbacks =============================================================================================================
+  // system language pool ==================================================================================================
+
+  const sysLangPool = ['en', 'de', 'es'];
+
+  let curLang = 'en';
+
+  let cvLangIndex = (lang = curLang) => {
+
+    const langUniformed = lang.toLowerCase();
+    const slicedLang = langUniformed.length > 2 ? langUniformed.slice(0, 2) : langUniformed;
+    const langIndex = sysLangPool.indexOf(slicedLang);
+    return langIndex === -1 ? 0 : langIndex;
+
+  };
+
+  // colors ================================================================================================================
 
   const COLORPOOL = [
-    "#2b6838", "#a7a5e7", "#c07739", "#7f559c", "#2da48d", "#8a3d0f", "#7faa5a", "#d1819a", "#20759f", "#7f8833", "#8287a2", "#49c0d3", "#8c5c68", "#4e566b", "#e49a6b", "#949b84", "#617969", "#5a9fdb", "#883352", "#bfa6ad", "#58c095", "#6d5c3c", "#9b6701", "#a46ca3", "#7574c3", "#315999", "#b89837", "#bd6973", "#2190a5", "#358249", "#264653", "#2A9D8F", "#F4A261", "#E76F51", "#233D4D", "#FE7F2D", "#FCCA46", "#A1C181", "#619B8A", "#A4243B", "#D8C99B", "#D8973C", "#BD632F", "#273E47", "#585123", "#F2A65A", "#F58549", "#772F1A", "#8ea604", "#523a34", "#b87d4b", "#e5b25d", "#9b9b7a", "#797d62", "#f0b27a", "#f0b27a", "#d08c60", "#aaba78", "#523a34", "#ee4266", "#6a994e", "#004e98", "#f07167", "#df2935", "#ff8c61", "#ce6a85", "#985277", "#5c374c", "#f28482", "#c11405", "#79779a"
+    "#2b6838", "#a7a5e7", "#c07739", "#7f559c", "#2da48d", "#8a3d0f", "#7faa5a", "#d1819a", "#20759f", "#7f8833", "#8287a2", "#8c5c68", "#4e566b", "#e49a6b", "#949b84", "#617969", "#5a9fdb", "#883352", "#bfa6ad", "#58c095", "#6d5c3c", "#9b6701", "#a46ca3", "#7574c3", "#315999", "#b89837", "#bd6973", "#2190a5", "#358249", "#264653", "#2A9D8F", "#F4A261", "#E76F51", "#233D4D", "#FE7F2D", "#619B8A", "#A4243B", "#D8973C", "#BD632F", "#273E47", "#585123", "#F58549", "#772F1A", "#8ea604", "#523a34", "#b87d4b", "#9b9b7a", "#797d62", "#d08c60", "#523a34", "#ee4266", "#6a994e", "#004e98", "#f07167", "#df2935", "#ff8c61", "#ce6a85", "#985277", "#5c374c", "#f28482", "#c11405", "#79779a", "#008080", "#778844"
   ]
 
-  const colorRandomizer = () => COLORPOOL[Math.random()*COLORPOOL.length | 0];
+  const colorRandomizer = () => {
+    const color = COLORPOOL[Math.random()*COLORPOOL.length | 0];
+    if (!curClrPool.has(color)) {
+      curClrPool.add(color);
+      return color;
+    };
+    return colorRandomizer();
+  };
+
+  let curClrPool = new Set();
 
   // .candy expand and collapse ============================================================================================
 
@@ -114,7 +138,7 @@
       const first = elementToToggle.children[0];
       if (first?.matches("video")) first.toggleAttribute("controls");
       elementToToggle.children[1]?.classList.toggle('hidden');
-      document.getElementById('studio-container').classList.toggle('flexed');
+      studioC.classList.toggle('flexed');
       document.querySelectorAll('.candy').forEach(c => {
         if (c !== ET && c !== ET.parentElement) {
           c.classList.toggle('hidden');
@@ -208,6 +232,7 @@
   // changing backgrounds ==================================================================================================
 
   // Preload images
+  /*
   const imageUrls = [
     'Materials/bg_p0.webp',
     'Materials/bg_p1.webp',
@@ -232,7 +257,7 @@
     const rndCol = () => (Math.floor(Math.random() * imageUrls.length));
     spcontainer.style.backgroundImage = `url('Materials/bg_p${rndCol()}.webp`;    
   }, 30000);
-
+  */
 </script>
 <script aria-label="data dependent script">
 
@@ -275,22 +300,18 @@ LoadData()
   // LANGUAGE +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // set system language
-    const systemLang     = navigator.language || navigator.userLanguage;
-    const LangIdent      = systemLang.includes('en') ? 'en' : systemLang;
-    let languageIndex    = ['en', 'de-DE', 'es-ES'].indexOf(LangIdent);
-    if (languageIndex === -1) languageIndex = 0;
+    curLang              = navigator.language || navigator.userLanguage;
+    let initialLangIndex = cvLangIndex(curLang);
 
     // cvBlocks
-    let cvBlocks         = cv[languageIndex]?.resume || {};
+    let cvBlocks         = cv[initialLangIndex]?.resume || {};
     
     // function for setting/switching language
     function setLanguage(index) {
       try {
-        const chosenLang    = languages[index];
+        const chosenLang       = languages[index];
  
-        //document.getElementById('linkG1').querySelector('a').textContent       = chosenLang?.contGame || 'click here to play';
-        //document.getElementById('linkCD1').querySelector('a').textContent      = chosenLang?.contCD || 'click here to go to github';
-        pagefliptr.textContent                                                 = chosenLang?.contNavBar;
+        pagefliptr.textContent = chosenLang?.contNavBar;
           
         [contactName, contactMail, contactSubject, contactMessage].forEach((el, i) => {
           el.placeholder = chosenLang?.contContact[i]?? '';
@@ -310,12 +331,13 @@ LoadData()
     }
 
     // set Language
-    setLanguage(languageIndex);
+    setLanguage(initialLangIndex);
     
     // switch Language
     [LangEng, LangDeu, LangEsp].forEach((el, i) => el.addEventListener('click', () => {
+      curLang = el.id.slice(0, 2);
       setLanguage(i);
-      displayCV();
+      displayCV(cvLangIndex(curLang), true);
     }));
 
   // STARTPAGE COMPOSITION ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -358,8 +380,10 @@ LoadData()
 
     // Display products
     function displayProducts() {
-      const productList = document.getElementById('studio-container');
-      productList.innerHTML = ''; // Clear existing content
+
+      if (studioC.innerHTML !== '') return;
+
+      studioC.innerHTML = ''; // Clear existing content
 
       let rootedNo          = Math.sqrt(products.length);
       let roundedUpNo       = Math.ceil(rootedNo); // next rounded up integer
@@ -372,18 +396,27 @@ LoadData()
 
       // grid composition
       let initialGrid = `repeat(${roundedUpNo}, 1fr)`;
-      productList.style.gridTemplateColumns = initialGrid;
-      productList.style.gridAutoRows = rowfactor;
+      studioC.style.gridTemplateColumns = initialGrid;
+      studioC.style.gridAutoRows = rowfactor;
+
+      // dynamically mapped product categories colors
+      const CATCOLORS = new Map([
+        ["artcrafts", colorRandomizer()],
+        ["digitaldesign", colorRandomizer()],
+        ["printdesign", colorRandomizer()],
+        ["webdesign", colorRandomizer()],
+        ["programming", colorRandomizer()]
+      ])
 
       // Add each product to the grid
       products.forEach(product => {
         const productElement                 = document.createElement('div');
-        productElement.classList             = 'candy';
+        productElement.classList             = 'candy ' + product.extraclass.join(' ');
+        productElement.style.backgroundColor = CATCOLORS.get(product.extraclass[0]);
         productElement.id                    = `c${products.indexOf(product) + 1}`;
-        productElement.style.backgroundColor = `${colorRandomizer()}`;
         productElement.innerHTML             = `<${product.mediaType} src="${product.src}" alt="${product.name}" ${product.mediaType === 'video' ? 'autoplay loop muted' : ''}>`;
         productElement.innerHTML             += product.extraComponent ?? '';
-        productList.appendChild(productElement);
+        studioC.appendChild(productElement);
       });
       
       // create a filler
@@ -413,7 +446,7 @@ LoadData()
         filler.id                = 'Filler';
         filler.style.gridColumn  = fillergridCol;
         filler.innerHTML         = `<img id="workingon" src="${curWOimg}" onmouseover="this.src='${FPimg}'" onmouseout="this.src='${curWOimg}'" alt="image depicting the concept of working on">`;
-        productList.appendChild(filler);
+        studioC.appendChild(filler);
   }
     }
 
@@ -503,12 +536,54 @@ LoadData()
   // CV COMPOSER ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // Display cv steps 
-    function displayCV() {
+    function displayCV(langIdx, langChanged = false) {
 
-      firstrow.innerHTML  = '';
+      if (firstrow.innerHTML !== '' && curriculum.innerHTML !== '' && !langChanged) return;
+
+      curClrPool = new Set(); // reset the distinct colors picked
+
+      cvBlocks             = cv[langIdx]?.resume || {};
+
+      // storing the states of the cv-blocks
+      const currentClassList = {
+        "futur3": document.querySelector('.futur3')?.id || '', 
+        "futur2": document.querySelector('.futur2')?.id || '', 
+        "futur1": document.querySelector('.futur1')?.id || '', 
+        "futur0": document.querySelector('.futur0')?.id || '', 
+        "envisage": document.querySelector('.envisage')?.id || '', 
+        "passee0": document.querySelector('.passee0')?.id || '', 
+        "passee1": document.querySelector('.passee1')?.id || '', 
+        "passee2": document.querySelector('.passee2')?.id || '', 
+        "passee3": document.querySelector('.passee3')?.id || ''
+        };
+
+      firstrow.innerHTML   = '';
       curriculum.innerHTML = '';
 
-      //cvBlocks = cv[languageIndex]?.resume || {};
+      const CVTITLES = {
+        "education": {
+          "en": "Education",
+          "es": "Educación",
+          "de": "Bildung"
+        },
+        "certificates": {
+          "en": "Certificates",
+          "es": "Certificados",
+          "de": "Zertifikate"
+        },
+        "projects": {
+         "en" : "Projects",
+         "es" : "Proyectos",
+         "de" : "Projekte"
+        },
+        "skills": {
+          "en": "Skills",
+          "es": "Habilidades",
+          "de": "Fertigkeiten"
+        }
+      }
+
+      curLang = curLang.length > 2 ? curLang.slice(0, 2) : curLang;
 
       const SECTIONS = [
         ["photo", v => `<img src="${v.image}" alt="${v.name}">`],
@@ -523,12 +598,12 @@ LoadData()
           }
           return html;
         }],
-        ["education", v => `<h3>Education</h3>${v.map(e=>`<p><em>${e.startDate} — ${e.endDate}</em><br>${e.area} in ${e.institution} (${e.location.split(", ")[1]})`).join("</p>")}`],
-        ["certificates", v => `<h3>Certificates</h3>${v.map(e=>`<p>${e.name}&nbsp;&nbsp;&nbsp;${e.url ? `<a href="${e.url}" target="_blank" class="cv-link"><img src="Materials/link.svg"></a>` : ""}`).join("</p>")}`],
-        ["projects", v => `<h3>Projects</h3>${v.map(e=>`<p>${e.name}&nbsp;&nbsp;&nbsp;<a href="${e.link}" target="_blank" class="cv-link"><img src="Materials/link.svg"></a></p>`).join("")}`],
-        ["skills", v => `<h3>Skills</h3>${v.map(e=>`<p><em>${e.name}</em>:<br>${e.keywords.join(", ")}`).join("</p>")}`],
+        ["education", v => `<h3>${CVTITLES["education"][curLang]}</h3>${v.map(e=>`<p><em>${e.startDate} — ${e.endDate}</em><br>${e.area} in ${e.institution} (${e.location.split(", ")[1]})`).join("</p>")}`],
+        ["certificates", v => `<h3>${CVTITLES["certificates"][curLang]}</h3>${v.map(e=>`<p>${e.name}&nbsp;&nbsp;&nbsp;${e.url ? `<a href="${e.url}" target="_blank" class="cv-link"><img src="Materials/link.svg"></a>` : ""}`).join("</p>")}`],
+        ["projects", v => `<h3>${CVTITLES["projects"][curLang]}</h3>${v.map(e=>`<p>${e.name}&nbsp;&nbsp;&nbsp;<a href="${e.link}" target="_blank" class="cv-link"><img src="Materials/link.svg"></a></p>`).join("")}`],
+        ["skills", v => `<h3>${CVTITLES["skills"][curLang]}</h3>${v.map(e=>`<p><em>${e.name}</em>:<br>${e.keywords.join(", ")}`).join("</p>")}`],
         ["work", (v) => v.map((item, i) =>
-          `<div id="cv-block-${i}" class="" style="background:${colorRandomizer()}">
+          `<div id="cv-block-${i}" class="${langChanged ? 'hidden' : ''}" style="background:${colorRandomizer()}">
             <h3>${item.name}</h3>
             <p>&nbsp;${item.location}</p>
             <p><em>${item.startDate} - ${item.endDate}</em></p>
@@ -554,7 +629,15 @@ LoadData()
 
       renderCV(cvBlocks, firstrow, EXCWORK);
       renderCV(cvBlocks, curriculum, WORK);
-      
+
+      if (currentClassList["envisage"]) {
+        for (const [k, v] of Object.entries(currentClassList)) {
+            const processedElement = document.getElementById(v);
+            if (!processedElement) continue;
+            processedElement.classList.remove("hidden");
+            processedElement.classList.add(k);  
+        }      
+      }
     }
 
     // defining current length/quantity of blocks in cvBlocks
@@ -614,24 +697,28 @@ LoadData()
 
     window.addEventListener('click', (event) => {
       const ET = event.target;
-      if (!curriculum.classList.contains('enlarged') || ET.classList.contains('triangleBtn')) return;
+      
+      //if (!curriculum.classList.contains('enlarged') || ET.classList.contains('triangleBtn') || ET.id.includes('currvitae')) return;
+      if (ET.parentElement.classList.contains('enlarged')) {
 
-      cvdeclarations();
-      let parentid   = ET.closest('[id]'),
-      hascvblock     = parentid.id.startsWith('cv-block'),
-      whichidNr      = Number(parentid.id.split('-')[2]),
-      whichEnvge     = document.querySelector('.envisage'),
-      envgeidNr      = Number(whichEnvge.id.split('-')[2]);
+        cvdeclarations();
+        let parentid   = ET.closest('[id]'),
+        hascvblock     = parentid.id.startsWith('cv-block'),
+        whichidNr      = Number(parentid.id.split('-')[2]),
+        whichEnvge     = document.querySelector('.envisage'),
+        envgeidNr      = Number(whichEnvge.id.split('-')[2]);
 
-      if ((ET === parentid || hascvblock) && whichidNr > envgeidNr) {
-        SwipeToLeft(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
-        currentblock.innerHTML = `${cvNr+2}`;
-      }
-      else if ((ET === parentid || hascvblock) && whichidNr < envgeidNr) {
-        SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
-        currentblock.innerHTML = `${cvNr}`;
+        if ((ET === parentid || hascvblock) && whichidNr > envgeidNr) {
+          SwipeToLeft(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
+          currentblock.innerHTML = `${cvNr+2}`;
+        }
+        else if ((ET === parentid || hascvblock) && whichidNr < envgeidNr) {
+          SwipeToRight(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3);
+          currentblock.innerHTML = `${cvNr}`;
+        }
       }
     });
+
     function SwipeToLeft(cvNr, cvNrm3, cvNrm2, cvNrm1, cvNr0, cvNrp1, cvNrp2, cvNrp3) {
 
       if (cvNr > 2) {
@@ -785,7 +872,7 @@ LoadData()
       setTimeout(() => {cvcontainer.classList.add('appear')}, 1000);
 
       // dynamic cv composer
-      displayCV();
+      displayCV(cvLangIndex(curLang));
 
       // text size
       twentyvh();

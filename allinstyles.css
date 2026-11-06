@@ -13,13 +13,22 @@
   --font-optical-sizing: auto;
   --font-weight: 300;
   --font-style: normal;
-  --fontcolor: #FCF5ED;
   --pfelemwidth: 95vw;
   --pfelemheight: 90vh;
   --inpbutmargin: 1vh;
   --inpbutpad: 1vh;
+  /* COlors */
+  --bgColor: #212A31;
+  --fontcolor: #F7EEE3;
   --inpbutbg: bisque;
-  --inpbutcol: #222;
+  --inputColor: #222;
+  --cvColor: #7C96A7;
+  --contactColor: #424248;
+  --stpgContColor: #D79A93;
+  --studioColor: #894344;
+  --navBtnColor: darkcyan;
+  --idiomsColor: #3E5B40;
+  /* end of Colors */
   --inpbutborwidth: 0;
   --inpbutborstyle: none;
   --inpbutborcol: transparent;
@@ -45,7 +54,7 @@
 }
 
 :focus-visible {
-  outline: 2px solid darksalmon;
+  outline: 2px solid dark var(--stpgContColor);
   outline-offset: -3px;
   border: 1px solid bisque;
 }
@@ -56,7 +65,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #222;
+  background-color: var(--bgColor);
   box-sizing: border-box;
   overflow: hidden;
   width: 100vw;
@@ -91,7 +100,7 @@ input, button, textarea {
   font-weight: var(--font-weight);
   font-style: var(--font-style);
   text-rendering: auto;
-  color: var(--inpbutcol);
+  color: var(--inputColor);
   letter-spacing: normal;
   word-spacing: normal;
   line-height: normal;
@@ -195,13 +204,13 @@ button {
   width: 20vw;
   height: 12vh;
   z-index: 10;
-  background-color: darkcyan;
+  background-color: var(--navBtnColor);
   border-radius: 16px;
   padding: 2%;
   box-sizing: border-box;
-  outline: 1px solid white;
+  outline: 1px solid var(--fontColor);
   outline-offset: -5px;
-  border: 1px solid white;
+  border: 1px solid var(--fontColor);
 }
 
 @keyframes dn-intro {
@@ -216,6 +225,7 @@ button {
 
 #pftbiS {
   max-width: 10vw;
+  margin-left: 5%;
 }
 
 #pftbiS * {
@@ -243,7 +253,7 @@ button {
   position: relative;
   width: var(--pfelemwidth);
   height: var(--pfelemheight);
-  background-color: salmon;
+  background-color: var(--stpgContColor);
   border-radius: 20px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   /*background-image: url(Materials/bg_damascus.png);
@@ -263,7 +273,7 @@ button {
 #idiomsiR > div {
   width: 5vw;
   height: 4vh;
-  background-color: palevioletred;
+  background-color: var(--idiomsColor);
   margin: 0 1em;
   padding: 0 1em;
   border-radius: 9px;
@@ -288,13 +298,13 @@ button {
 
 #contactiR > div {
   height: 4vh;
-  background-color: tan;
+  background-color: var(--contactColor);
   margin: 0 1em;
   padding: 0 1em;
   border-radius: 9px;
 }
 
-@keyframes l1-appear {from {opacity: 0;} to {opacity: 1;;}}
+@keyframes l1-appear {from {opacity: 0;} to {opacity: 1;}}
 
 #stpg-container.disappear {
   display: none;
@@ -307,20 +317,20 @@ button {
 
 #studio, #currvitae {
   cursor: pointer;
-  outline: 3px solid ghostwhite;
+  outline: 3px solid var(--fontColor);
   outline-offset: -3px;
 }
 
 #contact, #idiomsiR > div {
   cursor: pointer;
-  outline: 1px solid ghostwhite;
+  outline: 1px solid var(--fontColor);
   outline-offset: -1px;
 }
 
 #stpg-container {
-  outline: 3px solid rgb(22, 22, 22);
+  outline: 3px solid var(--stpgContColor);
   outline-offset: -3px;
-  border: 1px solid rgb(22, 22, 22);
+  border: 1px solid var(--stpgContColor);
   border-radius: 1em;
   background-size: cover;
   background-repeat: no-repeat;
@@ -330,24 +340,24 @@ button {
 /* studio page ---------------------------------------------- */
 
 @keyframes s-flip {
-0% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}
-49% {background-color: salmon;}
+0% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateY(0deg);}
+49% {background-color: var(--stpgContColor);}
 50% {transform: perspective(2000px) rotateY(-90deg); width: 95vw; height: 90vh;}
-51% {background-color: sandybrown;}
+51% {background-color: var(--studioColor);}
 99.99% {transform: perspective(1500px) rotateY(-180deg);}
-100% {background-color: sandybrown; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
+100% {background-color: var(--studioColor); transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
 
 @keyframes s-flip-rev {
-0% {background-color: sandybrown; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
+0% {background-color: var(--studioColor); transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
 10% {width: 95vw; height: 90vh;}
-49% {background-color: sandybrown;}
+49% {background-color: var(--studioColor);}
 50% {transform: perspective(2000px) rotateY(90deg); width: 95vw; height: 90vh;}
-51% {background-color: salmon;}
+51% {background-color: var(--stpgContColor);}
 99.99% {transform: perspective(1500px) rotateY(180deg);}
-100% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}}
+100% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateY(0deg);}}
 
 #studio {
-  background-color: sandybrown;
+  background-color: var(--studioColor);
 }
 
 .ftoSS {
@@ -361,24 +371,24 @@ button {
 /* curriculum page ---------------------------------------------- */
 
 @keyframes c-flip {
-  0% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}
-  49% {background-color: salmon;}
+  0% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateY(0deg);}
+  49% {background-color: var(--stpgContColor);}
   50% {transform: perspective(2000px) rotateY(90deg); width: 95vw; height: 90vh;}
-  51% {background-color: steelblue;}
+  51% {background-color: var(--cvColor);}
   99.99% {transform: perspective(1500px) rotateY(180deg);}
-  100% {background-color: steelblue; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
+  100% {background-color: var(--cvColor); transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
 
 @keyframes c-flip-rev {
-  0% {background-color: steelblue; transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
+  0% {background-color: var(--cvColor); transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
   10% {width: 95vw; height: 90vh;}
-  49% {background-color: steelblue;}
+  49% {background-color: var(--cvColor);}
   50% {transform: perspective(2000px) rotateY(-90deg); width: 95vw; height: 90vh;}
-  51% {background-color: salmon;}
+  51% {background-color: var(--stpgContColor);}
   99.99% {transform: perspective(1500px) rotateY(-180deg);}
-  100% {background-color: salmon; transform: perspective(1500px) rotateY(0deg);}}
+  100% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateY(0deg);}}
 
 #currvitae {
-  background-color: steelblue;
+  background-color: var(--cvColor);
 }
 
 .ftoCS {
@@ -392,24 +402,24 @@ button {
 /* contact page---------------------------------------------- */
 
 @keyframes co-flip {
-  0% {background-color: salmon; transform: perspective(1500px) rotateX(0deg);}
-  49% {background-color: salmon;}
+  0% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateX(0deg);}
+  49% {background-color: var(--stpgContColor);}
   50% {transform: perspective(2000px) rotateX(90deg); width: 95vw; height: 90vh;}
-  51% {background-color: tan;}
+  51% {background-color: var(--contactColor);}
   99.99% {transform: perspective(1500px) rotateX(180deg);}
-  100% {background-color: tan; transform: perspective(1500px) rotateX(0deg); width: 100vw; height: 100vh;}}
+  100% {background-color: var(--contactColor); transform: perspective(1500px) rotateX(0deg); width: 100vw; height: 100vh;}}
 
 @keyframes co-flip-rev {
-  0% {background-color: tan; transform: perspective(1500px) rotateX(0deg); width: 100vw; height: 100vh;}
+  0% {background-color: var(--contactColor); transform: perspective(1500px) rotateX(0deg); width: 100vw; height: 100vh;}
   10% {width: 95vw; height: 90vh;}
-  49% {background-color: tan;}
+  49% {background-color: var(--contactColor);}
   50% {transform: perspective(2000px) rotateX(-90deg); width: 95vw; height: 90vh;}
-  51% {background-color: salmon;}
+  51% {background-color: var(--stpgContColor);}
   99.99% {transform: perspective(1500px) rotateX(-180deg);}
-  100% {background-color: salmon; transform: perspective(1500px) rotateX(0deg);}}
+  100% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateX(0deg);}}
 
 #contact {
-  background-color: tan;
+  background-color: var(--cvColor);
 }
 
 .ftoCo {
@@ -431,7 +441,7 @@ height: 100vh;
 #studio-container {
 display: none;
 overflow: hidden;
-background-color: #333;
+background-color: var(--studioColor);
 }
 
 @keyframes s-appear {from {opacity: 0;} to {opacity: 1;}}
@@ -450,7 +460,7 @@ background-color: #333;
 display: flex;
 align-items: center;
 justify-content: center;
-background-color: darkcyan;
+background-color: var(--navBtnColor);
 }
 
 /* candy boxes ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -464,7 +474,7 @@ overflow: hidden;
 padding: 3%;
 box-sizing: border-box;
 transition: all 0.2s ease-in-out;
-border: 1px solid #fff;
+border: 1px solid var(--fontcolor);
 border-radius: 15px;
 margin: 1%;
 }
@@ -519,9 +529,9 @@ justify-content: center;
 width: auto;
 height: 8%;
 padding: 1% 5%;
-background-color: #222;
+background-color: var(--bgColor);
 transition: all 0.2s ease-in-out;
-outline: 3px solid #222;
+outline: 3px solid var(--bgColor);
 outline-offset: 2px;
 border-radius: 8px;
 }
@@ -569,24 +579,6 @@ justify-content: center;
 width: fit-content;
 height: auto;
 padding: 2em 3em;
-}
-
-/* categories colors ------------------------------------------------------------------------- */
-
-.webdesign {
-background-color: midnightblue;
-}
-
-.printdesign {
-background-color: teal;
-}
-
-.artcrafts {
-background-color: tomato;
-}
-
-.digitaldesign {
-background-color: goldenrod;
 }
 
 /****************************************************** cv-styles ******************************************************/
@@ -655,7 +647,7 @@ background-color: goldenrod;
   font-size: var(--fontheight);
   position: absolute;
   z-index: 1;
-  color: #222;
+  color: var(--bgColor);
   background-color: rgba(230, 230, 230, 0.7);
 }
 
@@ -858,7 +850,6 @@ background-color: goldenrod;
   border-radius: 0 0 15px 15px;
   height: 33vh;
   max-height: fit-content;
-  resize: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -871,11 +862,11 @@ background-color: goldenrod;
 }
 
 #c-submit {
-  background-color: darksalmon;
+  background-color: var(--fontcolor);
   width: fit-content;
   border-radius: 15px;
   padding: 1.5vh 2vw;
-  color: var(--fontcolor);
+  color: var(--inputColor);
 }
 
 #c-submit:active {

@@ -38,9 +38,10 @@
     </div>
   </section>
 <script aria-label="ForwardIfMobile">
-  /* if (window.innerHeight > window.innerWidth) {
-    window.location.href = "https://paul-zimmermann.framer.ai";
-  } */
+  if (window.innerHeight > window.innerWidth) {
+    document.getElementById('btnsiR').style.flexDirection = 'column';
+    document.documentElement.style.setProperty('--pfelemheight', '98vh');
+  }
 </script>
 <script aria-label="data independent script">
 
@@ -115,6 +116,8 @@
     "#2b6838", "#a7a5e7", "#c07739", "#7f559c", "#2da48d", "#8a3d0f", "#7faa5a", "#d1819a", "#20759f", "#7f8833", "#8287a2", "#8c5c68", "#4e566b", "#e49a6b", "#949b84", "#617969", "#5a9fdb", "#883352", "#bfa6ad", "#58c095", "#6d5c3c", "#9b6701", "#a46ca3", "#7574c3", "#315999", "#b89837", "#bd6973", "#2190a5", "#358249", "#264653", "#2A9D8F", "#F4A261", "#E76F51", "#233D4D", "#FE7F2D", "#619B8A", "#A4243B", "#D8973C", "#BD632F", "#273E47", "#585123", "#F58549", "#772F1A", "#8ea604", "#523a34", "#b87d4b", "#9b9b7a", "#797d62", "#d08c60", "#523a34", "#ee4266", "#6a994e", "#004e98", "#f07167", "#df2935", "#ff8c61", "#ce6a85", "#985277", "#5c374c", "#f28482", "#c11405", "#79779a", "#008080", "#778844"
   ]
 
+  let curClrPool = new Set();
+
   const colorRandomizer = () => {
     const color = COLORPOOL[Math.random()*COLORPOOL.length | 0];
     if (!curClrPool.has(color)) {
@@ -123,8 +126,6 @@
     };
     return colorRandomizer();
   };
-
-  let curClrPool = new Set();
 
   // .candy expand and collapse ============================================================================================
 
@@ -260,6 +261,25 @@
   */
 </script>
 <script aria-label="data dependent script">
+
+// change landing page colors randomly ===============================================================================
+
+const LPC = [ // Landing Page Colors
+  ['#FA8072', '#0F5257', '#482C3D', '#6D1A36', '#4682B4'],
+  ['#96897B', '#628395', '#11151C', '#CF995F', '#212D40'],
+  ['#896978', '#839791', '#191D32', '#45462A', '#DC851F'],
+  ['#4D7EA8', '#272932', '#828489', '#9E90A2', '#F15025'],
+]
+
+const randomColorSet = () => LPC[Math.floor(Math.random() * LPC.length)];
+
+const currentColorSet = randomColorSet();
+
+document.documentElement.style.setProperty("--stpgContColor", currentColorSet[0]);
+document.documentElement.style.setProperty("--idiomsColor", currentColorSet[1]);
+document.documentElement.style.setProperty("--cvColor", currentColorSet[2]);
+document.documentElement.style.setProperty("--studioColor", currentColorSet[3]);
+document.documentElement.style.setProperty("--contactColor", currentColorSet[4]);
 
 // fetch data ================================================================================
 

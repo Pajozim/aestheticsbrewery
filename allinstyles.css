@@ -19,7 +19,7 @@
   --inpbutpad: 1vh;
   /* COlors */
   --bgColor: #212A31;
-  --fontcolor: #F7EEE3;
+  --fontColor: #F7EEE3;
   --inpbutbg: bisque;
   --inputColor: #222;
   --cvColor: #7C96A7;
@@ -74,7 +74,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--fontcolor);
+  color: var(--fontColor);
 }
 
 img {
@@ -271,12 +271,7 @@ button {
 }
 
 #idiomsiR > div {
-  width: 5vw;
-  height: 4vh;
   background-color: var(--idiomsColor);
-  margin: 0 1em;
-  padding: 0 1em;
-  border-radius: 9px;
 }
 
 #btnsiR {
@@ -285,8 +280,10 @@ button {
 }
 
 #btnsiR > div {
-  width: 30vw;
-  height: 23vh;
+  width: 90%;
+  margin: 0 5%;
+  height: auto;
+  min-height: 23vh;  
   border-radius: 15px;
 }
 
@@ -298,7 +295,6 @@ button {
 
 #contactiR > div {
   height: 4vh;
-  background-color: var(--contactColor);
   margin: 0 1em;
   padding: 0 1em;
   border-radius: 9px;
@@ -325,16 +321,33 @@ button {
   cursor: pointer;
   outline: 1px solid var(--fontColor);
   outline-offset: -1px;
+  padding: 0.1em 1em 0;
+  width: 100%;
+  height: 4vh;
+  margin: 0 1em;
+  border-radius: 9px;
 }
 
 #stpg-container {
+  /*
   outline: 3px solid var(--stpgContColor);
   outline-offset: -3px;
   border: 1px solid var(--stpgContColor);
+  */
   border-radius: 1em;
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: background-image 1s ease-in-out;
+  isolation: isolate;
+  box-sizing: content-box;
+  padding: 1em;
+  /*transition: background-image 1s ease-in-out;*/
+}
+
+#stpg-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url(Materials/BG.jpg) center / cover;
+  opacity: 0.02;
+  z-index: -1;
 }
 
 /* studio page ---------------------------------------------- */
@@ -419,7 +432,7 @@ button {
   100% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateX(0deg);}}
 
 #contact {
-  background-color: var(--cvColor);
+  background-color: var(--contactColor);
 }
 
 .ftoCo {
@@ -474,7 +487,7 @@ overflow: hidden;
 padding: 3%;
 box-sizing: border-box;
 transition: all 0.2s ease-in-out;
-border: 1px solid var(--fontcolor);
+border: 1px solid var(--fontColor);
 border-radius: 15px;
 margin: 1%;
 }
@@ -546,7 +559,7 @@ display: none;
 }
 
 .linktopage a {
-color: var(--fontcolor);
+color: var(--fontColor);
 font-size: var(--fontsize);
 text-decoration: none;
 }
@@ -862,7 +875,7 @@ padding: 2em 3em;
 }
 
 #c-submit {
-  background-color: var(--fontcolor);
+  background-color: var(--fontColor);
   width: fit-content;
   border-radius: 15px;
   padding: 1.5vh 2vw;

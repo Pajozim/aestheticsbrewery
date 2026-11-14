@@ -1,0 +1,887 @@
+/****************************************************** core-styles ******************************************************/
+/* root styles -------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  /*--calcmarginY: 0%;
+  --calcmarginX: 0%; */
+  --fontsize: 1rem;
+  --changfontsize: 1rem;
+  --fontheight: 1rem;
+  --font-family: "Comfortaa", "Noto", sans-serif;
+  --font-optical-sizing: auto;
+  --font-weight: 300;
+  --font-style: normal;
+  --pfelemwidth: 95vw;
+  --pfelemheight: 90vh;
+  --inpbutmargin: 1vh;
+  --inpbutpad: 1vh;
+  /* COlors */
+  --bgColor: #212A31;
+  --fontColor: #F7EEE3;
+  --inpbutbg: bisque;
+  --inputColor: #222;
+  --cvColor: #7C96A7;
+  --contactColor: #424248;
+  --stpgContColor: #D79A93;
+  --studioColor: #894344;
+  --navBtnColor: darkcyan;
+  --idiomsColor: #3E5B40;
+  /* end of Colors */
+  --inpbutborwidth: 0;
+  --inpbutborstyle: none;
+  --inpbutborcol: transparent;
+  --inpbutborimg: none;
+  font-family: var(--font-family);
+  font-style: var(--font-style);
+  font-size: var(--fontsize);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-weight: var(--font-weight);
+  --BI1: url(Materials/BackToSP.svg);
+  --BI2: url(Materials/BackToSP_fCont.svg);
+  --BI3: url(Materials/link.svg);
+}
+
+@font-face {
+  font-family: var(--font-family);
+  font-style: var(--font-style);
+  font-size: var(--fontsize);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-weight: var(--font-weight);
+  src: url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap')
+    format("woff2");
+}
+
+:focus-visible {
+  outline: 2px solid dark var(--stpgContColor);
+  outline-offset: -3px;
+  border: 1px solid bisque;
+}
+
+
+/* core styles -------------------------------------------- */
+
+body, .landscape {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bgColor);
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--fontColor);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* input & button styles -------------------------------------------- */
+
+input, button, textarea {
+  font-size: var(--fontsize);
+  font-family: var(--font-family);
+  font-optical-sizing: var(--font-optical-sizing);
+  font-weight: var(--font-weight);
+  font-style: var(--font-style);
+  text-rendering: auto;
+  color: var(--inputColor);
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+  background-color: var(--inpbutbg);
+  margin: var(--inpbutmargin);
+  padding: var(--inpbutpad);
+  border-width: var(--inpbutborwidth);
+  border-style: var(--inpbutborstyle);
+  border-color: var(--inpbutborcol);
+  border-image: var(--inpbutborimg);
+  padding-block: var(--inpbutpad);
+  padding-inline: var(--inpbutpad);
+}
+
+input {
+  appearance: auto;
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+}
+
+button {
+  align-items: flex-start;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* repetitive styles ---------------------------------------- */
+
+.page-flipper, #pftbiS, #dynamic-nav, [id*="iR"], [id*="iR"] > div, #studio, .candy, #currvitae, #contact, #contact-page, #contact-form, .button-container, #cv-container, [id*="row"], #curriculum, #curriculum.enlarged > div, #firstrow > div, #firstrow.compressed:hover::before, #curriculum.small:hover::before, #indicator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* return area for click and touch press --------------------- */
+
+.triangleBtn {
+  position: fixed;
+  z-index: 5;
+  width: 5vw;
+  height: 5vh;
+  opacity: 0;
+  border-radius: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: opacity 0.2s ease-in-out;
+  background-image: var(--BI1);
+}
+
+.triangleBtn.SP {
+  visibility: hidden;
+}
+
+@keyframes tb-intro {
+  0% {opacity: 0;}
+  33%, 66% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.triangleBtn.Studio:not(:hover), .triangleBtn.CV:not(:hover), .triangleBtn.Contact:not(:hover) {
+  animation: tb-intro 4s linear 2s forwards;
+}
+
+.triangleBtn:hover {
+  cursor: crosshair;
+  opacity: 1;
+}
+
+.triangleBtn.Studio, .triangleBtn.Contact {
+  top: 0;
+  left: 0;
+}
+
+.triangleBtn.CV {
+  top: 0;
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.triangleBtn.Contact {
+  background-image: var(--BI2)
+}
+
+/* dynamic navigation bar ------------------------------------ */
+
+#dynamic-nav {
+  cursor: pointer;
+  visibility: hidden;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20vw;
+  height: 12vh;
+  z-index: 10;
+  background-color: var(--navBtnColor);
+  border-radius: 16px;
+  padding: 2%;
+  box-sizing: border-box;
+  outline: 1px solid var(--fontColor);
+  outline-offset: -5px;
+  border: 1px solid var(--fontColor);
+}
+
+@keyframes dn-intro {
+  0% {opacity: 0; visibility: hidden;}
+  33%, 66% {opacity: 1; visibility: visible;}
+  100% {opacity: 0; visibility: hidden;}
+}
+
+#dynamic-nav.dn-intro {
+  animation: dn-intro 4s linear 2s forwards;
+}
+
+#pftbiS {
+  max-width: 10vw;
+  margin-left: 5%;
+}
+
+#pftbiS * {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#imgCtner {
+  margin-left: 2%;
+  max-width: 10vw;
+  object-fit: contain;
+}
+
+#nkeytosp {
+  border-radius: 0;
+  max-width: 8vw;
+  max-height: 8vh;
+}
+
+/****************************************************** startpage-styles ******************************************************/
+/* landing page---------------------------------------------- */
+
+.page-flipper {
+  justify-content: space-evenly;
+  position: relative;
+  width: var(--pfelemwidth);
+  height: var(--pfelemheight);
+  background-color: var(--stpgContColor);
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  /*background-image: url(Materials/bg_damascus.png);
+  background-size: cover; */
+}
+
+[id*="iR"] {
+  flex-direction: row;
+  width: var(--pfelemwidth);
+}
+
+#idiomsiR {
+  height: 10vh;
+  justify-content: center;
+}
+
+#idiomsiR > div {
+  background-color: var(--idiomsColor);
+}
+
+#btnsiR {
+  height: 70vh;
+  justify-content: space-around;
+}
+
+#btnsiR > div {
+  width: 90%;
+  margin: 0 5%;
+  height: auto;
+  min-height: 23vh;  
+  border-radius: 15px;
+}
+
+#contactiR {
+  flex-direction: row;
+  height: 10vh;
+  justify-content: center;
+}
+
+#contactiR > div {
+  height: 4vh;
+  margin: 0 1em;
+  padding: 0 1em;
+  border-radius: 9px;
+}
+
+@keyframes l1-appear {from {opacity: 0;} to {opacity: 1;}}
+
+#stpg-container.disappear {
+  display: none;
+  animation: l1-appear 1s ease-out reverse;
+}
+
+#stpg-container.appear {
+  animation: l1-appear 1s linear forwards;
+}
+
+#studio, #currvitae {
+  cursor: pointer;
+  outline: 3px solid var(--fontColor);
+  outline-offset: -3px;
+}
+
+#contact, #idiomsiR > div {
+  cursor: pointer;
+  outline: 1px solid var(--fontColor);
+  outline-offset: -1px;
+  padding: 0.1em 1em 0;
+  width: 100%;
+  height: 4vh;
+  margin: 0 1em;
+  border-radius: 9px;
+}
+
+#stpg-container {
+  /*
+  outline: 3px solid var(--stpgContColor);
+  outline-offset: -3px;
+  border: 1px solid var(--stpgContColor);
+  */
+  border-radius: 1em;
+  isolation: isolate;
+  box-sizing: content-box;
+  padding: 1em;
+  /*transition: background-image 1s ease-in-out;*/
+}
+
+#stpg-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url(Materials/BG.jpg) center / cover;
+  opacity: 0.02;
+  z-index: -1;
+}
+
+/* studio page ---------------------------------------------- */
+
+@keyframes s-flip {
+0% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateY(0deg);}
+49% {background-color: var(--stpgContColor);}
+50% {transform: perspective(2000px) rotateY(-90deg); width: 95vw; height: 90vh;}
+51% {background-color: var(--studioColor);}
+99.99% {transform: perspective(1500px) rotateY(-180deg);}
+100% {background-color: var(--studioColor); transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
+
+@keyframes s-flip-rev {
+0% {background-color: var(--studioColor); transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
+10% {width: 95vw; height: 90vh;}
+49% {background-color: var(--studioColor);}
+50% {transform: perspective(2000px) rotateY(90deg); width: 95vw; height: 90vh;}
+51% {background-color: var(--stpgContColor);}
+99.99% {transform: perspective(1500px) rotateY(180deg);}
+100% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateY(0deg);}}
+
+#studio {
+  background-color: var(--studioColor);
+}
+
+.ftoSS {
+  animation: s-flip 1s ease-out forwards;
+}
+
+.ftoISfSS {
+  animation: s-flip-rev 1s ease-out forwards;
+}
+
+/* curriculum page ---------------------------------------------- */
+
+@keyframes c-flip {
+  0% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateY(0deg);}
+  49% {background-color: var(--stpgContColor);}
+  50% {transform: perspective(2000px) rotateY(90deg); width: 95vw; height: 90vh;}
+  51% {background-color: var(--cvColor);}
+  99.99% {transform: perspective(1500px) rotateY(180deg);}
+  100% {background-color: var(--cvColor); transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}}
+
+@keyframes c-flip-rev {
+  0% {background-color: var(--cvColor); transform: perspective(1500px) rotateY(0deg); width: 100vw; height: 100vh;}
+  10% {width: 95vw; height: 90vh;}
+  49% {background-color: var(--cvColor);}
+  50% {transform: perspective(2000px) rotateY(-90deg); width: 95vw; height: 90vh;}
+  51% {background-color: var(--stpgContColor);}
+  99.99% {transform: perspective(1500px) rotateY(-180deg);}
+  100% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateY(0deg);}}
+
+#currvitae {
+  background-color: var(--cvColor);
+}
+
+.ftoCS {
+  animation: c-flip 1s ease-out forwards;
+}
+
+.ftoISfCS {
+  animation: c-flip-rev 1s ease-out forwards;
+}
+
+/* contact page---------------------------------------------- */
+
+@keyframes co-flip {
+  0% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateX(0deg);}
+  49% {background-color: var(--stpgContColor);}
+  50% {transform: perspective(2000px) rotateX(90deg); width: 95vw; height: 90vh;}
+  51% {background-color: var(--contactColor);}
+  99.99% {transform: perspective(1500px) rotateX(180deg);}
+  100% {background-color: var(--contactColor); transform: perspective(1500px) rotateX(0deg); width: 100vw; height: 100vh;}}
+
+@keyframes co-flip-rev {
+  0% {background-color: var(--contactColor); transform: perspective(1500px) rotateX(0deg); width: 100vw; height: 100vh;}
+  10% {width: 95vw; height: 90vh;}
+  49% {background-color: var(--contactColor);}
+  50% {transform: perspective(2000px) rotateX(-90deg); width: 95vw; height: 90vh;}
+  51% {background-color: var(--stpgContColor);}
+  99.99% {transform: perspective(1500px) rotateX(-180deg);}
+  100% {background-color: var(--stpgContColor); transform: perspective(1500px) rotateX(0deg);}}
+
+#contact {
+  background-color: var(--contactColor);
+}
+
+.ftoCo {
+  animation: co-flip 1s ease-out forwards;
+}
+
+.ftoISfCo {
+  animation: co-flip-rev 1s ease-out forwards;
+}   
+
+/****************************************************** studio-styles ******************************************************/
+/* studio composer ------------------------------------------------------------------------- */
+
+[id*="container"] {
+width: 100%;
+height: 100vh;
+}
+
+#studio-container {
+display: none;
+overflow: hidden;
+background-color: var(--studioColor);
+}
+
+@keyframes s-appear {from {opacity: 0;} to {opacity: 1;}}
+
+#studio-container.appear {
+  display: grid;
+  animation: s-appear 1s ease-in forwards;
+}
+
+#studio-container.disappear {
+  display: none;
+  animation: s-appear 2s ease-in 1s reverse;
+}
+
+#studio-container.flexed {
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: var(--navBtnColor);
+}
+
+/* candy boxes ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+.candy {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-evenly;
+overflow: hidden;
+padding: 3%;
+box-sizing: border-box;
+transition: all 0.2s ease-in-out;
+border: 1px solid var(--fontColor);
+border-radius: 15px;
+margin: 1%;
+}
+
+.candy:hover {
+scale: 1.05;
+cursor: pointer;
+}
+
+.candy.hidden {
+display: none;
+}
+
+.candy.expanded {
+margin: 2.5%;
+width: 95vw;
+height: 95vh;
+scale: none;
+}
+
+.candy.expanded.showweb {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: auto;
+overflow-y: visible;
+margin: 0;
+padding: 0;
+}
+
+.candy.expanded.showweb img {
+max-width: fit-content;
+height: auto;
+}
+
+.candy * {
+object-fit: contain;
+width: 100%;
+}
+
+.candy img, .candy video {
+height: 90%;
+margin-bottom: 2%;
+}
+
+
+.linktopage {
+display: flex;
+align-items: center;
+justify-content: center;
+width: auto;
+height: 8%;
+padding: 1% 5%;
+background-color: var(--bgColor);
+transition: all 0.2s ease-in-out;
+outline: 3px solid var(--bgColor);
+outline-offset: 2px;
+border-radius: 8px;
+}
+
+.linktopage:hover {
+background-color: #444;
+outline: 3px solid #444;
+}
+
+.linktopage.hidden {
+display: none;
+}
+
+.linktopage a {
+color: var(--fontColor);
+font-size: var(--fontsize);
+text-decoration: none;
+}
+
+
+
+/* filler box */
+
+#Filler {
+background-color: #080808;
+}
+
+#Filler:hover {
+cursor: default;
+scale: 1;
+border-radius: 0;
+}
+
+#workingon {
+object-fit: contain;
+}
+
+#input-box {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+align-items: center;
+justify-content: center;
+width: fit-content;
+height: auto;
+padding: 2em 3em;
+}
+
+/****************************************************** cv-styles ******************************************************/
+/* cv container */
+
+#cv-container {
+  display: none;
+}
+
+#cv-container > * {
+  overflow: hidden;
+}
+
+#cv-container.appear {
+  display: flex;
+  animation: l1-appear 1s linear forwards;
+}
+
+#cv-container.disappear {
+  display: none;
+  animation: l1-appear 2s linear 1s reverse;
+}
+
+/* common styling */
+
+#firstrow, #curriculum {
+  width: 100vw;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+
+#firstrow {
+  align-items: flex-start;
+}
+
+#firstrow > div:not(#cv-photo), #curriculum > div {
+  padding: 1%;
+  box-sizing: border-box;
+  font-size: var(--changfontsize);
+}
+
+/*** first row ***/
+
+#cv-photo > img {
+  border-radius: 15px 0 0 0;
+}
+
+#firstrow {
+  height: 80vh;
+}
+
+#firstrow.compressed {
+  height: 20vh;
+}
+
+#firstrow.compressed:hover::before, #curriculum.small:hover::before {
+  cursor: pointer;
+  content: "expand";
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  width: 100vw;
+  height: 18vh;
+  padding: 1vh;
+  font-size: var(--fontheight);
+  position: absolute;
+  z-index: 1;
+  color: var(--bgColor);
+  background-color: rgba(230, 230, 230, 0.7);
+}
+
+#firstrow.compressed:hover::before {
+  top: 0;
+}
+
+#firstrow > div {
+  min-width: 16.66vw;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.8s ease-in-out;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#firstrow > div:hover:not(.ixpanded) {
+  cursor: pointer;
+  scale: 1.2;
+  transform-origin: top;
+}
+
+/** #firstrow > div:not(#photo) in common styling **/
+
+#firstrow > div.ixpanded {
+  height: fit-content;
+  padding: 5% !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  border-radius: 1em;
+  align-items: flex-start;
+  transform: translate(-50%, -50%);
+  font-size: var(--changfontsize) * 1.2 !important;
+}
+
+#firstrow > div.ixpanded:hover {
+  cursor: ne-resize;
+  transform-origin: left top;
+  scale: 1.2;
+}
+
+#firstrow  p {
+  margin-left: 5%;
+}
+
+.cv-link img {
+  cursor: pointer;
+  width: 1vw;
+  height: auto;
+  border-radius: 0;
+}  
+
+#cv-photo        { transform-origin: top right;}
+/*
+#cv-basics       { background-color: rgb(173, 110, 28); }
+#cv-education    { background-color: rgb(102, 131, 2); }
+#cv-certificates { background-color: rgb(81, 44, 38); }
+#cv-projects     { background-color: #79779a; }
+#cv-skills       { background-color: #c11405; transform-origin: top left;}
+*/
+
+/*** curriculum/second row ***/
+
+#curriculum {/* other definitions at firstrow segment */
+  align-items: center;
+}
+
+#curriculum.small {
+  height: 20vh;
+}
+
+/*** #curriculum.small:hover::before in first row styling block ***/
+
+#curriculum.small:hover::before {
+  top: 80vh;
+}
+
+/** some definitions for #curriculum > div in common styling **/
+
+#curriculum.small > div {
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.8s ease-in-out;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#curriculum.small > div:nth-child(1) {min-width: 45vw;}
+
+#curriculum.small > div:nth-child(2) {min-width: 28vw;}
+
+#curriculum.small > div:nth-child(3) {min-width: 17vw;}
+
+#curriculum.small > div:nth-child(4) {min-width: 10vw;}
+
+#curriculum.small > div h3 {margin-left: 1%; justify-content: center;}
+
+#curriculum.small > div p:not(:nth-child(2)) {display: none;}
+
+[id^="cv-block"] p:nth-child(2)::before, #curriculum.enlarged > div p:nth-child(2)::before {
+  content: "";
+  background-image: url("Materials/location.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: var(--changfontsize);
+  height: var(--changfontsize);
+  display: inline-block; /* Ensure the element displays */
+  margin-right: 1%;
+}
+
+[id^="cv-block"] p:nth-child(2), #curriculum.enlarged > div p:nth-child(2) {
+  white-space: nowrap;
+}
+
+#curriculum.enlarged {
+  height: 80vh;
+}
+
+#curriculum.enlarged > div {
+  height: 98%;
+  margin: 1% 0;
+  padding: 3%;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  border-radius: .5em;
+  font-size: var(--changfontsize) * 1.2;
+}
+
+#curriculum.enlarged > div p:nth-child(2)::before {width: calc(var(--changfontsize) * 1.2); height: calc(var(--changfontsize) * 1.2);}
+
+#curriculum.enlarged > div.hidden {display: none;}
+
+#curriculum.enlarged > div[class^="futur"], #curriculum.enlarged > div[class^="passee"] {align-items: center;}
+#curriculum.enlarged > div[class^="futur"] {border-radius: .5em 0 0 .5em;}
+#curriculum.enlarged > div[class^="passee"] {border-radius: 0 .5em .5em 0;}
+
+#curriculum.enlarged > div[class^="passee"] h3, #curriculum.enlarged > div[class^="futur"] h3 {white-space: nowrap;}
+#curriculum.enlarged > div[class^="passee"] h3 {transform: rotate(90deg);}
+#curriculum.enlarged > div[class^="futur"] h3 {transform: rotate(-90deg);}
+
+#curriculum.enlarged > div[class^="futur"] *:not(h3), #curriculum.enlarged > div[class^="passee"] *:not(h3) {display: none;}
+
+#curriculum.enlarged > div.futur3 {min-width: 11vw; height: 70%;}
+#curriculum.enlarged > div.futur2 {min-width: 17vw; height: 80%;}
+#curriculum.enlarged > div.futur1 {min-width: 27vw; height: 90%;}
+#curriculum.enlarged > div.futur0 {min-width: 11vw; height: 90%;}
+
+#curriculum.enlarged > div.envisage {min-width: 45vw;}
+
+#curriculum.enlarged > div.passee0 {min-width: 11vw; height: 90%;}
+#curriculum.enlarged > div.passee1 {min-width: 27vw; height: 90%;}
+#curriculum.enlarged > div.passee2 {min-width: 17vw; height: 80%;}
+#curriculum.enlarged > div.passee3 {min-width: 11vw; height: 70%;}
+
+/** div block number indicator **/
+
+#indicator {
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10vw;
+  height: 6vh;
+  border-radius: var(--changfontsize) var(--changfontsize) 0 0;
+  background-color: rgba(55, 55, 55, 0.8);
+  visibility: hidden;
+}
+
+#indicator.show {
+  visibility: visible;
+}
+
+/****************************************************** contact-styles ******************************************************/
+#contact-page {
+  display: none;
+}
+
+#contact-page.on {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#contact-form > * {
+  width: 40vw;
+  max-width: 40vw;
+}
+
+#c-name {
+  margin-top: 0%;
+  border-radius: 15px 15px 0 0;
+}
+
+#c-message {
+  margin-bottom: 0%;
+  border-radius: 0 0 15px 15px;
+  height: 33vh;
+  max-height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container {
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 2vh;
+}
+
+#c-submit {
+  background-color: var(--fontColor);
+  width: fit-content;
+  border-radius: 15px;
+  padding: 1.5vh 2vw;
+  color: var(--inputColor);
+}
+
+#c-submit:active {
+  background-color: coral;
+}

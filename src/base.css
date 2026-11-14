@@ -1,0 +1,23 @@
+:root {
+  --globalBGColor: #423338;
+  --fontColor: #ffe4c4;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+html, body {
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--globalBGColor);
+  color: var(--fontColor);
+  font-family: system-ui, sans-serif;
+  touch-action: none;
+  overscroll-behavior: none;
+  user-select: none;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+  overflow: clip;
+}

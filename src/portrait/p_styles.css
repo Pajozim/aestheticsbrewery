@@ -1,0 +1,46 @@
+.portrait {
+  --engColor: #70A3C2;
+  --deuColor: #A0AB73;
+  --espColor: #e5989b;
+  --cvColor: #b5838d;
+  --studioColor: #6d6875;
+  --contactColor: #735B86;
+
+  .idle-video {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 2s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .idle-video.on { opacity: 1; }
+
+  background: color-mix(in oklab,
+    var(--globalBGColor) 35%,
+    color-mix(in oklab, var(--from) calc((1 - var(--t)) * 100%), var(--to))
+  );
+
+  .item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.9em 1.8em 0.1em 0.3em;
+    border: 1.5px solid currentColor;
+    border-radius: 2px;
+    color: inherit;
+    font-size: 18px;
+    cursor: default;
+  }
+  .item.front {cursor: pointer;}
+
+  #english    { background: var(--engColor); }
+  #deutsch    { background: var(--deuColor); }
+  #español    { background: var(--espColor); }
+  #curriculum { background: var(--cvColor); }
+  #studio     { background: var(--studioColor); }
+  #contact    { background: var(--contactColor); }
+}

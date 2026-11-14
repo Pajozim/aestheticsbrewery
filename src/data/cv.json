@@ -1,0 +1,959 @@
+[
+  {
+    "langCode": "eng",
+    "resume": {
+      "$schema": "https://jsonresume.org/schemas/1.0.0/schema.json",
+      "meta": {
+        "langCode": "eng",
+        "theme": "jsonresume-theme-even",
+        "lastModified": "2026-10-27T00:00:00.000Z"
+      },
+      "basics": {
+        "name": "Paul Zimmermann",
+        "label": "Full Stack Developer & Graphic Designer",
+        "email": "pajozim@gmail.com",
+        "phone": "+52 999 747 9054",
+        "image": "https://avatars.githubusercontent.com/u/137354997?v=4",
+        "summary": "I am a frontend and backend developer with a rare blend of technical, design, and psychological expertise. My journey into programming began twofold: to build upon my digital design skills, and to answer the question of whether I could streamline my wife's Excel data management. Beyond the screen, I'm curious about geopolitics and economics—always asking how current technologies and tools can improve the living world. I am passionate about creating solutions that enhance work-life balances. Whether it's a lightweight CMS, an OCR module for reading banking transaction data, or a keycode retrieval system from Excel files, there are countless tasks waiting to be improved.",
+        "url": "https://pajozim.github.io/aestheticsbrewery/",
+        "location": {
+          "city": "Ciudad de Mexico",
+          "countryCode": "MX"
+        },
+        "profiles": [
+          {
+            "network": "GitHub",
+            "username": "Pajozim",
+            "url": "https://github.com/Pajozim"
+          },
+          {
+            "network": "LinkedIn",
+            "username": "paul-zimmermann",
+            "url": "https://linkedin.com/in/paul-zimmermann-pajozim"
+          },
+          {
+            "network": "boot.dev",
+            "username": "pajozim",
+            "url": "https://www.boot.dev/u/pajozim"
+            
+          }
+        ]
+      },
+      "work": [
+        {
+          "name": "Freelance / Self-Employed",
+          "position": "Full Stack Developer",
+          "startDate": "2026-08-01",
+          "endDate": "2026-10-31",
+          "location": "Mexico City, Mexico",
+          "highlights": [
+            "Project title: Spreadsheet Row Matching (Engine)",
+            "Architected a local SQL and NLP (multilingual-e5-small) search engine for automated Excel row-matching, featuring automatic CUDA/CPU hardware switching.",
+            "Built an interactive local GUI using Streamlit.",
+            "Optimized Pandas and Openpyxl pipeline loops to eliminate runtime overhead and memory bottlenecks during batch processing.",
+            "Delivered a fully offline, GPLv3 open-source solution that reduces spreadsheet cross-referencing and eliminates external cloud API expenses."
+          ]
+        },
+        {
+          "name": "Freelance / Self-Employed",
+          "position": "Full Stack Developer",
+          "startDate": "2026-07-01",
+          "endDate": "2026-08-01",
+          "location": "Mexico City, Mexico",
+          "highlights": [
+            "Restructuring CMSwTPaL from a server-side to an offline/file-based Content Management System."
+          ]
+        },
+        {
+          "name": "Freelance / Self-Employed",
+          "position": "Digital Design and Frontend Programming",
+          "startDate": "2024-05-01",
+          "endDate": "2025-03-01",
+          "location": "Mexico City, Mexico",
+          "highlights": [
+            "1x private small scale CMS with text, pictures and lines (HTML, CSS, JS via VSCode)",
+            "1x new creation of my webpage from ground up (VS Code)",
+            "12x candle sticker label design (Inkscape)",
+            "2x Ginseng social media reels (CapCut)",
+            "1x client-side work progress presentation (Davinci)",
+            "2x creations of webpages INGCEEA & BD Zimmermann (SquareSpace)",
+            "1x creation of my website (Framer)",
+            "3x redesigning my german, english & spanish CV's (Canva)",
+            "1x game creation STRANDED (Twine = HTML / CSS / JavaScript)",
+            "2x logo design INGCEEA & BD Zimmermann (Inkscape)"
+          ]
+        },
+        {
+          "name": "Baumdienst Zimmermann",
+          "position": "Tree Climber",
+          "startDate": "2013-08-01",
+          "endDate": "2024-04-01",
+          "location": "North-East Germany",
+          "highlights": [
+            "Cutting, pruning, rappelling, rigging",
+            "Organization of work partners",
+            "Teaching ground personnel",
+            "Paperwork (bills, tax relevant papers)"
+          ]
+        },
+        {
+          "name": "sports-box.de",
+          "position": "Bookkeeping Clerk & Customer Service",
+          "startDate": "2012-07-01",
+          "endDate": "2013-07-01",
+          "location": "Berlin, Germany",
+          "highlights": [
+            "Digital lay in of products and its data onto Excel tables",
+            "Management of returns",
+            "Customer service (eMail & chat)"
+          ]
+        },
+        {
+          "name": "m.i.s. GmbH",
+          "position": "Warehouse Operative",
+          "startDate": "2011-10-01",
+          "endDate": "2012-07-01",
+          "location": "Berlin, Germany"
+        },
+        {
+          "name": "Carolabad Clinic",
+          "position": "Internship of Clinical Psychotherapy",
+          "startDate": "2011-04-01",
+          "endDate": "2011-08-01",
+          "location": "Chemnitz, Germany"
+        },
+        {
+          "name": "University of Leipzig and Film University Babelsberg",
+          "position": "Portfolio Preparation",
+          "startDate": "2007-10-01",
+          "endDate": "2008-09-01",
+          "location": "Germany"
+        },
+        {
+          "name": "digimedia services ltd.",
+          "position": "Digital Design",
+          "startDate": "2006-09-01",
+          "endDate": "2007-02-01",
+          "location": "Berlin, Germany",
+          "highlights": [
+            "Content creation of a logo and a website for a public school"
+          ]
+        },
+        {
+          "name": "debitel-competenz-center",
+          "position": "Bookkeeping Clerk",
+          "startDate": "2006-04-01",
+          "endDate": "2006-08-01",
+          "location": "Berlin, Germany",
+          "highlights": [
+            "Content management & data entries of telecommunications products to ebay"
+          ]
+        },
+        {
+          "name": "Starke Internethandel",
+          "position": "Digital Design",
+          "startDate": "2005-09-01",
+          "endDate": "2006-05-01",
+          "location": "Berlin, Germany",
+          "highlights": [
+            "Maintaining homepage & data entries of electronic products to eBay and amazon"
+          ]
+        },
+        {
+          "name": "Skandia GmbH",
+          "position": "File Search Clerk",
+          "startDate": "2004-06-01",
+          "endDate": "2006-02-01",
+          "location": "Berlin, Germany"
+        }
+      ],
+      "education": [
+        {
+          "institution": "boot.dev",
+          "area": "Backend Programming",
+          "studyType": "Certificate",
+          "startDate": "2025-04-01",
+          "endDate": "2026-06-01",
+          "location": "Mexico City, Mexico"
+        },
+        {
+          "institution": "TU Chemnitz",
+          "area": "Psychology",
+          "studyType": "Bachelor of Science",
+          "startDate": "2008-10-01",
+          "endDate": "2012-03-01",
+          "score": "2.5 of 5",
+          "location": "Chemnitz, Germany"
+        },
+        {
+          "institution": "L4 Academy in Berlin",
+          "area": "Digital & Print Design",
+          "studyType": "Vocational Training",
+          "startDate": "2004-09-01",
+          "endDate": "2007-09-01",
+          "score": "83% and 64 of 100 pts",
+          "location": "Berlin, Germany"
+        },
+        {
+          "institution": "General School",
+          "area": "Abitur",
+          "startDate": "1990-09-01",
+          "endDate": "2004-06-01",
+          "score": "3.0 of 6",
+          "location": "Berlin, Germany"
+        }
+      ],
+      "certificates": [
+        {
+          "name": "German: Native",
+          "url": ""
+        },
+        {
+          "name": "English: Level B2",
+          "url": "https://e.pcloud.link/publink/show?code=XZ6QFcZh6olECmo8Wbn7qQjDDTJWyCLrKE7"
+        },
+        {
+          "name": "Spanish: Level A2",
+          "url": "https://e.pcloud.link/publink/show?code=XZ3QFcZOWPYl847fcXuWN4i78LLY8NHC0Jy"
+        },
+        {
+          "name": "Digital & Print Design",
+          "url": "https://e.pcloud.link/publink/show?code=XZmYFcZReHFn5s99U0XCJNpd2rqcy1FP9QX"
+        },
+        {
+          "name": "BSc Psychology",
+          "url": "https://e.pcloud.link/publink/show?code=XZQYFcZDf0OoQiI0ApXGf0Y6nXWHb7cwtl7"
+        },
+        {
+          "name": "Driving License",
+          "url": "https://e.pcloud.link/publink/show?code=XZJbFcZs05TvzdUFojiKJmO5ShwGfyeUHJV"
+        }
+      ],
+      "skills": [
+        {
+          "name": "Programming Languages",
+          "keywords": ["Typescript", "Python", "Go"]
+        },
+        {
+          "name": "Databases",
+          "keywords": ["SQL"]
+        },
+        {
+          "name": "DevOps and Cloud",
+          "keywords": ["Docker", "AWS"]
+        },
+        {
+          "name": "Messaging",
+          "keywords": ["RabbitMQ"]
+        },
+        {
+          "name": "Data Analytics",
+          "keywords": ["Power BI"]
+        },
+        {
+          "name": "Tools",
+          "keywords": ["Visual Studio Code", "GIMP", "Inkscape", "Framer", "Squarespace", "Wix"]
+        },
+        {
+          "name": "Soft Skills",
+          "keywords": ["Interactive", "Reflective", "Interdisciplinary thinking", "Creative"]
+        }
+      ],
+      "projects": [
+        {
+          "name": "Spreadsheet Row Matching (Engine)",
+          "startDate": "2026-08-01",
+          "endDate": "2026-10-31",
+          "link": "https://github.com/Pajozim/Spreadsheet-Row-Matching",
+          "description": "Database-backed cataloging and search system for spreadsheet files. Excel cross-referencing can be an arduous, repetitive task requiring semantic understanding and lengthy catalogue searches. Instead of relying on legacy VBA macros, this tool leverages Python, SQLite, and data libraries like Pandas and Openpyxl to deliver high-speed, large-scale cataloging and automated row matching.",
+          "highlights": [
+            "Architected a local SQL and NLP (multilingual-e5-small) search engine for automated Excel row-matching, featuring automatic CUDA/CPU hardware switching.",
+            "Built an interactive local GUI using Streamlit.",
+            "Optimized Pandas and Openpyxl pipeline loops to eliminate runtime overhead and memory bottlenecks during batch processing.",
+            "Delivered a fully offline, GPLv3 open-source solution that reduces spreadsheet cross-referencing and eliminates external cloud API expenses."
+          ]
+        },
+        {
+          "name": "Ojo del Banco",
+          "startDate": "2026-03-01",
+          "endDate": "2026-06-01",
+          "link": "https://github.com/Pajozim/OjoDelBanco",
+          "description": "Banking App module for reading handwritten transaction data. Observing that many small-time vendors avoid credit, debit, and other payment methods due to the toll on their already thin profit margins, I identified an opportunity to streamline the transaction input process on the consumer side. I integrated an OCR module into a NuBank-clone app's transfer page, where it reads and extracts handwritten data to auto-populate input fields. The buyer then verifies the extracted information and submits it to complete the transaction."
+        },
+        {
+          "name": "CMSwTPaL",
+          "startDate": "2024-11-01",
+          "endDate": "2025-02-01",
+          "link": "https://github.com/Pajozim/CMSwTPaL",
+          "description": "CMS with texts, pictures and lines/links. Caused by my granduncle who wished to illustrate his amateur radio montage for his followers. I created a lightweight CMS that allows texts and pictures. Often, it is not obvious to where exactly in the pictures it refers to, so the user can create from the text paragraph a line with an end area (point) on the picture."
+        },
+        {
+          "name": "Stranded",
+          "startDate": "2024-05-01",
+          "endDate": "2025-04-01",
+          "link": "https://github.com/Pajozim/Stranded",
+          "description": "A visual novel with resource management. A visual novel game with resource management, featuring AI-generated audio-visual elements. Built with Twine and SugarCube (an HTML, CSS, and JavaScript story engine). The story revolves around why so many were ejected from their mothership onto a strange planet."
+        },
+        {
+          "name": "Aesthetics Brewery",
+          "startDate": "2024-08-01",
+          "endDate": "2024-10-01",
+          "link": "https://github.com/Pajozim/aestheticsbrewery",
+          "description": "Homepage"
+        }
+      ],
+      "languages": [
+        {
+          "language": "German",
+          "fluency": "Native"
+        },
+        {
+          "language": "English",
+          "fluency": "B2 / Business B1"
+        },
+        {
+          "language": "Spanish",
+          "fluency": "A2"
+        }
+      ]
+    }
+  },
+  {
+    "langCode": "deu",
+    "resume": {
+      "$schema": "https://jsonresume.org/schemas/1.0.0/schema.json",
+      "meta": {
+        "langCode": "deu",
+        "theme": "jsonresume-theme-even",
+        "lastModified": "2026-10-27T00:00:00.000Z"
+      },
+      "basics": {
+        "name": "Paul Zimmermann",
+        "label": "Full Stack Entwickler & Graphik Designer",
+        "email": "pajozim@gmail.com",
+        "phone": "+52 999 747 9054",
+        "image": "https://avatars.githubusercontent.com/u/137354997?v=4",
+        "summary": "Ich bin ein Frontend- und Backend-Entwickler mit einer seltenen Mischung aus technischer, gestalterischer und psychologischer Expertise. Mein Weg in die Programmierung begann aus zwei Gründen: um meine Fähigkeiten im digitalen Design auszubauen und um die Frage zu beantworten, ob ich die Excel-Datenverwaltung meiner Frau optimieren könnte. Abseits des Bildschirms interessiere ich mich für Geopolitik und Wirtschaft – und frage mich stets, wie aktuelle Technologien und Werkzeuge die Lebenswelt verbessern können. Ich brenne dafür, Lösungen zu schaffen, die die Work-Life-Balance verbessern. Ob ein leichtgewichtiges CMS, ein OCR-Modul zum Lesen von Banktransaktionsdaten oder ein Keycode-Abrufsystem aus Excel-Dateien – es gibt unzählige Aufgaben, die darauf warten, verbessert zu werden.",
+        "url": "https://pajozim.github.io/aestheticsbrewery/",
+        "location": {
+          "city": "Mexiko-Stadt",
+          "countryCode": "MX"
+        },
+        "profiles": [
+          {
+            "network": "GitHub",
+            "username": "Pajozim",
+            "url": "https://github.com/Pajozim"
+          },
+          {
+            "network": "LinkedIn",
+            "username": "paul-zimmermann",
+            "url": "https://linkedin.com/in/paul-zimmermann-pajozim"
+          },
+          {
+            "network": "boot.dev",
+            "username": "pajozim",
+            "url": "https://www.boot.dev/u/pajozim"
+            
+          }
+        ]
+      },
+      "work": [
+        {
+          "name": "Freiberuflich / Selbstständig",
+          "position": "Full Stack Entwickler",
+          "startDate": "2026-08-01",
+          "endDate": "2026-10-31",
+          "location": "Mexiko Stadt, Mexiko",
+          "highlights": [
+            "Projektarbeit: Spreadsheet Row Matching (Engine)",
+            "Architektierte eine lokale SQL- und NLP-Suchmaschine (multilingual-e5-small) für automatisiertes Excel-Zeilen-Matching mit automatischer CUDA/CPU-Hardware-Umschaltung.",
+            "Baute eine interaktive lokale GUI mit Streamlit.",
+            "Optimierte Pandas- und Openpyxl-Pipeline-Schleifen, um Laufzeit-Overhead und Speicherengpässe während der Stapelverarbeitung zu eliminieren.",
+            "Lieferte eine vollständig offline-fähige, GPLv3-Open-Source-Lösung, die das Cross-Referenzieren von Tabellenkalkulationen reduziert und externe Cloud-API-Kosten eliminiert."
+          ]
+        },
+        {
+          "name": "Freiberuflich / Selbstständig",
+          "position": "Full Stack Entwickler",
+          "startDate": "2026-07-01",
+          "endDate": "2026-08-01",
+          "location": "Mexiko Stadt, Mexiko",
+          "highlights": [
+            "Umstrukturierung von CMSwTPaL von einem serverseitigen zu einem offline-/dateibasierten Content-Management-System."
+          ]
+        },
+        {
+          "name": "Freiberuflich / Selbstständig",
+          "position": "Digitales Design und Frontend-Programmierung",
+          "startDate": "2024-05-01",
+          "endDate": "2025-03-01",
+          "location": "Mexiko Stadt, Mexiko",
+          "highlights": [
+            "1x privates kleines CMS mit Texten, Bildern und Linien (HTML, CSS, JS via VSCode)",
+            "1x Neuerstellung meiner Webseite von Grund auf (VS Code)",
+            "12x Design von Kerzenaufklebern (Inkscape)",
+            "2x Ginseng Social-Media-Reels (CapCut)",
+            "1x clientseitige Arbeitsfortschrittspräsentation (DaVinci)",
+            "2x Erstellung von Webseiten INGCEEA & BD Zimmermann (SquareSpace)",
+            "1x Erstellung meiner Webseite (Framer)",
+            "3x Redesign meiner deutschen, englischen & spanischen Lebensläufe (Canva)",
+            "1x Spieleentwicklung STRANDED (Twine = HTML / CSS / JavaScript)",
+            "2x Logodesign INGCEEA & BD Zimmermann (Inkscape)"
+          ]
+        },
+        {
+          "name": "Baumdienst Zimmermann",
+          "position": "Baumkletterer",
+          "startDate": "2013-08-01",    
+          "endDate": "2024-04-01",
+          "location": "Nordostdeutschland",
+          "highlights": [
+            "Schneiden, Auslichten, Abseilen, Riggling",
+            "Organisation von Arbeitspartnern",
+            "Schulung des Bodenpersonals",
+            "Papierkram (Rechnungen, steuerrelevante Unterlagen)"
+          ]
+        },
+        {
+          "name": "sports-box.de",
+          "position": "Buchhaltungsangestellter & Kundenservice",
+          "startDate": "2012-07-01",
+          "endDate": "2013-07-01",
+          "location": "Berlin, Deutschland",
+          "highlights": [
+            "Digitale Eingabe von Produkten und deren Daten in Excel-Tabellen",
+            "Verwaltung von Rücksendungen",
+            "Kundenservice (E-Mail & Chat)"
+          ]
+        },
+        {
+          "name": "m.i.s. GmbH",
+          "position": "Lagermitarbeiter",
+          "startDate": "2011-10-01",
+          "endDate": "2012-07-01",
+          "location": "Berlin, Deutschland"
+        },
+        {
+          "name": "Carolabad Clinic",
+          "position": "Praktikum Klinische Psychotherapie",
+          "startDate": "2011-04-01",
+          "endDate": "2011-08-01",
+          "location": "Chemnitz, Deutschland"
+        },
+        {
+          "name": "Universität Leipzig und Filmuniversität Babelsberg",
+          "position": "Portfolio-Vorbereitung",
+          "startDate": "2007-10-01",
+          "endDate": "2008-09-01",
+          "location": "Deutschland"
+        },
+        {
+          "name": "digimedia services ltd.",
+          "position": "Digitales Design",
+          "startDate": "2006-09-01",
+          "endDate": "2007-02-01",
+          "location": "Berlin, Deutschland",
+          "highlights": [
+            "Inhaltserstellung eines Logos und einer Webseite für eine öffentliche Schule"
+          ]
+        },
+        {
+          "name": "debitel-competenz-center",
+          "position": "Buchhaltungsangestellter",
+          "startDate": "2006-04-01",
+          "endDate": "2006-08-01",
+          "location": "Berlin, Deutschland",
+          "highlights": [
+            "Content-Management & Dateneingabe von Telekommunikationsprodukten bei eBay"
+          ]
+        },
+        {
+          "name": "Starke Internethandel",
+          "position": "Digitales Design",
+          "startDate": "2005-09-01",
+          "endDate": "2006-05-01",
+          "location": "Berlin, Deutschland",
+          "highlights": [
+            "Pflege der Homepage & Dateneingabe von Elektronikprodukten bei eBay und Amazon"
+          ]
+        },
+        {
+          "name": "Skandia GmbH",
+          "position": "Aktenverwalter",
+          "startDate": "2004-06-01",
+          "endDate": "2006-02-01",
+          "location": "Berlin, Deutschland"
+        }
+      ],
+      "education": [
+        {
+          "institution": "boot.dev",
+          "area": "Backend-Programmierung",
+          "studyType": "Zertifikat",
+          "startDate": "2025-04-01",
+          "endDate": "2026-06-01",
+          "location": "Mexiko-Stadt, Mexiko"
+        },
+        {
+          "institution": "TU Chemnitz",
+          "area": "Psychologie",
+          "studyType": "Bachelor of Science",
+          "startDate": "2008-10-01",
+          "endDate": "2012-03-01",
+          "score": "2,5 von 5",
+          "location": "Chemnitz, Deutschland"
+        },
+        {
+          "institution": "L4 Academy in Berlin",
+          "area": "Digital- & Printdesign",
+          "studyType": "Berufsausbildung",
+          "startDate": "2004-09-01",
+          "endDate": "2007-09-01",
+          "score": "83 % und 64 von 100 Punkten",
+          "location": "Berlin, Deutschland"
+        },
+        {
+          "institution": "Allgemeinbildende Schule",
+          "area": "Abitur",
+          "startDate": "1990-09-01",
+          "endDate": "2004-06-01",
+          "score": "3,0 von 6",
+          "location": "Berlin, Deutschland"
+        }
+      ],
+      "certificates": [
+        {
+          "name": "Deutsch: Muttersprache",
+          "url": ""
+        },
+        {
+          "name": "Englisch: Level B2",
+          "url": "https://e.pcloud.link/publink/show?code=XZ6QFcZh6olECmo8Wbn7qQjDDTJWyCLrKE7"
+        },
+        {
+          "name": "Spanisch: Level A2",
+          "url": "https://e.pcloud.link/publink/show?code=XZ3QFcZOWPYl847fcXuWN4i78LLY8NHC0Jy"
+        },
+        {
+          "name": "Digital- & Printdesign",
+          "url": "https://e.pcloud.link/publink/show?code=XZmYFcZReHFn5s99U0XCJNpd2rqcy1FP9QX"
+        },
+        {
+          "name": "BSc Psychologie",
+          "url": "https://e.pcloud.link/publink/show?code=XZQYFcZDf0OoQiI0ApXGf0Y6nXWHb7cwtl7"
+        },
+        {
+          "name": "Führerschein",
+          "url": "https://e.pcloud.link/publink/show?code=XZJbFcZs05TvzdUFojiKJmO5ShwGfyeUHJV"
+        }
+      ],
+      "skills": [
+        {
+          "name": "Programmiersprachen",
+          "keywords": ["TypeScript", "Python", "Go"]
+        },
+        {
+          "name": "Datenbanken",
+          "keywords": ["SQL"]
+        },
+        {
+          "name": "DevOps und Cloud",
+          "keywords": ["Docker", "AWS"]
+        },
+        {
+          "name": "Messaging",
+          "keywords": ["RabbitMQ"]
+        },
+        {
+          "name": "Datenanalyse",
+          "keywords": ["Power BI"]
+        },
+        {
+          "name": "Tools",
+          "keywords": ["Visual Studio Code", "GIMP", "Inkscape", "Framer", "Squarespace", "Wix"]
+        },
+        {
+          "name": "Soft Skills",
+          "keywords": ["Interaktiv", "Reflektierend", "Interdisziplinäres Denken", "Kreativ"]
+        }
+      ],
+      "projects": [
+        {
+          "name": "Spreadsheet Row Matching (Engine)",
+          "startDate": "2026-08-01",
+          "endDate": "2026-10-31",
+          "link": "https://github.com/Pajozim/Spreadsheet-Row-Matching",
+          "description": "Datenbankgestütztes Katalogisierungs- und Suchsystem für Tabellenkalkulationsdateien. Das Cross-Referenzieren von Excel-Dateien kann eine mühsame, repetitive Aufgabe sein, die semantisches Verständnis und langwierige Katalogsuche erfordert. Anstatt sich auf veraltete VBA-Makros zu verlassen, nutzt dieses Tool Python, SQLite und Datenbibliotheken wie Pandas und Openpyxl, um eine schnelle, skalierbare Katalogisierung und automatisiertes Zeilen-Matching zu ermöglichen.",
+          "highlights": [
+            "Architektierte eine lokale SQL- und NLP-Suchmaschine (multilingual-e5-small) für automatisiertes Excel-Zeilen-Matching mit automatischer CUDA/CPU-Hardware-Umschaltung.",
+            "Baute eine interaktive lokale GUI mit Streamlit.",
+            "Optimierte Pandas- und Openpyxl-Pipeline-Schleifen, um Laufzeit-Overhead und Speicherengpässe während der Stapelverarbeitung zu eliminieren.",
+            "Lieferte eine vollständig offline-fähige, GPLv3-Open-Source-Lösung, die das Cross-Referenzieren von Tabellenkalkulationen reduziert und externe Cloud-API-Kosten eliminiert."
+          ]
+        },
+        {
+          "name": "Ojo del Banco",
+          "startDate": "2026-03-01",
+          "endDate": "2026-06-01",
+          "link": "https://github.com/Pajozim/OjoDelBanco",
+          "description": "Banking-App-Modul zum Lesen handschriftlicher Transaktionsdaten. Da ich beobachtete, dass viele kleine Händler Kredit-, Debit- und andere Zahlungsmethoden aufgrund der Belastung ihrer ohnehin schon dünnen Gewinnmargen meiden, erkannte ich eine Chance, den Transaktionseingabeprozess auf der Verbraucherseite zu optimieren. Ich integrierte ein OCR-Modul in die Überweisungsseite einer NuBank-Klon-App, das handschriftliche Daten liest und extrahiert, um Eingabefelder automatisch auszufüllen. Der Käufer überprüft dann die extrahierten Informationen und sendet sie ab, um die Transaktion abzuschließen."
+        },
+        {
+          "name": "CMSwTPaL",
+          "startDate": "2024-11-01",
+          "endDate": "2025-02-01",
+          "link": "https://github.com/Pajozim/CMSwTPaL",
+          "description": "CMS mit Texten, Bildern und Linien/Links. Veranlasst durch meinen Großonkel, der seine Amateurfunk-Montage für seine Follower illustrieren wollte. Ich erstellte ein leichtgewichtiges CMS, das Texte und Bilder ermöglicht. Oft ist nicht offensichtlich, auf welche Stelle in den Bildern sich der Text genau bezieht, daher kann der Benutzer aus dem Textabsatz eine Linie mit einem Endbereich (Punkt) auf dem Bild erstellen."
+        },
+        {
+          "name": "Stranded",
+          "startDate": "2024-05-01",
+          "endDate": "2025-04-01",
+          "link": "https://github.com/Pajozim/Stranded",
+          "description": "Ein visueller Roman mit Ressourcenmanagement. Ein visueller Roman mit Ressourcenmanagement, der KI-generierte audio-visuelle Elemente enthält. Entwickelt mit Twine und SugarCube (einer HTML-, CSS- und JavaScript-Story-Engine). Die Geschichte dreht sich darum, warum so viele aus ihrem Mutterschiff auf einen fremden Planeten ausgestoßen wurden."
+        },
+        {
+          "name": "Aesthetics Brewery",
+          "startDate": "2024-08-01",
+          "endDate": "2024-10-01",
+          "link": "https://github.com/Pajozim/aestheticsbrewery",
+          "description": "Homepage"
+        }
+      ],
+      "languages": [
+        {
+          "language": "Deutsch",
+          "fluency": "Muttersprache"
+        },
+        {
+          "language": "Englisch",
+          "fluency": "B2 / Wirtschaftsenglisch B1"
+        },
+        {
+          "language": "Spanisch",
+          "fluency": "A2"
+        }
+      ]
+    }
+  },
+  {
+    "langCode": "esp",
+    "resume": {
+      "$schema": "https://jsonresume.org/schemas/1.0.0/schema.json",
+      "meta": {
+        "langCode": "spa",
+        "theme": "jsonresume-theme-even",
+        "lastModified": "2026-10-27T00:00:00.000Z"
+      },
+      "basics": {
+        "name": "Paul Zimmermann",
+        "label": "Desarrollador Full Stack & Diseñador Gráfico",
+        "email": "pajozim@gmail.com",
+        "phone": "+52 999 747 9054",
+        "image": "https://avatars.githubusercontent.com/u/137354997?v=4",
+        "summary": "Soy un desarrollador frontend y backend con una rara combinación de experiencia técnica, de diseño y psicológica. Mi viaje en la programación comenzó con dos objetivos: expandir mis habilidades de diseño digital y responder a la pregunta de si podría optimizar la gestión de datos en Excel de mi esposa. Más allá de la pantalla, me interesa la geopolítica y la economía, siempre preguntándome cómo las tecnologías y herramientas actuales pueden mejorar el mundo real. Me apasiona crear soluciones que mejoren el equilibrio entre la vida laboral y personal. Ya sea un CMS ligero, un módulo OCR para leer datos de transacciones bancarias o un sistema de recuperación de claves a partir de archivos de Excel, hay innumerables tareas esperando ser mejoradas.",
+        "url": "https://pajozim.github.io/aestheticsbrewery/",
+        "location": {
+          "city": "Ciudad de México",
+          "countryCode": "MX"
+        },
+        "profiles": [
+          {
+            "network": "GitHub",
+            "username": "Pajozim",
+            "url": "https://github.com/Pajozim"
+          },
+          {
+            "network": "LinkedIn",
+            "username": "paul-zimmermann",
+            "url": "https://linkedin.com/in/paul-zimmermann-pajozim"
+          },
+          {
+            "network": "boot.dev",
+            "username": "pajozim",
+            "url": "https://www.boot.dev/u/pajozim"
+            
+          }
+        ]
+      },
+      "work": [
+        {
+          "name": "Freelance / Autónomo",
+          "position": "Desarrollador Full Stack",
+          "startDate": "2026-08-01",
+          "endDate": "2026-10-31",
+          "location": "Ciudad de México, México", 
+          "highlights": [
+             "Título de proyecto: Spreadsheet Row Matching (Engine)",
+            "Arquitecté un motor de búsqueda local SQL y NLP (multilingual-e5-small) para la coincidencia automatizada de filas de Excel, con conmutación automática de hardware CUDA/CPU.",
+            "Construí una GUI local interactiva usando Streamlit.",
+            "Optimicé los bucles de la pipeline de Pandas y Openpyxl para eliminar la sobrecarga de tiempo de ejecución y los cuellos de botella de memoria durante el procesamiento por lotes.",
+            "Entregué una solución de código abierto GPLv3 totalmente offline que reduce la referenciación cruzada de hojas de cálculo y elimina los gastos de API en la nube externos."
+          ]
+        },
+        {
+          "name": "Freelance / Autónomo",
+          "position": "Desarrollador Full Stack",
+          "startDate": "2026-07-01",
+          "endDate": "2026-08-01",
+          "location": "Ciudad de México, México",
+          "highlights": [
+            "Reestructuración de CMSwTPaL de un sistema de gestión de contenido del lado del servidor a uno offline/basado en archivos."
+          ]
+        },
+        {
+          "name": "Freelance / Autónomo",
+          "position": "Diseño Digital y Programación Frontend",
+          "startDate": "2024-05-01",
+          "endDate": "2025-03-01",
+          "location": "Ciudad de México, México",
+          "highlights": [
+            "1x CMS privado a pequeña escala con texto, imágenes y líneas (HTML, CSS, JS vía VSCode)",
+            "1x nueva creación de mi página web desde cero (VS Code)",
+            "12x diseño de etiquetas adhesivas para velas (Inkscape)",
+            "2x reels de redes sociales de Ginseng (CapCut)",
+            "1x presentación del progreso del trabajo del lado del cliente (DaVinci)",
+            "2x creación de páginas web INGCEEA & BD Zimmermann (SquareSpace)",
+            "1x creación de mi sitio web (Framer)",
+            "3x rediseño de mis CV en alemán, inglés y español (Canva)",
+            "1x creación de juego STRANDED (Twine = HTML / CSS / JavaScript)",
+            "2x diseño de logotipos INGCEEA & BD Zimmermann (Inkscape)"
+          ]
+        },
+        {
+          "name": "Baumdienst Zimmermann",
+          "position": "Trepador de Árboles",
+          "startDate": "2013-08-01",
+          "endDate": "2024-04-01",
+          "location": "Noreste de Alemania",
+          "highlights": [
+            "Corte, poda, rappel, aparejo",
+            "Organización de socios de trabajo",
+            "Enseñanza al personal de tierra",
+            "Papeleo (facturas, documentos relevantes para impuestos)"
+          ]
+        },
+        {
+          "name": "sports-box.de",
+          "position": "Auxiliar de Contabilidad y Atención al Cliente",
+          "startDate": "2012-07-01",
+          "endDate": "2013-07-01",
+          "location": "Berlín, Alemania",
+          "highlights": [
+            "Entrada digital de productos y sus datos en tablas de Excel",
+            "Gestión de devoluciones",
+            "Atención al cliente (correo electrónico y chat)"
+          ]
+        },
+        {
+          "name": "m.i.s. GmbH",
+          "position": "Operario de Almacén",
+          "startDate": "2011-10-01",
+          "endDate": "2012-07-01",
+          "location": "Berlín, Alemania"
+        },
+        {
+          "name": "Clínica Carolabad",
+          "position": "Prácticas de Psicoterapia Clínica",
+          "startDate": "2011-04-01",
+          "endDate": "2011-08-01",
+          "location": "Chemnitz, Alemania"
+        },
+        {
+          "name": "Universidad de Leipzig y Universidad de Cine de Babelsberg",
+          "position": "Preparación de portafolio",
+          "startDate": "2007-10-01",
+          "endDate": "2008-09-01",
+          "location": "Alemania"
+        },
+        {
+          "name": "digimedia services ltd.",
+          "position": "Diseño Digital",
+          "startDate": "2006-09-01",
+          "endDate": "2007-02-01",
+          "location": "Berlín, Alemania",
+          "highlights": [
+            "Creación de contenido de un logotipo y un sitio web para una escuela pública"
+          ]
+        },
+        {
+          "name": "debitel-competenz-center",
+          "position": "Auxiliar de Contabilidad",
+          "startDate": "2006-04-01",
+          "endDate": "2006-08-01",
+          "location": "Berlín, Alemania",
+          "highlights": [
+            "Gestión de contenido y entrada de datos de productos de telecomunicaciones en eBay"
+          ]
+        },
+        {
+          "name": "Starke Internethandel",
+          "position": "Diseño Digital",
+          "startDate": "2005-09-01",
+          "endDate": "2006-05-01",
+          "location": "Berlín, Alemania",
+          "highlights": [
+            "Mantenimiento de la página principal y entrada de datos de productos electrónicos en eBay y Amazon"
+          ]
+        },
+        {
+          "name": "Skandia GmbH",
+          "position": "Archivista",
+          "startDate": "2004-06-01",
+          "endDate": "2006-02-01",
+          "location": "Berlín, Alemania"
+        }
+      ],
+      "education": [
+        {
+          "institution": "boot.dev",
+          "area": "Programación Backend",
+          "studyType": "Certificado",
+          "startDate": "2025-04-01",
+          "endDate": "2026-06-01",
+          "location": "Ciudad de México, México"
+        },
+        {
+          "institution": "TU Chemnitz",
+          "area": "Psicología",
+          "studyType": "Licenciatura en Ciencias",
+          "startDate": "2008-10-01",
+          "endDate": "2012-03-01",
+          "score": "2.5 de 5",
+          "location": "Chemnitz, Alemania"
+        },
+        {
+          "institution": "L4 Academy en Berlín",
+          "area": "Diseño Digital e Impresión",
+          "studyType": "Formación Profesional",
+          "startDate": "2004-09-01",
+          "endDate": "2007-09-01",
+          "score": "83% y 64 de 100 pts",
+          "location": "Berlín, Alemania"
+        },
+        {
+          "institution": "Escuela General",
+          "area": "Abitur",
+          "startDate": "1990-09-01",
+          "endDate": "2004-06-01",
+          "score": "3.0 de 6",
+          "location": "Berlín, Alemania"
+        }
+      ],
+      "certificates": [
+        {
+          "name": "Alemán: Nativo",
+          "url": "https://e.pcloud.link/publink/show?code=XZ6QFcZh6olECmo8Wbn7qQjDDTJWyCLrKE7"
+        },
+        {
+          "name": "Inglés: Nivel B2",
+          "url": "https://e.pcloud.link/publink/show?code=XZ3QFcZOWPYl847fcXuWN4i78LLY8NHC0Jy"
+        },
+        {
+          "name": "Español: Nivel A2",
+          "url": "https://e.pcloud.link/publink/show?code=XZmYFcZReHFn5s99U0XCJNpd2rqcy1FP9QX"
+        },
+        {
+          "name": "Diseño Digital e Impresión",
+          "url": "https://e.pcloud.link/publink/show?code=XZmYFcZReHFn5s99U0XCJNpd2rqcy1FP9QX"
+        },
+        {
+          "name": "BSc Psicología",
+          "url": "https://e.pcloud.link/publink/show?code=XZQYFcZDf0OoQiI0ApXGf0Y6nXWHb7cwtl7"
+        },
+        {
+          "name": "Licencia de Conducir",
+          "url": "https://e.pcloud.link/publink/show?code=XZJbFcZs05TvzdUFojiKJmO5ShwGfyeUHJV"
+        }
+      ],
+      "skills": [
+        {
+          "name": "Lenguajes de Programación",
+          "keywords": ["TypeScript", "Python", "Go"]
+        },
+        {
+          "name": "Bases de Datos",
+          "keywords": ["SQL"]
+        },
+        {
+          "name": "DevOps y Nube",
+          "keywords": ["Docker", "AWS"]
+        },
+        {
+          "name": "Mensajería",
+          "keywords": ["RabbitMQ"]
+        },
+        {
+          "name": "Análisis de Datos",
+          "keywords": ["Power BI"]
+        },
+        {
+          "name": "Herramientas",
+          "keywords": ["Visual Studio Code", "GIMP", "Inkscape", "Framer", "Squarespace", "Wix"]
+        },
+        {
+          "name": "Habilidades Blandas",
+          "keywords": ["Interactivo", "Reflexivo", "Pensamiento interdisciplinario", "Creativo"]
+        }
+      ],
+      "projects": [
+        {
+          "name": "Spreadsheet Row Matching (Engine)",
+          "startDate": "2026-08-01",
+          "endDate": "2026-10-31",
+          "link": "https://github.com/Pajozim/Spreadsheet-Row-Matching",
+          "description": "Sistema de catalogación y búsqueda respaldado por base de datos para archivos de hojas de cálculo. La referenciación cruzada en Excel puede ser una tarea ardua y repetitiva que requiere comprensión semántica y largas búsquedas de catálogo. En lugar de depender de macros VBA heredadas, esta herramienta utiliza Python, SQLite y bibliotecas de datos como Pandas y Openpyxl para ofrecer catalogación a gran escala de alta velocidad y coincidencia automatizada de filas.",
+          "highlights": [
+            "Arquitecté un motor de búsqueda local SQL y NLP (multilingual-e5-small) para la coincidencia automatizada de filas de Excel, con conmutación automática de hardware CUDA/CPU.",
+            "Construí una GUI local interactiva usando Streamlit.",
+            "Optimicé los bucles de la pipeline de Pandas y Openpyxl para eliminar la sobrecarga de tiempo de ejecución y los cuellos de botella de memoria durante el procesamiento por lotes.",
+            "Entregué una solución de código abierto GPLv3 totalmente offline que reduce la referenciación cruzada de hojas de cálculo y elimina los gastos de API en la nube externos."
+          ]
+        },
+        {
+          "name": "Ojo del Banco",
+          "startDate": "2026-03-01",
+          "endDate": "2026-06-01",
+          "link": "https://github.com/Pajozim/OjoDelBanco",
+          "description": "Módulo de aplicación bancaria para leer datos de transacciones manuscritas. Al observar que muchos pequeños vendedores evitan las tarjetas de crédito, débito y otros métodos de pago debido al impacto en sus ya ajustados márgenes de beneficio, identifiqué una oportunidad para optimizar el proceso de entrada de transacciones en el lado del consumidor. Integré un módulo OCR en la página de transferencias de una aplicación clon de NuBank, donde lee y extrae datos manuscritos para autocompletar los campos de entrada. Luego, el comprador verifica la información extraída y la envía para completar la transacción."
+        },
+        {
+          "name": "CMSwTPaL",
+          "startDate": "2024-11-01",
+          "endDate": "2025-02-01",
+          "link": "https://github.com/Pajozim/CMSwTPaL",
+          "description": "CMS con textos, imágenes y líneas/enlaces. Creado por mi tío abuelo que deseaba ilustrar su montaje de radioaficionado para sus seguidores. Creé un CMS ligero que permite textos e imágenes. A menudo, no es obvio a qué parte exacta de las imágenes se refiere, por lo que el usuario puede crear desde el párrafo de texto una línea con un área final (punto) en la imagen."
+        },
+        {
+          "name": "Stranded",
+          "startDate": "2024-05-01",
+          "endDate": "2025-04-01",
+          "link": "https://github.com/Pajozim/Stranded",
+          "description": "Una novela visual con gestión de recursos. Un juego de novela visual con gestión de recursos, que presenta elementos audiovisuales generados por IA. Construido con Twine y SugarCube (un motor de historias HTML, CSS y JavaScript). La historia gira en torno a por qué tantos fueron expulsados de su nave nodriza a un planeta extraño."
+        },
+        {
+          "name": "Aesthetics Brewery",
+          "startDate": "2024-08-01",
+          "endDate": "2024-10-01",
+          "link": "https://github.com/Pajozim/aestheticsbrewery", 
+          "description": "Página de inicio"
+        }
+      ],
+      "languages": [
+        {
+          "language": "Alemán",
+          "fluency": "Nativo"
+        },
+        {
+          "language": "Inglés",
+          "fluency": "B2 / Inglés de Negocios B1"
+        },
+        {
+          "language": "Español",
+          "fluency": "A2"
+        }
+      ]
+    }
+  }
+]
